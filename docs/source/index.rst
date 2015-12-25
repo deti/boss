@@ -12,7 +12,7 @@ Contents:
    :maxdepth: 2
 
    UserPersonalAccountUserGuide/UserPersonalAccount.rst
-   BillingSystemAdminGuide/BillingSysytemAdminGuide.rst
+   BillingSystemAdminGuide/BillingSystemAdminGuide.rst
    InstallationGuide/InstallationGuide.rst
    SkylineUserGuide/SkylineUserGuide.rst
 
