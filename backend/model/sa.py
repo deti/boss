@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# This is the remade of flask-sqlalchemy by Armin Ronacher (https://github.com/mitsuhiko/flask-sqlalchemy)
 from __future__ import with_statement, absolute_import
 import conf
 import re
