@@ -1,9 +1,6 @@
-===============
-BILLING SYSTEM
-===============
-
+===================
 Administrator Guide
----------------------
+===================
 
 This guide is designed for Billing System Administrators and describes a 
 common structure and a set of tools that are necessary to manage 

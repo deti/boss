@@ -1,9 +1,7 @@
-===============
-BILLING SYSTEM
-===============
-
+==================
 Skyline User Guide
----------------------
+==================
+
 
 The Guide provides operation information of the Skyline within 
 the Personal Cloud Account. 

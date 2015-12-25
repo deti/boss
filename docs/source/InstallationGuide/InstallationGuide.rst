@@ -1,9 +1,6 @@
-===============
-BILLING SYSTEM
-===============
-
+==================
 Installation Guide
-------------------
+==================
 
 
 TODO REWRITE IS NEEDED

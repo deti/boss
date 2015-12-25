@@ -1,9 +1,6 @@
-===============
-BILLING SYSTEM
-===============
-
+=====================
 User Personal Account
----------------------
+=====================
 
 The Guide provides information about the User Personal Account during a trial 
 and operational period.
