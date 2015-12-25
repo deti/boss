@@ -1,0 +1,56 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>Create sub-domain</h4>
+  <form name="NewRecordForm" class="form-horizontal" ng-submit="createRecord(NewRecordForm)" bs-server-validate novalidate bs-form-send-once>
+    <div class="form-group row-vertical-align">
+      <label class="col-sm-3 centered" for="domainName" translate>Domain name</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="domainName" name="domainName" class="form-control" disabled ng-model="domain.name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3" for="name" translate>Name</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="name" name="name" class="form-control" ng-model="record.name"
+               placeholder="{{::'Enter name'|translate}}">
+        <div class="example-text"><span translate>For example subdomain or subdomain.</span>{{domain.name}}</div>
+      </div>
+    </div>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-sm-3 required centered" for="type" translate>Type</label>
+
+      <div class="col-sm-9">
+        <div class="select">
+          <select name="type" class="form-control" id="type" required bs-validate-hint ng-model="record.type">
+            <option ng-repeat="item in ::recordTypes">{{item}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-sm-3 required centered" for="data" translate>Record</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="data" name="data" class="form-control" required bs-validate-hint ng-model="record.data">
+      </div>
+    </div>
+    <div class="form-group row-vertical-align" bs-has-error ng-if="record.type === 'MX'">
+      <label class="col-sm-3 required centered" for="priority" translate>Priority</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="priority" name="priority" class="form-control" required bs-validate-hint
+               ng-model="record.priority">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-4 col-xs-offset-3">
+        <button type="submit" class="btn btn-primary" ng-disabled="NewRecordForm.$invalid" translate>Create sub-domain</button>
+      </div>
+      <div class="col-xs-3">
+        <a ui-sref="openstack.dns.domains" class="btn btn-link" translate>Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

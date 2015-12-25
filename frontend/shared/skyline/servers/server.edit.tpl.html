@@ -1,0 +1,112 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>Server settings</h4>
+
+  <form name="NameAndTypeForm" class="form-horizontal" ng-submit="saveNameAndType(NameAndTypeForm)" bs-server-validate
+        novalidate bs-form-send-once>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="name" translate>Name</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="name" name="name" class="form-control" required ng-model="server.name" bs-validate-hint>
+      </div>
+    </div>
+
+
+    <div class="form-group row-vertical-align">
+      <label class="col-xs-3 required" for="flavorRef" translate>Size</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="flavorRef" class="form-control" id="flavorRef" ng-model="serverFlavor.flavorRef"
+                  ng-options="item.id as item.about for item in flavors">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-6 col-xs-offset-3">
+        <button class="btn btn-primary" type="submit" translate ng-disabled="NameAndTypeForm.$invalid || !NameAndTypeForm.$dirty">
+          Edit
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <form name="VolumesForm" class="form-horizontal" ng-submit="saveVolumes(VolumesForm)" bs-server-validate
+        novalidate>
+    <div class="hr"><span class="white-bg" translate>Volumes</span></div>
+
+    <div class="form-group row-vertical-align">
+      <label class="col-xs-3 centered" for="volumeToAttach" translate>Select a disk</label>
+
+      <div class="col-xs-5">
+        <div class="select">
+          <select name="volumeToAttach" class="form-control" id="volumeToAttach" ng-model="volumeToAttach"
+                  ng-options="item as item.about for item in availableVolumes">
+          </select>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <button class="btn btn-primary btn-block" ng-disabled="!volumeToAttach" type="button" ng-click="attachVolume(volumeToAttach)" translate>
+          Attach disk
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" ng-repeat="volume in volumes">
+      <div class="col-xs-7 col-xs-offset-3">
+        <div class="attached-disk">
+          <div class="row">
+            <div class="col-xs-6" ng-if="volume.attachment">
+              {{::volume.attachment.device}}
+            </div>
+            <div class="col-xs-6" ng-if="!volume.attachment" translate>
+              Attachment in the process...
+            </div>
+            <div class="col-xs-3">
+              {{::volume.size}} GB
+            </div>
+            <div class="col-xs-3" ng-if="volume.attachment && volume.attachment.device !== '/dev/vda'">
+              <button class="close" ng-click="detach(volume)"><span aria-hidden="true">&times;</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <form name="IPForm" class="form-horizontal" ng-submit="saveIP(IPForm)" bs-server-validate bs-form-send-once
+        novalidate>
+    <div class="hr"><span class="white-bg" translate>IP-address</span></div>
+    <div class="form-group row-vertical-align" ng-if="::ip.serverStaticAddress">
+      <label class="col-xs-3" for="staticIp" translate>External IP</label>
+      <div class="col-xs-5">
+        <input type="text" disabled class="form-control" id="staticIp" value="{{::ip.serverStaticAddress}}">
+      </div>
+    </div>
+    <div class="form-group row-vertical-align" ng-if="::CONST.lo.skyline.floating_ips">
+      <label class="col-xs-3" for="address" translate>Select an IP-address</label>
+
+      <div class="col-xs-5">
+        <div class="select">
+          <select name="address" class="form-control" id="address" ng-model="ip.serverFloatingAddress"
+                  ng-options="item.ip as item.ip for item in ips">
+          </select>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <button class="btn btn-primary btn-block" translate ng-disabled="IPForm.$invalid || !IPForm.$dirty">
+          Assign
+        </button>
+      </div>
+    </div>
+    <div class="form-group" ng-if="::CONST.lo.skyline.floating_ips">
+      <div class="col-xs-5 col-xs-offset-3">
+        <a ui-sref="openstack.ips.new({returnUrl: '{{pageHref}}'})" translate>Request new IP-address</a>
+      </div>
+    </div>
+  </form>
+
+  <div ui-view="backups"></div>
+</div>

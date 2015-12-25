@@ -1,0 +1,95 @@
+<form class="form-horizontal" name="TariffInfoForm" novalidate bs-server-validate="{}" bs-form-saver ng-submit="update(TariffInfoForm)">
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="parent" translate>Basic plan</label>
+
+    <div class="col-sm-8">
+      <input type="text" id="parent" name="parent" class="form-control" ng-model="params.parentName" disabled>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="status" translate>Status</label>
+
+    <div class="col-sm-8">
+      <input type="text" id="status" name="status" class="form-control" ng-model="statusName" disabled>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="title_rus" translate>Name (RUS)</label>
+
+    <div class="col-sm-8">
+      <input type="text" id="title_rus" name="title_rus" class="form-control" ng-model="params.localized_name.ru" ng-disabled="!isNew()">
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="title" translate>Name (ENG)</label>
+
+    <div class="col-sm-8">
+      <input type="text" id="title" name="title" class="form-control" ng-model="params.localized_name.en" ng-disabled="!isNew()">
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="description" translate>Description</label>
+
+    <div class="col-sm-8">
+      <textarea name="description" id="description" rows="3" ng-model="params.description"
+                class="form-control" ng-disabled="!isNew()"></textarea>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="label-fw centered" for="currency" translate>Currency</label>
+
+    <div class="col-sm-8" >
+      <div class="select">
+        <select name="currency" id="currency" class="form-control" ng-model="params.currency" bs-validate-hint ng-disabled="!isNew()" ng-options="item.code as item.currency for item in activeCurrency">
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align has-error" ng-if="TariffInfoForm.$error.unclassified">
+    <div class="fixed-offset col-sm-9">
+      <span class="help-block">{{TariffInfoForm.$server_unclassified}}</span>
+    </div>
+  </div>
+
+  <div class="form-group mar-t-50 row-vertical-align">
+    <label class="col-sm-5 centered" translate>Creation in progress</label>
+
+    <div class="col-sm-7">
+      <button type="button" class="btn btn-block btn-primary" ng-click="createWithParent()" translate>Create a plan based on this one</button>
+    </div>
+  </div>
+
+  <div ng-if="isNew()">
+    <div class="form-group row-vertical-align" >
+      <label class="col-sm-5 centered" translate>Status</label>
+
+      <div class="col-sm-7">
+        <button type="button" class="btn btn-block btn-primary" ng-click="activate()" translate>Enable</button>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="isNew() || isActive()">
+    <div class="form-group row-vertical-align">
+      <label class="col-sm-5 centered" translate>Archive</label>
+
+      <div class="col-sm-7">
+        <button type="button" class="btn btn-block btn-primary" ng-click="archive()" translate>Send to archive</button>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="isActive()">
+    <div class="form-group row-vertical-align" ng-if="!params.default">
+      <label class="col-sm-5 centered" translate>By default</label>
+
+      <div class="col-sm-7">
+        <button type="button" class="btn btn-block btn-primary" ng-click="setDefault()" translate>Assign as a default plan</button>
+      </div>
+    </div>
+    <div ng-if="params.default" translate>
+      Default plan
+    </div>
+  </div>
+</form>

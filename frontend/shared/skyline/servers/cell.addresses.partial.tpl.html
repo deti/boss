@@ -1,0 +1,8 @@
+<div ng-repeat="address in ::item.ips">
+  {{::address.addr}}
+  <a class="pad-l-5" ng-show="activeItem == item" href="#" bs-copy-to-clipboard="address.addr" copy-message="{{::'Address copied'|translate}}"
+     tooltip="{{::'Copy to clipboard'|translate}}">
+    <i class="fa fa-clipboard"></i>
+  </a>
+</div>
+<span ng-if="::!item.ips.length">-</span>

@@ -1,0 +1,70 @@
+<div ng-show="isActive(1)">
+  <div class="hr"><span translate>Customer</span></div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="customerType" translate>Customer type</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select id="customerType" name="customerType" class="form-control" ng-model="customer.customer_type">
+          <option value="private" ng-selected="true" translate>Private person</option>
+          <option value="entity" translate>Legal entity</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div ui-view="private"></div>
+  <div ui-view="entity"></div>
+
+  <div class="hr"><span translate>Account</span></div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="localization" translate>Locale</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select id="localization" name="localization" class="form-control" ng-model="customer.locale"
+                ng-options="locale.code as locale|localizedName for locale in customerLocales">
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="customerMode" translate>Mode</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select id="customerMode" name="customerMode" class="form-control" ng-model="customer.customer_mode"
+                ng-options="mode.code as mode|localizedName for mode in modes">
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="withdraw_period" translate>Charge period</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select name="withdraw_period" class="form-control" id="withdraw_period" ng-model="customer.withdraw_period"
+                bs-validate-hint>
+          <option ng-repeat="option in periodOption" ng-selected="customer.withdraw_period == option.period_id"
+                  value="{{::option.period_id}}">
+            {{::option|localizedName}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mar-t-30">
+    <div class="col-xs-9 offset-buttons btn-row">
+      <div class="col-xs-6">
+        <button type="button" class="btn btn-primary btn-block" ng-click="showTab(2)" ng-disabled="forms.AccountInfoForm.$invalid" translate>Continue</button>
+      </div>
+      <div class="col-xs-6">
+        <button type="button" class="btn btn-default btn-block" ng-click="finish()" translate>Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+.progress-container {
+  position: relative;
+  height: 48px;
+  margin-bottom: 12px;
+  color: #5d55cb;
+
+  &.input-height {
+    height: 42px;
+    .progress, .progress-bar {
+      height: 42px;
+    }
+    .left, .right {
+      padding-top: 9px;
+    }
+    .left {
+      padding-left: 10px;
+    }
+    .right {
+      padding-right: 10px;
+    }
+  }
+
+  &.progress-max {
+    color: red;
+  }
+
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    border: 1px solid #5d55cb;
+  }
+  .left {
+    float: left;
+    width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 30px;
+    padding-top: 12px;
+  }
+  .right {
+    float: right;
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+    padding-right: 30px;
+    padding-top: 12px;
+  }
+  .progress {
+    background: #ffffff;
+    height: 48px;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  .progress-bar {
+    height: 48px;
+    box-shadow: none;
+    background-color: #e7e5ff;
+  }
+}
+.limits-wrapper {
+  position: relative;
+  width: 100%;
+
+  .progress-1 {
+    .progress-container {
+      color: #5d55cb;
+    }
+    .progress {
+      border: 1px solid #5d55cb;
+    }
+    .progress-bar {
+      background-color: #e7e5ff;
+    }
+  }
+  .progress-2 {
+    .progress-container {
+      color: #2e66ce;
+    }
+    .progress {
+      border: 1px solid #2e66ce;
+    }
+    .progress-bar {
+      background-color: #dbe7ff;
+    }
+  }
+  .progress-3 {
+    .progress-container {
+      color: #2e90ce;
+    }
+    .progress {
+      border: 1px solid #2e90ce;
+    }
+    .progress-bar {
+      background-color: #e5f6ff;
+    }
+  }
+
+  @media (max-width: 1190px) {
+    .left {
+      padding-left: 10px;
+    }
+
+    .right {
+      padding-right: 10px;
+    }
+  }
+  @media (max-width: 1070px) {
+    .left {
+      padding-left: 5px;
+    }
+    .right {
+      padding-right: 5px;
+    }
+  }
+}
+
+.pb-error-text {
+  width: @progress-bars-wrapper-width;
+  margin: auto;
+  text-align: center;
+}
+
+
+

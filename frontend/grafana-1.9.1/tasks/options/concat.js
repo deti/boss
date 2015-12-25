@@ -1,0 +1,37 @@
+module.exports = function(config) {
+  return {
+    cssDark: {
+      src: [
+        '<%= srcDir %>/vendor/css/normalize.min.css',
+        '<%= srcDir %>/vendor/css/timepicker.css',
+        '<%= srcDir %>/vendor/css/spectrum.css',
+        '<%= srcDir %>/vendor/css/animate.min.css',
+        '<%= srcDir %>/css/bootstrap.dark.min.css',
+        '<%= srcDir %>/css/bootstrap-responsive.min.css',
+        '<%= srcDir %>/vendor/css/font-awesome.min.css'
+      ],
+      dest: '<%= srcDir %>/css/grafana.dark.min.css'
+    },
+    cssLight: {
+      src: [
+        '<%= srcDir %>/vendor/css/normalize.min.css',
+        '<%= srcDir %>/vendor/css/timepicker.css',
+        '<%= srcDir %>/vendor/css/spectrum.css',
+        '<%= srcDir %>/vendor/css/animate.min.css',
+        '<%= srcDir %>/css/bootstrap.light.min.css',
+        '<%= srcDir %>/css/bootstrap-responsive.min.css',
+        '<%= srcDir %>/vendor/css/font-awesome.min.css'
+      ],
+      dest: '<%= srcDir %>/css/grafana.light.min.css'
+    },
+
+    js: {
+      src: [
+        '<%= destDir %>/vendor/require/require.js',
+        '<%= destDir %>/app/components/require.config.js',
+        '<%= destDir %>/app/app.js',
+      ],
+      dest: '<%= destDir %>/app/app.js'
+    },
+  };
+};

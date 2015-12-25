@@ -1,0 +1,25 @@
+database:
+  # mysql+pymysql://boss:boss@localhost:3306/boss
+  uri: $(__FIX_ME__())
+  binds:
+    fitter: $(replace_db(database.uri, "fitter"))
+  pool_recycle: 45
+  pool_size: 5
+
+  test:
+    uri: mysql+pymysql://boss_test:boss@localhost:3306/boss_test?charset=utf8&use_unicode=1
+    binds:
+      fitter: $(replace_db(database.test.uri, "fitter_test"))
+
+
+database_limits:
+  index_key_limit: 255
+
+
+memdb:
+  hosts: $(__FIX_ME__())
+  sentinel: bosscache
+  sentinel_timeout: 1
+  timeout: 1
+  db_main_index: 0
+  db_index_test_offset: 10

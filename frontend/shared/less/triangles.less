@@ -1,0 +1,82 @@
+#triangles {
+  .up(@size; @color; @sizeB: @size) {
+    border-left: @size solid transparent;
+    border-right: @size solid transparent;
+    border-bottom: @sizeB solid @color;
+  }
+  .right(@size; @color; @sizeR: @size) {
+    border-top: @size solid transparent;
+    border-bottom: @size solid transparent;
+    border-right: @sizeR solid @color;
+  }
+  .down(@size; @color; @sizeD: @size) {
+    border-left: @size solid transparent;
+    border-right: @size solid transparent;
+    border-top: @sizeD solid @color;
+  }
+  .left(@size; @color; @sizeL: @size) {
+    border-top: @size solid transparent;
+    border-bottom: @size solid transparent;
+    border-left: @sizeL solid @color;
+  }
+  .bordered() {
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+  }
+  .top-border(@left; @size; @border-color; @background-color) {
+    .bordered();
+    &:before {
+      top: -(@size + 2);
+      left: @left;
+      .up(@size + 2, @border-color);
+    }
+    &:after {
+      top: -(@size + 1);
+      left:  @left + 2;
+      .up(@size, @background-color, @size + 1);
+    }
+  }
+  .right-border(@top; @size; @border-color; @background-color) {
+    .bordered();
+    &:before {
+      top: @top;
+      right: -(@size + 2);
+      .left(@size + 2, @border-color);
+    }
+    &:after {
+      top: @top + 2;
+      right: -(@size + 1);
+      .left(@size, @background-color, @size + 1);
+    }
+  }
+  .bottom-border(@left; @size; @border-color; @background-color) {
+    .bordered();
+    &:before {
+      bottom: -(@size + 2);
+      left: @left;
+      .down(@size + 2, @border-color);
+    }
+    &:after {
+      bottom: -(@size + 1);
+      left:  @left + 2;
+      .down(@size, @background-color, @size + 1);
+    }
+  }
+  .left-border(@top; @size; @border-color; @background-color) {
+    .bordered();
+    &:before {
+      top: @top;
+      left: -(@size + 2);
+      .right(@size + 2, @border-color);
+    }
+    &:after {
+      top: @top + 2;
+      left: -(@size + 1);
+      .right(@size, @background-color, @size + 1);
+    }
+  }
+}

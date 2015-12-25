@@ -1,0 +1,14 @@
+<td>
+  <span>{{::item.name}}</span>
+</td>
+<td>
+  <span>
+    <a ng-if="item.status.value === 'active'" ui-sref="openstack.servers.new({imageRef: item.id})" translate>New server</a>
+    <span ng-if="item.status.value !== 'active'">{{item.status.title}}</span>
+  </span>
+</td>
+<td>
+  <span>
+    <a ng-click="removeImage(item)" ng-if="item.own" translate>Delete</a>
+  </span>
+</td>

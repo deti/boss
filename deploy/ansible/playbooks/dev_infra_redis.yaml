@@ -1,0 +1,24 @@
+---
+- name: start redis cluster
+  hosts: dev
+  user: root
+  sudo: yes
+  tasks:
+  - name: start redis master
+    docker:
+      name: redis-node01
+      image: "{{ registry }}/{{ redis_image }}"
+      net: host
+      env: "ETCD={{ etcd_ip }},ENV_NAME=dev,REDIS_MODE=redis-server"
+  - name: start redis slave
+    docker:
+      name: redis-node02
+      image: "{{ registry }}/{{ redis_image }}"
+      net: host
+      env: "ETCD={{ etcd_ip }},ENV_NAME=dev,REDIS_MODE=redis-server"
+  - name: start redis sentinel
+    docker:
+      name: redis-server
+      image: "{{ registry }}/{{ redis_image }}"
+      net: host
+      env: "ETCD={{ etcd_ip }},ENV_NAME=dev,REDIS_MODE=sentinel"

@@ -1,0 +1,207 @@
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered required" for="contract_number" translate>Contract No.</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="contract_number" name="contract_number" class="form-control"
+           ng-model="user.detailed_info.contract_number" required bs-validate-hint
+           placeholder="{{::'Enter contract No' | translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 required" for="contract_date" translate>Signature date</label>
+
+  <div class="col-sm-9">
+    <div class="input-grp">
+      <input type="text" id="contract_date" name="contract_date" class="form-control" ng-model="user.detailed_info.contract_date"
+             bs-datepicker data-autoclose="true" data-model-date-format="yyyy-MM-dd" data-date-type="string"
+             bs-validate-hint required
+             placeholder="{{::'01.08.2015' |  translate}}">
+      <span class="input-group-addon icon-addon"><i class="icon icon-transactions-v2 icon-lg"></i></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 required" for="name2" translate>Company name</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="name2" name="name2" class="form-control" ng-model="user.detailed_info.name"
+           required bs-validate-hint placeholder="{{::'Short company name' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 required" for="full_organization_name" translate>Full company Name</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="full_organization_name" name="full_organization_name" class="form-control"
+           ng-model="user.detailed_info.full_organization_name"
+           required bs-validate-hint placeholder="{{::'Enter full name' |  translate}}">
+  </div>
+</div>
+
+<!--div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered" for="organization_type" translate>Type of organization</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="organization_type" name="organization_type" class="form-control"
+           ng-model="user.detailed_info.organization_type"
+           required bs-validate-hint placeholder="{{::'Enter type' |  translate}}">
+  </div>
+</div-->
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered required" for="primary_state_registration_number" translate>PSRN</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="primary_state_registration_number" name="primary_state_registration_number" class="form-control" ng-model="user.detailed_info.primary_state_registration_number"
+           required bs-validate-hint placeholder="{{::'Enter PSRN' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered required" for="individual_tax_number" translate>TIN</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="individual_tax_number" name="individual_tax_number" class="form-control"
+           ng-model="user.detailed_info.individual_tax_number" required bs-validate-hint
+           placeholder="{{::'Enter TIN' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered required" for="general_manager_name" translate>Director</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="general_manager_name" name="general_manager_name" class="form-control"
+           ng-model="user.detailed_info.general_manager_name" required bs-validate-hint
+           placeholder="{{::'Enter director name' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered required" for="general_accountant_name" translate>Accountant</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="general_accountant_name" name="general_accountant_name" class="form-control"
+           ng-model="user.detailed_info.general_accountant_name" required bs-validate-hint
+           placeholder="{{::'Enter accountant name' |  translate}}">
+  </div>
+</div>
+
+<div class="hr"><span class="white-bg" translate>Legal address</span></div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered required" for="legal_address_country" translate>Country</label>
+
+  <div class="col-sm-9">
+    <div class="select">
+      <select id="legal_address_country" name="legal_address_country" class="form-control"
+              ng-model="user.detailed_info.legal_address_country" required bs-validate-hint>
+        <option ng-repeat="country in ::countries" value="{{::country.code}}" ng-selected="::user.detailed_info.legal_address_country === country.code">
+          {{::country|localizedName}}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered required" for="legal_address_city" translate>City</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="legal_address_city" name="legal_address_city" class="form-control"
+           ng-model="user.detailed_info.legal_address_city"
+           required bs-validate-hint placeholder="{{::'Enter a city' | translate}}"/>
+  </div>
+</div>
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered required" for="legal_address_address" translate>Address</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="legal_address_address" name="legal_address_address" class="form-control"
+           ng-model="user.detailed_info.legal_address_address"
+           required bs-validate-hint placeholder="{{::'Enter an address' | translate}}"/>
+  </div>
+</div>
+
+<div class="hr mar-b-10"><span class="white-bg" translate>Actual address</span></div>
+
+<div class="checkbox mar-b-20">
+  <label class="custom-checkbox">
+    <input type="checkbox" ng-model="user.sameAddress">
+    <span class="checkbox-elem"></span>
+    {{::'The same as legal address' | translate}}
+  </label>
+</div>
+
+<div class="form-group row-vertical-align" ng-show="!user.sameAddress" bs-has-error>
+  <label class="col-sm-3 centered required" for="location_country" translate>Country</label>
+
+  <div class="col-sm-9">
+    <div class="select">
+      <select id="location_country" name="location_country" class="form-control" ng-model="user.detailed_info.location_country" required bs-validate-hint>
+        <option ng-repeat="country in ::countries" value="{{::country.code}}" ng-selected="::user.detailed_info.location_country === country.code">
+          {{::country|localizedName}}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="form-group row-vertical-align" ng-show="!user.sameAddress" bs-has-error>
+  <label class="col-sm-3 centered required" for="location_city" translate>City</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="location_city" name="location_city" class="form-control"
+           ng-model="user.detailed_info.location_city" required bs-validate-hint
+           placeholder="{{::'Enter a city' | translate}}"/>
+  </div>
+</div>
+<div class="form-group row-vertical-align" ng-show="!user.sameAddress" bs-has-error>
+  <label class="col-sm-3 centered required" for="location_address" translate>Address</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="location_address" name="location_address" class="form-control"
+           ng-model="user.detailed_info.location_address" required bs-validate-hint
+           placeholder="{{::'Enter an address' | translate}}"/>
+  </div>
+</div>
+
+<div class="hr"><span class="white-bg" translate>Contact person</span></div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered" for="contact_person_name" translate>First and last name</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="contact_person_name" name="contact_person_name" class="form-control"
+           ng-model="user.detailed_info.contact_person_name" placeholder="{{::'Enter a contact person name' |  translate}}" bs-validate-hint/>
+  </div>
+</div>
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered" for="contact_person_position" translate>Position</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="contact_person_position" name="contact_person_position" class="form-control"
+           ng-model="user.detailed_info.contact_person_position" bs-validate-hint
+           placeholder="{{::'Enter a position' |  translate}}"/>
+  </div>
+</div>
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered" for="contact_telephone" translate>Phone</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="contact_telephone" name="contact_telephone" class="form-control"
+           ng-model="user.detailed_info.contact_telephone" bs-phone-input
+           bs-validate-hint
+           placeholder="{{::'Enter a phone number' |  translate}}">
+  </div>
+</div>
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="col-sm-3 centered" for="contact_email" translate>E-mail</label>
+
+  <div class="col-sm-9">
+    <input type="text" id="contact_email" name="contact_email" class="form-control"
+           ng-model="user.detailed_info.contact_email" bs-validate-hint
+           placeholder="{{::'Enter a contact person email' |  translate}}">
+  </div>
+</div>

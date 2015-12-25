@@ -1,0 +1,154 @@
+---
+- name: deploy frontend and backend services
+  hosts: dev
+  user: root
+  sudo: yes
+  tasks:
+  - name: pull boss backend image
+    docker:
+      name: backend_db_migrate
+      state: present
+      pull: always
+      registry: "{{ registry }}"
+      insecure_registry: True
+      image: "{{ registry }}/{{ backend_image }}"
+    register: backend_image_status
+  - name: run boss backend db migrate update
+    when: backend_image_status.changed
+    docker:
+      name: backend_db_migrate
+      state: reloaded
+      pull: always
+      detach: False
+      insecure_registry: True
+      image: "{{ registry }}/{{ backend_image }}"
+      env: >
+        ROLE=services/backend_db_migrate,
+        ETCD={{ etcd }},SQL_SERVER={{ mysql }},ENVIRONMENT={{ env }},
+        MAIL_SERVER={{ mail_server }},MAIL_USE_SSL={{ mail_use_ssl }},MAIL_USER={{ mail_username }},MAIL_PASSWORD={{ mail_password }},
+        OS_USERNAME={{ OS_USERNAME }},OS_PASSWORD={{ OS_PASSWORD }},OS_TENANT_NAME={{ OS_TENANT_NAME }},OS_AUTH_URL={{ OS_AUTH_URL }},
+        BOSS_KEYSTONE_PUBLIC_URL={{ BOSS_KEYSTONE_PUBLIC_URL }},BOSS_NETWORK_ID={{ BOSS_NETWORK_ID }}, BOSS_SITE_URL={{ BOSS_SITE_URL }},BOSS_DASHBOARD_URL={{ BOSS_DASHBOARD_URL }},
+        RECAPTCHA_SECRET={{ RECAPTCHA_SECRET }},RECAPTCHA_SITE_KEY={{ RECAPTCHA_SITE_KEY }},
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+  - name: run boss admin backend
+    docker:
+      name: backend_admin
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ backend_image }}"
+      ports: 83:80
+      env: >
+        ROLE=services/backend_admin,
+        ETCD={{ etcd }},SQL_SERVER={{ mysql }},ENVIRONMENT={{ env }},HOST={{ ansible_eth0.ipv4.address }},PORT=83,
+        MAIL_SERVER={{ mail_server }},MAIL_USE_SSL={{ mail_use_ssl }},MAIL_USER={{ mail_username }},MAIL_PASSWORD={{ mail_password }},
+        OS_USERNAME={{ OS_USERNAME }},OS_PASSWORD={{ OS_PASSWORD }},OS_TENANT_NAME={{ OS_TENANT_NAME }},OS_AUTH_URL={{ OS_AUTH_URL }},
+        BOSS_KEYSTONE_PUBLIC_URL={{ BOSS_KEYSTONE_PUBLIC_URL }},BOSS_NETWORK_ID={{ BOSS_NETWORK_ID }}, BOSS_SITE_URL={{ BOSS_SITE_URL }},BOSS_DASHBOARD_URL={{ BOSS_DASHBOARD_URL }},
+        RECAPTCHA_SECRET={{ RECAPTCHA_SECRET }},RECAPTCHA_SITE_KEY={{ RECAPTCHA_SITE_KEY }},
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+  - name: run boss lk backend
+    docker:
+      name: backend_lk
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ backend_image }}"
+      ports: 84:80
+      env: >
+        ROLE=services/backend_lk,
+        ETCD={{ etcd }},SQL_SERVER={{ mysql }},ENVIRONMENT={{ env }},HOST={{ ansible_eth0.ipv4.address }},PORT=84,
+        MAIL_SERVER={{ mail_server }},MAIL_USE_SSL={{ mail_use_ssl }},MAIL_USER={{ mail_username }},MAIL_PASSWORD={{ mail_password }},
+        OS_USERNAME={{ OS_USERNAME }},OS_PASSWORD={{ OS_PASSWORD }},OS_TENANT_NAME={{ OS_TENANT_NAME }},OS_AUTH_URL={{ OS_AUTH_URL }},
+        BOSS_KEYSTONE_PUBLIC_URL={{ BOSS_KEYSTONE_PUBLIC_URL }},BOSS_NETWORK_ID={{ BOSS_NETWORK_ID }}, BOSS_SITE_URL={{ BOSS_SITE_URL }},BOSS_DASHBOARD_URL={{ BOSS_DASHBOARD_URL }},
+        RECAPTCHA_SECRET={{ RECAPTCHA_SECRET }},RECAPTCHA_SITE_KEY={{ RECAPTCHA_SITE_KEY }},
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+  - name: run boss celery worker backend
+    docker:
+      name: backend_celery_worker
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ backend_image }}"
+      env: >
+        ROLE=services/backend_celery/worker,
+        ETCD={{ etcd }},SQL_SERVER={{ mysql }},ENVIRONMENT={{ env }},
+        MAIL_SERVER={{ mail_server }},MAIL_USE_SSL={{ mail_use_ssl }},MAIL_USER={{ mail_username }},MAIL_PASSWORD={{ mail_password }},
+        OS_USERNAME={{ OS_USERNAME }},OS_PASSWORD={{ OS_PASSWORD }},OS_TENANT_NAME={{ OS_TENANT_NAME }},OS_AUTH_URL={{ OS_AUTH_URL }},
+        BOSS_KEYSTONE_PUBLIC_URL={{ BOSS_KEYSTONE_PUBLIC_URL }},BOSS_NETWORK_ID={{ BOSS_NETWORK_ID }}, BOSS_SITE_URL={{ BOSS_SITE_URL }},BOSS_DASHBOARD_URL={{ BOSS_DASHBOARD_URL }},
+        RECAPTCHA_SECRET={{ RECAPTCHA_SECRET }},RECAPTCHA_SITE_KEY={{ RECAPTCHA_SITE_KEY }},
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+  - name: run boss celery beat backend
+    docker:
+      name: backend_celery_beat
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ backend_image }}"
+      env: >
+        ROLE=services/backend_celery/beat,
+        ETCD={{ etcd }},SQL_SERVER={{ mysql }},ENVIRONMENT={{ env }},
+        MAIL_SERVER={{ mail_server }},MAIL_USE_SSL={{ mail_use_ssl }},MAIL_USER={{ mail_username }},MAIL_PASSWORD={{ mail_password }},
+        OS_USERNAME={{ OS_USERNAME }},OS_PASSWORD={{ OS_PASSWORD }},OS_TENANT_NAME={{ OS_TENANT_NAME }},OS_AUTH_URL={{ OS_AUTH_URL }},
+        BOSS_KEYSTONE_PUBLIC_URL={{ BOSS_KEYSTONE_PUBLIC_URL }},BOSS_NETWORK_ID={{ BOSS_NETWORK_ID }}, BOSS_SITE_URL={{ BOSS_SITE_URL }},BOSS_DASHBOARD_URL={{ BOSS_DASHBOARD_URL }},
+        RECAPTCHA_SECRET={{ RECAPTCHA_SECRET }},RECAPTCHA_SITE_KEY={{ RECAPTCHA_SITE_KEY }},
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+  - name: run boss aggregator backend
+    docker:
+      name: backend_aggregator
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ backend_image }}"
+      env: >
+        ROLE=services/backend_aggregator,
+        ETCD={{ etcd }},SQL_SERVER={{ mysql }},ENVIRONMENT={{ env }},
+        MAIL_SERVER={{ mail_server }},MAIL_USE_SSL={{ mail_use_ssl }},MAIL_USER={{ mail_username }},MAIL_PASSWORD={{ mail_password }},
+        OS_USERNAME={{ OS_USERNAME }},OS_PASSWORD={{ OS_PASSWORD }},OS_TENANT_NAME={{ OS_TENANT_NAME }},OS_AUTH_URL={{ OS_AUTH_URL }},
+        BOSS_KEYSTONE_PUBLIC_URL={{ BOSS_KEYSTONE_PUBLIC_URL }},BOSS_NETWORK_ID={{ BOSS_NETWORK_ID }}, BOSS_SITE_URL={{ BOSS_SITE_URL }},BOSS_DASHBOARD_URL={{ BOSS_DASHBOARD_URL }},
+        RECAPTCHA_SECRET={{ RECAPTCHA_SECRET }},RECAPTCHA_SITE_KEY={{ RECAPTCHA_SITE_KEY }},
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+
+  - name: run boss frontend admin
+    docker:
+      name: frontend_admin
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ frontend_image }}"
+      ports: 81:80
+      env: >
+        ROLE=services/frontend_admin,
+        ETCD={{ etcd }},ENVIRONMENT={{ env }},HOST={{ ansible_eth0.ipv4.address }},PORT=81,
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+  - name: run boss frontend lk
+    docker:
+      name: frontend_lk
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ frontend_image }}"
+      ports: 82:80
+      env: >
+        ROLE=services/frontend_lk,
+        ETCD={{ etcd }},ENVIRONMENT={{ env }},HOST={{ ansible_eth0.ipv4.address }},PORT=82,
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+  - name: run boss frontend skyline
+    docker:
+      name: frontend_skyline
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ frontend_image }}"
+      ports: 85:80
+      env: >
+        ROLE=services/frontend_skyline,
+        ETCD={{ etcd }},ENVIRONMENT={{ env }},HOST={{ ansible_eth0.ipv4.address }},PORT=85,
+        DOCKER_FQDN={{ ansible_fqdn }},DOCKER_IPADDR={{ ansible_eth0.ipv4.address }}
+  - name: run boss grafana
+    docker:
+      name: grafana
+      state: reloaded
+      pull: always
+      insecure_registry: True
+      image: "{{ registry }}/{{ grafana_image }}"
+      ports: 8090:8090

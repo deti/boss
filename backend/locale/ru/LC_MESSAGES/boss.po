@@ -1,0 +1,484 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-12-08 11:53+0300\n"
+"PO-Revision-Date: 2015-08-02 16:24+0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.0-dev\n"
+
+#: backend/errors.py:97
+msgid "Not Found"
+msgstr "Не найден"
+
+#: backend/errors.py:121
+msgid "Method is not implemented"
+msgstr "Метод еще не реализован"
+
+#: backend/errors.py:125
+msgid "Database is down. Please try again a bit later"
+msgstr "Отказ базы данных. Пожалуйста, попробуйте позднее"
+
+#: backend/errors.py:129
+msgid "Cache database is down. Please try again a bit later"
+msgstr "Отказ кэширующей базы. Пожалуйста, попробуйте позднее"
+
+#: backend/errors.py:133
+msgid "Has to have translation for default language: '{}'"
+msgstr "Должен иметь перевод для языка по умолчанию: '{}'"
+
+#: backend/errors.py:141
+msgid "User account already exists"
+msgstr "Пользователь уже существует"
+
+#: backend/errors.py:145
+msgid "User account is removed"
+msgstr "Пользователь удален"
+
+#: backend/errors.py:149
+msgid "Customer account already exists"
+msgstr "Заказчик уже существует"
+
+#: backend/errors.py:153 backend/errors.py:157
+msgid "Incorrect email/password"
+msgstr "Некорректные почта или пароль"
+
+#: backend/errors.py:161 backend/errors.py:165
+msgid "Invalid token"
+msgstr "Некорректный токен"
+
+#: backend/errors.py:169
+msgid "Not enough rights to perform this action"
+msgstr "Недостаточно прав для выполнения этого действия"
+
+#: backend/errors.py:173
+msgid "Email sending is impossible"
+msgstr "Отправка письма невозможна"
+
+#: backend/errors.py:177
+msgid "User account not found"
+msgstr "Пользователь не найден"
+
+#: backend/errors.py:181
+msgid "Customer account not found"
+msgstr "Заказчик не найден"
+
+#: backend/errors.py:185
+msgid "Service not found"
+msgstr "Услуга не найдена"
+
+#: backend/errors.py:189
+msgid "Service already exists"
+msgstr "Сервис уже существует"
+
+#: backend/errors.py:193
+msgid "Used service cannot be removed"
+msgstr "Услуга используется и не может быть удалена"
+
+#: backend/errors.py:197
+msgid "Immutable service cannot be changed"
+msgstr "Неизменяемая услуга не может быть изменена"
+
+#: backend/errors.py:201
+msgid "Removed service cannot be changed"
+msgstr "Удаленная услуга не может быть изменена"
+
+#: backend/errors.py:205
+msgid "Removed service cannot be included in plan"
+msgstr "Удаленная услуга не может быть добавлена в тариф"
+
+#: backend/errors.py:209
+msgid "Only immutable service can be included in plan"
+msgstr "Только неизменяемая услуга может быть вклюена в тариф"
+
+#: backend/errors.py:213
+msgid "Plan not found"
+msgstr "Тариф не найден"
+
+#: backend/errors.py:217
+msgid "Role not found"
+msgstr "Роль не найдена"
+
+#: backend/errors.py:220
+msgid "News not found"
+msgstr "Новость не найдена"
+
+#: backend/errors.py:224
+msgid "Can not delete self"
+msgstr "Не возможно удалить самого себя"
+
+#: backend/errors.py:228
+msgid "Immutable plan cannot be changed"
+msgstr "Неизменяемый тариф не может быть изменен"
+
+#: backend/errors.py:232
+msgid "Removed plan cannot be changed"
+msgstr "Удаленный тариф не может быть изменён"
+
+#: backend/errors.py:236
+msgid "Password reset link is invalid, expired or was already used. Please try to request password reset again"
+msgstr "Ссылка для восстановления пароля неверена, просрочена или уже использована. Попробуйте восстановить пароль еще раз"
+
+#: backend/errors.py:240
+msgid "Email confirmation link is invalid, expired or was already used. Please try to resend a confirmation email"
+msgstr "Ссылка для подтверждения почтового адреса неверена, просрочена или уже использована. Попробуйте запросить подтверждающее письмо еще раз"
+
+#: backend/errors.py:244
+msgid "Plan already exists"
+msgstr "Тариф уже существует"
+
+#: backend/errors.py:248
+msgid "Report aggregation is not ready"
+msgstr "Отчет еще не готов"
+
+#: backend/errors.py:252
+msgid "Plan history entry not found"
+msgstr "Запись истории тарифа не найдена"
+
+#: backend/errors.py:256
+msgid "Nothing to update"
+msgstr "Не заданы параметры для обновления"
+
+#: backend/errors.py:260
+msgid "Error while rendering a template"
+msgstr "Ошибка генерации шаблона"
+
+#: backend/errors.py:264
+msgid "Invalid number format"
+msgstr "Неверный формат значения"
+
+#: backend/errors.py:268
+msgid "Parent plan should have the same currency"
+msgstr "Родительский тариф должен быть с той же валютой"
+
+#: backend/errors.py:272 backend/errors.py:276
+msgid "Subscription already exists"
+msgstr "Подписка уже существует"
+
+#: backend/errors.py:280
+msgid "Invalid subscription data"
+msgstr "Неправильный формат подписной информации"
+
+#: backend/errors.py:284
+msgid "Used plan cannot be removed"
+msgstr "Тариф используется и не может быть удален"
+
+#: backend/errors.py:288
+msgid "Mutable plan cannot be assigned to a customer"
+msgstr "Изменяемый тариф не может быть назначен заказчику"
+
+#: backend/errors.py:292
+msgid "Mutable plan cannot be default"
+msgstr "Неизменяемый тариф не может быть тарифом по умолчанию"
+
+#: backend/errors.py:296
+msgid "Quota for this customer already exists"
+msgstr "Квота для этого заказчика уже существует"
+
+#: backend/errors.py:300
+msgid "The news already exists"
+msgstr "Новость уже существует"
+
+#: backend/errors.py:304
+msgid "Removed news cannot be changed"
+msgstr "Удаленная новость не может быть изменена"
+
+#: backend/errors.py:308
+#, fuzzy
+msgid "Invalid reCAPTCHA token. You are bot."
+msgstr "Неправильный reCAPTCHA token. А не бот ли ты случаем?"
+
+#: backend/errors.py:312
+msgid "Customer has no OpenStack login. Please contact the administrator."
+msgstr "У пользователя нет учетной записи для доступа к облаку OpenStack. Пожалуйста, обратитесь к администратору."
+
+#: backend/errors.py:316
+msgid "Unsuccessful request to Horizon. Please contact the administrator."
+msgstr "Подключение к облаку OpenStack закончилось неудачей. Пожалуйста, обратитесь к администратору."
+
+#: backend/errors.py:320
+msgid "Unable to login into Horizon the current OpenStack login/password. Please contact the administrator."
+msgstr "Невозможно авторизоваться в облаке OpenStack с текущей парой логин/пароль. Пожалуйста, обратитесь к администратору."
+
+#: backend/errors.py:324
+msgid "Need to fill in all mandatory fields to switch to production mode."
+msgstr "Для перехода в продуктовый режим необходимо заполнить все обязательные поля"
+
+#: backend/errors.py:328
+msgid "start parameter should be earlier than finish"
+msgstr "Параметр start должен быть меньше чем finish"
+
+#: backend/errors.py:332
+msgid "Tenant is not created yet. Try again latter"
+msgstr "Tenant не создан еще. Пожалуйста, попробуйте позднее"
+
+#: backend/errors.py:336
+msgid "Customer email is not confirmed"
+msgstr "Email заказчика не подтвержден"
+
+#: backend/errors.py:340
+msgid "Customer is blocked"
+msgstr "Заказчик заблокирован"
+
+#: backend/errors.py:344
+msgid "Customer is removed"
+msgstr "Заказчик удален"
+
+#: backend/errors.py:348
+msgid "Payment card already removed."
+msgstr "Платежная карта уже удалена"
+
+#: backend/errors.py:352
+msgid "Payment card not found."
+msgstr "Платежная карта не найдена"
+
+#: backend/errors.py:355
+msgid "Option already exists"
+msgstr "Опция уже существует"
+
+#: backend/errors.py:359
+msgid "Payment card already exists"
+msgstr "Платежная карта уже существует"
+
+#: backend/errors.py:363
+msgid "Customer is not entity"
+msgstr "Заказчик не юридическое лицо"
+
+#: backend/errors.py:367
+msgid "Invalid promo code."
+msgstr "Некорректный промо-код."
+
+#: backend/errors.py:371
+msgid "Registration with promo code only."
+msgstr "Регистрация только по промо-кодам."
+
+#: backend/errors.py:375
+msgid "Promo code already removed"
+msgstr "Промокод уже удален"
+
+#: backend/errors.py:379
+msgid "Report format is not supported"
+msgstr "Запрашиваемый формат отчета не поддерживается"
+
+#: backend/errors.py:383
+msgid "Flavor already exists"
+msgstr "Флавор уже существует"
+
+#: backend/errors.py:387
+msgid "Flavor not found"
+msgstr "Флавор не найден"
+
+#: backend/errors.py:391
+msgid "Flavor already exists in OS with different parameters"
+msgstr "Флавор уже существует в OS с другими параметрами"
+
+#: backend/api/check_params.py:82
+msgid "Invalid parameter {}. It should have type {}"
+msgstr "Некорректно передан параметр {}, он должен быть {}"
+
+#: backend/api/check_params.py:135
+msgid "{} is required"
+msgstr "Требуется {}"
+
+#: backend/api/check_params.py:181
+#, python-format
+msgid "Invalid encoding: %s"
+msgstr "Неправильная кодировка: %s"
+
+#: backend/api/validator.py:63
+msgid "Field {} is required"
+msgstr "Требуется {}"
+
+#: backend/api/validator.py:88
+msgid "Unexpected element {}"
+msgstr "Неожиданный элемент {}"
+
+#: backend/api/validator.py:95
+msgid "Cannot decode JSON {}"
+msgstr "Невозможно декодировать JSON {}"
+
+#: backend/api/validator.py:124
+msgid "list is expected"
+msgstr "ожидается список"
+
+#: backend/api/validator.py:141
+msgid "should be a dict"
+msgstr "должен быть словарем"
+
+#: backend/api/validator.py:155
+msgid "{} should be integer"
+msgstr "{} должно быть целым"
+
+#: backend/api/validator.py:158
+msgid "Value should be greater than {}"
+msgstr "Значение должно превышать {}"
+
+#: backend/api/validator.py:160
+msgid "Value should be less than {}"
+msgstr "Значение не должно быть менее, чем {}"
+
+#: backend/api/validator.py:178
+msgid "Invalid format. Expected '[-]field_name', where field_name one of: {}"
+msgstr "Неверный формат. Ожидается '[-]field_name', где параметр 'field_name' - один из {}"
+
+#: backend/api/validator.py:250
+msgid "Incorrect day format"
+msgstr "Неверный формат дня"
+
+#: backend/api/validator.py:268
+msgid "Incorrect date format"
+msgstr "Неверный формат даты"
+
+#: backend/api/validator.py:277
+msgid "Date expired"
+msgstr "Дата просрочена"
+
+#: backend/api/validator.py:288
+msgid "Incorrect time format"
+msgstr "Неверный формат времени"
+
+#: backend/api/validator.py:317
+msgid "value should one from list: {}"
+msgstr "Значение должно быть из списка {}"
+
+#: backend/api/validator.py:384
+msgid "Email must include @ symbol"
+msgstr "Почтовый адрес должен включать символ @"
+
+#: backend/api/validator.py:389
+msgid "mail box in email is incorrect"
+msgstr "Почтовый ящик в адресе некорректен"
+
+#: backend/api/validator.py:396 backend/api/validator.py:402
+msgid "Domain part of email is incorrect"
+msgstr "Доменная часть почтового адреса некорректна"
+
+#: backend/api/validator.py:426
+msgid "Amount should be positive"
+msgstr "Значение должно быть положительным числом"
+
+#: backend/api/validator.py:428
+msgid "Amount should be negative"
+msgstr "Значение должно быть отрицательным числом"
+
+#: backend/api/validator.py:431
+msgid "Money format is xx.xx"
+msgstr "Деньги должны задаваться в формате xx.xx"
+
+#: backend/api/validator.py:455
+msgid "Incorrect locale {}"
+msgstr "Некорректная локаль {}"
+
+#: backend/api/validator.py:469
+msgid "Language {} is not active"
+msgstr "Язык {} не активирован"
+
+#: backend/api/validator.py:523
+msgid "string length must be between {} and {}"
+msgstr "длина строки должна быть между {} и {}"
+
+#: backend/api/validator.py:537
+msgid "Value should be int"
+msgstr "Значение должно быть целым числом"
+
+#: backend/api/validator.py:539
+msgid "Value should be smaller than {}"
+msgstr "Значение не должно быть меньше, чем {}"
+
+#: backend/api/validator.py:547
+msgid "{} should be positive integer"
+msgstr "{} должно быть натуральный числом"
+
+#: backend/api/validator.py:582
+msgid "{} should be positive float"
+msgstr "{} должно быть положительным вещественным числом"
+
+#: backend/api/validator.py:616
+msgid "should match regex: {}"
+msgstr "должен удовлетворять регулярному выражению {}"
+
+#: backend/api/validator.py:635
+msgid "{} has to be a dictionary"
+msgstr "{} должен быть словарем"
+
+#: backend/api/admin/payments.py:308
+msgid "Balance recharge via CloudPayments. Transaction: {}"
+msgstr "Пополнение счета через платежную систему CloudPayments. Транзакция: {}"
+
+#: backend/api/cabinet/customer.py:53 backend/api/cabinet/customer.py:80
+msgid "must be a dict"
+msgstr "должен быть словарем"
+
+#: backend/api/cabinet/customer.py:59
+msgid "subscription name must be one from list: {}"
+msgstr "Имя подписки должно быть одним из списка {}"
+
+#: backend/api/cabinet/customer.py:68
+msgid "Subscription can contain only 'enable' and 'email' keys"
+msgstr "Подписка может содержать только поля 'enable' и 'email'"
+
+#: backend/api/cabinet/customer.py:87
+msgid "quota name must be one from list: {}"
+msgstr "Имя квоты должно быть одним из списка {}"
+
+#: backend/api/cabinet/customer.py:169
+#, python-format
+msgid "Incorrect date format. The expected format is %s or %s"
+msgstr "Не корректный формат даты. Ожидаемый формат %s или %s"
+
+#: backend/api/cabinet/customer.py:183
+msgid "Date from future"
+msgstr "Дата из будущего"
+
+#: backend/model/account/message_template.py:117
+msgid "Unexpected variables in template: {}"
+msgstr "Неизвестные переменные в шаблоне: {}"
+
+#: backend/model/account/message_template.py:123
+msgid ""
+"Template syntax error: {} at line {}.\n"
+"Text: {}\n"
+"Context: {}"
+msgstr ""
+
+#: backend/model/account/message_template.py:127
+#, python-format
+msgid "Error while rendering template: %s"
+msgstr "Ошибка генерации по шаблону: %s"
+
+#: backend/service/payments.py:97
+msgid "Automated balance recharge via CloudPayments. Customer email: {}"
+msgstr "Автопополнение счета через платежную систему CloudPayments. E-mail клиента: {}"
+
+#: backend/service/payments.py:106
+msgid "Manual balance recharge via CloudPayments. Customer email: {}"
+msgstr "Пополнение счета через платежную систему CloudPayments. E-mail клиента: {}"
+
+#~ msgid "Automated balance recharge via CloudPayments. Transaction: {}"
+#~ msgstr "Автопополнение счета через платежную систему CloudPayments. Транзакция: {}"
+
+#~ msgid "User removed"
+#~ msgstr "Пользователь удален"
+
+#~ msgid "Tariff not found"
+#~ msgstr "Тариф не найден"
+
+#~ msgid "Removed tariff can't be changed"
+#~ msgstr "Удаленный тариф не может быть изменен"
+
+#~ msgid "Tariff already exists"
+#~ msgstr "Тариф уже существует"
+
+#~ msgid "Invalid money"
+#~ msgstr "Некорректный токен"
+

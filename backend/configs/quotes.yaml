@@ -1,0 +1,322 @@
+quotas:
+  all:
+    cores:
+      localized_description:
+        en: The maximum number of cores for the project.
+        ru: Максимальное количество виртуальных ядер CPU, всего на тенант.
+      localized_name:
+        en: "CPU"
+        ru: "CPU"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    injected_file_content_bytes:
+      localized_description:
+        en: The maximum size, in bytes, for each personality file that is guaranteed to be injected into image to boot up new instance.
+        ru: Максимальный размер файла, который может быть внедрен в образ (image) перед запуском новой виртуалки, в Байтах.
+      localized_name:
+        en: "Injected File Size"
+        ru: "Размер внедряемых файлов"
+      localized_measure:
+        en: "bites"
+        ru: "байт"
+    injected_file_path_bytes:
+      localized_description:
+        en: The maximum file's path lenght, in bytes, for each file that is guaranteed to be injected into image to boot up new instance.
+        ru: Максимальное количество символов в пути к файлам, которые могут быть внедрены в образ (image) перед запуском новой виртуалки.
+      localized_name:
+        en: "Injected File's Path Lenght"
+        ru: "Длина пути к внедряемым файлам"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    injected_files:
+      localized_description:
+        en: The maximum number of files, that is guaranteed to be injected into image to boot up new instance.
+        ru: Максимальное количество файлов, которые могут быть внедрены в образ (image) перед запуском новой виртуалки.
+      localized_name:
+        en: "Injected Files"
+        ru: "Внедряемые Файлы"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    instances:
+      localized_description:
+        en: The maximum number of servers at any one time for the project.
+        ru: Максимальное количество виртуальных серверов, всего на тенант.
+      localized_name:
+        en: "Instances"
+        ru: "Серверы"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    key_pairs:
+      localized_description:
+        en: The maximum number of servers at any one time for the project.
+        ru: Максимальное количество SSH ключей, всего на тенант.
+      localized_name:
+        en: "SSH Keys"
+        ru: "SSH ключи"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    metadata_items:
+      localized_description:
+        en: The maximum number of metadata key-value pairs that can be supplied per server for the project.
+        ru: Максимальное количество пар ключ-значение в метаданных, которые могут быть переданы в инстанс, всего на тенант.
+      localized_name:
+        en: "Metadata Keys"
+        ru: "Метаданные"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    ram:
+      localized_description:
+        en: The maximum total amount of RAM, in MB, for all servers at any one time for the project.
+        ru: Максимальное количество оперативной памяти, в Мегабайтах, всего на тенант.
+      localized_name:
+        en: "RAM"
+        ru: "RAM"
+      localized_measure:
+        en: "MB"
+        ru: "MB"
+    security_group_rule:
+      localized_description:
+        en: The maximum number of security group rules per security group for the project.
+        ru: Максимальное количество правил групп безопасности (security group rules), на каждую группу.
+      localized_name:
+        en: "Security Group Rules"
+        ru: "Правила групп безопасности"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    security_group:
+      localized_description:
+        en: The maximum number of security groups per server for the project.
+        ru: Максимальное количество групп безопасности (security groups), всего на тенант.
+      localized_name:
+        en: "Security Group"
+        ru: "Группы безопасности"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    server_groups:
+      localized_description:
+        en: The maximun number of server groups per server for the project.
+        ru: Максимальное количество групп серверов (server groups), всего на тенант.
+      localized_name:
+        en: "Server Groups"
+        ru: "Группы серверов"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    server_group_members:
+      localized_description:
+        en: The maximum number of server group members per server group for the project.
+        ru: Максимальное количество серверов в одной группе серверов (server group).
+      localized_name:
+        en: "Server group"
+        ru: "Сервера группы"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    fixed_ips:
+      localized_description:
+        en: The maximum number of fixed IPs (private IPs) for the project.
+        ru: Максимальное количество внутренних IP адресов (fixed_ip), всего на тенант.
+      localized_name:
+        en: "Private IPs"
+        ru: "Внутренние IP"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    gigabytes:
+      localized_description:
+        en: Maximum total amount of volumes and snapshots, in gibibytes (GiB) per tenant.
+        ru: Максимальный объем всех виртуальных дисков (volumes) и снепшотов, в Гигабайтах, всего на тенант.
+      localized_name:
+        en: "Volumes"
+        ru: "Объем дисков и снапшотов"
+      localized_measure:
+        en: "GB"
+        ru: "GB"
+    snapshots:
+      localized_description:
+        en: Maximum number of snapshots per tenant.
+        ru: Максимальное количество снепшотов, в штуках, всего на тенант.
+      localized_name:
+        en: "Snapshots"
+        ru: "Cнапшоты"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    volumes:
+      localized_description:
+        en: Maximum number of volumes per tenant.
+        ru: Максимальное количество виртуальных дисков (volumes), в штуках, всего на тенант.
+      localized_name:
+        en: "Volumes"
+        ru: "Диски"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    subnet:
+      localized_description:
+        en: Maximum number of virtual subnets per tenant.
+        ru: Максимальное количество виртуальных подсетей (subnets), в штуках, всего на тенант.
+      localized_name:
+        en: "Subnets"
+        ru: "Виртуальные подсети"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    router:
+      localized_description:
+        en: Maximum number of virtual routers per tenant.
+        ru: Максимальное количество виртуальных роутеров, в штуках, всего на тенант.
+      localized_name:
+        en: "Routers"
+        ru: "Роутеры"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    network:
+      localized_description:
+        en: Maximum number of virtual networks per tenant.
+        ru: Максимальное количество виртуальных сетей (networks), в штуках, всего на тенант.
+      localized_name:
+        en: "Networks"
+        ru: "Сети"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    port:
+      localized_description:
+        en: Maximum number of virtual router's ports per tenant.
+        ru: Максимальное количество портов виртуальных роутеров, в штуках, всего на тенант.
+      localized_name:
+        en: "Router's Ports"
+        ru: "Порты роутеров"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+    floatingip:
+      localized_description:
+        en: Maximum number of floating IPs (public IP addresses) per tenant.
+        ru: Максимальное количество floating IPs (публичных IP), всего на тенант.
+      localized_name:
+        en: "Public IPs"
+        ru: "Internet IP"
+      localized_measure:
+        en: "pcs."
+        ru: "шт."
+
+  nova:
+    - 'instances'
+    - 'cores'
+    - 'ram'
+    - 'fixed_ips'
+    - 'metadata_items'
+    - 'injected_files'
+    - 'injected_file_content_bytes'
+    - 'injected_file_path_bytes'
+    - 'key_pairs'
+
+  cinder:
+    - 'gigabytes'
+    - 'snapshots'
+    - 'volumes'
+
+  neutron:
+    - 'floatingip'
+    - 'network'
+    - 'port'
+    - 'router'
+    - 'subnet'
+    - 'security_group'
+    - 'security_group_rule'
+
+template:
+  customer:
+    "cores": 20
+    "fixed_ips": 255
+    "injected_file_content_bytes": 10240
+    "injected_file_path_bytes": 255
+    "injected_files": 5
+    "instances": 20
+    "key_pairs": 10
+    "metadata_items": 128
+    "ram": 20480
+    "security_group_rule": 25
+    "security_group": 5
+    "server_groups": 10
+    "server_group_members": 25
+    "gigabytes": 1000
+    "snapshots": 200
+    "volumes": 100
+    "subnet": 5
+    "router": 5
+    "network": 5
+    "port": 100
+    "floatingip": 20
+
+  test_customer:
+    "cores": 2
+    "fixed_ips": 255
+    "injected_file_content_bytes": 10240
+    "injected_file_path_bytes": 255
+    "injected_files": 5
+    "instances": 2
+    "key_pairs": 10
+    "metadata_items": 128
+    "ram": 2048
+    "security_group_rule": 20
+    "security_group": 5
+    "server_groups": 2
+    "server_group_members": 2
+    "gigabytes": 150
+    "snapshots": 20
+    "volumes": 10
+    "subnet": 2
+    "router": 2
+    "network": 2
+    "port": 10
+    "floatingip": 0
+
+  default:
+    "cores": 0
+    "fixed_ips": 255
+    "injected_file_content_bytes": 10240
+    "injected_file_path_bytes": 255
+    "injected_files": 5
+    "instances": 0
+    "key_pairs": 10
+    "metadata_items": 128
+    "ram": 0
+    "security_group_rule": 20
+    "security_group": 5
+    "server_groups": 10
+    "server_group_members": 0
+    "gigabytes": 0
+    "snapshots": 0
+    "volumes": 0
+    "subnet": 0
+    "router": 0
+    "network": 0
+    "port": 0
+    "floatingip": 0
+
+dashboard_quotas:
+  groups:
+    - server_group:
+      - instances
+      - server_groups
+      - floatingip
+      - port
+    - compute_group:
+      - cores
+      - ram
+    - storage_group:
+      - volumes
+      - snapshots
+      - gigabytes

@@ -1,0 +1,61 @@
+<form class="form-horizontal" name="WithdrawForm" bs-server-validate novalidate bs-form-send-once=""
+      ng-submit="updateAutoWithdraw(WithdrawForm)">
+  <div class="hr"><span class="white-bg gray-middle-light-text" translate>Auto payment</span></div>
+
+  <div class="form-group row-vertical-align">
+    <label class="centered pad-l-15 pad-r-15" for="withdraw_enabled" translate>
+      Enable auto payment?
+    </label>
+    <div class="centered pad-l-15">
+      <label class="switch">
+        <input type="checkbox" ng-model="withdrawParams.enabled" id="withdraw_enabled">
+        <span>
+          <i class="icon-on icon icon-xs icon-check"></i>
+          <i class="icon-off icon icon-xs icon-cross"></i>
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-sm-3 centered" for="balance_limit" translate>Withdrawal limit</label>
+
+    <div class="col-sm-9">
+      <div class="input-grp">
+        <input id="balance_limit" type="number" name="balance_limit" class="form-control" required
+               ng-model="withdrawParams.balance_limit" bs-validate-hint
+               ng-disabled="!withdrawParams.enabled">
+        <span class="input-group-addon unit-addon">{{user.currency}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-sm-3 centered" for="payment_amount" translate>Sum of withdrawal</label>
+
+    <div class="col-sm-9">
+      <div class="input-grp">
+        <input id="payment_amount" type="number" name="payment_amount" class="form-control" required
+               ng-model="withdrawParams.payment_amount" bs-validate-hint
+               ng-disabled="!withdrawParams.enabled">
+        <span class="input-group-addon unit-addon">{{user.currency}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align" ng-repeat="card in cardList">
+    <div class="col-xs-3 centered">
+      <span ng-if="::card.status === 'active'" translate>Active card</span>
+    </div>
+    <div class="col-xs-9 centered">
+      {{::card.card_type}} *** **** **** {{::card.last_four}}
+      <button class="btn btn-link" type="button" ng-click="removeCard(card)" translate>Remove</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-5 col-xs-offset-3">
+      <button class="btn btn-primary btn-block" translate ng-disabled="!WithdrawForm.$dirty || WithdrawForm.$invalid">Save</button>
+    </div>
+  </div>
+</form>

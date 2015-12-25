@@ -1,0 +1,17 @@
+@support-form-width: 680px;
+@support-label-width: 120px;
+
+.support-form {
+  width: @support-form-width;
+  .form-group {
+    >label {
+      width: @support-label-width;
+    }
+    >div.fixed-support-field {
+      width: calc(e("100% - @{support-label-width}"));
+    }
+    &:last-child {
+      margin-left: 105px;
+    }
+  }
+}

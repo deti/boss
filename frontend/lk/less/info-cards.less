@@ -1,0 +1,99 @@
+.card-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+.card-item {
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (max-width: 768px) {
+  .card-wrapper {
+    flex-direction: column;
+  }
+}
+
+.info-cards {
+  padding-bottom: 30px;
+  background: @top-bg;
+  border-bottom: 1px solid @card-border-color;
+  .card {
+    background: @white-color;
+    border: 1px solid @card-border-color;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+    border-radius: 3px;
+    height: 155px;
+    text-align: center;
+    padding-top: 30px;
+    position: relative;
+    .title {
+      font-size: 14px;
+      color: @gray-text;
+    }
+    .value {
+      font-weight: 500;
+      font-size: 22px;
+      padding-bottom: 20px;
+    }
+    .links {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+    }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 0 5px;
+      &:nth-child(even) {
+        border-left: 1px solid @card-border-color;
+      }
+      &:first-of-type {
+        border-left: none;
+      }
+    }
+    bs-popup-details + a {
+      padding-left: 8px !important;
+      border-left: 1px solid @card-border-color !important;
+    }
+  }
+  .card-max-width {
+    max-width: 500px;
+    margin: auto;
+  }
+}
+
+.card-details {
+  position: absolute;
+  top: 27px;
+  border: 1px solid @card-detail-border-color;
+  border-radius: 4px;
+  background-color: @white-color;
+  text-align: left;
+  padding: 30px 40px;
+  z-index: 2;
+  .account-item {
+    .item-name {
+      float: left;
+    }
+    .item-value {
+      float: right;
+      color: @link-color;
+    }
+  }
+  .item-note {
+    font-size: 12px;
+    color: @gray-text;
+  }
+}
+.card-details.account {
+  left: 35px;
+  width: 550px;
+}
+.card-details.report {
+  left: 130px;
+  width: 400px;
+}

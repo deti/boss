@@ -1,0 +1,10 @@
+<div ng-if="customer.customer_type === 'private'">
+  <div class="form-group row-vertical-align">
+    <label class="label-fw text-left required" for="name" translate>First and last name</label>
+
+    <div class="col-sm-7 centered">
+      <input type="text" id="name" name="name" class="form-control" required ng-model="customer.detailed_info.name"
+             placeholder="{{::'Enter your name'|translate}}"/>
+    </div>
+  </div>
+</div>

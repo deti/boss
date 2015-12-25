@@ -1,0 +1,56 @@
+<hr/>
+<div class="row row-vertical-align mar-b-0">
+  <label class="col-xs-3 centered" translate>Balance</label>
+  <div class="col-xs-9 centered">
+    <h4 class="mar-t-0 mar-b-0" ng-if="customer.account[customer.currency]"
+        ng-bind-html="customer.account[customer.currency].current | money: customer.currency | trust"></h4>
+    <span class="mar-t-0 mar-b-0" ng-hide="customer.account[customer.currency]" translate>Invoice hasn't been created yet</span>
+  </div>
+</div>
+<hr ng-show="accrued !== null"/>
+<div class="row row-vertical-align mar-b-0" ng-if="accrued !== null">
+  <label class="col-xs-3 centered" translate>Funds available</label>
+  <div class="col-xs-9 centered">
+    <h4 class="mar-t-0 mar-b-0" ng-bind-html="accrued | money: customer.currency | trust"></h4>
+  </div>
+</div>
+<hr/>
+
+<form class="form-horizontal mar-t-30" novalidate bs-server-validate name="BillForm">
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-xs-3 centered" for="amount" translate>Sum</label>
+    <div class="col-xs-9">
+      <div class="input-grp">
+        <input id="amount" type="number" name="amount" class="form-control" ng-model="amount">
+        <span class="input-group-addon unit-addon">{{customer.currency}}</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3" for="comment" translate>Comment</label>
+    <div class="col-xs-9">
+      <textarea name="comment" id="comment" rows="3" ng-model="comment" class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="form-group has-error" ng-if="BillForm.$error.unclassified">
+    <div class="col-xs-offset-3 col-xs-9">
+      <span class="help-block">{{BillForm.$server_unclassified}}</span>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="col-xs-3 centered" translate>Action</label>
+    <div class="col-xs-9 btn-row">
+      <div class="col-xs-6">
+        <button ng-click="update(true, BillForm)" class="btn btn-primary btn-block">
+          <i class="fa fa-plus btn-icon"></i><span translate>Add funds</span>
+        </button>
+      </div>
+      <div class="col-xs-6">
+        <button ng-click="update(false, BillForm)" class="btn btn-primary btn-block">
+          <i class="fa fa-minus btn-icon"></i><span translate>Withdraw</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

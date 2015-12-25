@@ -1,0 +1,71 @@
+region: dev
+availability_zone: dev
+
+devel:
+  debug: true
+  force_update_allowed: true
+  system_test_warning: true
+
+backend:
+  entry_point: http://localhost/
+
+database:
+  uri: mysql+pymysql://boss:boss@localhost/boss?charset=utf8&use_unicode=1
+
+memdb:
+  hosts:
+    - [localhost, 26379]
+
+
+openstack:
+  horizon_url: http://localhost/horizon
+  external_net: $(__FIX_ME__())
+  customer_keystone_url: http://localhost:5000/v2.0
+  auth:
+    username: admin
+    password: admin_password
+    tenant_name: admin
+    auth_url: http://localhost:35357/v2.0/
+  # loglevel: DEBUG
+
+api:
+  secure_cookie: false
+  internal_methods_enabled: true
+  secure:
+    secret_key: development_secure_key
+
+    # you can register recaptcha id here https://www.google.com/recaptcha/admin
+    recaptcha:
+       secret:
+       site_key:
+       validate: false
+
+
+provider:
+  cloud_name: BOSS $(region)
+  noreply: noreply@localhost
+  support_phone: +1 234 4567890
+  support_email:
+     - support@localhost
+
+sentry:
+  backend:
+  js:
+
+
+statistics:
+  carbon_host:
+
+
+ui:
+  show_region: true
+  google_analytics:
+    admin:
+    lk:
+
+payments:
+  cloudpayments:
+    allow_test_mode: true
+    public_id:
+    api_secret:
+    origin_address: 8.8.8.8

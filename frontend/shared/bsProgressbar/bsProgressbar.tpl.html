@@ -1,0 +1,8 @@
+<div class="progress-container input-height" ng-class="{'progress-max': value > max}">
+  <progressbar value="value" max="max"></progressbar>
+  <div class="left">{{::title}}</div>
+  <div class="right">
+    <span class="value">{{value}} {{::'of' | translate}} {{::max}}</span>
+  </div>
+  <div class="clearfix"></div>
+</div>

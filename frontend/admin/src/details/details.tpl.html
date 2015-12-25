@@ -1,0 +1,14 @@
+<div class="g-details-tabs-wrapper">
+  <div class="tabs" ng-class="{'pad-b-20': !manyTabs || globalState.detailsWide}">
+    <a ng-if="::tab.link" ng-repeat="tab in ::tabs" ui-sref-active="active-details-tab" ui-sref="{{::tab.link}}">{{::tab.title}}</a>
+    <a ng-if="::!tab.link" ng-repeat="tab in ::tabs" ng-class="{'active-details-tab': stateIs(tab.state)}" ng-click="tab.go()">{{::tab.title}}</a>
+
+    <div ng-if="customDetailsHeader.tpl">
+      <ng-include src="::customDetailsHeader.tpl"></ng-include>
+    </div>
+
+  </div>
+  <perfect-scrollbar class="g-details-view-wrapper" refresh-on-change="[$state.current.name, windowHeight]" suppress-scroll-x="true">
+    <div ui-view="detail" class="g-details-view"></div>
+  </perfect-scrollbar>
+</div>

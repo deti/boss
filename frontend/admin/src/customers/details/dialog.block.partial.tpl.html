@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="$dismiss()" aria-hidden="true"><i class="icon icon-cross"></i></button>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12"><h3><strong translate>Lock customer</strong></h3></div>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div ng-hide="block">
+          <form ng-submit="$close(message)">
+            <label for="message" translate>Specify a reason for lock</label>
+            <input name="message" type="text" ng-model="message" id="message" class="form-control" autofocus>
+          </form>
+        </div>
+        <div ng-show="block" translate>
+          Do you really want to unlock customer?
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-4">
+        <button type="button" class="btn btn-primary btn-block" ng-click="$close(message)">
+          <span ng-if="!block" translate>Lock</span>
+          <span ng-if="block" translate>Unlock</span>
+        </button>
+      </div>
+      <div class="col-xs-3">
+        <button type="button" class="btn btn-primary btn-block" ng-click="$dismiss()" translate>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

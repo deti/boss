@@ -1,0 +1,15 @@
+<div class="row date-filter row-vertical-align">
+  <div class="col-xs-6 centered">
+    <bs-date-range-picker start-date="startDate" end-date="endDate" on-change="changeRange()"></bs-date-range-picker>
+  <span>
+    {{startDateApplied | date: 'dd MMMM yyyy'}} - {{endDateApplied | date: 'dd MMMM yyyy'}}
+  </span>
+  </div>
+  <div class="col-xs-6 centered">
+    <div class="text-right full-width">
+      <a ng-repeat="item in ::range" ng-click="setAfter(item.range)" href="#">
+        {{::item.title}}
+      </a>
+    </div>
+  </div>
+</div>

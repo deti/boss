@@ -1,0 +1,31 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>New domain</h4>
+  <form name="NewDomainForm" class="form-horizontal" ng-submit="createDomain(NewDomainForm)" bs-server-validate novalidate bs-form-send-once>
+    <div class="form-group" bs-has-error>
+      <label class="col-xs-3 required" for="name" translate>Name</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="name" name="name" class="form-control" required ng-model="domain.name"
+               bs-validate-hint placeholder="{{::'Enter a domain name'|translate}}">
+        <div class="example-text" translate>For example domain.com.</div>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 required centered" for="email" translate>E-mail</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="email" name="email" class="form-control" required ng-model="domain.email"
+               bs-validate-hint placeholder="{{::'Enter an email'|translate}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-3 col-xs-offset-3">
+        <button type="submit" class="btn btn-primary" ng-disabled="NewDomainForm.$invalid" translate>Create</button>
+      </div>
+      <div class="col-xs-3">
+        <a ui-sref="openstack.dns.domains" class="btn btn-link" translate>Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

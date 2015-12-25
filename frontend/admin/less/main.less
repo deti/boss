@@ -1,0 +1,60 @@
+@vendorDir: "../node_modules";
+@sharedDir: "../../shared";
+
+@import "@{vendorDir}/bootstrap/less/bootstrap.less";
+@import "@{vendorDir}/font-awesome/less/variables.less";
+@import "@{vendorDir}/font-awesome/less/path.less";
+@import "@{vendorDir}/font-awesome/less/core.less";
+@import "@{vendorDir}/font-awesome/less/icons.less";
+@import "@{vendorDir}/font-awesome/less/larger.less";
+@import "@{vendorDir}/font-awesome/less/fixed-width.less";
+@import (inline) "@{vendorDir}/angularjs-toaster/toaster.css";
+@import (inline) "@{vendorDir}/ng-tags-input/build/ng-tags-input.css";
+
+@import "../lib/less/common";
+@import "../lib/less/elements";
+
+@import "../../shared/less/triangles";
+@import "../../shared/less/modals";
+@import "../../shared/less/tags-input";
+@import "../../shared/less/toaster-override";
+@import "../../shared/less/sidemenu";
+@import "../../shared/less/header";
+@import "../../shared/less/bootstrap-override";
+@import "../../shared/less/tables";
+@import "../../shared/less/form-elements";
+@import "../../shared/less/icons";
+@import "../../shared/less/elements";
+@import "../../shared/less/button-group";
+@import "../../shared/error/error";
+
+@import "fonts";
+@import "scrollbar";
+@import "btn-scroll";
+@import "layout";
+@import "mainview-layout";
+@import "authorization";
+@import "tables";
+@import "tabs";
+@import "formfields";
+@import "search";
+@import "filters";
+@import "popup";
+@import "lists";
+@import "loading-bar";
+@import "variables";
+@import "pagination";
+@import "promocodes";
+@import "restore-password";
+@import "system-reports";
+@import "custom-filters";
+@import "grafana";
+
+.body-gray {
+  background: @components-bg;
+}
+.panel {
+  box-shadow: none;
+  border: 1px solid #7F95AA;
+  background-color: transparent;
+}

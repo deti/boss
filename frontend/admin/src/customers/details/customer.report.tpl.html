@@ -1,0 +1,58 @@
+<bs-date-range></bs-date-range>
+<bs-dropdown-button title="{{::'Create report' | translate}}" action="getReport()" value="reportFormat"
+                    options="{tsv: 'Excel', pdf: 'PDF'}"></bs-dropdown-button>
+<div class="checkbox inline-block mar-l-20">
+  <label class="custom-checkbox">
+    <input type="checkbox" name="typeDetailed" id="typeDetailed" ng-model="typeDetailed"/>
+    <span class="checkbox-elem"></span>
+    <span translate>Detailed</span>
+  </label>
+</div>
+<div ng-if="report === false" class="text-center">
+  <div class="loader center-block"></div>
+  <span translate>Loading...</span>
+</div>
+<table class="table table-simple mar-b-0" st-table="data" ng-repeat="item in report.tariffs[0].usage">
+  <colgroup>
+    <col width="40%">
+    <col width="40%">
+    <col width="20%">
+  </colgroup>
+  <tr>
+    <th class="pad-l-20 color-inherit">{{::item.category}}</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>
+      <span class="gray-middle-light-text" translate>Used</span>
+    </td>
+    <td>
+      <span>{{::item.total_usage_volume | number}}</span>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="gray-middle-light-text" translate>Unit of measurement</span>
+    </td>
+    <td>
+      <span>{{::item.measure}}</span>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="gray-middle-light-text" translate>Piece cost</span>
+    </td>
+    <td>
+      <span ng-bind-html="item.price | money: customer.currency | trust"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="gray-middle-light-text" translate>Total cost</span>
+    </td>
+    <td>
+      <span ng-bind-html="item.total_cost | money: customer.currency | trust"></span>
+    </td>
+  </tr>
+</table>

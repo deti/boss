@@ -1,0 +1,118 @@
+customer:
+  from_address: $(provider.from_address)
+  salt_rounds: 80000
+  generated_password_length: 12
+  generated_password_symbols: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789[]%;^#,./"
+  token:
+    ttl: ${DAY}
+    size: 16
+    db_index: 2
+
+  test_customer:
+    test_period:
+      blocking: ${DAY}
+      removing_resource: ${DAY}
+    balance:
+      RUB: 200
+      USD: 5
+
+  password_token:
+    ttl: ${HOUR}
+    size: 16
+
+  email_confirmation_token:
+    ttl: ${DAY*7}
+    size: 16
+
+  min_password_length: 5
+  max_password_length: 256
+
+  automatic_subscriptions:
+    - news
+    - billing
+    - status
+
+  support:
+    email: $(provider.support_email)
+    subjects:
+      - Финансовые вопросы
+      - Технические вопросы
+  manager:
+    email: $(provider.support_email)
+
+  default_withdraw_period: week
+  # OpenStack dashboard for customer: 'horizon', 'skyline' or 'both'
+  default_openstack_dashboard: horizon
+
+  balance_limits:
+    default: 0
+
+  minimum_recommended_payment:
+    RUB: 200
+    USD: 5
+
+  blocking:
+    schedule:
+      - shut_off_vms: ${3*DAY}
+      - remove_floating_ips: ${4*DAY} # relative to previous value
+      - hdd_remove_notification: ${0*DAY} # relative to previous value
+      - final_delete: ${23*DAY} # relative to previous value
+    notification: 7  # Days to notify before block
+
+  default_locale: ru_ru
+
+  report:
+    format: pdf
+    type: simple
+    from_email: $(provider.noreply)
+
+  quota:
+    ttl: ${7*DAY}
+    fresh: ${10*MINUTE}
+    min_live_time: 10
+
+  events:
+    created:
+      en: "Customer was created."
+      ru: "Заказчик создан."
+    tariff:
+      en: "Customer's tariff was changed."
+      ru: "Тариф заказчика изменен."
+    deleted:
+      en: "Customer was removed."
+      ru: "Заказчик удален."
+    info:
+      en: "Customer's info was updated."
+      ru: "Информация о заказчике изменена."
+    block:
+      en: "Customer was blocked."
+      ru: "Заказчик заблокирован."
+    unblock:
+      en: "Customer was unblocked."
+      ru: "Заказчик разблокирован."
+    reset_email:
+      en: "Customer's email was reset."
+      ru: "Эл. почта заказчика сброшена."
+    reset_password:
+      en: "Customer's password was reset."
+      ru: "Пароль заказчика сброшен."
+    confirm_email:
+      en: "Customer confirm email."
+      ru: "Подтверждение эл. почты заказчика."
+    email_confirmed:
+      en: "Customer's email was confirmed"
+      ru: "эл. почта заказчика подтверждена."
+    make_prod:
+      en: "Customer's mode change to production."
+      ru: "Заказчик переведен в нетестовый режим."
+    pending_prod:
+      en: "Customer's mode change to pending production."
+      ru: "Заказчик переведен в переходный режим."
+    changed_quotes:
+      en: "Customer's quotes was changed."
+      ru: "Квоты заказчика изменены."
+    change_password:
+      en: "Customer's password was changed."
+      ru: "Пароль заказчика изменен."
+
+

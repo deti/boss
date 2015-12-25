@@ -1,0 +1,693 @@
+message_template:
+  # Each variable should look like
+  #     variable_name:
+  #       default: <default variable value>
+  #       formatter: <formatter name>
+  #       ru: <Russian translation>
+  #       en: <English translation>
+  # Available formatters for variables:
+  #    * money - for money values
+  #        - Looks like 'RUR100.00'
+  #    * datetime - for datetime values
+  #        - Looks like 'Jul 5, 2015, 3:04:05 AM'
+  #    * date - for date values
+  #        - Looks like 'Jul 5, 2015'
+  #    * time - for time values
+  #        - Looks like '3:04:05 AM'
+  variables:
+    cloud_name:
+      default: $(provider.cloud_name)
+      en: Сloud Name
+      ru: Имя облака
+    current_date:
+      formatter: date
+      default:
+      ru: Текущая дата
+      en: Current Date
+    current_datetime:
+      default:
+      formatter: datetime
+      ru: Текущее время и дата
+      en: Current Date and Time
+    current_time:
+      formatter: time
+      ru: Текущее время
+      en: Current Time
+    withdraw_date:
+      formatter: datetime
+      ru: Дата списания
+      en: Withdrawal Date
+    comment:
+      ru: Комментарий
+      en: Comment
+    user_name:
+      en: User Name
+      ru: Имя пользователя
+    customer_name:
+      ru: Имя заказчика
+      en: Customer Name
+    activate_url:
+      en: URL for Account Activation
+      ru: URL для активации аккаунта
+    password_reset_url:
+      en: URL for Password Reset
+      ru: URL для сброса пароля
+    confirm_url:
+      en: URL for Email Confirmation
+      ru: URL для подтверждения почтового адреса
+    transactions_url:
+      ru: URL страницы истории транзакций
+      en: URL for transactions History Page
+    block_date:
+      formatter: date
+      en: Дата блокировки
+      ru: Lock Date
+    minimum_recomended_payment:
+      formatter: money
+      en: Minimum Recommended Sum
+      ru: Минимально рекоммендуемая оплата
+    report_start:
+      formatter: datetime
+      ru: Начало периода в отчете
+      en: Report Start Date
+    report_end:
+      formatter: datetime
+      ru: Конец периода в отчете
+      en: Report End Date
+    balance:
+      formatter: money
+      ru: Текущий баланс
+      en: Current Balance
+    money:
+      formatter: money
+      ru: Деньги
+      en: Money
+    email:
+      ru: email
+      en: Email
+    currency:
+      ru: Текущая валюта
+      en: Current Currency
+    os_name:
+      en: OpenStack Login
+      ru: Логин от аккаунта опенстека
+    os_password:
+      en: OpenStack Password
+      ru: Пароль от аккаунта опенстека
+    os_tenant:
+      en: Tenant ID
+      ru: id тенанта
+    os_region:
+      en: Region
+      ru: Регион
+    os_horizon_url:
+      en: Horizon URL
+      ru: Адрес для входа в Horizon
+    os_keystone_url:
+      en: Keystone API URL
+      ru: Адрес keystone api
+    account:
+      ru: Клиент
+      en: Customer
+    card_type:
+      ru: Тип карты
+      en: Card Type
+    card_last_four:
+      ru: Последние четыре цифры карты
+      en: Last Four Digits on Credit Card
+    news_subject:
+      ru: Тема новости
+      en: News subject
+    news_body:
+      ru: Тело новости
+      en: News body
+    flavor_name:
+      ru: Название типа сервера
+      en: Flavor name
+    tariff:
+      ru: Тариф
+      en: Plan
+    customer_url:
+      ru: Ссылка на страницу заказчика
+      en: Customer's info link
+    service_edit_url:
+      ru: Ссылка на страницу изменения тарифа
+      en: Service edit URL
+  templates:
+    new_user:
+      variables:
+        - user_name
+        - activate_url
+      subject:
+        en: '{{cloud_name}}: Billing Registration'
+        ru: '{{cloud_name}}: Регистрация в биллинге'
+      body:
+        ru: |
+              Уважаемый {{ user_name }}
+              Для Вас был создан аккаунт в облаке {{ cloud_name }}. Для того чтобы активировать аккаунт, пожалуйста,
+              перейдите по ссылке {{ activate_url }} и следуйте инструкциям.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+        en: |
+              Dear {{ user_name }}
+              We created account {{ cloud_name }} for you.
+              To activate it, please click {{ activate_url }} and follow instructions.
+
+              -
+              Best regards, {{cloud_name}}
+
+    user_password_reset:
+      variables:
+        - user_name
+        - password_reset_url
+      subject:
+        en: '{{cloud_name}}:  Password Reset Link'
+        ru: '{{cloud_name}}: Ссылка для сброса пароля'
+      body:
+        en: |
+              To reset your password, please click: {{ password_reset_url }} and follow instructions.
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Для сброса пароля, пожалуйста, перейдите по ссылке {{ password_reset_url }} и следуйте инструкциям.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_password_reset:
+      variables:
+        - customer_name
+        - password_reset_url
+      subject:
+        en: '{{cloud_name}}: Password Reset Link'
+        ru: '{{cloud_name}}: Ссылка для сброса пароля'
+      body:
+        en: |
+              To reset your password, please click: {{ password_reset_url }} and follow instructions.
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Для сброса пароля, пожалуйста, перейдите по ссылке {{ password_reset_url }} и следуйте инструкциям.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_confirmation:
+      variables:
+         - confirm_url
+      subject:
+        en: '{{cloud_name}}: Registration in Cloud'
+        ru: '{{cloud_name}}: Регистрация в облачном сервисе'
+      body:
+        en: |
+              Dear Customer,
+
+              You have successfully registered with our cloud service.
+
+              Please confirm your email address to complete registration and take advantage of our free test period to evaluate our cloud services.
+
+              Please follow the link: {{ confirm_url }}
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент,
+
+              Вы зарегистрировались в нашем в облачном сервисе.
+
+              Пожалуйста, подтвердите адрес вашей электронной почты, чтобы завершить регистрацию и воспользоваться бесплатным Тестовым периодом для оценки качества наших услуг.
+
+              Пройдите, пожалуйста, по ссылке: {{ confirm_url }}
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_blocked:
+      variables:
+        - block_date
+        - minimum_recomended_payment
+        - email
+      subject:
+        en: '{{ cloud_name }}: Account Lock Notification'
+        ru: '{{ cloud_name }}: Уведомление о блокировке аккаунта'
+      body:
+        en: |
+              Dear Customer,
+
+              We are sorry to inform you that your account {{email}} at {{cloud_name}} was locked on {{block_date}} UTC due to insufficient funds.
+
+              Currently there are not enough funds in your account to pay for the Cloud services you ordered.
+              To unlock your account, please make a minimum recommended deposit of {{minimum_recomended_payment}}.
+
+              We'd like to inform you that if you refuse to unlock the account:
+
+              - You won't be able to order new virtual services (servers, disks, IP addresses, etc.);
+              - Your virtual servers will be stopped within 3 days after the lock date;
+              - Your Internet IP addresses will be removed within 7 days after the lock date;
+              - Your data stored on virtual disks and snapshots will be removed within 1 month after the lock date.
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент,
+
+              К сожалению, мы вынуждены уведомить вас о блокировке вашего аккаунта {{email}} в {{cloud_name}} {{block_date}} UTC
+              по причине исчерпания средств на вашем Счете.
+
+              На данный момент на вашем Счете недостаточно средств для оплаты заказанных вами облачных услуг.
+              Чтобы разблокировать аккаунт, вам необходимо внести минимально рекомендуемую оплату в размере {{minimum_recomended_payment}}.
+
+              Уведомляем вас, что в случае отказа от разблокировки аккаунта:
+
+              - Вы не сможете заказывать новые виртуальные услуги (серверы, диски, IP-адреса и т.д.);
+              - Ваши виртуальные сервера будут остановлены через 3 дня после блокировки;
+              - Ваши Интернет IP-адреса будут изъяты через 7 дней после блокировки;
+              - Ваши данные на виртуальных дисках и снапшотах будут удалены через 1 месяц после блокировки.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_blocked_by_manager:
+      variables:
+        - block_date
+        - email
+      subject:
+        en: '{{ cloud_name }}: Account Lock Notification'
+        ru: '{{ cloud_name }}: Уведомление о блокировке аккаунта'
+      body:
+        en: |
+              Dear Customer,
+
+              We are sorry to inform you that your account {{email}} at {{cloud_name}} was locked on {{block_date}} UTC.
+
+              For more information on the account lock reasons, please contact our manager.
+
+              We'd like to inform you that if you refuse to unlock the account:
+
+              - You won't be able to order new virtual services (servers, disks, IP addresses, etc.);
+              - Your virtual servers will be stopped within 3 days after the lock date;
+              - Your Internet IP addresses will be removed within 7 days after the lock date;
+              - Your data stored on virtual disks and snapshots will be removed within 1 month after the lock date.
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент,
+
+              К сожалению, мы вынуждены уведомить вас о блокировке вашего аккаунта {{email}} в {{cloud_name}} {{block_date}} UTC.
+
+              Чтобы узнать о причине блокировки, свяжитесь с менеджером сервиса.
+
+              Уведомляем вас, что в случае отказа от разблокировки аккаунта:
+              - Вы не сможете заказывать новые виртуальные услуги (серверы, диски, IP-адреса и т.д.);
+              - Ваши виртуальные сервера будут остановлены через 3 дня после блокировки;
+              - Ваши Интернет IP-адреса будут изъяты через 7 дней после блокировки;
+              - Ваши данные на виртуальных дисках и снапшотах будут удалены через 1 месяц после блокировки.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_unblocked:
+      variables:
+      subject:
+        en: '{{ cloud_name }}: Account Unlock Notification'
+        ru: '{{ cloud_name }}: Уведомление о разблокировке аккаунта'
+      body:
+        en: |
+              Dear Customer,
+
+              Your account has been successfully unlocked!
+
+              You can now use your Cloud resources. We are happy you joined us again!
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент,
+
+              Ваш аккаунт был разблокирован!
+
+              Вы можете снова пользоваться ресурсами вашего Облака. Мы рады, что вы снова с нами!
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    os_credentials:
+      variables:
+        - os_name
+        - os_password
+        - os_tenant
+        - os_region
+        - os_horizon_url
+        - os_keystone_url
+      subject:
+        en: '{{cloud_name}}: OpenStack API Credentials'
+        ru: '{{cloud_name}}: Доступы в OpenStack API'
+      body:
+        en: |
+              Dear Customer,
+
+              Use the following credentials to access your personal Cloud.
+
+              OpenStack login: {{os_name}}
+              OpenStack password: {{os_password}}
+              OpenStack tenant: {{os_tenant}}
+              OpenStack region: {{os_region}}
+
+              OpenStack Horizon web panel URL: {{os_horizon_url}}
+              OpenStack Keystone API:  {{os_keystone_url}}
+
+              Attention! OpenStack password does not match your {{cloud_name}} Personal Account password. However, you can access your OpenStack Horizon web panel from your Personal account without authorization.
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент!
+
+              Используйте следующие реквизиты для доступа к вашему Облаку.
+
+              OpenStack login: {{os_name}}
+              OpenStack password: {{os_password}}
+              OpenStack tenant: {{os_tenant}}
+              OpenStack region: {{os_region}}
+
+              OpenStack Horizon web panel URL: {{os_horizon_url}}
+              OpenStack Keystone API:  {{os_keystone_url}}
+
+              Внимание! Пароль для доступа к OpenStack не совпадает с паролем в Личный Кабинет {{cloud_name}}. Однако, из Личного Кабинета вы можете попасть в веб-панель OpenStack Horizon без авторизации.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_make_production:
+      variables:
+      subject:
+        en: '{{cloud_name}}: Notice on Switching to Working Mode'
+        ru: '{{cloud_name}}: Уведомление о переходе аккаунта в продуктовый режим'
+      body:
+        en: |
+              Dear Customer!
+
+              Your account has been switched to the working mode!
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент!
+
+              Ваш аккаунт был переведен в Продуктовый режим!
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_balance_limit:
+      variables:
+        - block_date
+      subject:
+        en: '{{cloud_name}}: Notice on Account Lock'
+        ru: '{{cloud_name}}: Уведомление о  блокировке аккаунта'
+      body:
+        en: |
+              Dear Customer!
+
+              We have to inform you that your account is going to be locked on {{block_date}} due to insufficient funds.
+
+              We inform you that in case of locking your account:
+
+              - You cannot order new virtual services (servers, disks, IP addresses, etc.);
+              - Your virtual servers will be stopped within 3 days after the lock date;
+              - Your Internet IP addresses will be removed within 7 days after the date of blocking;
+              - Your data on virtual disks and snapshots will be removed within 1 month after the date of blocking.
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент!
+
+              Уведомляем вас о том, что на вашем счету заканчиваются средства и ваш аккаунт может быть заблокирован уже {{block_date}}.
+
+              Уведомляем вас, что в случае блокировки аккаунта:
+              - Вы не сможете заказывать новые виртуальные услуги (сервера, диски, IP-адреса и т.д.);
+              - Ваши виртуальные сервера будут остановлены через 3 дня после блокировки;
+              - Ваши Интернет IP-адреса будут изъяты через 7 дней после блокировки;
+              - Ваши данные на виртуальных дисках и снапшотах будут удалены через 1 месяц после блокировки.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_hdd_delete:
+      variables:
+        - block_date
+        - account
+      subject:
+        en: '{{cloud_name}}: Notice on Customer Data Deletion'
+        ru: '{{cloud_name}}: Уведомление о удалении данных пользователя'
+      body:
+        en: |
+              Dear Manager!
+
+              We have to inform you that Сustomer {{account}} was locked on {{block_date}} and you should cleanup the customer's data.
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый менеджер!
+
+              Увеодмляем вас о том, что клиент {{account}} был заблокирован {{block_date}} и вам необходимо удалить его данные из облака.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    new_service_in_tariff:
+      variables:
+        - account
+        - flavor_name
+        - tariff
+        - customer_url
+        - service_edit_url
+      subject:
+        en: '{{cloud_name}}: Notice on service adding notification'
+        ru: '{{cloud_name}}: Уведомление о добавлении сервиса к тарифу'
+      body:
+        en: |
+              Dear Manager!
+
+              We have to inform you that Сustomer {{account}} has started to use public flavor {{flavor_name}}.
+              The service for this flavor has been added to Customer’s plan {{tariff}}. Please, quote a price for the service.
+
+              Customer's info: {{customer_url}}
+              Change the service price: {{service_edit_url}}
+
+              Attention! You can change the service price only once.
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый менеджер!
+
+              Уведомляем вас о том, что клиент {{account}} начал использовать публичный тип сервера {{flavor_name}}.
+              Сервис для этого флавора был добавлен к тарифу {{tariff}} и вам необходимо назначить цену за пользование данным сервисом.
+
+              Информация о заказчике: {{customer_url}}
+              Изменить цену: {{service_edit_url}}
+
+              Внимание, сменить цену у данной услуги можно только 1 раз.
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_auto_report:
+      variables:
+        - report_start
+        - report_end
+        - customer_name
+        - balance
+        - currency
+      subject:
+        ru: '{{ cloud_name }}: Счет об использованных ресурсах. {{ customer_name }}. [{{ report_start }} - {{ report_end }}]'
+        en: '{{ cloud_name }}: Billing Report. {{ customer_name }}. [{{ report_start }} - {{ report_end }}]'
+      body:
+        en: |
+              Please see a billing report for {{ customer_name }} for
+              period:  {{ report_start }} - {{ report_end }} attached.
+
+              -
+              Best regards, {{cloud_name}}
+        ru: |
+              В приложенном файле Вы можете посмотреть отчет по потребленным услугам
+              для заказчика {{ customer_name }} за период  {{ report_start }} - {{ report_end }}
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_withdraw:
+      variables:
+        - money
+        - balance
+        - withdraw_date
+        - transactions_url
+        - comment
+      subject:
+        en: '{{ cloud_name }}: Withdrawal Notification'
+        ru: '{{ cloud_name }}: Уведомление о списании со счета'
+      body:
+        en: |
+              Dear Customer,
+
+              The funds have been successfully withdrawn from your account:
+
+                Amount: {{money}} (account balance: {{balance}})
+                Date and time: {{withdraw_date}}
+                {% if comment %}Reference - {{comment}}{% endif%}
+
+              You can check your transactions history in your Personal Account at: {{transactions_url}}
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент,
+
+              С вашего счета было произведено списание:
+                сумма: {{money}} (остаток на счете: {{balance}})
+                дата и время списания: {{withdraw_date}}
+                {% if comment %}обоснование - {{comment}}{% endif%}
+
+              Вы можете посмотреть историю своих транзакций в личном кабинете: {{transactions_url}}
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_recharge:
+      variables:
+        - money
+        - balance
+        - withdraw_date
+        - transactions_url
+        - comment
+      subject:
+        en: '{{ cloud_name }}: Recharging Notification'
+        ru: '{{ cloud_name }}: Уведомление о пополнении счета'
+      body:
+        en: |
+              Dear Customer,
+
+              Your account has been successfully refilled:
+
+                Amount: {{money}} (account balance: {{balance}})
+                Date and time: {{withdraw_date}}
+                {% if comment %}Reference - {{comment}}{% endif%}
+
+              You can check your transactions history in your Personal Account at: {{transactions_url}}
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент,
+
+              Ваш счет был пополнен:
+
+                сумма: {{money}} (остаток на счете: {{balance}})
+                дата и время списания: {{withdraw_date}}
+                {% if comment %}обоснование - {{comment}}{% endif%}
+
+              Вы можете посмотреть историю своих транзакций в личном кабинете: {{transactions_url}}
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    customer_auto_recharge_reject:
+      variables:
+        - money
+        - withdraw_date
+        - card_type
+        - card_last_four
+        - transactions_url
+        - comment
+      subject:
+        en: '{{ cloud_name }}: Notice on Automatic Recharge Failure'
+        ru: '{{ cloud_name }}: Уведомление о невозможности автоматического пополнении счета'
+      body:
+        en: |
+              Dear Customer!
+
+              Your account could not be recharged automatically.
+
+                Amount: {{money}}
+                Date and time: {{withdraw_date}}
+                Card info: {{card_type}} ***{{card_last_four}}
+                Reference - {{comment}}
+
+              Your can check your transactions history on private pages:: {{transactions_url}}
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              Уважаемый клиент!
+
+              Автоматическое пополнение счета невозможно:
+
+                Cумма: {{money}}
+                Дата и время списания: {{withdraw_date}}
+                Информация о карте: {{card_type}} ***{{card_last_four}}
+                Обоснование - {{comment}}
+
+               Вы можете посмотреть историю своих транзакций в личном кабинете: {{transactions_url}}
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    news:
+      variables:
+        - news_subject
+        - news_body
+      subject:
+        en: '{{ cloud_name }}: {{ news_subject }}'
+        ru: '{{ cloud_name }}: {{ news_subject }}'
+      body:
+        en: |
+              {{ news_body }}
+
+              -
+              Best regards, {{cloud_name}}
+
+        ru: |
+              {{ news_body }}
+
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+    send_email:
+      subject:
+        en: '{{ cloud_name }}: Email Sending Verification'
+        ru: '{{ cloud_name }}: Проверка отсылки писем'
+      body:
+        ru: |
+              Проверка отсылки писем
+              Дата: {{current_datetime}}
+              –
+              С наилучшими пожеланиями, {{ cloud_name }}
+
+        en: |
+              Email sending verification
+              Date: {{current_datetime}}
+
+              –
+              Best regards, {{cloud_name}}

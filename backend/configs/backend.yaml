@@ -1,0 +1,87 @@
+extend:
+  - constants.yaml
+  - user.yaml
+  - provider.yaml
+  - customer.yaml
+  - logging.yaml
+  - database.yaml
+  - message_template.yaml
+  - service.yaml
+  - role.yaml
+  - currency.yaml
+  - country.yaml
+  - subscription.yaml
+  - fitter.yaml
+  - schedule.yaml
+  - quotes.yaml
+  - openstack.yaml
+  - tariff.yaml
+  - report.yaml
+  - event.yaml
+  - promocodes.yaml
+
+region: $(__FIX_ME__())
+availability_zone: $(__FIX_ME__())
+stage: $(region)-$(availability_zone)
+
+devel:
+  debug: false
+  local: false
+  test_prefix: "$test"
+  coverage_enable: false
+  force_update_allowed: false
+  sql_log: false
+  coverage:
+    omit: ['*.buildout/*', '*/dist-packages/*', 'boss_client/*', 'lib/*', 'backend.utils.coverage_report']
+    data_file: coverage.backend
+    branch: true
+  system_test_warning: false
+
+test: false
+
+api:
+  memfile_max: ${2 * MEGA}
+  internal_methods_enabled: false
+  request_id_size: 6
+  max_parameter_length: 16384
+  pagination:
+    limit: 100
+  secure_cookie: true
+  secure:
+    secret_key: $(__FIX_ME__())
+    recaptcha:
+       timeout: 1.5
+       validate: true
+       secret: $(__FIX_ME__())
+       url: https://www.google.com/recaptcha/api/siteverify
+       site_key: $(__FIX_ME__())
+
+backend:
+  decimal:
+    precision: 28
+    scale: 20
+    money_precision: "0.01"
+
+  tariff:
+    max_age_of_updates_to_auto_collapse: ${10 * MINUTE}
+
+  entry_point: $(__FIX_ME__())
+
+ui:
+  default_language: en
+  show_region: false
+  offer_link:
+  google_analytics:
+    admin: $(__FIX_ME__())
+    lk: $(__FIX_ME__())
+
+payments:
+  auto_withdraw_enable: True
+  auto_withdraw_balance_limit: 1000
+  auto_withdraw_amount: 2000
+  cloudpayments:
+    allow_test_mode: $(__FIX_ME__())
+    public_id: $(__FIX_ME__())
+    api_secret: $(__FIX_ME__())
+    origin_address: $(__FIX_ME__())
+    auto_payments_url: https://api.cloudpayments.ru/payments/tokens/charge

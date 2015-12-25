@@ -1,0 +1,41 @@
+<div ng-if="customer.customer_type === 'private'">
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="label-fw centered" for="telephone" translate>Phone</label>
+
+    <div class="col-sm-7">
+      <input type="text" id="telephone" name="telephone" class="form-control" ng-model="customer.detailed_info.telephone"
+             bs-phone-input placeholder="+7 980 777-15-16" bs-validate-hint/>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align" bs-has-error="NewCustomerForm.$error.conflict">
+    <label for="email" class="label-fw centered required">E-mail</label>
+    <div class="col-sm-7">
+      <input type="email" id="email" name="email" class="form-control" ng-model="customer.contacts.email"
+      placeholder="ivanov@gmail.com" required bs-validate-hint/>
+      <p class="errorMessage compact" ng-if="NewCustomerForm.$error.conflict">
+        {{NewCustomerForm.$server_error_conflict | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="address" translate>Address</label>
+
+    <div class="col-sm-7">
+      <input type="text" id="address" name="address" class="form-control" ng-model="customer.detailed_info.address"
+              placeholder="{{::'Enter your address'|translate}}"/>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="country" translate>Country</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select id="country" name="country" class="form-control" ng-model="customer.detailed_info.country">
+          <option ng-repeat="country in ::countries" value="{{::country.code}}">
+            {{::country|localizedName}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

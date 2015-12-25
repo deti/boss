@@ -1,0 +1,41 @@
+<div class="info-cards header-padding sides-padding">
+  <div class="row card-wrapper">
+    <div class="card-item">
+      <div class="card">
+        <div class="title" translate>Account balance</div>
+        <div class="value" ng-if="user.account[user.currency]"
+             ng-bind-html="user.account[user.currency].current | money:user.currency | trust"></div>
+        <div class="value" ng-if="!user.account[user.currency]" translate>The account is not created</div>
+        <div class="links">
+          <bs-popup-details structure="accountInfo" ng-if="user.account[user.currency]"></bs-popup-details>
+          <a ng-if="user.customer_mode !== 'test'" ui-sref="pay" translate>Add funds</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item" ng-show="showState && (user.customer_mode != 'production')">
+      <div class="card">
+        <div class="title" translate>Account balance</div>
+        <div class="value" ng-class="{'pad-b-0': !user.blocked && user.customer_mode == 'test'}">
+          <span ng-if="user.blocked" translate>Blocked</span>
+          <span ng-if="!user.blocked && user.customer_mode == 'test'" translate>Trial</span>
+          <span ng-if="!user.blocked && user.customer_mode == 'pending_prod'" translate>Waiting for the first payment</span>
+        </div>
+        <div ng-if="!user.blocked && user.customer_mode == 'test' && testTime >= 0">
+          <span translate>Ends in:</span> {{testTime | duration: 'hh:mm'}}
+        </div>
+        <div class="links">
+          <a href="#" ui-sref="production" ng-show="user.customer_mode == 'test'" translate>Become a customer</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-item">
+      <div class="card">
+        <div class="title" translate>Your plan</div>
+        <div class="value">{{tariff | localizedName}}</div>
+        <div class="links">
+          <a ng-if="showState" ui-sref="services" translate>Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

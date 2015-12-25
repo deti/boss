@@ -1,0 +1,14 @@
+.idea
+*.py[co]
+*.log
+/bin
+/log
+develop-eggs/
+downloads/
+*.egg-info/
+dist/
+!.gitignore
+.installed.cfg
+*.mo
+.buildout/
+venv/

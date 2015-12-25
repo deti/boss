@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml.dtd">
+
+{% set translation = [
+["en", "ru"],
+]
+%}
+
+
+<document filename="report.pdf">
+    <docinit pageMode="UseThumbs" pageLayout="SinglePage">
+       <registerTTFont faceName="TimesU" fileName="{{font_dir}}/timesu.ttf"/>
+       <registerTTFont faceName="TimesU-bd" fileName="{{font_dir}}/timesbd.ttf"/>
+    </docinit>
+    <template
+        leftMargin="30mm"
+        rightMargin="30mm"
+        topMargin="30mm"
+        bottomMargin="30mm"
+        title="{{tr("Report from {} to {}", aggregated["report_range"]["start"], aggregated["report_range"]["finish"]) }}">
+        <pageTemplate id="main">
+            <pageGraphics>
+                <drawCenteredString x="100mm" y="10mm">- <pageNumber/> -</drawCenteredString>
+            </pageGraphics>
+            <frame id="content" x1="15mm" y1="20mm" width="180mm" height="257mm" />
+        </pageTemplate>
+    </template>
+
+    <stylesheet>
+        <initialize>
+            <alias id="style.normal" value="style.Normal" />
+        </initialize>
+
+        <paraStyle name="h1"
+            fontName="TimesU"
+            fontSize="16"
+            spaceBefore="0.5 cm"
+        />
+
+        <paraStyle name="h2"
+            fontName="TimesU"
+            fontSize="14"
+            spaceBefore="0.5 cm"
+        />
+
+
+        <paraStyle name="rutext"
+            fontName="TimesU"
+            fontSize="12"
+        />
+
+        <paraStyle name="rubold"
+            fontName="TimesU-bd"
+            fontSize="12"
+        />
+
+        <paraStyle name="rubig"
+            fontName="TimesU"
+            fontSize="14"
+        />
+
+        <paraStyle name="rusmall"
+            fontName="TimesU"
+            fontSize="10"
+        />
+
+        <paraStyle name="rusmallbold"
+            fontName="TimesU-bd"
+            fontSize="10"
+        />
+
+        <paraStyle name="total" fontName="TimesU-bd" fontSize="12" spaceBefore="2mm" />
+
+        <blockTableStyle id="rublock">
+            <blockFont name="TimesU"/>
+        </blockTableStyle>
+
+
+        <blockTableStyle id="report">
+            <blockFont name="TimesU" />
+            <lineStyle kind="GRID" colorName="black" />
+        </blockTableStyle>
+    </stylesheet>
+
+    <story>
+        <para style="h1" alignment="CENTER">Акт № ____ от {{aggregated.report_date | date(locale=locale) }}</para>
+        <para style="h2" alignment="CENTER">выполненых работ / оказанных услуг по {{aggregated.customer.entity_info.contract_number}}</para>
+
+        <para style="h2"></para>
+        <para style="rutext" alignment="RIGHT" after="1cm">{{ aggregated.report_date | date(locale=locale) }}</para>
+
+        <para style="rusmall" spaceAfter="1cm">
+          Заказчик в дальнейшем "Заказчик" и Исполнитель в дальнейшем "Исполнитель", совместно именуемые "Стороны",
+          составили и подписали настоящий Акт о том, что Исполнитель выполнил работы (оказал услуги) в соответствии
+          с условиями номер договора/счета, а именно:Заказчик в дальнейшем "Заказчик" и Исполнитель в дальнейшем
+          "Исполнитель", совместно именуемые "Стороны", составили и подписали настоящий Акт о том,
+          что Исполнитель выполнил работы (оказал услуги) в соответствии с условиями номер договора/счета, а именно:
+        </para>
+
+        {% set customer = aggregated["customer"] %}
+        {% set locale = customer.locale %}
+
+        {% for tariff in aggregated["tariffs"] | sort_multi("name") %}
+            <blockTable style="report" >
+                <tr>
+                    <td>№</td>
+                    <td>Выполненные работы / Оказанные услуги</td>
+                    <td>Цена</td>
+                    <td>Кол-во</td>
+                    <td>Ед. Изм.</td>
+                    <td>Сумма</td>
+                </tr>
+                {% for service in tariff.usage | sort_multi("category", "name") %}
+                    <tr>
+                        <td>{{loop.index0+1}}</td>
+                        <td>{{ service.name }}</td>
+                        <td>{{ money(service.price, tariff.currency) }}</td>
+                        <td>{{ service.total_usage_volume | pretty_float }} {{ service.measure }}</td>
+                        <td>{{service.measure}}</td>
+                        <td>{{ money(service.total_cost, tariff.currency) }}</td>
+                    </tr>
+                {% endfor %}
+            </blockTable>
+            <para style="total" alignment="RIGHT">Итого: {{ money(tariff.total_cost, tariff.currency) }}</para>
+        {% endfor %}
+
+        <para style="rusmall" before="1cm">
+          Исполнитель выполнил все обязательства в полном объёме в срок с надлежащим качеством.
+          Заказчик претензий к Исполнителю не имеет. Оплата производится в соответствии с условиями {{aggregated.customer.entity_info.contract_number}}
+        </para>
+
+        <para style="h2" alignment="CENTER" after="2cm">
+          Подписи сторон
+        </para>
+        <blockTable style="rublock" colWidths="6cm,5cm,6cm">
+            <blockTableStyle id="signblock">
+                <blockFont name="TimesU" />
+                <lineStyle kind="LINEBELOW" colorName="black" start="0,1" stop="0,1" thickness="1"/>
+                <lineStyle kind="LINEBELOW" colorName="black" start="2,1" stop="2,1" thickness="1"/>
+            </blockTableStyle>
+          <tr>
+            <td>Исполнитель</td>
+            <td></td>
+            <td>Заказчик</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>(подпись)</td>
+            <td></td>
+            <td>(подпись)</td>
+          </tr>
+
+        </blockTable>
+
+    </story>
+</document>

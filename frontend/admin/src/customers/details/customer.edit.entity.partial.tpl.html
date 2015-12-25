@@ -1,0 +1,187 @@
+<div class="hr"><span translate>Company's contact person</span></div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="contact_person_name" translate>First and last name</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="contact_person_name" name="contact_person_name" class="form-control"
+           ng-model="customer.detailed_info.contact_person_name" placeholder="{{::'Enter a contact person\'s full name' |  translate}}">
+  </div>
+</div>
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="contact_person_position" translate>Position</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="contact_person_position" name="contact_person_position" class="form-control"
+           ng-model="customer.detailed_info.contact_person_position" placeholder="{{::'Enter a contact person\'s position' |  translate}}">
+  </div>
+</div>
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="label-fw centered" for="contact_telephone" translate>Phone</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="contact_telephone" name="contact_telephone" class="form-control"
+           ng-model="customer.detailed_info.contact_telephone" bs-phone-input
+           bs-validate-hint
+           placeholder="{{::'Enter a contact person\'s phone number' |  translate}}">
+  </div>
+</div>
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="label-fw centered" for="contact_email" translate>E-mail</label>
+
+  <div class="col-xs-8">
+    <input type="email" id="contact_email" name="contact_email" class="form-control"
+           ng-model="customer.detailed_info.contact_email" placeholder="{{::'Enter a a contact person\'s email' |  translate}}"
+           bs-validate-hint>
+  </div>
+</div>
+
+<div class="hr"><span translate>Application form</span></div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="label-fw centered" for="contract_number" translate>Contract #</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="contract_number" name="contract_number" class="form-control"
+           ng-model="customer.detailed_info.contract_number" placeholder="{{::'Enter the contract #' | translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="contract_date" translate>Date of signing</label>
+
+  <div class="col-sm-7">
+    <div class="input-grp">
+      <input type="text" id="contract_date" name="contract_date" class="form-control" ng-model="customer.detailed_info.contract_date"
+             bs-datepicker data-autoclose="true" data-model-date-format="yyyy-MM-dd" data-date-type="string"
+             bs-validate-hint placeholder="{{::'01.08.2015' |  translate}}">
+      <span class="input-group-addon icon-addon"><i class="icon icon-transactions-v2 icon-lg"></i></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="name2" translate>Name</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="name2" name="name2" class="form-control" ng-model="customer.detailed_info.name"
+           placeholder="{{::'Short company name. For example, Yandex.' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="full_organization_name" translate>Full</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="full_organization_name" name="full_organization_name" class="form-control"
+           ng-model="customer.detailed_info.full_organization_name" placeholder="{{::'Enter the full company name' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="organization_type" translate>Organization pattern</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="organization_type" name="organization_type" class="form-control"
+           ng-model="customer.detailed_info.organization_type" placeholder="{{::'Specify an organization pattern' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="primary_state_registration_number" translate>MRSN</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="primary_state_registration_number" name="primary_state_registration_number" class="form-control"
+           ng-model="customer.detailed_info.primary_state_registration_number" placeholder="{{::'Enter MRSN' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="individual_tax_number2" translate>VAT</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="individual_tax_number2" name="individual_tax_number2" class="form-control"
+           ng-model="customer.detailed_info.individual_tax_number" placeholder="{{::'Enter your VAT' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="general_manager_name" translate>CEO</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="general_manager_name" name="general_manager_name" class="form-control"
+           ng-model="customer.detailed_info.general_manager_name" placeholder="{{::'Enter CEO\'s full name' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="general_accountant_name" translate>Accountant</label>
+
+  <div class="col-xs-8">
+    <input type="text" id="general_accountant_name" name="general_accountant_name" class="form-control"
+           ng-model="customer.detailed_info.general_accountant_name" placeholder="{{::'Enter a chief accountant\'s full name' |  translate}}">
+  </div>
+</div>
+
+<div class="hr"><span translate>Legal address</span></div>
+
+<div class="form-group">
+  <label class="label-fw text-left" for="legal_address_country" translate>Country</label>
+
+  <div class="col-sm-7">
+    <div class="select">
+      <select id="legal_address_country" name="legal_address_country" class="form-control" ng-model="customer.detailed_info.legal_address_country">
+        <option ng-repeat="country in ::countries" value="{{::country.code}}" ng-selected="::customer.detailed_info.legal_address_country === country.code">
+          {{::country|localizedName}}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <label class="label-fw text-left" for="legal_address_city" translate>City</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="legal_address_city" name="legal_address_city" class="form-control" ng-model="customer.detailed_info.legal_address_city"/>
+  </div>
+</div>
+<div class="form-group">
+  <label class="label-fw text-left" for="legal_address_address" translate>Address</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="legal_address_address" name="legal_address_address" class="form-control" ng-model="customer.detailed_info.legal_address_address"/>
+  </div>
+</div>
+
+<div class="hr"><span translate>Actual address</span></div>
+
+<div class="form-group">
+  <label class="label-fw text-left" for="location_country" translate>Country</label>
+
+  <div class="col-sm-7">
+    <div class="select">
+      <select id="location_country" name="location_country" class="form-control" ng-model="customer.detailed_info.location_country">
+        <option ng-repeat="country in ::countries" value="{{::country.code}}" ng-selected="::customer.detailed_info.location_country === country.code">
+          {{::country|localizedName}}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="label-fw text-left" for="location_city" translate>City</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="location_city" name="location_city" class="form-control"
+           ng-model="customer.detailed_info.location_city"/>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="label-fw text-left" for="location_address" translate>Address</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="location_address" name="location_address" class="form-control" ng-model="customer.detailed_info.location_address"/>
+  </div>
+</div>

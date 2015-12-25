@@ -1,0 +1,12 @@
+<td colspan="2">
+  <span>
+    <span ng-if="item.execTime.dayOfWeek === '*'" translate>Daily</span>
+    <span ng-if="item.execTime.dayOfWeek !== '*'" translate>Weekly</span>
+    | <span class="pad-l-0" translate>Scheduled for</span> <span>{{::item.next_execution_time | date: 'short'}}</span>
+  </span>
+</td>
+<td>
+  <span>
+    <a ng-click="removeBackup(item)" translate>Delete</a>
+  </span>
+</td>

@@ -1,0 +1,28 @@
+<h4 class="text-center mar-b-25" translate>Your Cloud size</h4>
+
+<div class="limits-wrapper">
+  <div class="row" ng-if="!groupsOfQuotas.error">
+    <div class="col-md-4 col-sm-6 {{::'progress-' + ($index+1)}}" ng-repeat="group in groupsOfQuotas">
+      <div ng-repeat="item in group[group.name]" class="progress-container">
+        <progressbar max="item.max_value" value="item.value"></progressbar>
+        <div class="left" title="{{::item | localizedName}}">
+          {{::item | localizedName}}
+        </div>
+        <div class="right">
+          <span class="value">{{::item.value}} {{::'of' | translate}} {{::item.max_value}} {{::item | localizedName: 'localized_measure'}}</span>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="well pb-error-text" ng-if="groupsOfQuotas.error">
+  <p translate>Cloud resources are not available</p>
+
+  <p ng-if="!user.blocked" translate>Please check your email and confirm the account</p>
+</div>
+<div class="pb-error-text" ng-if="groupsOfQuotas.loading" translate>
+  Loading...
+</div>

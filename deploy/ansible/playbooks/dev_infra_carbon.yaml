@@ -1,0 +1,18 @@
+---
+- name: deploy Cardon
+  hosts: dev
+  user: root
+  sudo: yes
+  tasks:
+  - name: Carbon-cluster
+    docker:
+      docker_api_version: "1.18"
+      insecure_registry: True
+      registry: "{{ registry }}"
+      pull: always
+      image: "{{ registry }}/{{ carbon_image }}"
+      state: reloaded
+      name: carbon
+      ports: 2004:2004,2104:2104,2204:2204,7002:7002,8080:8080
+      env: "ETCD={{ etcd }},ENV_NAME=dev,ROLE=infrastructure/megacarbon,HOST_IP={{ ansible_eth0.ipv4.address }}"
+      volumes: /mnt:/ceres

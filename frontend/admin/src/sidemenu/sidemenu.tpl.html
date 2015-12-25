@@ -1,0 +1,18 @@
+<div class="g-sidebarview" ng-class="{'wide': globalState.sidemenuWide, 'narrow': globalState.sidemenuWide === false}" ng-click="toggleWide($event)">
+  <div class="expand-container">
+    <button class="expand btn-clear">
+      <i class="icon icon-arrow-left"></i>
+    </button>
+  </div>
+  <div class="menu">
+    <div class="logo"></div>
+    <ul class="nav nav-pills nav-stacked full-height text-left">
+      <li ng-repeat="menuItem in ::menu" data-placement="right" bs-tooltip="menuItem.title" data-bs-enabled="!wide">
+        <a ui-sref-active="sidemenu-active" ui-sref="{{::menuItem.sref}}" ng-click="$event.stopPropagation();">
+          <i class="icon icon-lg icon-{{::menuItem.icon}}"></i>
+          <span class="expanded-element">{{::menuItem.title}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

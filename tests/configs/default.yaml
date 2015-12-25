@@ -1,0 +1,20 @@
+extend:
+  - logging.yaml
+
+backend:
+  entry_point: http://localhost:8080
+
+devel:
+  test_prefix: "$test"
+
+mailtrap:
+  token: bfdfe9e4ecbd559335d9fb9b05780f9e
+
+run_openstack_tests: true
+id_length: 5
+customer_name_max_length: 64
+additional_name_length: 4
+
+default_admin:
+  email:
+  password:

@@ -1,0 +1,44 @@
+event:
+  event:
+    auto_report:
+      periods:
+        day:
+          MIN: 13
+          HOUR: 2
+        week:
+          MIN: 13
+          HOUR: 2
+          WEEK_DAY: 1  # monday
+        month:
+          MIN: 13
+          HOUR: 2
+          DAY: 1
+        quarter:
+          MIN: 13
+          HOUR: 2
+          DAY: 1
+      check_interval: ${5 * MINUTE}
+      limit: 100
+      task_hang: ${5 * MINUTE}
+
+  period:
+     hour:
+       ru: ежечасно
+       en: hourly
+       cron: '{MIN} * * * *'
+     day:
+       ru: ежедневно
+       en: daily
+       cron: '{MIN} {HOUR} * * *'
+     week:
+       ru: еженедельно
+       en: weekly
+       cron: '{MIN} {HOUR} * * {WEEK_DAY}'
+     month:
+       ru: ежемесячно
+       en: monthly
+       cron: '{MIN} {HOUR} {DAY} * *'
+     quarter:
+       ru: ежеквартально
+       en: quarterly
+       cron: '{MIN} {HOUR} {DAY} * *'

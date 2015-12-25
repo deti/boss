@@ -1,0 +1,24 @@
+---
+- name: Deploy infrastructure
+  hosts: dev
+  user: root
+  sudo: yes
+  tasks:
+  - name: start redis node01
+    docker:
+      name: redis-node01
+      image: "{{ registry }}/{{ redis_image }}"
+      net: host
+      env: "ETCD={{ etcd }},ENV_NAME=dev,REDIS_MODE=redis-server"
+  - name: start redis node02
+    docker:
+      name: redis-node02
+      image: "{{ registry }}/{{ redis_image }}"
+      net: host
+      env: "ETCD={{ etcd }},ENV_NAME=dev,REDIS_MODE=redis-server"
+  - name: start redis sentinel
+    docker:
+      name: redis-sentinel
+      image: "{{ registry }}/{{ redis_image }}"
+      net: host
+      env: "ETCD={{ etcd }},ENV_NAME=dev,REDIS_MODE=sentinel"

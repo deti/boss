@@ -1,0 +1,465 @@
+# Translations template for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-12-08 11:53+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.0-dev\n"
+
+#: backend/errors.py:97
+msgid "Not Found"
+msgstr ""
+
+#: backend/errors.py:121
+msgid "Method is not implemented"
+msgstr ""
+
+#: backend/errors.py:125
+msgid "Database is down. Please try again a bit later"
+msgstr ""
+
+#: backend/errors.py:129
+msgid "Cache database is down. Please try again a bit later"
+msgstr ""
+
+#: backend/errors.py:133
+msgid "Has to have translation for default language: '{}'"
+msgstr ""
+
+#: backend/errors.py:141
+msgid "User account already exists"
+msgstr ""
+
+#: backend/errors.py:145
+msgid "User account is removed"
+msgstr ""
+
+#: backend/errors.py:149
+msgid "Customer account already exists"
+msgstr ""
+
+#: backend/errors.py:153 backend/errors.py:157
+msgid "Incorrect email/password"
+msgstr ""
+
+#: backend/errors.py:161 backend/errors.py:165
+msgid "Invalid token"
+msgstr ""
+
+#: backend/errors.py:169
+msgid "Not enough rights to perform this action"
+msgstr ""
+
+#: backend/errors.py:173
+msgid "Email sending is impossible"
+msgstr ""
+
+#: backend/errors.py:177
+msgid "User account not found"
+msgstr ""
+
+#: backend/errors.py:181
+msgid "Customer account not found"
+msgstr ""
+
+#: backend/errors.py:185
+msgid "Service not found"
+msgstr ""
+
+#: backend/errors.py:189
+msgid "Service already exists"
+msgstr ""
+
+#: backend/errors.py:193
+msgid "Used service cannot be removed"
+msgstr ""
+
+#: backend/errors.py:197
+msgid "Immutable service cannot be changed"
+msgstr ""
+
+#: backend/errors.py:201
+msgid "Removed service cannot be changed"
+msgstr ""
+
+#: backend/errors.py:205
+msgid "Removed service cannot be included in plan"
+msgstr ""
+
+#: backend/errors.py:209
+msgid "Only immutable service can be included in plan"
+msgstr ""
+
+#: backend/errors.py:213
+msgid "Plan not found"
+msgstr ""
+
+#: backend/errors.py:217
+msgid "Role not found"
+msgstr ""
+
+#: backend/errors.py:220
+msgid "News not found"
+msgstr ""
+
+#: backend/errors.py:224
+msgid "Can not delete self"
+msgstr ""
+
+#: backend/errors.py:228
+msgid "Immutable plan cannot be changed"
+msgstr ""
+
+#: backend/errors.py:232
+msgid "Removed plan cannot be changed"
+msgstr ""
+
+#: backend/errors.py:236
+msgid "Password reset link is invalid, expired or was already used. Please try to request password reset again"
+msgstr ""
+
+#: backend/errors.py:240
+msgid "Email confirmation link is invalid, expired or was already used. Please try to resend a confirmation email"
+msgstr ""
+
+#: backend/errors.py:244
+msgid "Plan already exists"
+msgstr ""
+
+#: backend/errors.py:248
+msgid "Report aggregation is not ready"
+msgstr ""
+
+#: backend/errors.py:252
+msgid "Plan history entry not found"
+msgstr ""
+
+#: backend/errors.py:256
+msgid "Nothing to update"
+msgstr ""
+
+#: backend/errors.py:260
+msgid "Error while rendering a template"
+msgstr ""
+
+#: backend/errors.py:264
+msgid "Invalid number format"
+msgstr ""
+
+#: backend/errors.py:268
+msgid "Parent plan should have the same currency"
+msgstr ""
+
+#: backend/errors.py:272 backend/errors.py:276
+msgid "Subscription already exists"
+msgstr ""
+
+#: backend/errors.py:280
+msgid "Invalid subscription data"
+msgstr ""
+
+#: backend/errors.py:284
+msgid "Used plan cannot be removed"
+msgstr ""
+
+#: backend/errors.py:288
+msgid "Mutable plan cannot be assigned to a customer"
+msgstr ""
+
+#: backend/errors.py:292
+msgid "Mutable plan cannot be default"
+msgstr ""
+
+#: backend/errors.py:296
+msgid "Quota for this customer already exists"
+msgstr ""
+
+#: backend/errors.py:300
+msgid "The news already exists"
+msgstr ""
+
+#: backend/errors.py:304
+msgid "Removed news cannot be changed"
+msgstr ""
+
+#: backend/errors.py:308
+msgid "Invalid reCAPTCHA token. You are bot."
+msgstr ""
+
+#: backend/errors.py:312
+msgid "Customer has no OpenStack login. Please contact the administrator."
+msgstr ""
+
+#: backend/errors.py:316
+msgid "Unsuccessful request to Horizon. Please contact the administrator."
+msgstr ""
+
+#: backend/errors.py:320
+msgid "Unable to login into Horizon the current OpenStack login/password. Please contact the administrator."
+msgstr ""
+
+#: backend/errors.py:324
+msgid "Need to fill in all mandatory fields to switch to production mode."
+msgstr ""
+
+#: backend/errors.py:328
+msgid "start parameter should be earlier than finish"
+msgstr ""
+
+#: backend/errors.py:332
+msgid "Tenant is not created yet. Try again latter"
+msgstr ""
+
+#: backend/errors.py:336
+msgid "Customer email is not confirmed"
+msgstr ""
+
+#: backend/errors.py:340
+msgid "Customer is blocked"
+msgstr ""
+
+#: backend/errors.py:344
+msgid "Customer is removed"
+msgstr ""
+
+#: backend/errors.py:348
+msgid "Payment card already removed."
+msgstr ""
+
+#: backend/errors.py:352
+msgid "Payment card not found."
+msgstr ""
+
+#: backend/errors.py:355
+msgid "Option already exists"
+msgstr ""
+
+#: backend/errors.py:359
+msgid "Payment card already exists"
+msgstr ""
+
+#: backend/errors.py:363
+msgid "Customer is not entity"
+msgstr ""
+
+#: backend/errors.py:367
+msgid "Invalid promo code."
+msgstr ""
+
+#: backend/errors.py:371
+msgid "Registration with promo code only."
+msgstr ""
+
+#: backend/errors.py:375
+msgid "Promo code already removed"
+msgstr ""
+
+#: backend/errors.py:379
+msgid "Report format is not supported"
+msgstr ""
+
+#: backend/errors.py:383
+msgid "Flavor already exists"
+msgstr ""
+
+#: backend/errors.py:387
+msgid "Flavor not found"
+msgstr ""
+
+#: backend/errors.py:391
+msgid "Flavor already exists in OS with different parameters"
+msgstr ""
+
+#: backend/api/check_params.py:82
+msgid "Invalid parameter {}. It should have type {}"
+msgstr ""
+
+#: backend/api/check_params.py:135
+msgid "{} is required"
+msgstr ""
+
+#: backend/api/check_params.py:181
+#, python-format
+msgid "Invalid encoding: %s"
+msgstr ""
+
+#: backend/api/validator.py:63
+msgid "Field {} is required"
+msgstr ""
+
+#: backend/api/validator.py:88
+msgid "Unexpected element {}"
+msgstr ""
+
+#: backend/api/validator.py:95
+msgid "Cannot decode JSON {}"
+msgstr ""
+
+#: backend/api/validator.py:124
+msgid "list is expected"
+msgstr ""
+
+#: backend/api/validator.py:141
+msgid "should be a dict"
+msgstr ""
+
+#: backend/api/validator.py:155
+msgid "{} should be integer"
+msgstr ""
+
+#: backend/api/validator.py:158
+msgid "Value should be greater than {}"
+msgstr ""
+
+#: backend/api/validator.py:160
+msgid "Value should be less than {}"
+msgstr ""
+
+#: backend/api/validator.py:178
+msgid "Invalid format. Expected '[-]field_name', where field_name one of: {}"
+msgstr ""
+
+#: backend/api/validator.py:250
+msgid "Incorrect day format"
+msgstr ""
+
+#: backend/api/validator.py:268
+msgid "Incorrect date format"
+msgstr ""
+
+#: backend/api/validator.py:277
+msgid "Date expired"
+msgstr ""
+
+#: backend/api/validator.py:288
+msgid "Incorrect time format"
+msgstr ""
+
+#: backend/api/validator.py:317
+msgid "value should one from list: {}"
+msgstr ""
+
+#: backend/api/validator.py:384
+msgid "Email must include @ symbol"
+msgstr ""
+
+#: backend/api/validator.py:389
+msgid "mail box in email is incorrect"
+msgstr ""
+
+#: backend/api/validator.py:396 backend/api/validator.py:402
+msgid "Domain part of email is incorrect"
+msgstr ""
+
+#: backend/api/validator.py:426
+msgid "Amount should be positive"
+msgstr ""
+
+#: backend/api/validator.py:428
+msgid "Amount should be negative"
+msgstr ""
+
+#: backend/api/validator.py:431
+msgid "Money format is xx.xx"
+msgstr ""
+
+#: backend/api/validator.py:455
+msgid "Incorrect locale {}"
+msgstr ""
+
+#: backend/api/validator.py:469
+msgid "Language {} is not active"
+msgstr ""
+
+#: backend/api/validator.py:523
+msgid "string length must be between {} and {}"
+msgstr ""
+
+#: backend/api/validator.py:537
+msgid "Value should be int"
+msgstr ""
+
+#: backend/api/validator.py:539
+msgid "Value should be smaller than {}"
+msgstr ""
+
+#: backend/api/validator.py:547
+msgid "{} should be positive integer"
+msgstr ""
+
+#: backend/api/validator.py:582
+msgid "{} should be positive float"
+msgstr ""
+
+#: backend/api/validator.py:616
+msgid "should match regex: {}"
+msgstr ""
+
+#: backend/api/validator.py:635
+msgid "{} has to be a dictionary"
+msgstr ""
+
+#: backend/api/admin/payments.py:308
+msgid "Balance recharge via CloudPayments. Transaction: {}"
+msgstr ""
+
+#: backend/api/cabinet/customer.py:53 backend/api/cabinet/customer.py:80
+msgid "must be a dict"
+msgstr ""
+
+#: backend/api/cabinet/customer.py:59
+msgid "subscription name must be one from list: {}"
+msgstr ""
+
+#: backend/api/cabinet/customer.py:68
+msgid "Subscription can contain only 'enable' and 'email' keys"
+msgstr ""
+
+#: backend/api/cabinet/customer.py:87
+msgid "quota name must be one from list: {}"
+msgstr ""
+
+#: backend/api/cabinet/customer.py:169
+#, python-format
+msgid "Incorrect date format. The expected format is %s or %s"
+msgstr ""
+
+#: backend/api/cabinet/customer.py:183
+msgid "Date from future"
+msgstr ""
+
+#: backend/model/account/message_template.py:117
+msgid "Unexpected variables in template: {}"
+msgstr ""
+
+#: backend/model/account/message_template.py:123
+msgid ""
+"Template syntax error: {} at line {}.\n"
+"Text: {}\n"
+"Context: {}"
+msgstr ""
+
+#: backend/model/account/message_template.py:127
+#, python-format
+msgid "Error while rendering template: %s"
+msgstr ""
+
+#: backend/service/payments.py:97
+msgid "Automated balance recharge via CloudPayments. Customer email: {}"
+msgstr ""
+
+#: backend/service/payments.py:106
+msgid "Manual balance recharge via CloudPayments. Customer email: {}"
+msgstr ""
+

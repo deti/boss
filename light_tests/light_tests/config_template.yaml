@@ -1,0 +1,30 @@
+default_admin:
+    email: email@example.com
+    password: password
+email_test:
+    email: email@example.com
+    from: email@example.com
+    subject: Check email sending(+" %test_label%" if parameter is provided)
+    timeout: 60 # in seconds
+    imap:
+        host: imap.example.com
+        login: your login
+        password: password
+        use_ssl: 'false'
+openstack:
+    customer:
+        cabinet:
+            email: email@example.com
+            password: password
+        password_reset:
+            host: imap.example.com
+            login: your login
+            password: password
+            use_ssl: 'false'
+        subject: "OpenStack API Credentials"
+    server:
+        image: image name (dots excluded)
+        flavor: flavor name
+        network: network name
+        name: LightTestsServer
+server_address: http://localhost:8080

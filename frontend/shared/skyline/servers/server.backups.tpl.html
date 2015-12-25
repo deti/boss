@@ -1,0 +1,37 @@
+<div class="hr width-limit-800"><span class="white-bg" translate>Backup schedule</span></div>
+
+<form name="NewBackupForm" ng-submit="createBackup(NewBackupForm)">
+  <div class="row width-limit-800">
+    <div class="col-xs-3">
+      <div class="form-group">
+        <input type="time" name="time" class="form-control" ng-model="backup.time"
+               bs-validate-hint="{time: ('Incorrect time format' | translate)}">
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="form-group">
+        <div class="select">
+          <select name="repeat" id="repeat" class="form-control" ng-model="backup.week">
+            <option value="*" translate>Daily</option>
+            <option value="1" translate>Weekly</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!--<div class="col-xs-2">-->
+      <!--<div class="form-group" bs-has-error>-->
+        <!--<input type="number" name="keep_last_n" class="form-control" ng-model="backup.keep_last_n" min="1"-->
+               <!--bs-validate-hint="{min: ('0 and less are not allowed' | translate)}">-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="col-xs-3">
+      <button class="btn btn-primary btn-block" type="submit" translate>Plan</button>
+    </div>
+  </div>
+</form>
+
+<div class="table-info pad-t-30 width-limit-800" st-table="backups">
+
+  <bs-table data="backups" columns="backupsColumns" simple="true"
+            action="actionsTplPath"></bs-table>
+</div>

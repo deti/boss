@@ -1,0 +1,86 @@
+.disabled-no-borders {
+  &[disabled] {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: @disabled-input-color;
+    opacity: 1 !important;
+    -webkit-text-fill-color: @disabled-input-color;
+  }
+}
+
+label.required {
+  &:after {
+    content: "*";
+  }
+}
+.g-red-stars {
+  label.required:after {
+    color: red;
+  }
+}
+
+.btn-clear {
+  border: 0;
+  outline: 0;
+  background: none;
+}
+
+.password-strength {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+  height: 4px;
+  width: 100%;
+  > span {
+    display: block;
+    width: 25%;
+    float: left;
+    height: 100%;
+    padding-right: 5px;
+    &:before {
+      content: "";
+      display: block;
+      background: #E8E8E8;
+      height: 100%;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  &.password-strength-1, &.password-strength-0 {
+    > span:nth-child(1):before {
+      background: red;
+    }
+  }
+  &.password-strength-2 > span:nth-child(-n+2):before {
+    background: #FFAC00;
+  }
+  &.password-strength-3 > span:nth-child(-n+3):before {
+    background: #0095FC;
+  }
+  &.password-strength-4 > span:nth-child(-n+4):before {
+    background: #4DC64C;
+  }
+}
+.details-select {
+  .clearfix();
+}
+
+.example-text {
+  color: @gray-middle-light;
+  margin-left: 14px;
+}
+
+.row-vertical-align {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+}
+
+.row-vertical-align > .centered {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+}

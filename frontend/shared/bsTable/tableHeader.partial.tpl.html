@@ -1,0 +1,15 @@
+<table class="table table-header" ng-if="getValue(dataName).length > 0">
+  <colgroup>
+    <col ng-repeat="column in ::columns track by column.id" width="{{($index >= columnsCount) ? '0%' : ((column.width && columnsCount >= columns.length) ? column.width : (columnWidth + '%') )}}">
+  </colgroup>
+  <tbody>
+  <tr>
+    <th ng-repeat="column in ::columns track by column.id" ng-class="::[column.reverse ? 'sortable-reverse' : {'sortable': !column.titleClass}, column.titleClass ? column.titleClass : '']"
+        st-sort="{{::column.usedSortField}}"
+        st-sort-default="{{::column.sortDefault ? column.sortDefault.toString() : 'false'}}">
+      <span>{{::column.title}}</span>
+      <div class="bs-table-resize" ng-mousedown="onColumnResize($event)" ng-click="$event.stopPropagation();$event.preventDefault()"></div>
+    </th>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,35 @@
+<div class="full-height">
+  <div class="report-wrapper">
+    <h3 class="mar-b-20" translate>Customers</h3>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><span translate>Trial mode</span></td>
+          <td><span>{{customerReport.total_test}}</span></td>
+        </tr>
+        <tr>
+          <td><span translate>Working mode</span></td>
+          <td><span>{{customerReport.total_production}}</span></td>
+        </tr>
+        <tr>
+          <td><span translate>Transfer</span></td>
+          <td><span>{{customerReport.total_pending_prod}}</span></td>
+        </tr>
+        <tr>
+          <td><span translate>Locked</span></td>
+          <td><span>{{customerReport.total_blocked}}</span></td>
+        </tr>
+        <tr>
+          <td><span translate>Archived</span></td>
+          <td><span>{{customerReport.total_deleted}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+        <button ui-sref="grafana" class="btn btn-primary btn-block" translate>Statistic</button>
+      </div>
+  </div>
+</div>

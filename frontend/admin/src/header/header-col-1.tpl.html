@@ -1,0 +1,17 @@
+<div class="header">
+  <nav class="navbar navbar-b">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" dropdown on-toggle="toggled(open)">
+          <a href="#" class="dropdown-toggle" dropdown-toggle>
+            <span>{{langShortNames[currentLang]}}</span>
+            <i class="fa fa-angle-down fa-lg pad-l-10"></i>
+          </a>
+          <ul class="dropdown-menu narrow" role="menu">
+            <li ng-repeat="(lang, name) in ::langs" ng-show="currentLang !== lang"><a href="#" ng-click="setLang(lang)">{{::langShortNames[lang]}}</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

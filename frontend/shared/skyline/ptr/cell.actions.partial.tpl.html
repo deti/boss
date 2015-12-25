@@ -1,0 +1,13 @@
+<td>
+  <span>{{::item.ip}}</span>
+</td>
+<td>
+  <span>
+    <a ng-if="!item.zone.id" ui-sref="openstack.ptr.new({serverId: item.server.id})" translate>Create record</a>
+    <a ng-if="item.zone.id" ng-click="removePtr(item)"  href="#" translate>Remove record</a>
+    <a ng-if="item.zone.id" ui-sref="openstack.ptr.edit({id: item.zone.id})" translate>Edit record</a>
+  </span>
+</td>
+<td>
+  <span>{{item.zone.recordset.records[0]}}</span>
+</td>

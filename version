@@ -1,0 +1,6 @@
+version:
+  base: "0.2"
+  backend: "2"
+  frontend_cabinet: "2"
+  frontend_admin: "2"
+  tests: "2"

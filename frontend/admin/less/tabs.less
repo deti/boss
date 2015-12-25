@@ -1,0 +1,23 @@
+.tabs {
+  a {
+    margin-right: 5px;
+    margin-bottom: 1px;
+    padding: 9px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 2px solid transparent;
+    text-decoration: none;
+    color: @tab-color;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      border: 2px solid @tab-hover-color;
+    }
+  }
+
+  a.active-details-tab {
+    background: transparent;
+    border: 2px solid @active-tab-color;
+    color: @active-tab-color;
+  }
+}

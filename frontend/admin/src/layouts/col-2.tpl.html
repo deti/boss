@@ -1,0 +1,13 @@
+<header class="g-header" ui-view="header"></header>
+
+<div class="g-layout">
+  <section class="g-sidemenu" ui-view="sidemenu"></section>
+  <section class="g-main">
+    <div class="g-main-view" ui-view="main"></div>
+    <button ng-show="globalState.detailsVisible" class="g-details-wide-toggle btn btn-clear" bs-unfocusable
+            ng-click="globalState.detailsWide = !globalState.detailsWide" type="button" tabIndex="-1">
+      <i class="icon" ng-class="{'icon-arrow-right': globalState.detailsWide, 'icon-arrow-left': !globalState.detailsWide}"></i>
+    </button>
+  </section>
+  <section class="g-details" ui-view="details"></section>
+</div>

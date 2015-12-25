@@ -1,0 +1,8 @@
+<div class="selected-tags" ng-show="searchTags.length">
+  <ul class="tag-list">
+    <li class="tag-item" ng-repeat="tag in searchTags">
+      <span>{{tag.text}}</span>
+      <a class="remove-button ng-binding ng-scope" ng-click="removeTag(tag)">×</a>
+    </li>
+  </ul>
+</div>

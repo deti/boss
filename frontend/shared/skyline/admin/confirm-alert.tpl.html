@@ -1,0 +1,10 @@
+<div class="text-center" ng-init="templateData.showMachines = false">
+  <span translate>You really want to delete</span><br>
+  <a class="dashed" ng-if="!templateData.showMachines" ng-click="templateData.showMachines = true;" translate>this virtual machines</a>
+  <a class="dashed" ng-if="templateData.showMachines" ng-click="templateData.showMachines = false;" translate>close</a>
+  <div ng-if="templateData.showMachines">
+    <div class="hr mar-t-20"></div>
+    <div ng-repeat="item in ::templateData.items">{{::item.name}}</div>
+    <div class="hr mar-b-0"></div>
+  </div>
+</div>

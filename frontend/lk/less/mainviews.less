@@ -1,0 +1,56 @@
+
+.mainview-info-tab {
+  padding: 0;
+  min-height: @mainview-info-tab-height;
+}
+.info-tab {
+  min-height: @mainview-info-tab-height;
+  .info-tab-cell {
+    height: @mainview-info-tab-height;
+    border-bottom: 1px solid @component-border-l-color;
+    padding: 45px 0;
+    &:nth-child(2) {
+      border-left: 1px solid @component-border-l-color;
+      border-right: 1px solid @component-border-l-color;
+    }
+    .info-tab-content {
+      p.info-heading {
+        margin: 0;
+        color: @gray-middle-light;
+      }
+      .info-text {
+        margin: 10px 0 20px 0;
+      }
+    }
+  }
+}
+.info-tab-even {
+  .info-tab-cell {
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+// main.resources
+.mainview-bars {
+  float: left;
+  width: 50%;
+  padding-right: 20px;
+  label {
+    color: @gray-middle-light;
+  }
+  .progress {
+    border: 1px solid @link-color;
+    height: 30px;
+    .progress-bar {
+      background-color: @progress-bar-bg;
+      box-shadow: none;
+      line-height: 2.5;
+    }
+  }
+  .value {
+    color: @link-color;
+    white-space: nowrap;
+  }
+}

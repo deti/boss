@@ -1,0 +1,16 @@
+role:
+  admin:
+    ru: Администратор
+    en: Administrator
+
+  account:
+    ru: Бизнес Менеджер
+    en: Business Manager
+
+  manager:
+    ru: Менеджер
+    en: Manager
+
+  support:
+    ru: Специалист тех. поддержки
+    en: Technical Support

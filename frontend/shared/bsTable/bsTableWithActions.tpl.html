@@ -1,0 +1,15 @@
+<ng-include src="::headerPartialPath"></ng-include>
+<table class="table table-body table-actions" ng-show="getValue(dataName).length > 0">
+  <colgroup>
+    <col ng-repeat="column in ::columns track by column.id" width="{{column.width ? column.width : (columnWidth + '%')}}">
+  </colgroup>
+  <tbody>
+  <tr ng-repeat="item in getValue(dataName) | pickFilter: filters" ng-mouseenter="showActions(item)" ng-mouseleave="hideActions()" ng-class="{'selected-actions': activeItem == item}"
+      ng-include="activeItem == item ? actionsTemplate : cellWrapperPartialPath">
+  </tr>
+  </tbody>
+</table>
+<div ng-show="getValue(dataName).length == 0" class="text-center gray-middle-light-text mar-t-20">
+  <div class="table-empty"></div>
+  {{::emptyPlaceholder}}
+</div>

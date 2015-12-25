@@ -1,0 +1,55 @@
+<div class="header-padding sides-padding" st-safe-src="data" st-table="displayedData">
+  <div class="row">
+    <div class="col-xs-8">
+      <bs-date-range></bs-date-range>
+    </div>
+  </div>
+
+  <div class="mar-b-20">
+    <bs-dropdown-button title="{{::'Request report' | translate}}" action="downloadReport()" value="reportFormat"
+                        options="{tsv: 'Excel', pdf: 'PDF'}"></bs-dropdown-button>
+    <div class="checkbox inline-block mar-l-20">
+      <label class="custom-checkbox">
+        <input type="checkbox" name="typeDetailed" id="typeDetailed" ng-model="typeDetailed"/>
+        <span class="checkbox-elem"></span>
+        <span translate>Detailed</span>
+      </label>
+    </div>
+  </div>
+
+  <div ng-if="data === false" class="text-center">
+    <div class="loader center-block"></div>
+    <span translate>Loading...</span>
+  </div>
+
+  <div ng-if="data !== false">
+    <bs-table columns="columns" data="displayedData" simple="true"></bs-table>
+    <div ng-show="total.length > 0">
+      <table class="table total">
+        <colgroup>
+          <col width="">
+          <col width="200">
+          <col width="200">
+          <col width="200">
+          <col width="200">
+        </colgroup>
+        <tbody>
+        <tr>
+          <td colspan="3"></td>
+          <td class="text-right total-label">
+          <span>
+            <span translate>Total</span>
+          </span>
+          </td>
+          <td>
+          <span ng-repeat="value in total">
+            <span ng-bind-html="value.sum | money:value.currency | trust"></span>
+          </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

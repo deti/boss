@@ -1,0 +1,71 @@
+<form name="CustomerActionsForm" class="form-horizontal mar-t-30">
+  <div class="form-group mar-t-50 row-vertical-align">
+    <label class="col-sm-3 centered" translate>Registration</label>
+    <div class="col-sm-4 centered text-info no-padding">
+      <span ng-if="!customer.email_confirmed" translate>Email address is not confirmed</span>
+      <span ng-if="customer.email_confirmed" translate>Email address is confirmed</span>
+    </div>
+    <div class="col-sm-5">
+      <button type="button" class="btn btn-block btn-primary" ng-click="resendConfirmationEmail()"
+              ng-show="!customer.email_confirmed" translate>Send a message
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group mar-t-25 row-vertical-align">
+    <label class="col-sm-3 centered" translate>Mode</label>
+    <div class="col-sm-4 centered text-info no-padding">
+      <span ng-if="customer.customer_mode == 'test'" translate>Trial mode</span>
+      <span ng-if="customer.customer_mode == 'pending_prod'" translate>Transfer</span>
+      <span ng-if="customer.customer_mode == 'production'" translate>Working mode</span>
+    </div>
+    <div class="col-sm-5">
+      <button type="button" class="btn btn-block btn-primary" ng-click="makeProd()"
+              ng-show="customer.customer_mode == 'test'" translate>Working mode
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align mar-t-25">
+    <label class="col-sm-3 centered" translate>Lock</label>
+    <div class="col-sm-4 centered text-info no-padding">
+      <span ng-if="customer.blocked" translate>Locked</span>
+      <span ng-if="!customer.blocked" translate>Not locked</span>
+    </div>
+    <div class="col-sm-5">
+      <button type="button" class="btn btn-block btn-primary" ng-click="toggleBlock()">
+        <span ng-if="!customer.blocked" translate>Lock</span>
+        <span ng-if="customer.blocked" translate>Unlock</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align mar-t-25">
+    <label class="col-sm-3" translate>Archive</label>
+    <div class="col-sm-4 text-info centred no-padding">
+      <span ng-if="customer.deleted" translate>Archived</span>
+      <span ng-if="!customer.deleted" translate>Active</span>
+    </div>
+    <div class="col-sm-5">
+      <button type="button" class="btn btn-block btn-primary" ng-click="toggleArchive()" translate>Send to archive
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align mar-t-25">
+    <label class="col-sm-3" translate>Cloud</label>
+    <div class="col-sm-5 col-sm-offset-4">
+      <button type="button" class="btn btn-block btn-primary" ng-click="recreateCloud()" translate>Create Cloud once again
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <label class="col-sm-3 centered" translate>Password</label>
+
+    <div class="col-sm-5 col-sm-offset-4">
+      <button type="button" ng-click="resetPassword()" class="btn btn-block btn-primary" translate>Reset password
+      </button>
+    </div>
+  </div>
+</form>

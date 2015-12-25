@@ -1,0 +1,11 @@
+<div class="settings-container header-padding sides-padding">
+  <div ng-show="userInfo.customer_mode === 'test'" translate>
+    Replenishment of the account is not available in test mode
+  </div>
+
+  <div ng-show="userInfo.customer_mode !== 'test'">
+    <div ng-if="::userInfo.customer_type === 'entity'" ng-include="::invoiceTemplatePath"></div>
+
+    <div ng-if="::userInfo.customer_type === 'private'" ng-include="::cardsTemplatePath"></div>
+  </div>
+</div>

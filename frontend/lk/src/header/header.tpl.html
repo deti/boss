@@ -1,0 +1,38 @@
+<ul class="nav navbar-nav">
+  <li ng-hide="newsList.length === 0" class="dropdown dropdown-events" dropdown on-toggle="toggled(open)" is-open="isOpen[0]">
+    <a href="#" class="dropdown-toggle" dropdown-toggle ng-click="updateLastSeenNews()">
+      <i class="icon icon-bell"></i>
+      <span class="badge" ng-show="newNewsCount">{{newNewsCount}}</span>
+    </a>
+    <ul class="dropdown-menu dd-left wider" role="menu">
+      <li ng-repeat="news in newsList">
+        <a ui-sref="news">
+          <div class="text-muted">{{::news.published | date: 'dd.MM.yyyy'}}</div>
+          {{::news.subject}}
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="dropdown" dropdown on-toggle="toggled(open)" is-open="isOpen[1]">
+    <a href="#" class="dropdown-toggle" dropdown-toggle>
+      <span>{{langShortNames[currentLang]}}</span>
+      <i class="fa fa-angle-down fa-lg pad-l-10"></i>
+    </a>
+    <ul class="dropdown-menu narrow" role="menu">
+      <li ng-repeat="(lang, name) in ::langs" ng-if="::currentLang !== lang"><a href="#" ng-click="setLang(lang)">{{::langShortNames[lang]}}</a></li>
+    </ul>
+  </li>
+
+  <li class="dropdown" dropdown on-toggle="toggled(open)" is-open="isOpen[2]">
+    <a href="#" class="dropdown-toggle" dropdown-toggle>
+      {{userInfo.name || userInfo.email}}
+      <i class="fa fa-angle-down fa-lg pad-l-10"></i>
+    </a>
+    <ul class="dropdown-menu dd-right wide" role="menu">
+      <li><a ui-sref="settings" ui-sref-opts="{reload: true}" translate>Account settings</a></li>
+      <li ng-if="userInfo.customer_mode !== 'test'"><a ui-sref="pay" translate>Add funds</a></li>
+      <li><a ui-sref="signout" translate>Sign out</a></li>
+    </ul>
+  </li>
+</ul>

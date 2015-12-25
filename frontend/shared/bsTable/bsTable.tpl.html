@@ -1,0 +1,22 @@
+<ng-include src="::headerPartialPath"></ng-include>
+<perfect-scrollbar refresh-on-change="[$state.current.name, afterRedraw]" refresh-on-resize="true" suppress-scroll-x="true"
+                   ng-show="getValue(dataName).length > 0" class="ps-active-y">
+  <table class="table table-body">
+    <colgroup>
+      <col ng-repeat="column in ::columns track by column.id" width="{{($index >= columnsCount) ? '0%' : ((column.width && columnsCount >= columns.length) ? column.width : (columnWidth + '%') )}}">
+    </colgroup>
+    <tbody>
+    <tr ng-repeat="item in getValue(dataName)" ui-sref="{{::sref}}({id: item['{{::idField}}']})" ui-sref-opts="{location: srefPushToLocation}"
+        ui-sref-active="selected" class="selectable">
+      <td ng-repeat="column in ::columns track by column.id" ng-class="::[column.cellClass, column.cellClassFn ? column.cellClassFn(item) : '']"
+        bs-table-cell>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</perfect-scrollbar>
+<div class="table-shadow"></div>
+<div ng-show="getValue(dataName).length == 0" class="text-center gray-middle-light-text mar-t-20">
+  <div class="table-empty"></div>
+  {{::emptyPlaceholder}}
+</div>

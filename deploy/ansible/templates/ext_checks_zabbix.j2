@@ -1,0 +1,4 @@
+UserParameter=CheckIP[*],fping $1 | grep -c alive
+UserParameter=mysql.ping,/usr/bin/mysqladmin -h 192.168.3.254 -u root -p{{ OS_PASSWORD }} ping | grep -c alive
+UserParameter=redis.ping[*],/home/zabbix/redis_test.sh $1
+UserParameter=docker.check[*],/usr/bin/docker ps | grep -c $1

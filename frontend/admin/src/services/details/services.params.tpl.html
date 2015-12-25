@@ -1,0 +1,76 @@
+<form class="form-horizontal" name="ServiceParametersForm" novalidate bs-server-validate bs-form-saver ng-submit="save(ServiceParametersForm)">
+  <div ng-if="service.deleted" class="form-group">
+    <label class="col-sm-7 pad-t-7 text-left" translate>Service is deleted</label>
+    <div class="hr"></div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="title_rus" translate>Name (RUS)</label>
+    <div class="col-sm-8">
+      <input type="text" id="title_rus" name="title_rus" class="form-control"
+             ng-model="service.localized_name.ru" ng-disabled="service.deleted || !isCustom(service)">
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="title" translate>Name (ENG)</label>
+    <div class="col-sm-8">
+      <input type="text" id="title" name="title" class="form-control"
+             ng-model="service.localized_name.en" ng-disabled="service.deleted || !isCustom(service)">
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="title" translate>Category</label>
+    <div class="col-sm-8">
+      <span>{{::service.category | localizedName}}</span>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="measure" translate>Unit of measurement</label>
+    <div class="col-sm-7">
+      <div class="select">
+        <select name="measure" id="measure" class="form-control" ng-model="service.measure.measure_id" required
+                ng-options="item.measure_id as item|localizedName for item in measures" ng-disabled="!service.mutable || service.deleted">
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="description_rus" translate>Description (RUS)</label>
+    <div class="col-sm-8">
+      <textarea id="description_rus" name="description_rus" rows="2" cols="50" class="form-control"
+                ng-model="service.description.ru" ng-disabled="service.deleted || !isCustom(service)"></textarea>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="description_eng" translate>Description (ENG)</label>
+    <div class="col-sm-8">
+      <textarea id="description_eng" name="description_eng" rows="2" cols="50" class="form-control"
+                ng-model="service.description.en" ng-disabled="service.deleted || !isCustom(service)"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group has-error" ng-if="ServiceParametersForm.$error.unclassified">
+    <div class="fixed-offset col-sm-9">
+      <span class="help-block">{{ServiceParametersForm.$server_unclassified}}</span>
+    </div>
+  </div>
+
+  <div class="mar-t-50" ng-if="service.mutable && !service.deleted">
+    <div class="form-group row-vertical-align">
+      <label class="col-sm-5 centered" translate>Status</label>
+
+      <div class="col-sm-7">
+        <button type="button" class="btn btn-block btn-primary" ng-click="activate()" translate>Enable</button>
+      </div>
+    </div>
+  </div>
+  <div ng-if="!service.deleted">
+    <div class="form-group row-vertical-align">
+      <label class="col-sm-5 centered" translate>Archive</label>
+
+      <div class="col-sm-7">
+        <button type="button" class="btn btn-block btn-primary" ng-click="remove()" translate>Send to archive</button>
+      </div>
+    </div>
+  </div>
+</form>

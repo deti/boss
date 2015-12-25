@@ -1,0 +1,33 @@
+<td>
+  <span>
+  <span>{{::item.ip}}</span>
+  <span>{{item.server}}</span>
+  </span>
+</td>
+<td>
+  <span>
+    <a
+      ng-click="$event.stopPropagation();actionForms.assignIP = !actionForms.assignIP;keepActiveItem.value = !keepActiveItem.value;"
+      translate ng-if="!item.instance_id && servers.length">Assign to server</a>
+    <a ng-click="removeFloatIPFromServer(item)" translate ng-if="item.instance_id">Detach</a>
+    <a ng-click="deallocateFloatingIP(item)" translate>Delete</a>
+  </span>
+
+  <div class="action-popover triangle-left" ng-click="$event.stopPropagation();" ng-if="actionForms.assignIP"
+       click-outside="actionForms.assignIP = false;keepActiveItem.value = false;">
+    <form id="AssifnIPForm" class="form-horizontal" ng-submit="assignIP(item);keepActiveItem.value = false">
+      <div class="form-group">
+        <div class="col-xs-7">
+          <div class="select">
+            <select name="address" class="form-control" id="address" ng-model="item.newServer"
+                    ng-options="item.id as item.name for item in servers">
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <button type="submit" class="btn btn-primary" ng-disabled="!item.newServer" translate>Assign</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</td>

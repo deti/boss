@@ -1,0 +1,47 @@
+user:
+  salt_rounds: 80000
+  generated_password_length: 12
+  generated_password_symbols: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789[]%;^#,./"
+  token:
+    ttl: ${DAY}
+    db_index: 1
+    size: 16
+
+  password_token:
+    ttl: ${HOUR} # 1 hour
+    size: 16
+
+  min_password_length: 5
+  max_password_length: 256
+
+  default_users:
+    - email: ${__FIX_ME__}
+      password: {$__FIX_ME__}
+      name: Default Admin
+      role: admin
+
+email_server:
+  host: localhost
+  max_retries: 10
+  retry_delay: 5
+  timeout: 10
+  rate_limit: 10
+  user:
+  password:
+  ssl: false
+  debug: false
+  port: 25
+  starttls: false
+  black_list:
+    - example.com
+
+test_email_server:
+  address_pattern: "mailtrap.io"
+  host: mailtrap.io
+  token: bfdfe9e4ecbd559335d9fb9b05780f9e
+  user: 3343640c796347f78
+  password: 8a17126b6cd487
+  ssl: false
+  debug: false
+  port: 25
+  starttls: false

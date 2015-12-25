@@ -1,0 +1,82 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>Server settings</h4>
+
+  <form name="NameAndTypeForm" class="form-horizontal" ng-submit="saveNameAndType(NameAndTypeForm)" bs-server-validate
+        novalidate bs-form-send-once>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="name" translate>Name</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="name" name="name" class="form-control" required ng-model="server.name" bs-validate-hint>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-6 col-xs-offset-3">
+        <button class="btn btn-primary" type="submit" translate
+                ng-disabled="NameAndTypeForm.$invalid || !NameAndTypeForm.$dirty">
+          Edit
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <form ng-if="server.metadata.password" class="form-horizontal" disabled>
+    <div class="hr"><span class="white-bg" translate>Last saved password</span></div>
+    <div class="form-group row-vertical-align">
+      <div class="col-xs-3">
+        <button class="btn btn-default btn-block" ng-click="passwordVisible = !passwordVisible">
+          <span ng-if="passwordVisible" translate>Hide</span>
+          <span ng-if="!passwordVisible" translate>Show</span>
+        </button>
+      </div>
+      <div class="col-xs-5" ng-show="passwordVisible">
+        <input disabled type="text" ng-model="server.metadata.password" class="form-control">
+      </div>
+
+      <div class="col-xs-4" ng-show="passwordVisible">
+        <button class="btn btn-link" type="button" id="password_copy" bs-copy-to-clipboard="server.metadata.password">
+          <span translate>Copy to clipboard</span>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div ng-if="server.status.value === SERVER_STATUS.RESCUE.value" class="mar-b-15">
+    <p translate>Server is in the rescue mode</p>
+    <button type="button" class="btn btn-primary" ng-disabled="rescueSubmitting" translate
+            ng-class="{'submitting': rescueSubmitting}" ng-click="setUnrescueMode()">
+      Exit from rescue mode
+    </button>
+  </div>
+
+  <div ng-if="server.status.value !== SERVER_STATUS.RESCUE.value">
+    <div class="hr"><span class="white-bg" translate>Rescue mode</span></div>
+
+    <form name="RescueModeForm" class="form-horizontal" ng-submit="setRescueMode(RescueModeForm)" bs-server-validate
+          novalidate bs-form-send-once="30000">
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="col-xs-3 centered required" for="rescueImage" translate>Image</label>
+
+        <div class="col-xs-9">
+          <div class="select">
+            <select name="rescueImage" class="form-control" id="rescueImage" ng-model="rescue.rescueImage"
+                    ng-options="item.id as item.name for item in images" required bs-validate-hint>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-6 col-xs-offset-3">
+          <button class="btn btn-primary" type="submit" translate
+                  ng-disabled="RescueModeForm.$invalid || !RescueModeForm.$dirty">
+            Set to rescue mode
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ui-view="backups"></div>
+</div>

@@ -1,0 +1,61 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>New disk</h4>
+  <form name="NewVolumeForm" class="form-horizontal pull-left" ng-submit="createVolume(NewVolumeForm)"
+        bs-server-validate
+        novalidate bs-form-send-once>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 required centered" for="name" translate>Name</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="name" name="name" class="form-control" required ng-model="volume.name"
+               bs-validate-hint placeholder="{{::'Enter a disk name'|translate}}">
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 required centered" for="size" translate>Size</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="size" name="size" class="form-control" required ng-model="volume.size"
+               bs-validate-hint placeholder="{{::'Size Gb'|translate}}">
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align">
+      <label class="col-xs-3 centered" for="serverRef" translate>Server</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="serverRef" class="form-control" id="serverRef" ng-model="volume.serverRef"
+                  ng-options="item.id as item.name for item in servers">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-4 col-xs-offset-3">
+        <button type="submit" class="btn btn-primary" ng-disabled="NewVolumeForm.$invalid || overLimits" translate>
+          New disk
+        </button>
+      </div>
+      <div class="col-xs-3">
+        <a ui-sref="openstack.volumes" class="btn btn-link" translate>Cancel</a>
+      </div>
+    </div>
+  </form>
+
+  <div class="openstack-limits pull-left mar-t-40">
+    <div class="form-group limits-title" translate>
+      Project limits:
+    </div>
+    <div class="form-group">
+      <bs-progressbar title="{{::'Volumes'|translate}}" value="limits.volumesUsed" max="limits.volumesMax"></bs-progressbar>
+    </div>
+    <div class="form-group">
+      <bs-progressbar title="{{::'Storage'|translate}}" value="limits.gigabytesUsed" max="limits.gigabytesTotal"></bs-progressbar>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+</div>

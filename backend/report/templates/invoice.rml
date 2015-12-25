@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml.dtd">
+
+<document filename="report.pdf">
+    <docinit pageMode="UseThumbs" pageLayout="SinglePage">
+       <registerTTFont faceName="TimesU" fileName="{{font_dir}}/timesu.ttf"/>
+       <registerTTFont faceName="TimesU-bd" fileName="{{font_dir}}/timesbd.ttf"/>
+    </docinit>
+    <template
+        leftMargin="30mm"
+        rightMargin="30mm"
+        topMargin="30mm"
+        bottomMargin="30mm"
+        title="Счет на оплату № {{aggregated["number_str"]}} от {{aggregated["date"] | date(locale=locale, format="short")}}">
+
+        <pageTemplate id="main">
+            <pageGraphics>
+            </pageGraphics>
+            <frame id="content" x1="15mm" y1="20mm" width="180mm" height="257mm" />
+        </pageTemplate>
+    </template>
+
+
+<stylesheet>
+    <initialize>
+        <alias id="style.normal" value="style.Normal"/>
+    </initialize>
+    <paraStyle name="h1"
+        fontName="TimesU"
+        fontSize="16"
+        spaceBefore="0.5 cm"
+    />
+
+    <paraStyle name="rutext"
+        fontName="TimesU"
+        fontSize="12"
+    />
+
+    <paraStyle name="rubold"
+        fontName="TimesU-bd"
+        fontSize="12"
+    />
+
+    <paraStyle name="rubig"
+        fontName="TimesU"
+        fontSize="14"
+    />
+
+    <paraStyle name="rusmall"
+        fontName="TimesU"
+        fontSize="10"
+    />
+
+    <paraStyle name="rusmallbold"
+        fontName="TimesU-bd"
+        fontSize="10"
+    />
+
+
+    <blockTableStyle id="rublock">
+        <blockFont name="TimesU"/>
+    </blockTableStyle>
+
+</stylesheet>
+
+<story>
+    <blockTable >
+        <blockTableStyle id="rublock">
+            <blockFont name="TimesU"/>
+            <lineStyle kind="LINEABOVE" colorName="black" start="0,0" stop="-1,0" thickness="1"/>
+
+            <lineStyle kind="LINEBELOW" colorName="black" start="2,0" stop="2,0" thickness="1"/>
+            <lineStyle kind="LINEBELOW" colorName="black" start="0,1" stop="-1,1" thickness="1"/>
+
+            <lineStyle kind="LINEBELOW" colorName="black" start="0,2" stop="1,2" thickness="1"/>
+
+            <lineStyle kind="LINEBELOW" colorName="black" start="0,-1" stop="-1,-1" thickness="1"/>
+
+
+            <lineStyle kind="LINEBEFORE" colorName="black" start="0,0" stop="0,-1" thickness="1"/>
+            <lineStyle kind="LINEBEFORE" colorName="black" start="1,2" stop="1,2" thickness="1"/>
+            <lineStyle kind="LINEBEFORE" colorName="black" start="2,0" stop="2,-1" thickness="1"/>
+            <lineStyle kind="LINEBEFORE" colorName="black" start="3,0" stop="3,-1" thickness="1"/>
+            <lineStyle kind="LINEAFTER" colorName="black" start="-1,0" stop="-1,-1" thickness="1"/>
+        </blockTableStyle>
+        <tr>
+            <td>{{aggregated.bank}}</td>
+            <td></td>
+            <td>БИК</td>
+            <td>{{aggregated.bik}}</td>
+        </tr>
+        <tr>
+            <td><para fontSize="6" fontName="TimesU"> Банк получателя </para></td>
+            <td></td>
+            <td>Сч. №</td>
+            <td>{{aggregated.account}}</td>
+        </tr>
+        <tr>
+            <td>ИНН {{aggregated.inn}}</td>
+            <td>КПП {{aggregated.kpp}}</td>
+            <td>Сч. №</td>
+            <td>{{aggregated.account2}}</td>
+        </tr>
+        <tr>
+            <td>{{aggregated.receiver}}</td>
+        </tr>
+        <tr>
+            <td><para fontSize="6" fontName="TimesU"> Получатель </para></td>
+        </tr>
+    </blockTable>
+
+    <para style="h1">
+         Счет на оплату № {{aggregated["number"] | safe }} от {{aggregated["date"] | date(locale=locale, format="medium")}}
+    </para>
+
+    <para style="h1">
+    </para>
+
+    <hr color="black" thickness="2"/>
+
+
+    <blockTable colWidths="2.5cm,16cm" style="rublock">
+        <tr>
+            <td>Поставщик</td>
+            <td>
+                <para style="rubold">
+                    {{aggregated.receiver}}, ИНН {{aggregated.inn}}, КПП {{aggregated.kpp}}
+                </para>
+            </td>
+        </tr>
+        <tr>
+            <td>(Исполнитель):</td>
+            <td><para style="rubold">{{aggregated.address}}, тел.: {{aggregated.phone}}</para></td>
+        </tr>
+        <tr>
+            <td>Покупатель</td>
+            <td>
+               <para style="rubold">
+                  {{aggregated.entity_info.full_organization_name}},
+                  ИНН {{aggregated.entity_info.individual_tax_number}},
+                  КПП {{aggregated.entity_info.primary_state_registration_number}},
+               </para>
+            </td>
+        </tr>
+        <tr>
+            <td>(Заказчик):</td>
+            <td>
+                <para style="rubold">
+                    {{aggregated.entity_info.legal_address_city}},
+                    {{aggregated.entity_info.legal_address_address}}
+                </para>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Основание:</td>
+            <td><para style="rubold">Счет № {{aggregated["number"] | safe }} от
+                                     {{aggregated["date"] | date(locale=locale, format="short")}}</para></td>
+        </tr>
+        <tr></tr>
+
+
+    </blockTable>
+
+    <para></para>
+
+    <blockTable style="rublock">
+        <blockTableStyle id="rublock2">
+            <blockFont name="TimesU"/>
+            <!-- frame -->
+            <lineStyle kind="LINEABOVE" colorName="black" start="0,0" stop="-1,0" thickness="2"/>
+            <lineStyle kind="LINEBELOW" colorName="black" start="0,-1" stop="-1,-1" thickness="2"/>
+            <lineStyle kind="LINEBEFORE" colorName="black" start="0,0" stop="0,-1" thickness="2"/>
+            <lineStyle kind="LINEAFTER" colorName="black" start="-1,0" stop="-1,-1" thickness="2"/>
+
+            <lineStyle kind="LINEBELOW" colorName="black" start="0,0" stop="-1,0" thickness="1"/>
+            <lineStyle kind="LINEAFTER" colorName="black" start="0,0" stop="-1,-1" thickness="1"/>
+
+        </blockTableStyle>
+        <tr>
+           <td><para style="rusmallbold">№</para></td>
+           <td><para style="rusmallbold">Товары (работы, услуги)</para></td>
+           <td><para style="rusmallbold">Кол-во</para></td>
+           <td><para style="rusmallbold">Ед.</para></td>
+           <td><para style="rusmallbold">Цена</para></td>
+           <td><para style="rusmallbold">Сумма</para></td>
+        </tr>
+        <tr>
+           <td>1</td>
+           <td>Оказание облачных услуг</td>
+           <td>1</td>
+           <td>шт</td>
+           <td>{{aggregated.amount | money(language=language)}}</td>
+           <td>{{aggregated.amount | money(language=language)}}</td>
+        </tr>
+
+    </blockTable>
+
+
+    <blockTable style="rublock" colWidths="12cm,3.5cm,2cm">
+        <tr>
+           <td></td>
+           <td><para style="rusmallbold">Итого:</para></td>
+           <td><para style="rusmallbold">{{aggregated.amount | money(language=language)}}</para></td>
+        </tr>
+        <tr>
+           <td></td>
+           <td><para style="rusmallbold">В том числе НДС:</para></td>
+           <td><para style="rusmallbold">{{aggregated.nds | money(language=language)}}</para></td>
+        </tr>
+        <tr>
+           <td></td>
+           <td><para style="rusmallbold">Всего к оплате:</para></td>
+           <td><para style="rusmallbold">{{aggregated.amount | money(language=language)}}</para></td>
+        </tr>
+
+    </blockTable>
+
+    <para style="rutext">
+      Всего наименований 1, на сумму  {{aggregated.amount | money(currency=aggregated.currency, language=language)}}
+    </para>
+
+    <para style="rutext">
+      Внимание!
+    </para>
+
+    <para style="rusmall">
+      Оплата данного счета означает согласие с условиями поставки товара. Уведомление
+      об оплате обязательно, в противном случае не гарантируется наличие товара на складе.
+      Товар отпускается по факту прихода денег на р/с Поставщика, самовывозом, при наличии доверенности и
+      паспорта
+    </para>
+
+    <para spaceBefore="10"></para>
+    <hr color="black" thickness="2"/>
+    <para spaceBefore="20"></para>
+
+
+
+    <blockTable style="rublock" colWidths="3.5cm,5cm,1cm,3.5cm,5cm" blockAlignment="">
+        <blockTableStyle id="signblock">
+           <blockAlignment value="RIGHT"/>
+           <lineStyle kind="LINEBELOW" colorName="black" start="1,0" stop="1,0" thickness="1"/>
+           <lineStyle kind="LINEBELOW" colorName="black" start="4,0" stop="4,0" thickness="1"/>
+        </blockTableStyle>
+        <tr>
+           <td>
+                <para style="rubold"> Руководитель </para>
+           </td>
+           <td>{{aggregated.director}}</td>
+
+           <td></td>
+
+           <td>
+                <para style="rubold"> Бухгалтер </para>
+           </td>
+
+           <td>{{aggregated.accountant}}</td>
+        </tr>
+
+    </blockTable>
+
+
+
+</story>
+</document>

@@ -1,0 +1,95 @@
+<form class="form-horizontal" name="RegistrationForm" ng-submit="submit()" novalidate bs-server-validate="{409: 'conflict'}" bs-form-send-once autocomplete="off">
+  <div class="form-group row-vertical-align" bs-has-error="RegistrationForm.$error.conflict">
+    <label class="col-sm-2 label-width centered required" for="email">E-mail</label>
+
+    <div class="col-sm-8 captcha-width">
+      <input type="email" id="email" name="email" class="form-control"
+             ng-model="user.email" ng-required="true" autocomplete="off" value=""
+             bs-validate-hint
+             placeholder="{{::'ivanivanovich@gmail.com' | translate}}">
+      <p class="errorMessage" ng-if="RegistrationForm.$error.conflict" translate>
+        A user with such email already exists
+      </p>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-sm-2 label-width centered" for="telephone" translate>Phone</label>
+
+    <div class="col-sm-8 captcha-width">
+      <input type="text" id="telephone" name="telephone" class="form-control"
+             ng-model="user.detailed_info.telephone" bs-phone-input
+             placeholder="{{::'+7 962 700 400 20' |  translate}}"
+             bs-validate-hint>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-8 captcha-width offset-fixed gray-middle-light-text" translate>
+      Entering a phone number is voluntary, no text ads will be sent.
+    </div>
+  </div>
+
+  <div class="form-group" bs-has-error>
+    <label class="col-sm-2 label-width centered required" for="userPassword" translate>Password</label>
+
+    <div class="col-sm-8 captcha-width">
+      <input type="password" id="userPassword" name="userPassword" class="form-control"
+             ng-model="user.password" ng-required="true"
+             bs-strong-password-validator="score" autocomplete="new-password"
+             bs-validate-hint
+             placeholder="************">
+    </div>
+    <div class="col-sm-8 offset-fixed captcha-width">
+      <div class="password-strength" ng-class="'password-strength-' + score">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align" bs-has-error ng-if="promo_registration_only">
+    <label class="col-sm-2 label-width centered required" for="promo" translate>Promocode</label>
+
+    <div class="col-sm-8 captcha-width">
+      <input type="text" id="promo" name="promo" class="form-control" required
+             ng-model="user.promo_code" placeholder="{{::'Enter promocode' |  translate}}"
+             bs-validate-hint>
+    </div>
+  </div>
+  <div class="row">
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-8 offset-fixed">
+      <div class="g-recaptcha" vc-recaptcha key="CONST.local.recaptcha_site_key"></div>
+    </div>
+  </div>
+
+  <hr/>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="checkbox">
+        <label class="custom-checkbox">
+          <input type="checkbox" ng-model="checkboxes.offer">
+          <span class="checkbox-elem"></span>
+          <span translate>I have read and agree with </span>
+          <a href="#" translate ng-click="openOffer()" ng-if="offer_link">Offer</a>
+          <span translate ng-if="!offer_link">Offer</span>
+          <br>
+          <span translate> and agree to the processing of personal data</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div class="form-group has-error" ng-if="RegistrationForm.$error.unclassified">
+    <div class="col-sm-offset-1 col-sm-10">
+      <span class="help-block">{{RegistrationForm.$server_unclassified}}</span>
+    </div>
+  </div>
+  <div class="form-group pad-t-15">
+    <div class="col-sm-offset-3 col-sm-6">
+      <button type="submit" class="btn btn-primary btn-block"
+              ng-disabled="RegistrationForm.$invalid || !checkboxes.offer" ng-click="register(RegistrationForm)" translate>Continue
+      </button>
+    </div>
+  </div>
+</form>

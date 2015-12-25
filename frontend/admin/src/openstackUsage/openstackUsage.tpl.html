@@ -1,0 +1,136 @@
+<div class="full-height" st-safe-src="usage" st-table="displayedUsage">
+
+  <div ng-if="usage === false" class="text-center">
+    <div class="loader center-block"></div>
+    <span translate>Loading...</span>
+  </div>
+
+  <div class="table-info mar-t-50" ng-if="usage !== false">
+    <table class="table table-header">
+      <colgroup>
+        <col>
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+      </colgroup>
+      <tbody>
+      <tr>
+        <th class="sortable" st-sort="customer.customer_id">
+          <span translate>Tenant</span>
+        </th>
+        <th class="sortable" st-sort="port">
+          <span translate>Ports</span>
+        </th>
+        <th class="sortable" st-sort="volumes">
+          <span translate>Volumes</span>
+        </th>
+        <th class="sortable" st-sort="snapshots">
+          <span translate>Snapshots</span>
+        </th>
+        <th class="sortable" st-sort="floatingip">
+          <span translate>IP-addresses</span>
+        </th>
+        <th class="sortable" st-sort="cores">
+          <span translate>CPU</span>
+        </th>
+        <th class="sortable" st-sort="gigabytes">
+          <span translate>Gb</span>
+        </th>
+        <th class="sortable" st-sort="ram">
+          <span translate>RAM</span>
+        </th>
+        <th class="sortable" st-sort="instances">
+          <span translate>Servers</span>
+        </th>
+        <th class="sortable" st-sort="server_groups">
+          <span translate>Groups</span>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+    <perfect-scrollbar refresh-on-change="[$state.current.name, afterRedraw]" refresh-on-resize="true"
+                       suppress-scroll-x="true" class="ps-active-y">
+      <table class="table table-body">
+        <colgroup>
+          <col>
+          <col width="100">
+          <col width="100">
+          <col width="100">
+          <col width="100">
+          <col width="100">
+          <col width="100">
+          <col width="100">
+          <col width="100">
+          <col width="100">
+        </colgroup>
+        <tbody>
+        <tr ng-repeat="item in displayedUsage track by item.tenant.id">
+          <td class="long-text">
+            <span>
+              <span ng-if="::item.customer.customer_id">
+                <a ui-sref="main.details.info({id: item.customer.customer_id})">{{::item.customer.email}}</a>
+              </span>
+              <span ng-if="::!item.customer.customer_id">
+                <span ng-if="::item.tenant.name">{{::item.tenant.name || ''}}<br></span>
+                <span ng-if="::item.tenant.description">{{::item.tenant.description || ''}}<br></span>
+                {{::item.tenant.id}}
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.port}}</span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.volumes}}</span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.snapshots}}</span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.floatingip}}</span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.cores}}</span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.gigabytes}}</span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.ram}}</span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.instances}}</span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <span>{{::item.server_groups}}</span>
+            </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </perfect-scrollbar>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <form name="NewServerForm" class="form-horizontal" ng-submit="recreate(NewServerForm)"
+        bs-server-validate bs-form-send-once novalidate>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="name" translate>Name</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="name" name="name" class="form-control" required ng-model="serverParams.name" bs-validate-hint
+               autofocus ng-disabled="formDisabled">
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="imageRef" translate>Image</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="imageRef" class="form-control" id="imageRef" ng-model="serverParams.imageRef"
+                  ng-options="item.id as item.name for item in images" required bs-validate-hint>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="form-group width-limit-750">
+      <div class="col-xs-5 col-xs-offset-3">
+        <button class="btn btn-primary btn-block" translate type="submit"
+                ng-disabled="NewServerForm.$invalid || formDisabled">
+          Recreate server
+        </button>
+      </div>
+      <div class="col-xs-3 pad-l-0">
+        <a ui-sref="openstack.simple" class="btn btn-link" translate>Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+<td>
+  <span>
+    {{::item.displayName}}
+  </span>
+</td>
+<td>
+  <span>
+    <a ng-click="removeSnapshot(item)" translate>
+      Delete
+    </a>
+  </span>
+</td>
+<td colspan="2">
+  <span>
+    <a ui-sref="openstack.servers.new({source_type: 'snapshot', snapshotRef: '{{::item.id}}'})" translate>Start server</a>
+  </span>
+</td>

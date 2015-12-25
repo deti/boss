@@ -1,0 +1,43 @@
+---
+- hosts: dev
+  user: root
+  sudo: yes
+  tasks:
+  - selinux: state=disabled
+  - name: install epel repo
+    yum: name=epel-release state=latest
+  - name: docker install
+    yum: name={{ item }} state=latest
+    with_items:
+    - docker
+    - python-pip
+    - python-urllib3
+  - pip: name={{ item }} extra_args="-U"
+    with_items:
+    - docker-py
+    - urllib3
+    - six
+  - name: ensure docker running
+    service: name=docker state=started enabled=yes
+  - name: install etcd
+    yum: name={{ etcd_rpm }} state=present
+  - name: install etcdctl
+    yum: name={{ etcdctl_rpm }} state=present
+    notify:
+    - restart etcd
+  - name: create docker gloagl config
+    template:
+      src=/etc/ansible/templates/docker.default
+      dest=/etc/sysconfig/docker
+      owner=root
+      group=root 
+      mode=0644
+    notify:
+    - restart docker
+  - name: start etcd cludter
+    service: name=etcd state=started enabled=yes
+  handlers:
+  - name: restart docker
+    service: name=docker state=restarted
+  - name: restart etcd
+    service: name=etcd state=restarted

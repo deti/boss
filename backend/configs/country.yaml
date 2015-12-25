@@ -1,0 +1,251 @@
+country:
+  all:
+    AD: {en: Andorra, ru: Андорра}
+    AE: {en: United Arab Emirates, ru: Объединенные Арабские Эмираты}
+    AF: {en: Afghanistan, ru: Афганистан}
+    AG: {en: Antigua and Barbuda, ru: Антигуа и Барбуда}
+    AI: {en: Anguilla, ru: Ангилья}
+    AL: {en: Albania, ru: Албания}
+    AM: {en: Armenia, ru: Армения}
+    AN: {en: Netherlands Antilles, ru: Нидерландские Антильские острова}
+    AO: {en: Angola, ru: Ангола}
+    AQ: {en: Antarctica, ru: Антарктида}
+    AR: {en: Argentina, ru: Аргентина}
+    AS: {en: American Samoa, ru: Американское Самоа}
+    AT: {en: Austria, ru: Австрия}
+    AU: {en: Australia, ru: Австралия}
+    AW: {en: Aruba, ru: Аруба}
+    AX: {en: Åland Islands, ru: Эландские острова}
+    AZ: {en: Azerbaijan, ru: Азербайджан}
+    BA: {en: Bosnia and Herzegovina, ru: Босния и Герцеговина}
+    BB: {en: Barbados, ru: Барбадос}
+    BD: {en: Bangladesh, ru: Бангладеш}
+    BE: {en: Belgium, ru: Бельгия}
+    BF: {en: Burkina Faso, ru: Буркина-Фасо}
+    BG: {en: Bulgaria, ru: Болгария}
+    BH: {en: Bahrain, ru: Бахрейн}
+    BI: {en: Burundi, ru: Бурунди}
+    BJ: {en: Benin, ru: Бенин}
+    BM: {en: Bermuda, ru: Бермуды}
+    BN: {en: Brunei Darussalam, ru: Бруней-Даруссалам}
+    BO: {en: Bolivia, ru: 'Боливия, Многонациональное Государство'}
+    BR: {en: Brazil, ru: Бразилия}
+    BS: {en: Bahamas, ru: Багамы}
+    BT: {en: Bhutan, ru: Бутан}
+    BV: {en: Bouvet Island, ru: Остров Буве}
+    BW: {en: Botswana, ru: Ботсвана}
+    BY: {en: Belarus, ru: Беларусь}
+    BZ: {en: Belize, ru: Белиз}
+    CA: {en: Canada, ru: Канада}
+    CC: {en: Cocos (Keeling) Islands, ru: Кокосовые (Килинг) острова}
+    CD: {en: 'Congo, Democratic Republic', ru: 'Конго, демократическая республика'}
+    CF: {en: Central African Republic, ru: Центрально-Африканская Республика}
+    CG: {en: Congo, ru: Конго}
+    CH: {en: Switzerland, ru: Швейцария}
+    CI: {en: Cote D"Ivoire, ru: Кот-д’Ивуар}
+    CK: {en: Cook Islands, ru: Острова Кука}
+    CL: {en: Chile, ru: Чили}
+    CM: {en: Cameroon, ru: Камерун}
+    CN: {en: China, ru: Китай}
+    CO: {en: Colombia, ru: Колумбия}
+    CR: {en: Costa Rica, ru: Коста-Рика}
+    CU: {en: Cuba, ru: Куба}
+    CV: {en: Cape Verde, ru: Кабо-Верде}
+    CX: {en: Christmas Island, ru: Остров Рождества}
+    CY: {en: Cyprus, ru: Кипр}
+    CZ: {en: Czech Republic, ru: Чешская Республика}
+    DE: {en: Germany, ru: Германия}
+    DJ: {en: Djibouti, ru: Джибути}
+    DK: {en: Denmark, ru: Дания}
+    DM: {en: Dominica, ru: Доминика}
+    DO: {en: Dominican Republic, ru: Доминиканская Республика}
+    DZ: {en: Algeria, ru: Алжир}
+    EC: {en: Ecuador, ru: Эквадор}
+    EE: {en: Estonia, ru: Эстония}
+    EG: {en: Egypt, ru: Египет}
+    EH: {en: Western Sahara, ru: Западная Сахара}
+    ER: {en: Eritrea, ru: Эритрея}
+    ES: {en: Spain, ru: Испания}
+    ET: {en: Ethiopia, ru: Эфиопия}
+    FI: {en: Finland, ru: Финляндия}
+    FJ: {en: Fiji, ru: Фиджи}
+    FK: {en: Falkland Islands (Malvinas), ru: Фолклендские острова (Мальвинские)}
+    FM: {en: Micronesia, ru: 'Микронезия, федеративные штаты'}
+    FO: {en: Faroe Islands, ru: Фарерские острова}
+    FR: {en: France, ru: Франция}
+    GA: {en: Gabon, ru: Габон}
+    GB: {en: United Kingdom, ru: Соединенное Королевство}
+    GD: {en: Grenada, ru: Гренада}
+    GE: {en: Georgia, ru: Грузия}
+    GF: {en: French Guiana, ru: Французская Гвиана}
+    GG: {en: Guernsey, ru: Гернси}
+    GH: {en: Ghana, ru: Гана}
+    GI: {en: Gibraltar, ru: Гибралтар}
+    GL: {en: Greenland, ru: Гренландия}
+    GM: {en: Gambia, ru: Гамбия}
+    GN: {en: Guinea, ru: Гвинея}
+    GP: {en: Guadeloupe, ru: Гваделупа}
+    GQ: {en: Equatorial Guinea, ru: Экваториальная Гвинея}
+    GR: {en: Greece, ru: Греция}
+    GS: {en: South Georgia and the South Sandwich Islands, ru: Южная Джорджия и Южные
+        Сандвичевы острова}
+    GT: {en: Guatemala, ru: Гватемала}
+    GU: {en: Guam, ru: Гуам}
+    GW: {en: Guinea-Bissau, ru: Гвинея-Бисау}
+    GY: {en: Guyana, ru: Гайана}
+    HK: {en: Hong Kong, ru: Гонконг}
+    HM: {en: Heard Island and Mcdonald Islands, ru: Остров Херд и острова Макдональд}
+    HN: {en: Honduras, ru: Гондурас}
+    HR: {en: Croatia, ru: Хорватия}
+    HT: {en: Haiti, ru: Гаити}
+    HU: {en: Hungary, ru: Венгрия}
+    ID: {en: Indonesia, ru: Индонезия}
+    IE: {en: Ireland, ru: Ирландия}
+    IL: {en: Israel, ru: Израиль}
+    IM: {en: Isle of Man, ru: Остров Мэн}
+    IN: {en: India, ru: Индия}
+    IO: {en: British Indian Ocean Territory, ru: Британская территория в Индийском
+        океане}
+    IQ: {en: Iraq, ru: Ирак}
+    IR: {en: Iran, ru: 'Иран, исламская республика'}
+    IS: {en: Iceland, ru: Исландия}
+    IT: {en: Italy, ru: Италия}
+    JE: {en: Jersey, ru: Джерси}
+    JM: {en: Jamaica, ru: Ямайка}
+    JO: {en: Jordan, ru: Иордания}
+    JP: {en: Japan, ru: Япония}
+    KE: {en: Kenya, ru: Кения}
+    KG: {en: Kyrgyzstan, ru: Киргизия}
+    KH: {en: Cambodia, ru: Камбоджа}
+    KI: {en: Kiribati, ru: Кирибати}
+    KM: {en: Comoros, ru: Коморы}
+    KN: {en: Saint Kitts and Nevis, ru: Сен-Китс и Невис}
+    KP: {en: Korea (North), ru: 'Корея, народно-демократическая республика'}
+    KR: {en: Korea (South), ru: 'Корея, республика'}
+    KW: {en: Kuwait, ru: Кувейт}
+    KY: {en: Cayman Islands, ru: Острова Кайман}
+    KZ: {en: Kazakhstan, ru: Казахстан}
+    LA: {en: Laos, ru: Лаосская Народно-Демократическая Республика}
+    LB: {en: Lebanon, ru: Ливан}
+    LC: {en: Saint Lucia, ru: Сент-Люсия}
+    LI: {en: Liechtenstein, ru: Лихтенштейн}
+    LK: {en: Sri Lanka, ru: Шри-Ланка}
+    LR: {en: Liberia, ru: Либерия}
+    LS: {en: Lesotho, ru: Лесото}
+    LT: {en: Lithuania, ru: Литва}
+    LU: {en: Luxembourg, ru: Люксембург}
+    LV: {en: Latvia, ru: Латвия}
+    LY: {en: Libyan Arab Jamahiriya, ru: Ливия}
+    MA: {en: Morocco, ru: Марокко}
+    MC: {en: Monaco, ru: Монако}
+    MD: {en: Moldova, ru: 'Молдова, республика'}
+    ME: {en: Montenegro, ru: Черногория}
+    MG: {en: Madagascar, ru: Мадагаскар}
+    MH: {en: Marshall Islands, ru: Маршалловы Острова}
+    MK: {en: Macedonia, ru: Республика Македония}
+    ML: {en: Mali, ru: Мали}
+    MM: {en: Myanmar, ru: Мьянма}
+    MN: {en: Mongolia, ru: Монголия}
+    MO: {en: Macao, ru: Макао}
+    MP: {en: Northern Mariana Islands, ru: Северные Марианские острова}
+    MQ: {en: Martinique, ru: Мартиника}
+    MR: {en: Mauritania, ru: Мавритания}
+    MS: {en: Montserrat, ru: Монтсеррат}
+    MT: {en: Malta, ru: Мальта}
+    MU: {en: Mauritius, ru: Маврикий}
+    MV: {en: Maldives, ru: Мальдивы}
+    MW: {en: Malawi, ru: Малави}
+    MX: {en: Mexico, ru: Мексика}
+    MY: {en: Malaysia, ru: Малайзия}
+    MZ: {en: Mozambique, ru: Мозамбик}
+    NA: {en: Namibia, ru: Намибия}
+    NC: {en: New Caledonia, ru: Новая Каледония}
+    NE: {en: Niger, ru: Нигер}
+    NF: {en: Norfolk Island, ru: Остров Норфолк}
+    NG: {en: Nigeria, ru: Нигерия}
+    NI: {en: Nicaragua, ru: Никарагуа}
+    NL: {en: Netherlands, ru: Нидерланды}
+    'NO': {en: Norway, ru: Норвегия}
+    NP: {en: Nepal, ru: Непал}
+    NR: {en: Nauru, ru: Науру}
+    NU: {en: Niue, ru: Ниуэ}
+    NZ: {en: New Zealand, ru: Новая Зеландия}
+    OM: {en: Oman, ru: Оман}
+    PA: {en: Panama, ru: Панама}
+    PE: {en: Peru, ru: Перу}
+    PF: {en: French Polynesia, ru: Французская Полинезия}
+    PG: {en: Papua New Guinea, ru: Папуа — Новая Гвинея}
+    PH: {en: Philippines, ru: Филиппины}
+    PK: {en: Pakistan, ru: Пакистан}
+    PL: {en: Poland, ru: Польша}
+    PM: {en: Saint Pierre and Miquelon, ru: Сент-Пьер и Микелон}
+    PN: {en: Pitcairn, ru: Питкерн}
+    PR: {en: Puerto Rico, ru: Пуэрто-Рико}
+    PS: {en: 'Palestinian Territory, Occupied', ru: 'Палестина, государство'}
+    PT: {en: Portugal, ru: Португалия}
+    PW: {en: Palau, ru: Палау}
+    PY: {en: Paraguay, ru: Парагвай}
+    QA: {en: Qatar, ru: Катар}
+    RE: {en: Reunion, ru: Реюньон}
+    RO: {en: Romania, ru: Румыния}
+    RS: {en: Serbia, ru: Сербия}
+    RU: {en: Russian Federation, ru: Россия}
+    RW: {en: Rwanda, ru: Руанда}
+    SA: {en: Saudi Arabia, ru: Саудовская Аравия}
+    SB: {en: Solomon Islands, ru: Соломоновы Острова}
+    SC: {en: Seychelles, ru: Сейшелы}
+    SD: {en: Sudan, ru: Судан}
+    SE: {en: Sweden, ru: Швеция}
+    SG: {en: Singapore, ru: Сингапур}
+    SH: {en: Saint Helena, ru: 'Святая Елена, остров Вознесения, Тристан-да-Кунья'}
+    SI: {en: Slovenia, ru: Словения}
+    SJ: {en: Svalbard and Jan Mayen, ru: Шпицберген и Ян Майен}
+    SK: {en: Slovakia, ru: Словакия}
+    SL: {en: Sierra Leone, ru: Сьерра-Леоне}
+    SM: {en: San Marino, ru: Сан-Марино}
+    SN: {en: Senegal, ru: Сенегал}
+    SO: {en: Somalia, ru: Сомали}
+    SR: {en: Suriname, ru: Суринам}
+    ST: {en: Sao Tome and Principe, ru: Сан-Томе и Принсипи}
+    SV: {en: El Salvador, ru: Эль-Сальвадор}
+    SY: {en: Syrian Arab Republic, ru: Сирийская Арабская Республика}
+    SZ: {en: Swaziland, ru: Свазиленд}
+    TC: {en: Turks and Caicos Islands, ru: Острова Теркс и Кайкос}
+    TD: {en: Chad, ru: Чад}
+    TF: {en: French Southern Territories, ru: Французские Южные территории}
+    TG: {en: Togo, ru: Того}
+    TH: {en: Thailand, ru: Таиланд}
+    TJ: {en: Tajikistan, ru: Таджикистан}
+    TK: {en: Tokelau, ru: Токелау}
+    TL: {en: Timor-Leste, ru: Тимор-Лесте}
+    TM: {en: Turkmenistan, ru: Туркмения}
+    TN: {en: Tunisia, ru: Тунис}
+    TO: {en: Tonga, ru: Тонга}
+    TR: {en: Turkey, ru: Турция}
+    TT: {en: Trinidad and Tobago, ru: Тринидад и Тобаго}
+    TV: {en: Tuvalu, ru: Тувалу}
+    TW: {en: 'Taiwan, Province of China', ru: Тайвань (Китай)}
+    TZ: {en: Tanzania, ru: 'Танзания, объединенная республика'}
+    UA: {en: Ukraine, ru: Украина}
+    UG: {en: Uganda, ru: Уганда}
+    UM: {en: United States Minor Outlying Islands, ru: Малые Тихоокеанские Отдаленные
+        острова Соединенных Штатов}
+    US: {en: United States, ru: Соединенные Штаты}
+    UY: {en: Uruguay, ru: Уругвай}
+    UZ: {en: Uzbekistan, ru: Узбекистан}
+    VA: {en: Holy See (Vatican City State), ru: Папский Престол (Государство-город
+        Ватикан)}
+    VC: {en: Saint Vincent and the Grenadines, ru: Сент-Винсент и Гренадины}
+    VE: {en: Venezuela, ru: Венесуэла Боливарианская Республика}
+    VG: {en: 'Virgin Islands, British', ru: 'Виргинские острова, Британские'}
+    VI: {en: 'Virgin Islands, U.S.', ru: 'Виргинские острова, США'}
+    VN: {en: Viet Nam, ru: Вьетнам}
+    VU: {en: Vanuatu, ru: Вануату}
+    WF: {en: Wallis and Futuna, ru: Уоллис и Футуна}
+    WS: {en: Samoa, ru: Самоа}
+    XK: {en: Kosovo, ru: Косово}
+    YE: {en: Yemen, ru: Йемен}
+    YT: {en: Mayotte, ru: Майотта}
+    ZA: {en: South Africa, ru: Южная Африка}
+    ZM: {en: Zambia, ru: Замбия}
+    ZW: {en: Zimbabwe, ru: Зимбабве}

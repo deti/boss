@@ -1,0 +1,15 @@
+<div class="popup" ng-show="changed.length">
+  <div class='popup-notification'>
+    <div class="popup-body">
+      <p><span translate>Save changes</span> ({{changed.length}})?</p>
+    </div>
+    <div class="popup-controls row">
+      <div class="col-sm-6">
+        <button type="button" ng-click="submit()" ng-disabled="formController.$invalid" class="btn btn-primary btn-block" translate>Save</button>
+      </div>
+      <div class="col-sm-6">
+        <button type="button" ng-click="cancel()" class="btn btn-default btn-block" translate>Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

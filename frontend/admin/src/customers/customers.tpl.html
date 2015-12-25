@@ -1,0 +1,45 @@
+<div class="full-height" st-table="customers">
+  <div class="btn-scroll-container">
+    <div class="pull-left">
+      <button class="btn btn-primary pull-left" ui-sref="main.new">
+        <span class="d-hidden" translate>New customer</span>
+        <span class="d-visible"><i class="icon icon-add-new icon-lg"></i></span>
+      </button>
+      <div class="btn-popover-container inline">
+        <button class="btn btn-primary" ng-click="toggleDownloadPopover()">
+          <i class="icon icon-download icon-lg"></i>
+        </button>
+      </div>
+    </div>
+    <bs-table-filter search-tags="searchTags" filters="filters" state-name="main"></bs-table-filter>
+  </div>
+  <div class="btn-popover" ng-show="showDownloadPopover" click-outside="showDownloadPopover = false"
+       outside-if-not="btn-popover">
+    <div class="mar-b-30 text-center" translate>Choose time period</div>
+    <bs-date-range start-date="startDate" end-date="endDate"></bs-date-range>
+    <div class="hr mar-t-5"></div>
+    <div class="row mar-b-10">
+      <div class="col-xs-10 col-xs-offset-1">
+        <button class="btn btn-primary btn-block" translate ng-click="downloadReceipts()">
+          All transactions
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <button class="btn btn-primary btn-block" translate ng-click="downloadUsage()">
+          All services
+        </button>
+      </div>
+    </div>
+  </div>
+  <bs-table-filter-tags search-tags="searchTags" state-name="main"></bs-table-filter-tags>
+
+
+  <bs-table-pagination pages="pages" state-name="main" ng-if="pages > 1"></bs-table-pagination>
+
+  <div class="table-info mar-t-10">
+    <bs-table data="customers" columns="columns" id-field="customer_id" sref="main.details"></bs-table>
+  </div>
+
+</div>

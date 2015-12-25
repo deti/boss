@@ -1,0 +1,158 @@
+.label-fw {
+  .elem-fw();
+}
+
+@elem-width: 125px;
+.elem-fw {
+  float: left;
+  padding-left: 15px;
+  width: @elem-width;
+  & + div {
+    width: calc(e("100% - @{elem-width}"));
+  }
+}
+
+.offset-buttons {
+  margin-left: @elem-width;
+  width: calc(e("100% - @{elem-width}"));
+}
+
+.fixed-offset {
+  margin-left: @elem-width;
+}
+
+.last-input {
+  padding-left: 1px;
+}
+
+.input-btn-fh {
+  height: @input-height;
+}
+
+
+.btn-icon {
+  float: left;
+  margin: 3px 0;
+}
+
+.btn-row {
+  div {
+    &:first-child {
+      padding-right: 8px;
+    }
+    &:last-child {
+      padding-left: 8px;
+    }
+  }
+}
+.btn-clear {
+  border: 0;
+  outline: 0;
+  background: none;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.form-group {
+  .btn-row {
+    div {
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+  .helper-grid {
+    color: #888F97;
+  }
+}
+
+.search-group {
+  input {
+    border-color: @btn-primary-bg-color;
+  }
+  .input-group-addon {
+    background-color: @btn-primary-bg-color;
+    border-color: @btn-primary-bg-color;
+    color: @white-color;
+  }
+  .addon-white {
+    background-color: @white-color;
+    color: @btn-primary-bg-color;
+    border-right: none;
+  }
+}
+
+.details-visible {
+  .search-grp {
+    &.active-input {
+      width: 50px;
+      tags-input {
+        display: none;
+      }
+      .btn {
+        .border-right-radius(4px);
+      }
+    }
+  }
+}
+
+.subscription-title {
+  padding: 0 0 15px 15px;
+}
+
+//icon tooltip
+
+.icon-tooltip {
+  height: 48px;
+  padding-top: 12px;
+  padding-left: 5px;
+  .icon {
+    font-size: 24px;
+    color: @placeholder-text-color;
+    &:hover {
+      color: @icon-tooltip-hover-color;
+    }
+  }
+  .tooltip {
+    top: 53px !important;
+    left: auto !important;
+    right: 14px !important;
+    .tooltip-arrow {
+      left: auto !important;
+      right: 10px !important;
+    }
+    .tooltip-inner {
+      padding: 8px 10px;
+      min-width: 330px;
+      max-width: none;
+      text-align: left;
+    }
+  }
+}
+
+.quota {
+  &:nth-last-child(2) {
+    .icon-tooltip {
+      .tooltip {
+        top: -53px !important;
+        .tooltip-arrow {
+          bottom: 0;
+          top: auto;
+          margin-bottom: -5px;
+          border-width: 5px 5px 0;
+          border-top-color: @tooltip-arrow-color;
+        }
+      }
+    }
+  }
+}
+label.required {
+  &:after {
+    content: "*";
+  }
+}

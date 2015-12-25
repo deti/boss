@@ -1,0 +1,54 @@
+.btn-scroll-container {
+  position: relative;
+  //height: 42px;
+  .btn-primary {
+    margin-right: 15px;
+    .icon {
+      width: 10px;
+      position: relative;
+      left: -3px;
+    }
+  }
+  bs-table-filter .btn-primary {
+    margin-right: 0;
+  }
+  >div, bs-table-filter {
+    display: inline-block;
+  }
+}
+.btn-popover-container {
+  position: relative;
+}
+.btn-popover {
+  z-index: 999;
+  position: absolute;
+  top: 55px;
+  left: 125px;
+  background: #ffffff;
+  width: 380px;
+  border: 1px solid #DBDBE6;
+  color: @text-color;
+  padding: 35px 50px;
+  #triangles>.top-border(50px, 6px, #DBDBE6, #ffffff);
+  .date-filter {
+    display: block;
+    .col-xs-6 {
+      width: 100%;
+      .text-right {
+        text-align: left;
+      }
+      &:first-child {
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
+.g-details-visible {
+  @media (max-width: 980px) {
+    .btn-scroll-container {
+      .btn-primary {
+        margin-right: 7px;
+      }
+    }
+  }
+}

@@ -1,0 +1,171 @@
+currency:
+  all:
+    AED: {"currency": "United Arab Emirates dirham", "decimal": 2}
+    AFN: {"currency": "Afghan afghani", "decimal": 2}
+    ALL: {"currency": "Albanian lek", "decimal": 2}
+    AMD: {"currency": "Armenian dram", "decimal": 2}
+    ANG: {"currency": "Netherlands Antillean guilder", "decimal": 2}
+    AOA: {"currency": "Angolan kwanza", "decimal": 2}
+    ARS: {"currency": "Argentine peso", "decimal": 2}
+    AUD: {"currency": "Australian dollar", "decimal": 2}
+    AWG: {"currency": "Aruban florin", "decimal": 2}
+    AZN: {"currency": "Azerbaijani manat", "decimal": 2}
+    BAM: {"currency": "Bosnia and Herzegovina convertible mark", "decimal": 2}
+    BBD: {"currency": "Barbados dollar", "decimal": 2}
+    BDT: {"currency": "Bangladeshi taka", "decimal": 2}
+    BGN: {"currency": "Bulgarian lev", "decimal": 2}
+    BHD: {"currency": "Bahraini dinar", "decimal": 3}
+    BIF: {"currency": "Burundian franc", "decimal": 0}
+    BMD: {"currency": "Bermudian dollar", "decimal": 2}
+    BND: {"currency": "Brunei dollar", "decimal": 2}
+    BOB: {"currency": "Boliviano", "decimal": 2}
+    BOV: {"currency": "Bolivian Mvdol (funds code)", "decimal": 2}
+    BRL: {"currency": "Brazilian real", "decimal": 2}
+    BSD: {"currency": "Bahamian dollar", "decimal": 2}
+    BTN: {"currency": "Bhutanese ngultrum", "decimal": 2}
+    BWP: {"currency": "Botswana pula", "decimal": 2}
+    BYR: {"currency": "Belarusian ruble", "decimal": 0}
+    BZD: {"currency": "Belize dollar", "decimal": 2}
+    CAD: {"currency": "Canadian dollar", "decimal": 2}
+    CDF: {"currency": "Congolese franc", "decimal": 2}
+    CHE: {"currency": "WIR Euro (complementary currency)", "decimal": 2}
+    CHF: {"currency": "Swiss franc", "decimal": 2}
+    CHW: {"currency": "WIR Franc (complementary currency)", "decimal": 2}
+    CLF: {"currency": "Unidad de Fomento (funds code)", "decimal": 0}
+    CLP: {"currency": "Chilean peso", "decimal": 0}
+    CNY: {"currency": "Chinese yuan", "decimal": 2}
+    COP: {"currency": "Colombian peso", "decimal": 2}
+    COU: {"currency": "Unidad de Valor Real", "decimal": 2}
+    CRC: {"currency": "Costa Rican colon", "decimal": 2}
+    CUC: {"currency": "Cuban convertible peso", "decimal": 2}
+    CUP: {"currency": "Cuban peso", "decimal": 2}
+    CVE: {"currency": "Cape Verde escudo", "decimal": 0}
+    CZK: {"currency": "Czech koruna", "decimal": 2}
+    DJF: {"currency": "Djiboutian franc", "decimal": 0}
+    DKK: {"currency": "Danish krone", "decimal": 2}
+    DOP: {"currency": "Dominican peso", "decimal": 2}
+    DZD: {"currency": "Algerian dinar", "decimal": 2}
+    EGP: {"currency": "Egyptian pound", "decimal": 2}
+    ERN: {"currency": "Eritrean nakfa", "decimal": 2}
+    ETB: {"currency": "Ethiopian birr", "decimal": 2}
+    EUR: {"currency": "Euro", "decimal": 2}
+    FJD: {"currency": "Fiji dollar", "decimal": 2}
+    FKP: {"currency": "Falkland Islands pound", "decimal": 2}
+    GBP: {"currency": "Pound sterling", "decimal": 2}
+    GEL: {"currency": "Georgian lari", "decimal": 2}
+    GHS: {"currency": "Ghanaian cedi", "decimal": 2}
+    GIP: {"currency": "Gibraltar pound", "decimal": 2}
+    GMD: {"currency": "Gambian dalasi", "decimal": 2}
+    GNF: {"currency": "Guinean franc", "decimal": 0}
+    GTQ: {"currency": "Guatemalan quetzal", "decimal": 2}
+    GYD: {"currency": "Guyanese dollar", "decimal": 2}
+    HKD: {"currency": "Hong Kong dollar", "decimal": 2}
+    HNL: {"currency": "Honduran lempira", "decimal": 2}
+    HRK: {"currency": "Croatian kuna", "decimal": 2}
+    HTG: {"currency": "Haitian gourde", "decimal": 2}
+    HUF: {"currency": "Hungarian forint", "decimal": 2}
+    IDR: {"currency": "Indonesian rupiah", "decimal": 0}
+    ILS: {"currency": "Israeli new shekel", "decimal": 2}
+    INR: {"currency": "Indian rupee", "decimal": 2}
+    IQD: {"currency": "Iraqi dinar", "decimal": 3}
+    IRR: {"currency": "Iranian rial", "decimal": 0}
+    ISK: {"currency": "Icelandic króna", "decimal": 0}
+    JMD: {"currency": "Jamaican dollar", "decimal": 2}
+    JOD: {"currency": "Jordanian dinar", "decimal": 3}
+    JPY: {"currency": "Japanese yen", "decimal": 0}
+    KES: {"currency": "Kenyan shilling", "decimal": 2}
+    KGS: {"currency": "Kyrgyzstani som", "decimal": 2}
+    KHR: {"currency": "Cambodian riel", "decimal": 2}
+    KMF: {"currency": "Comoro franc", "decimal": 0}
+    KPW: {"currency": "North Korean won", "decimal": 0}
+    KRW: {"currency": "South Korean won", "decimal": 0}
+    KWD: {"currency": "Kuwaiti dinar", "decimal": 3}
+    KYD: {"currency": "Cayman Islands dollar", "decimal": 2}
+    KZT: {"currency": "Kazakhstani tenge", "decimal": 2}
+    LAK: {"currency": "Lao kip", "decimal": 0}
+    LBP: {"currency": "Lebanese pound", "decimal": 0}
+    LKR: {"currency": "Sri Lankan rupee", "decimal": 2}
+    LRD: {"currency": "Liberian dollar", "decimal": 2}
+    LSL: {"currency": "Lesotho loti", "decimal": 2}
+    LTL: {"currency": "Lithuanian litas", "decimal": 2}
+    LVL: {"currency": "Latvian lats", "decimal": 2}
+    LYD: {"currency": "Libyan dinar", "decimal": 3}
+    MAD: {"currency": "Moroccan dirham", "decimal": 2}
+    MDL: {"currency": "Moldovan leu", "decimal": 2}
+    MGA: {"currency": "Malagasy ariary", "decimal": 0}
+    MKD: {"currency": "Macedonian denar", "decimal": 0}
+    MMK: {"currency": "Myanma kyat", "decimal": 0}
+    MNT: {"currency": "Mongolian tugrik", "decimal": 2}
+    MOP: {"currency": "Macanese pataca", "decimal": 2}
+    MRO: {"currency": "Mauritanian ouguiya", "decimal": 0}
+    MUR: {"currency": "Mauritian rupee", "decimal": 2}
+    MVR: {"currency": "Maldivian rufiyaa", "decimal": 2}
+    MWK: {"currency": "Malawian kwacha", "decimal": 2}
+    MXN: {"currency": "Mexican peso", "decimal": 2}
+    MXV: {"currency": "Mexican Unidad de Inversion (UDI) (funds code)", "decimal": 2}
+    MYR: {"currency": "Malaysian ringgit", "decimal": 2}
+    MZN: {"currency": "Mozambican metical", "decimal": 2}
+    NAD: {"currency": "Namibian dollar", "decimal": 2}
+    NGN: {"currency": "Nigerian naira", "decimal": 2}
+    NIO: {"currency": "Nicaraguan córdoba", "decimal": 2}
+    NOK: {"currency": "Norwegian krone", "decimal": 2}
+    NPR: {"currency": "Nepalese rupee", "decimal": 2}
+    NZD: {"currency": "New Zealand dollar", "decimal": 2}
+    OMR: {"currency": "Omani rial", "decimal": 3}
+    PAB: {"currency": "Panamanian balboa", "decimal": 2}
+    PEN: {"currency": "Peruvian nuevo sol", "decimal": 2}
+    PGK: {"currency": "Papua New Guinean kina", "decimal": 2}
+    PHP: {"currency": "Philippine peso", "decimal": 2}
+    PKR: {"currency": "Pakistani rupee", "decimal": 2}
+    PLN: {"currency": "Polish złoty", "decimal": 2}
+    PYG: {"currency": "Paraguayan guaraní", "decimal": 0}
+    QAR: {"currency": "Qatari riyal", "decimal": 2}
+    RON: {"currency": "Romanian new leu", "decimal": 2}
+    RSD: {"currency": "Serbian dinar", "decimal": 2}
+    RUB: {"currency": "Russian rouble", "decimal": 2}
+    RWF: {"currency": "Rwandan franc", "decimal": 0}
+    SAR: {"currency": "Saudi riyal", "decimal": 2}
+    SBD: {"currency": "Solomon Islands dollar", "decimal": 2}
+    SCR: {"currency": "Seychelles rupee", "decimal": 2}
+    SDG: {"currency": "Sudanese pound", "decimal": 2}
+    SEK: {"currency": "Swedish krona/kronor", "decimal": 2}
+    SGD: {"currency": "Singapore dollar", "decimal": 2}
+    SHP: {"currency": "Saint Helena pound", "decimal": 2}
+    SLL: {"currency": "Sierra Leonean leone", "decimal": 0}
+    SOS: {"currency": "Somali shilling", "decimal": 2}
+    SRD: {"currency": "Surinamese dollar", "decimal": 2}
+    SSP: {"currency": "South Sudanese pound", "decimal": 2}
+    STD: {"currency": "São Tomé and Príncipe dobra", "decimal": 0}
+    SYP: {"currency": "Syrian pound", "decimal": 2}
+    SZL: {"currency": "Swazi lilangeni", "decimal": 2}
+    THB: {"currency": "Thai baht", "decimal": 2}
+    TJS: {"currency": "Tajikistani somoni", "decimal": 2}
+    TMT: {"currency": "Turkmenistani manat", "decimal": 2}
+    TND: {"currency": "Tunisian dinar", "decimal": 3}
+    TOP: {"currency": "Tongan paʻanga", "decimal": 2}
+    TRY: {"currency": "Turkish lira", "decimal": 2}
+    TTD: {"currency": "Trinidad and Tobago dollar", "decimal": 2}
+    TWD: {"currency": "New Taiwan dollar", "decimal": 2}
+    TZS: {"currency": "Tanzanian shilling", "decimal": 2}
+    UAH: {"currency": "Ukrainian hryvnia", "decimal": 2}
+    UGX: {"currency": "Ugandan shilling", "decimal": 2}
+    USD: {"currency": "United States dollar", "decimal": 2}
+    UYI: {"currency": "Uruguay Peso en Unidades Indexadas (URUIURUI) (funds code)", "decimal": 0}
+    UYU: {"currency": "Uruguayan peso", "decimal": 2}
+    UZS: {"currency": "Uzbekistan som", "decimal": 2}
+    VEF: {"currency": "Venezuelan bolívar fuerte", "decimal": 2}
+    VND: {"currency": "Vietnamese dong", "decimal": 0}
+    VUV: {"currency": "Vanuatu vatu", "decimal": 0}
+    WST: {"currency": "Samoan tala", "decimal": 2}
+    XAF: {"currency": "CFA franc BEAC", "decimal": 0}
+    XCD: {"currency": "East Caribbean dollar", "decimal": 2}
+    XOF: {"currency": "CFA franc BCEAO", "decimal": 0}
+    XPF: {"currency": "CFP franc (Franc du Pacifique)", "decimal": 0}
+    YER: {"currency": "Yemeni rial", "decimal": 2}
+    ZAR: {"currency": "South African rand", "decimal": 2}
+    ZMW: {"currency": "Zambian kwacha", "decimal": 2}
+
+  active:
+    - RUB
+    - USD
+    - EUR

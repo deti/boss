@@ -1,0 +1,70 @@
+<div class="g-details-tabs-wrapper">
+  <div class="tabs"></div>
+  <perfect-scrollbar class="g-details-view-wrapper" refresh-on-change="[$state.current.name, windowHeight]"
+                     suppress-scroll-x="true">
+    <form class="form-horizontal pad-t-50" name="UserEditForm" novalidate bs-form-saver ng-submit="update(UserEditForm)" bs-server-validate="{401: 'auth', 400: 'badRequest', 405: 'notAllowed'}">
+      <fieldset ng-disabled="user.deleted">
+        <div class="form-group row-vertical-align" bs-has-error>
+          <label class="label-fw centered" for="name" translate>First and last name</label>
+
+          <div class="col-sm-8">
+            <input type="text" id="name" name="name" class="form-control" ng-model="user.name" bs-validate-hint>
+          </div>
+        </div>
+        <div class="form-group row-vertical-align" bs-has-error>
+          <label class="label-fw centered" for="email">E-mail</label>
+
+          <div class="col-sm-8">
+            <input type="email" id="email" name="email" class="form-control" required ng-model="user.email"
+                    bs-validate-hint>
+          </div>
+        </div>
+        <div class="form-group row-vertical-align" bs-has-error>
+          <label class="label-fw centered" for="role" translate>Role</label>
+
+          <div class="col-sm-8">
+            <div class="select">
+              <select name="role" id="role" ng-model="user.role" class="form-control" ng-required="true"
+                      ng-options="role.role_id as role|localizedName for role in roles" bs-validate-hint>
+              </select>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="mar-t-25" ng-if="!user.deleted">
+        <div class="form-group row-vertical-align">
+          <label class="col-sm-5 centered" translate>Archive</label>
+
+          <div class="col-sm-7">
+            <button type="button" class="btn btn-block btn-primary" ng-click="archiveUser()" translate>Send to archive</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group has-error" ng-if="UserEditForm.$error.unclassified">
+        <div class="fixed-offset col-sm-9">
+          <span class="help-block">{{UserEditForm.$server_unclassified}}</span>
+        </div>
+      </div>
+
+      <ng-include src="::rulesTplPath"></ng-include>
+
+      <div class="form-group has-error" ng-if="UserEditForm.$error.ServerError">
+        <div class="col-sm-8 col-sm-offset-3">
+          <span class="help-block" translate>Server error</span>
+        </div>
+      </div>
+      <div class="form-group has-error" ng-if="UserEditForm.$error.badRequest">
+        <div class="col-sm-8 col-sm-offset-3">
+          <span class="help-block" translate>Server error, check data entry fields</span>
+        </div>
+      </div>
+      <div class="form-group has-error" ng-if="UserEditForm.$error.notAllowed">
+        <div class="col-sm-8 col-sm-offset-3">
+          <span class="help-block" translate>No rights to perform this action</span>
+        </div>
+      </div>
+    </form>
+  </perfect-scrollbar>
+</div>

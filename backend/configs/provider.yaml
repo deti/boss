@@ -1,0 +1,14 @@
+provider:
+  cloud_name: $(__FIX_ME__())
+  site_url: $(backend.entry_point)
+  site_url_ui: $(provider.site_url)
+  support_phone: $(__FIX_ME__())
+  support_email: $(__FIX_ME__())
+  from_address: $(provider.noreply)
+  noreply: $(__FIX_ME__())
+
+skyline:
+  red_stars: false
+  dns: true
+  manual_disk_size: true
+  floating_ips: true

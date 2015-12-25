@@ -1,0 +1,17 @@
+<div class="g-details-tabs-wrapper">
+  <div class="tabs" ng-class="::{'pad-b-50': !manyTabs}">
+    <a ng-repeat="tab in ::tabs" ng-class="{'active-details-tab': isActive(tab.id)}" ng-click="forms.AccountInfoForm.$valid ? showTab(tab.id) : false">{{::tab.title}}</a>
+  </div>
+  <perfect-scrollbar class="g-details-view-wrapper" refresh-on-change="[$state.current.name, windowHeight]"
+                     suppress-scroll-x="true">
+    <div class="g-details-view">
+      <form class="form-horizontal" name="NewCustomerForm" novalidate autocomplete="off"
+            bs-form-send-once ng-submit="create(NewCustomerForm)" bs-server-validate="{409: 'conflict'}">
+        <ng-form name="forms.AccountInfoForm">
+          <div ui-view="tab-info" class="g-details-view"></div>
+        </ng-form>
+        <div ui-view="tab-contacts" class="g-details-view"></div>
+      </form>
+    </div>
+  </perfect-scrollbar>
+</div>

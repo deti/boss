@@ -1,0 +1,29 @@
+- hosts: databases
+  sudo: yes
+  tasks:
+  - name: update apt cache
+    apt: update_cache=yes
+  - name: install mariadb and related packages
+    apt: 
+      name: '{{ item }}'
+      state: 'present'
+      install_recommends: False
+      force: yes
+    with_items:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb
+  - name: Set Root Password
+    mysql_user: name=root password="{{ lookup('password', '/tmp/mysqlpassword length=15') }}" priv=*.*:ALL,GRANT state=present
+    register: result
+    ignore_errors: True
+  - name: Validate Root Password
+    mysql_user: login_user=root login_password="{{ lookup('password', '/tmp/mysqlpassword length=15') }}" name=root password="{{ lookup('password', '/tmp/mysqlpassword length=15') }}" priv=*.*:ALL,GRANT state=present
+    when: result|failed
+  - name: create default database boss
+    mysql_db: login_user=root login_password="{{ lookup('password', '/tmp/mysqlpassword length=15') }}" name=boss state=present encoding=utf8 collation=utf8_general_ci
+  - name: create default database fitter
+    mysql_db: login_user=root login_password="{{ lookup('password', '/tmp/mysqlpassword length=15') }}" name=fitter state=present encoding=utf8 collation=utf8_general_ci
+  - name: Create User Boss
+    mysql_user: login_user=root login_password="{{ lookup('password', '/tmp/mysqlpassword length=15') }}" name=boss password=boss priv=boss.*:ALL/fitter.*:ALL state=present 
+

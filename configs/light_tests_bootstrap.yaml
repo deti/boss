@@ -1,0 +1,7 @@
+customer:
+  - email: lighttester@boss.ru
+    password: lighttester@boss.ru
+    locale: en
+    detailed_info:
+      name: Light Tests Customer
+    confirmed: true

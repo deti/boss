@@ -1,0 +1,16 @@
+{
+  "noarg": true,
+  "boss": true,
+  "esnext": true,
+  "eqnull": true,
+  "predef": [
+    "angular",
+    "_",
+    "window",
+    "console",
+    "describe",
+    "it",
+    "expect",
+    "inject"
+  ]
+}

@@ -1,0 +1,51 @@
+<form name="InvoiceForm" class="form-horizontal" ng-submit="downloadInvoice(InvoiceForm)" bs-form-send-once>
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-xs-3 centered" for="amount" translate>Amount</label>
+    <div class="col-xs-9">
+      <div class="input-grp">
+        <input id="amount" type="number" name="amount" class="form-control" ng-model="invoiceFormData.amount"
+               required bs-validate-hint="{min: 'Minimum amount - 1'}">
+        <span class="input-group-addon unit-addon">{{userInfo.currency}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-sm-3 centered" for="date" translate>Date</label>
+
+    <div class="col-sm-9">
+      <div class="input-grp">
+        <input type="text" id="date" class="form-control" ng-model="invoiceFormData.date" name="date"
+               bs-datepicker data-autoclose="true" bs-validate-hint="{parse: ('Incorrect date format' | translate)}"/>
+        <span class="input-group-addon icon-addon"><i class="icon icon-transactions-v2 icon-lg"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group has-error" ng-if="InvoiceForm.$error.unclassified">
+    <div class="col-xs-offset-3 col-xs-9">
+      <span class="help-block">{{InvoiceForm.$server_unclassified}}</span>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <div class="col-xs-5 col-xs-offset-3">
+      <button type="submit" class="btn btn-primary btn-block" translate>
+        Create an account
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="hr"><span class="white-bg gray-middle-light-text" translate>Invoice</span></div>
+<form class="form-horizontal mar-t-30" novalidate bs-server-validate name="AcceptanceForm"
+      ng-submit="downloadAcceptance()" bs-form-send-once>
+  <bs-date-range start-date="acceptanceFormData.startDate" end-date="acceptanceFormData.endDate"></bs-date-range>
+  <div class="form-group row-vertical-align">
+    <div class="col-xs-5">
+      <button type="submit" class="btn btn-primary btn-block" translate>
+        Create invoice
+      </button>
+    </div>
+  </div>
+</form>

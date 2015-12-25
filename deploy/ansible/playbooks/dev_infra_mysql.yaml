@@ -1,0 +1,16 @@
+---
+- name: deploy MariaDB and Galera
+  hosts: dev
+  user: root
+  sudo: yes
+  tasks:
+  - name: sql-server
+    docker:
+      docker_api_version: "1.18"
+      insecure_registry: True
+      registry: "{{ registry }}"
+      image: "{{ registry }}/{{ galera_image }}"
+      state: reloaded
+      name: sql-server
+      ports: 3306:3306,4444:4444,4567:4567,4568:4568
+      env: "ETCD={{ etcd }},ENV_NAME=dev,ROLE=infrastructure/mysql,HOST_IP={{ ansible_eth0.ipv4.address }},MY_PASS={{ mysql_root_pass }}"

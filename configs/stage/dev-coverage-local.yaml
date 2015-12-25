@@ -1,0 +1,5 @@
+extend:
+  - dev_local.yaml
+
+devel:
+  coverage_enable: true

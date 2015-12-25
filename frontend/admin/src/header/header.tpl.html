@@ -1,0 +1,21 @@
+<ul class="nav navbar-nav navbar-right">
+  <li class="dropdown" dropdown on-toggle="toggled(open)">
+    <a href="#" class="dropdown-toggle" dropdown-toggle>
+      <span>{{langShortNames[currentLang]}}</span>
+      <i class="fa fa-angle-down fa-lg pad-l-10"></i>
+    </a>
+    <ul class="dropdown-menu narrow" role="menu">
+      <li ng-repeat="(lang, name) in ::langs" ng-show="currentLang !== lang"><a href="#" ng-click="setLang(lang)">{{::langShortNames[lang]}}</a></li>
+    </ul>
+  </li>
+  <li class="dropdown" dropdown on-toggle="toggled(open)">
+    <a href="#" class="dropdown-toggle" dropdown-toggle>
+      {{:: userInfo.name }}<i class="fa fa-angle-down fa-lg pad-l-10"></i>
+    </a>
+    <ul class="dropdown-menu dd-right wide" role="menu">
+      <li><a ui-sref="users.details({id:userInfo.user_id})" translate>Account settings</a></li>
+      <li ng-if="::userInfo.role.role_id === 'admin'"><a ui-sref="system" translate>Check email</a></li>
+      <li><a ui-sref="signout" translate>Sign out</a></li>
+    </ul>
+  </li>
+</ul>

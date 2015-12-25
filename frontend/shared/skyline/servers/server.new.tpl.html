@@ -1,0 +1,236 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>New server</h4>
+
+  <div class="pull-left">
+  <form name="NewServerForm" class="form-horizontal" ng-submit="create(NewServerForm)"
+        bs-server-validate bs-form-send-once novalidate>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="name" translate>Name</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="name" name="name" class="form-control" required ng-model="server.name" bs-validate-hint
+               autofocus>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align">
+      <label class="col-xs-3 required" for="flavorRef" translate>Size</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="imageRef" class="form-control" id="flavorRef" ng-model="server.flavorRef"
+                  ng-options="item.id as item.about for item in flavors" required bs-validate-hint>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="sourceType" translate>Source</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="sourceType" class="form-control" id="sourceType"
+                  ng-model="server.block_device_mapping_v2[0].source_type"
+                  required bs-validate-hint>
+            <option ng-if="snapshots.length" value="snapshot" translate>Backup</option>
+            <option value="image" translate>Image</option>
+            <option ng-if="volumes.length" value="volume" translate>Volume</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error
+         ng-if="server.block_device_mapping_v2[0].source_type === 'image'">
+      <label class="col-xs-3 centered required" for="imageRef" translate>Image</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="imageRef" class="form-control" id="imageRef" ng-model="server.block_device_mapping_v2[0].uuid"
+                  ng-options="item.id as item.name for item in images" required bs-validate-hint>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error
+         ng-if="server.block_device_mapping_v2[0].source_type === 'snapshot'">
+      <label class="col-xs-3 centered required" for="snapshotRef" translate>Image</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="imageRef" class="form-control" id="snapshotRef"
+                  ng-model="server.block_device_mapping_v2[0].uuid"
+                  ng-options="item.id as item.displayName for item in snapshots" required bs-validate-hint>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error
+         ng-if="server.block_device_mapping_v2[0].source_type === 'volume'">
+      <label class="col-xs-3 centered required" for="volumeRef" translate>Image</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="imageRef" class="form-control" id="volumeRef" ng-model="server.block_device_mapping_v2[0].uuid"
+                  ng-options="item.id as item.displayName for item in volumes" required bs-validate-hint>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error
+         ng-if="server.block_device_mapping_v2[0].source_type === 'image' && CONST.lo.skyline.manual_disk_size">
+      <label class="col-xs-3 centered required" for="disk_size" translate>Disk size</label>
+
+      <div class="col-xs-9">
+        <div class="input-grp">
+          <input id="disk_size" type="number" name="disk_size" class="form-control"
+                 ng-model="server.block_device_mapping_v2[0].volume_size"
+                 required min="1" bs-validate-hint="{min: 'Minimal size - 1 GB'}">
+          <span class="input-group-addon unit-addon">GB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr"><span class="white-bg" translate>Authorization</span></div>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="authBy" translate>Authorization</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="sourceType" class="form-control" id="authBy" ng-model="authBy"
+                  required bs-validate-hint>
+            <option value="key" translate>By key</option>
+            <option value="pass" translate>By password</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="authBy === 'pass'">
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="col-xs-3 centered" for="passwordLength" translate>Password length</label>
+
+        <div class="col-xs-4">
+          <input type="number" id="passwordLength" name="passwordLength" class="form-control" required
+                 ng-model="passwordLength" bs-validate-hint>
+        </div>
+        <div class="col-xs-5">
+          <button type="button" class="btn btn-block btn-primary" ng-click="generatePassword()" translate>
+          Create password
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="col-xs-3 centered" for="password" translate>Your password</label>
+
+        <div class="col-xs-4">
+          <input type="text" id="password" name="password" class="form-control" ng-model="server.adminPass"
+                 bs-validate-hint>
+        </div>
+        <div class="col-xs-5">
+          <button class="btn btn-link" type="button" id="password_copy" bs-copy-to-clipboard="server.adminPass">
+            <span translate>Copy to clipboard</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div ng-show="authBy === 'key'">
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="col-xs-3 centered" for="key_name" translate>Select a key</label>
+
+        <div class="col-xs-9">
+          <div class="select">
+            <select name="key_name" class="form-control" id="key_name" ng-model="server.key_name"
+                    ng-options="item.keypair.name as item.keypair.name for item in keypairs" bs-validate-hint>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row-vertical-align" ng-hide="keypairFormVisible">
+        <label class="col-xs-3 centered" translate>New key</label>
+
+        <div class="col-xs-9">
+          <button type="button" class="btn btn-primary" ng-click="setKeypairFormVisible(true)" translate>Add
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="hidden"></button>
+  </form>
+
+  <form name="NewKeypairForm" ng-submit="addSSHKey(NewKeypairForm)" novalidate ng-show="keypairFormVisible && authBy === 'key'"
+        class="form-horizontal width-limit-750">
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="sshName" translate>Name</label>
+
+      <div class="col-xs-9">
+        <input id="sshName" type="text" name="name" class="form-control"
+               ng-model="keypair.name" placeholder="{{::'Enter a SSH key name' | translate}}"
+               required bs-validate-hint>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 required" for="sshKey" translate>Key</label>
+
+      <div class="col-xs-9">
+          <textarea id="sshKey" name="public_key" class="form-control" rows="5"
+                    ng-model="keypair.public_key" placeholder="{{::'Enter a public SSH key' | translate}}"
+                    required bs-validate-hint></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-4 col-xs-offset-3">
+        <button class="btn btn-primary" type="submit" ng-disabled="NewKeypairForm.$invalid" translate>
+          Save
+        </button>
+      </div>
+      <div class="col-xs-3">
+        <button class="btn btn-link" type="button" ng-click="setKeypairFormVisible(false)" translate>Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="hr"></div>
+
+  <div class="form-group width-limit-750">
+    <div class="col-xs-4 col-xs-offset-3">
+      <button class="btn btn-primary btn-block" ng-class="{'submitting': NewServerForm.$$submiting}" translate
+              ng-click="create(NewServerForm)" ng-disabled="NewServerForm.$invalid || NewServerForm.$$submiting || overLimits">
+        Create server
+      </button>
+    </div>
+    <div class="col-xs-4">
+      <a ui-sref="openstack.servers.list" class="btn btn-link" translate>Cancel</a>
+    </div>
+  </div>
+  </div>
+
+  <div class="openstack-limits pull-left mar-t-40">
+    <div class="form-group limits-title" translate>
+      Project limits:
+    </div>
+    <div class="form-group">
+      <bs-progressbar title="VM" value="limits.vmUsed" max="limits.vmMax"></bs-progressbar>
+    </div>
+
+    <div class="form-group">
+      <bs-progressbar title="RAM" value="limits.ramUsed" max="limits.ramMax"></bs-progressbar>
+    </div>
+
+    <div class="form-group">
+      <bs-progressbar title="vCPU" value="limits.cpuUsed" max="limits.cpuMax"></bs-progressbar>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+</div>

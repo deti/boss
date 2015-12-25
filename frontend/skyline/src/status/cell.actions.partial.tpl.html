@@ -1,0 +1,46 @@
+<td>
+  <span>{{::item.name}}</span>
+</td>
+<td colspan="2">
+  <span>
+    <button class="btn-clear" ng-click="serverAction('pause', item)"
+            ng-if="item.status.value === SERVER_STATUS.ACTIVE.value">
+      <i class="fa fa-pause"></i>
+    </button>
+    <button class="btn-clear" ng-click="serverAction('unpause', item)"
+            ng-if="item.status.value === SERVER_STATUS.PAUSED.value">
+      <i class="fa fa-play"></i>
+    </button>
+    <button class="btn-clear" ng-click="serverAction('resume', item)"
+            ng-if="item.status.value === SERVER_STATUS.SUSPENDED.value">
+      <i class="fa fa-play"></i>
+    </button>
+    <button class="btn-clear" ng-click="serverAction('stop', item)"
+            ng-if="item.status.value === SERVER_STATUS.ACTIVE.value || item.status.value === SERVER_STATUS.value.ERROR">
+      <i class="fa fa-stop"></i>
+    </button>
+    <button class="btn-clear" ng-click="serverAction('start', item)"
+            ng-if="item.status.value === SERVER_STATUS.SHUTOFF.value">
+      <i class="fa fa-play"></i>
+    </button>
+    <button class="btn-clear" ng-click="serverAction('reboot', item)"
+            ng-if="item.status.value !== SERVER_STATUS.SHUTOFF.value">
+      <i class="fa fa-repeat"></i>
+    </button>
+  </span>
+</td>
+<td>
+  <span>
+    <a ui-sref="openstack.simple.recreate({id: item.id})" translate>Recreate</a>
+    <a ng-if="[SERVER_STATUS.ACTIVE.value, SERVER_STATUS.RESCUE.value].indexOf(item.status.value) !== -1"
+       ui-sref="openstack.servers.vnc({id: item.id})">VNC</a>
+  </span>
+</td>
+<td class="long-text">
+  <span ng-include="::adressesTplPath"></span>
+</td>
+<td>
+  <span>
+    <a ui-sref="openstack.simple.edit({id: item.id})" translate>Settings</a>
+  </span>
+</td>

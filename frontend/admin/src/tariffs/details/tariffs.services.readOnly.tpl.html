@@ -1,0 +1,39 @@
+<form name="TariffEditForm" class="services-readonly" novalidate bs-form-saver ng-submit="updateMutableServices(TariffEditForm)">
+  <ul class="list">
+  <li ng-repeat="category in categories track by category.category_id" ng-if="checkSelectedServices(category)">
+    <a href="#" ng-click="hideList = !hideList" class="itemName" ng-class="{'opened': !hideList}">
+      {{::category|localizedName}}</a>
+    <ul class="inner-list" ng-hide="hideList">
+      <li ng-repeat="service in category.services track by service.service_id" ng-if="service.selected">
+        <div class="row row-vertical-align">
+          <div class="col-xs-2">
+            <label class="switch">
+              <input type="checkbox" ng-model="service.selected" disabled>
+              <span>
+                <i class="icon-on icon icon-xs icon-check"></i>
+                <i class="icon-off icon icon-xs icon-cross"></i>
+              </span>
+            </label>
+          </div>
+
+          <div class="col-xs-1">
+            <i class="icon icon-question icon-lg" bs-tooltip="service|localizedName:'description'" data-placement="bottom"></i>
+          </div>
+
+          <div class="col-xs-4">
+            <label ng-class="{'disabled': !service.selected}">{{::service|localizedName}}</label>
+          </div>
+
+          <div class="col-xs-5">
+            <div class="input-grp">
+              <input type="text" id="{{service.service_id}}" name="{{service.service_id}}" ng-model="service.price" class="form-control" ng-disabled="!service.need_changing" bs-dynamic-name/>
+              <span class="input-group-addon unit-addon">{{ tariff.currency }} / {{::service.measure|localizedName}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+</form>

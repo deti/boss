@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h2 translate>Test email</h2>
+    <form class="form-horizontal pad-t-50" name="TestEmailForm" novalidate ng-submit="sendEmail(TestEmailForm)">
+
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="col-xs-3 centered" for="sendTo" translate>Recipient</label>
+
+        <div class="col-xs-8">
+          <input type="email" id="sendTo" name="sendTo" class="form-control" ng-model="sendTo" bs-validate-hint placeholder="{{::'Enter email address' | translate}}">
+        </div>
+      </div>
+
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="col-xs-3 centered" for="subject" translate>Subject</label>
+
+        <div class="col-xs-8">
+          <input type="text" id="subject" name="subject" class="form-control" ng-model="subject" bs-validate-hint placeholder="{{::'Specify the subject' | translate}}">
+        </div>
+      </div>
+
+      <div class="form-group row-vertical-align">
+        <label class="col-xs-3 centered" for="sendCC" translate>Copy</label>
+
+        <div class="col-xs-8">
+          <tags-input ng-model="sendCC" type="email" allowed-tags-pattern=".+@.+" name="sendCC"
+                      on-tag-removed="TestEmailForm.sendCC.$dirty = true" bs-validate-hint
+                      on-tag-added="TestEmailForm.sendCC.$dirty = true" id="sendCC"
+                      placeholder="{{::'Enter email address' | translate}}" class="ti-input-lg ti-input-simple"></tags-input>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-3 col-xs-offset-3">
+          <button class="btn btn-primary btn-block" type="submit" translate>Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

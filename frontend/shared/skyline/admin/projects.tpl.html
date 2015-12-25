@@ -1,0 +1,14 @@
+<div class="full-height" st-table="servers">
+  <div class="btn-scroll-container">
+    <bs-table-filter search-tags="searchTags" filters="serversFilters" state-name="projects"></bs-table-filter>
+    <button class="btn btn-primary mar-r-15" ng-show="selected.length" translate ng-click="remove(selected);">
+      Remove selected
+    </button>
+  </div>
+  <bs-table-filter-tags search-tags="searchTags" state-name="projects"></bs-table-filter-tags>
+
+
+  <div class="table-info active-table projects-table">
+    <bs-table data="servers" columns="columns" simple="true" scroll="true" static="true"></bs-table>
+  </div>
+</div>

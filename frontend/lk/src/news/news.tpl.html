@@ -1,0 +1,18 @@
+<div class="news-feed sides-padding">
+  <div ng-if="news.length">
+    <div class="news-block" ng-repeat="n in news">
+      <span class="news-date">{{ ::n.published | date:'shortDate'}}</span>
+      <h3 class="news-heading" ng-class="{'pointer': n.bodyRest}" ng-click="n.showFullBody = !n.showFullBody">{{ ::n.subject }}</h3>
+      <span>{{::n.bodyPreview}}</span>
+      <a class="pointer" ng-if="n.bodyRest && !n.showFullBody" ng-click="n.showFullBody = !n.showFullBody" translate>...Read more</a>
+      <span ng-if="n.showFullBody && n.bodyRest">
+        {{::n.bodyRest}}
+        <a class="pointer" ng-click="n.showFullBody = !n.showFullBody" translate> Minimize</a>
+      </span>
+    </div>
+  </div>
+  <h3 class="pad-t-20" ng-if="!news.length" translate>
+    No news so far...
+  </h3>
+</div>
+

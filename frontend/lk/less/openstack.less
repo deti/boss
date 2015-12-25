@@ -1,0 +1,84 @@
+.openstack-container {
+  .form-horizontal {
+    min-width: 580px;
+    max-width: 580px;
+    margin-top: 40px;
+  }
+  .hr {
+    max-width: 580px;
+  }
+  .width-limit {
+    max-width: 580px;
+  }
+  .width-limit-800 {
+    max-width: 800px;
+  }
+  .width-limit-750 {
+    max-width: 750px;
+  }
+}
+
+.openstack-limits {
+  margin-left: 35px;
+  width: 300px;
+  .limits-title {
+    color: @placeholder-text-color;
+    padding-left: 10px;
+    line-height: 42px;
+    height: 42px;
+  }
+}
+
+.flavor-options {
+  .details-select {
+    width: 30%;
+    float: left;
+    margin-right: 5%;
+    &:last-child {
+      margin-right: 0;
+    }
+    > div {
+      cursor: pointer;
+      border: 1px solid #a7acbc;
+      border-radius: 4px;
+      padding: 8px 15px;
+
+      &:hover {
+        background: #EFF3FD;
+        border: 1px solid @input-hover-border-color;
+      }
+      &.active {
+        background: #EEF5FF;
+        border: 1px solid @input-hover-border-color;
+        color: #2266D4;
+        .title {
+          color: #2266D4;
+        }
+      }
+    }
+    .title, .value {
+      float: left;
+    }
+    .title {
+      width: 45%;
+      color: @placeholder-text-color;
+    }
+    .values {
+      width: 55%;
+    }
+    .prop-row {
+      .clearfix();
+      line-height: 1.3;
+    }
+  }
+}
+
+.attached-disk {
+  border: 1px solid #a7acbc;
+  border-radius: 4px;
+  padding: 6px 14px;
+  .close {
+    position: relative;
+    top: 3px;
+  }
+}

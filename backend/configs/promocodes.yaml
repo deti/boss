@@ -1,0 +1,7 @@
+promocodes:
+  promo_registration_only: false
+  codes:
+    #code_value: expiration date in format YYYY-MM-DD
+    SaMpLeCoDe: 2000-01-01
+    # Promocode for tests:
+    c402069b563f04d82eace79feb84bab9: 2020-12-31

@@ -1,0 +1,412 @@
+{
+  "id": null,
+  "title": "OS Resources",
+  "originalTitle": "OS Resources",
+  "tags": [],
+  "style": "light",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "title": "Cores, Instances",
+      "height": "250px",
+      "collapse": true,
+      "editable": true,
+      "panels": [
+        {
+          "title": "Cores, Instances",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 5,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.openstack_usage.*.cores"
+            },
+            {
+              "target": "stats.openstack_usage.*.instances"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [
+            {}
+          ],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "RAM",
+      "height": "200px",
+      "editable": true,
+      "collapse": true,
+      "panels": [
+        {
+          "id": 4,
+          "span": 12,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.openstack_usage.*.ram"
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "RAM",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "annotate": {
+            "enable": false
+          },
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "Port, Server groups, Floating IP",
+      "height": "250px",
+      "collapse": true,
+      "editable": true,
+      "panels": [
+        {
+          "title": "Port, Server groups, Floating IP",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 6,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.openstack_usage.*.port"
+            },
+            {
+              "target": "stats.openstack_usage.*.server_groups"
+            },
+            {
+              "target": "stats.openstack_usage.*.floatingip"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "Volumes, Snapshots",
+      "height": "250px",
+      "editable": true,
+      "collapse": true,
+      "panels": [
+        {
+          "title": "Volumes, Snapshots",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 8,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.openstack_usage.*.volumes"
+            },
+            {
+              "target": "stats.openstack_usage.*.snapshots"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "Total unknown",
+      "height": "250px",
+      "editable": true,
+      "collapse": true,
+      "panels": [
+        {
+          "title": "Total unknown",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 9,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false,
+            "hideEmpty": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "individual",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.openstack_usage.unknown_total.*"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    }
+  ],
+  "nav": [
+    {
+      "type": "timepicker",
+      "collapse": false,
+      "enable": true,
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "now": false,
+      "notice": false
+    }
+  ],
+  "time": {
+    "from": "2015-12-01T21:02:18.874Z",
+    "to": "2015-12-02T16:03:06.618Z"
+  },
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": false,
+  "version": 6,
+  "hideAllLegends": false
+}

@@ -1,0 +1,5 @@
+<div class="g-nav-wrapper" ng-class="{'g-test-visible': userInfo.customer_mode === 'test'}" ui-view="sidemenu"></div>
+<perfect-scrollbar class="g-mainview" refresh-on-change="[$state.current.name, windowHeight]" suppress-scroll-x="true">
+  <header class="g-header" ui-view="header"></header>
+  <div ui-view="main"></div>
+</perfect-scrollbar>

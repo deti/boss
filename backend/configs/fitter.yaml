@@ -1,0 +1,103 @@
+fitter:
+  fetch_interval: ${2 * MINUTE}    # Ceilometer meters fetch interval (seconds)
+  window_leading: ${10 * MINUTE}
+  dawn_of_time: 2015-07-01T04:00:00
+  tenant_mutex_ttl: ${5 * MINUTE}
+  tenant_interval: ${10 * MINUTE}
+  min_tenant_interval: ${1 * MINUTE}
+  trust_sources:
+    - openstack
+
+  # configuration for defining usage collection
+  collection:
+    # Amount of one hour windows to process for each iteration
+    max_metric_limit: 1000
+
+    # defines which meter is mapped to which transformer
+    meter_mappings:
+      # meter name as seen in ceilometer
+      ip.floating:
+        service: net.allocated_ip
+        transformer:
+          GaugeMax:
+            name_field: address
+
+      ip.fixed:
+        service: net.fixed_ip
+        transformer:
+          GaugeMax:
+            name_field: address
+
+      volume.size:
+        service: storage.volume
+        transformer:
+          StorageMax:
+            name_field: false
+            volume_types:
+              Standart: storage.volume
+
+      snapshot.size:
+        service: storage.volume
+        transformer:
+          StorageMax:
+            name_field: false
+            volume_types:
+              Standart: storage.volume
+
+      instance:
+        service: instance
+        transformer:
+          Uptime:
+            name_field: display_name
+
+      image.size:
+        service: storage.image
+        transformer:
+          StorageMax:
+            name_field: name
+            volume_types:
+              Standart: storage.image
+
+      network.services.vpn:
+        service: net.vpn
+        transformer:
+          GaugeNetworkService:
+            name_field: name
+
+#      network:
+#        type: Network
+#        transformer: GaugeMax
+#        unit: hour
+#        metadata:
+#          name:
+#            sources:
+#              - name
+#      router:
+#        type: Router
+#        transformer: GaugeMax
+#        unit: hour
+#        metadata:
+#          name:
+#            sources:
+#              - name
+  # transformer configs
+  transformers:
+    uptime:
+      # states marked as "billable" for Virtual Instances.
+      tracked_states:
+        - active
+        - paused
+        - rescued
+        - resized
+    from_image:
+      service: storage.disk
+      # What metadata values to check
+      md_keys:
+        - image_ref
+        - image_meta.base_image_ref
+      none_values:
+        - None
+        - ""
+      # where to get volume size from
+      size_keys:
+        - root_gb

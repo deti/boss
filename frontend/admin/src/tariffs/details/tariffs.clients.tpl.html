@@ -1,0 +1,118 @@
+<div class="filtered-content">
+
+  <div class="result">
+    <bs-infinite-scroll data="customers" total="{{customersTotal}}" per-page="{{customersPerPage}}"
+                        container=".right-scroll" service-name="customerService"
+                        method="getCustomers" params="customersParams"
+                        on-element-function="customerOnElement(element)">
+      <perfect-scrollbar refresh-on-change="[$state.current.name, windowHeight]" suppress-scroll-x="true"
+                         class="right-scroll">
+        <div class="row mar-b-20">
+          <div class="col-xs-6">
+            <h4 translate>List of customers</h4>
+          </div>
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-primary btn-block" ng-click="updateCustomersTariff()" translate>Add to this plan</button>
+          </div>
+        </div>
+        <div class="hr mar-b-10"></div>
+        <div class="hint-block row-vertical-align" bs-tooltip="hint" data-placement="bottom">
+          <i class="icon icon-question centered mar-r-10" ></i>
+          <span translate>Help</span>
+        </div>
+        <div class="hr mar-t-10"></div>
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="filters.searchQuery" placeholder="{{::'Search list' |  translate}}">
+          </div>
+          <button type="button" class="btn btn-primary" ng-click="search()">
+            <i class="fa fa-search fa-fw" ng-if="filters.searchCount === null"></i>
+            <i class="fa fa-times fa-lg" ng-if="filters.searchCount !== null"></i>
+          </button>
+          <div>
+            <span translate>Filtered: </span>
+            <span>{{(filters.searchCount !== null) ? filters.searchCount : customersTotal}}</span>
+          </div>
+        </form>
+
+        <div class="filtered-result mar-t-40">
+          <ul>
+            <li ng-repeat="customer in customers">
+              <label ng-class="{'checked': customer.selected}" class="custom-checkbox">
+                <input type="checkbox" ng-model="customer.selected">
+                <span class="checkbox-elem"></span>
+                {{::customer.email}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </perfect-scrollbar>
+    </bs-infinite-scroll>
+  </div>
+
+  <div class="filters">
+    <bs-infinite-scroll data="allTariffs" total="{{tariffsTotal}}" per-page="{{tariffsPerPage}}"
+                        container=".left-scroll" service-name="tariffService"
+                        method="getList" params="tariffsParams">
+      <perfect-scrollbar refresh-on-change="[$state.current.name, windowHeight]" suppress-scroll-x="true"
+                        class="left-scroll">
+        <div class="hr hr-open-close" ng-click="show.typeFilter = !show.typeFilter"
+             ng-class="show.typeFilter ? 'hr-open' : 'hr-close'">
+          <span translate>Filter by type</span>
+          <i></i>
+        </div>
+        <div class="custom-filter-wrapper" ng-show="show.typeFilter">
+          <div class="radio">
+            <label ng-class="{'checked': filters.customerType == 'any'}">
+              <input type="radio" value="any"
+                     ng-model="filters.customerType" />
+              <span translate>Any</span>
+            </label>
+          </div>
+          <div class="radio">
+            <label ng-class="{'checked': filters.customerType == 'private'}">
+              <input type="radio" value="private"
+                     ng-model="filters.customerType" />
+              <span translate>Only private persons</span>
+            </label>
+          </div>
+          <div class="radio">
+            <label ng-class="{'checked': filters.customerType == 'entity'}">
+              <input type="radio" value="entity"
+                     ng-model="filters.customerType" />
+              <span translate>Only legal entity's</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="hr hr-open-close" ng-click="show.creationFilter = !show.creationFilter"
+             ng-class="show.creationFilter ? 'hr-open' : 'hr-close'">
+          <span translate>Filter by creation date</span>
+          <i></i>
+        </div>
+        <div class="custom-filter-wrapper" ng-show="show.creationFilter">
+          <bs-date-range after-param="afterParam" before-param="beforeParam"
+                         reset-time="resetTime" default-range="true">
+          </bs-date-range>
+        </div>
+
+        <div class="hr hr-open-close" ng-click="show.tariffFilter = !show.tariffFilter"
+             ng-class="show.tariffFilter ? 'hr-open' : 'hr-close'">
+          <span translate>Filter by plan</span>
+          <i></i>
+        </div>
+        <div class="custom-filter-wrapper" ng-show="show.tariffFilter">
+          <ul>
+            <li ng-repeat="tariffItem in allTariffs">
+              <label ng-class="{'checked': tariffItem.selected}" class="custom-checkbox">
+                <input type="checkbox" ng-model="tariffItem.selected" ng-click="check(tariffItem)">
+                <span class="checkbox-elem"></span>
+                  {{::tariffItem|localizedName}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </perfect-scrollbar>
+    </bs-infinite-scroll>
+  </div>
+</div>

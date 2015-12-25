@@ -1,0 +1,21 @@
+<ng-include src="::headerPartialPath"></ng-include>
+<perfect-scrollbar refresh-on-change="[$state.current.name, afterRedraw]" refresh-on-resize="true" suppress-scroll-x="true"
+                 ng-show="getValue(dataName).length > 0" class="ps-active-y">
+  <table class="table table-body" ng-show="getValue(dataName).length > 0">
+    <colgroup>
+      <col ng-repeat="column in ::columns track by column.id" width="{{column.width ? column.width : (columnWidth + '%')}}">
+    </colgroup>
+    <tbody>
+    <tr ng-repeat="item in getValue(dataName) | pickFilter: filters">
+      <td ng-repeat="column in ::columns track by column.id" bs-table-cell
+          ng-class="::[column.cellClass, column.cellClassFn ? column.cellClassFn(item) : '']">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</perfect-scrollbar>
+  <div class="table-shadow"></div>
+<div ng-show="getValue(dataName).length == 0" class="text-center gray-middle-light-text mar-t-20">
+  <div class="table-empty"></div>
+  {{::emptyPlaceholder}}
+</div>

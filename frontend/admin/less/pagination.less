@@ -1,0 +1,37 @@
+.pagination-wrapper{
+  position: relative;
+  height: 35px;
+}
+.pagination {
+  margin: 0;
+  float: right;
+}
+
+.g-details-visible {
+ .pagination {
+    margin-top: 20px;
+    .direction {
+      display: none;
+    }
+    li {
+      a {
+        padding: 6px 10px;
+      }
+    }
+  }
+  @media (max-width: 1260px) {
+    .pagination {
+      float: left;
+      li {
+        a {
+          padding: 6px 4px;
+        }
+      }
+    }
+  }
+  &.g-details-wide {
+    .pagination {
+      display: none;
+    }
+  }
+}

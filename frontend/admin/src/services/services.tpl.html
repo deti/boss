@@ -1,0 +1,18 @@
+<div class="full-height" st-table="data">
+  <div class="btn-scroll-container">
+    <div class="pull-left">
+      <button class="btn btn-primary mar-r-15" ui-sref="services.new">
+        <span class="d-hidden" translate>New service</span>
+        <span class="d-visible"><i class="icon icon-add-new icon-lg"></i></span>
+      </button>
+    </div>
+    <bs-table-filter search-tags="searchTags" filters="filters" state-name="services"></bs-table-filter>
+  </div>
+  <bs-table-filter-tags search-tags="searchTags" state-name="services"></bs-table-filter-tags>
+
+  <bs-table-pagination pages="pages" state-name="services" ng-if="pages > 1"></bs-table-pagination>
+
+  <div class="table-info mar-t-10">
+    <bs-table data="data" columns="columns" sref="services.details" id-field="service_id"></bs-table>
+  </div>
+</div>

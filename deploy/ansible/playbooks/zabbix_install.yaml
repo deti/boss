@@ -1,0 +1,34 @@
+- name: deploy frontend and backend services
+  hosts: docker
+  user: root
+  sudo: yes
+  tasks:
+  - name: install zabbix
+    apt: name=zabbix-agent update_cache=yes
+  - name: install toole for zabbix tests
+    apt: pkg={{item}} state=installed
+    with_items:
+       - fping
+       - redis-tools
+       - mysql-client-5.5
+    notify: restart zabbix_agent
+  - name: add user zabbix to group docker
+    user: name=zabbix groups=zabbix,docker
+  - name: create zabbix config
+    template: src=/etc/ansible/templates/zabbix_agent.j2 dest=/etc/zabbix/zabbix_agentd.conf owner=root group=root mode=0644
+    notify: restart zabbix_agent
+  - name: create zabbix script dir
+    file: path={{ zabbix_scr_dir }}  state=directory owner=zabbix group=zabbix mode=0755
+  - stat: path={{ zabbix_scr_dir }}
+    register: p
+  - name: create zabbix UserParameter config
+    template: src=/etc/ansible/templates/ext_checks_zabbix.j2 dest=/etc/zabbix/zabbix_agentd.conf.d/ext_checks.conf owner=root group=root mode=0644
+    notify: restart zabbix_agent
+    when: p.stat.isdir is defined and p.stat.isdir
+  - name: create zabbix test script
+    copy: src=/etc/ansible/files/redis_test.sh dest=/home/zabbix/redis_test.sh owner=zabbix group=zabbix mode=0755
+    notify: restart zabbix_agent
+    when: p.stat.isdir is defined and p.stat.isdir
+  handlers:
+    - name: restart zabbix_agent
+      service: name=zabbix-agent state=restarted

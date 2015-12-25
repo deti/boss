@@ -1,0 +1,54 @@
+<form class="form-horizontal" name="CreateTariffForm.info" novalidate ng-submit="next()">
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="parent_id" translate>Basic plan</label>
+
+    <div class="col-sm-8">
+      <div class="select">
+        <select name="parent_id" id="parent_id" class="form-control" ng-model="tariff.newParent" ng-options="parentTariff.tariff_id as parentTariff|localizedName for parentTariff in parentTariffs"></select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw required" for="name_en" translate>Name (ENG)</label>
+
+    <div class="col-sm-8">
+      <input type="text" id="name_en" name="name_en" class="form-control" ng-model="tariff.localized_name.en" required>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw required" for="name_ru" translate>Name (RUS)</label>
+
+    <div class="col-sm-8">
+      <input type="text" id="name_ru" name="name_ru" class="form-control" ng-model="tariff.localized_name.ru" required>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered required" for="description" translate>Description</label>
+
+    <div class="col-sm-8">
+      <textarea name="description" id="description" rows="3" ng-model="tariff.description"
+                class="form-control" required></textarea>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered required" for="currency" translate>Currency</label>
+
+    <div class="col-sm-8">
+      <div class="select">
+        <select name="currency" id="currency" class="form-control" ng-model="tariff.currency" required
+                ng-options="item.code as item.currency for item in activeCurrency">
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mar-t-30">
+    <div class="col-xs-9 offset-buttons btn-row">
+      <div class="col-xs-6">
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="CreateTariffForm.info.$invalid" ng-click="next()" translate>Continue</button>
+      </div>
+      <div class="col-xs-6">
+        <button type="button" class="btn btn-default btn-block" ng-click="cancel()" translate>Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>

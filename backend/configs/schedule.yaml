@@ -1,0 +1,30 @@
+schedule:
+  check_hdd_delete: ${1 * DAY}
+
+task:
+  schedule:
+    deferred-customer-changes:
+      task: 'task.customer.process_pending_deferred_customer_changes'
+      schedule: ${5 * MINUTE}
+    account-block-notification:
+      task: 'task.notifications.check_customers_for_balance'
+      schedule: ${task.EVERY_DAY}
+    auto-withdraw:
+      task: 'task.customer.auto_report'
+      schedule: ${5 * MINUTE}
+    time-state:
+      task: 'task.customer.time_state_check'
+      schedule: ${5 * MINUTE}
+    auto-payment:
+      task: 'task.payments.task_check_customers_for_payment'
+      schedule: ${task.EVERY_HOUR}
+    hour-stats:
+      task: 'task.notifications.hour_stats'
+      schedule: ${task.EVERY_HOUR}
+
+  EVERY_HOUR:
+     minute: 0
+  EVERY_DAY:
+     minute: 0
+     hour: 0
+

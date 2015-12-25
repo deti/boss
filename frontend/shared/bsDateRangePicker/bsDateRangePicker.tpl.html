@@ -1,0 +1,13 @@
+<button type="button" class="btn btn-clear" ng-click="toggleVisible();$event.stopPropagation();">
+  <i class="icon icon-transactions-v2 icon-lg link-color-text"></i>
+</button>
+<div ng-show="visible" class="pickers" click-outside="hide()" outside-if-not="pickers">
+  <div class="picker-container from-container">
+    <div class="text-center" translate>From</div>
+    <span bs-datepicker ng-model="startDate" data-max-date="{{endDate}}" data-bs-show="visible" data-trigger="manual"></span>
+  </div>
+  <div class="picker-container to-container">
+    <div class="text-center" translate>Until</div>
+    <span bs-datepicker ng-model="endDate" data-min-date="{{startDate}}" data-bs-show="visible" data-trigger="manual"></span>
+  </div>
+</div>

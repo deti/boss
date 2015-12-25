@@ -1,0 +1,68 @@
+<form class="form-horizontal" novalidate ng-submit="finish()">
+  <div class="form-group">
+    <label class="label-fw text-left" for="adminName" translate>First and last name</label>
+    <div class="col-sm-7">
+      <input id="adminName" type="text" name="adminName" class="form-control" ng-model="customerAdministrator.name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="label-fw text-left" for="adminPosition" translate>Position</label>
+    <div class="col-sm-7">
+      <input id="adminPosition" type="text" name="adminPosition" class="form-control" ng-model="customerAdministrator.position">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="label-fw text-left" for="adminEmail">E-mail</label>
+    <div class="col-sm-7">
+      <input id="adminEmail" type="text" name="adminEmail" class="form-control" ng-model="customerAdministrator.email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="label-fw text-left" for="adminPhone" translate>Phone</label>
+    <div class="col-sm-7">
+      <input id="adminPhone" type="text" name="adminPhone" class="form-control" bs-phone-input ng-model="customerAdministrator.phone">
+    </div>
+  </div>
+  <div class="hr"><span translate>Customer contacts</span></div>
+
+  <div class="form-group">
+    <label class="label-fw text-left" for="customerName" translate>First and last name</label>
+    <div class="col-sm-7">
+      <input id="customerName" type="text" name="customerName" class="form-control" ng-model="customer.name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="label-fw text-left" for="customerPosition" translate>Position</label>
+    <div class="col-sm-7">
+      <input id="customerPosition" type="text" name="customerPosition" class="form-control" ng-model="customer.position">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="label-fw text-left" for="customerEmail">E-mail</label>
+    <div class="col-sm-7">
+      <input id="customerEmail" type="text" name="customerEmail" class="form-control" ng-model="customer.email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="label-fw text-left" for="customerPhone" translate>Phone</label>
+    <div class="col-sm-7">
+      <input id="customerPhone" type="text" name="customerPhone" class="form-control" ng-model="customer.phone" bs-phone-input>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="fixed-offset col-sm-7">
+      <button type="submit" class="btn btn-default col-sm-12" translate>Delete</button>
+    </div>
+  </div>
+  <div class="pad-t-30 pad-b-20">
+    <button type="submit" class="btn btn-default btn-block" translate>Add contact</button>
+  </div>
+  <div class="row pad-t-30 pad-b-10 btn-row">
+    <div class="col-sm-6">
+      <button type="submit" class="btn btn-primary btn-block" translate>Finish</button>
+    </div>
+    <div class="col-sm-6">
+      <button type="button" class="btn btn-default btn-block" ng-click="finish()" translate>Cancel</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "phone": "+7 499 765-55-55",
+        "email": "support@boss.ru"
+    },
+    "qa": {
+        "phone": "+7 499 765-55-55",
+        "email": "support@boss.ru"
+    },
+    "prod": {
+        "phone": "",
+        "email": "support@cloudpro.ru"
+    }
+}

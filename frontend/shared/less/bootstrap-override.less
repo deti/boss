@@ -1,0 +1,101 @@
+.navbar-right {
+  float: right!important;
+  margin-right: -15px;
+  > li {
+    float: left;
+  }
+}
+.badge {
+  font-weight: normal;
+  background-color: @badge-bg;
+  border-radius: 4px;
+  font-size: 10px;
+  padding: 3px 5px;
+  vertical-align: top;
+  margin-left: 3px;
+}
+
+.form-control {
+  color: @input-color;
+  height: @input-height;
+  padding: 6px 14px;
+  border: 1px solid @input-border-color;
+  border-radius: @input-border-radius;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  &:hover, &:focus, &:active {
+    border-color: @input-hover-border-color;
+  }
+}
+
+.form-group {
+  label {
+    color: @input-color;
+    font-weight: normal;
+  }
+}
+label {
+  color: @input-color;
+  font-weight: normal;
+}
+
+.btn {
+  height: @btn-height;
+  padding: 10px 15px;
+  transition: background 150ms ease 150ms;
+}
+.btn-default {
+  color: @btn-default-text-color;
+  background-color: transparent;
+  border: 2px solid @btn-default-border-color;
+  &:hover,
+  &:focus {
+    color: @btn-default-text-color;
+    background-color: @btn-default-bg-color;
+    border-color: @btn-default-border-color;
+    outline: none;
+  }
+}
+.btn-primary {
+  color: #ffffff;
+  background-color: @btn-primary-bg-color;
+  border-color: @btn-primary-bg-color;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: @btn-primary-hover-bg-color;
+    border-color: @btn-primary-hover-bg-color;
+    outline: none;
+  }
+  &:disabled {
+    background-color: @btn-primary-disabled-color;
+    border-color: @btn-primary-disabled-color;
+    opacity: 1;
+    &:hover {
+      background-color: @btn-primary-disabled-color;
+      border-color: @btn-primary-disabled-color;
+    }
+  }
+}
+
+a:focus {
+  outline: none !important;
+}
+
+a.dashed {
+  color: #2C66D1;
+  text-decoration: none;
+  border-bottom: 1px dashed #2C66D1;
+  &:hover {
+    border-bottom: 0;
+  }
+}
+.inline-block {
+  display: inline-block;
+}
+.inline {
+  display: inline;
+}

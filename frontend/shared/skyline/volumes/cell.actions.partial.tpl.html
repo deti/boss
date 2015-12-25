@@ -1,0 +1,67 @@
+<td>
+  <span ng-if="item.name">{{::item.name}}</span>
+  <span ng-if="!item.name">{{::item.id}}</span>
+</td>
+<td>
+  <span>{{item.size}} GB</span>
+</td>
+<td colspan="2">
+  <span>
+    <a ng-click="actionHandler($event, 'change', keepActiveItem)"
+      ng-if="item.status.value == VOLUME_STATUS.available.value" translate>Extend</a>
+
+    <a ng-click="actionHandler($event, 'addDisk', keepActiveItem)" translate
+    ng-if="item.status.value == VOLUME_STATUS.available.value">Assign to server</a>
+
+    <a ng-click="detachVolume(item)" ng-if="item.server" translate>Detach</a>
+    <a ng-click="actionHandler($event, 'image', keepActiveItem)" ng-if="item.status.value == VOLUME_STATUS.available.value" translate>Create image</a>
+    <a ng-click="removeVolume(item)" ng-if="!item.server" translate>Delete</a>
+  </span>
+  <div class="action-popover triangle-right" ng-click="$event.stopPropagation();" ng-if="actionForms.image"
+       click-outside="actionForms.image = false;keepActiveItem.value = false;">
+    <form id="NewImageForm" class="form-horizontal" ng-submit="createImage(item);keepActiveItem.value = false">
+      <div class="form-group">
+        <div class="col-xs-7">
+          <input type="text" id="imageName" name="imageName" class="form-control" required ng-model="item.imageName"
+                 placeholder="{{::'Image title'|translate}}">
+        </div>
+        <div class="col-xs-5">
+          <button type="submit" class="btn btn-primary" translate>Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="action-popover triangle-left" ng-click="$event.stopPropagation();" ng-if="actionForms.change"
+       click-outside="actionForms.change = false;keepActiveItem.value = false;">
+    <form id="NewVolumeForm" class="form-horizontal" ng-submit="extendVolume(item);keepActiveItem.value = false">
+      <div class="form-group">
+        <div class="col-xs-7">
+          <input type="text" id="size" name="size" class="form-control" required ng-model="item.newSize"
+                 placeholder="{{::'Size Gb'|translate}}">
+        </div>
+        <div class="col-xs-5">
+          <button type="submit" class="btn btn-primary" translate>Edit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="action-popover triangle-mid" ng-click="$event.stopPropagation();" ng-if="actionForms.addDisk"
+       click-outside="actionForms.addDisk = false;keepActiveItem.value = false;">
+    <form id="AssifnIPForm" class="form-horizontal" ng-submit="addDisk(item);keepActiveItem.value = false">
+      <div class="form-group">
+        <div class="col-xs-7">
+          <div class="select">
+            <select name="address" class="form-control" id="address" ng-model="item.newServer"
+                    ng-options="item.id as item.name for item in servers">
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <button type="submit" class="btn btn-primary" ng-disabled="!item.newServer" translate>Assign</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</td>
+
+

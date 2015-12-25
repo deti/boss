@@ -1,0 +1,30 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>Upload a new image</h4>
+  <form name="NewImageForm" class="form-horizontal" ng-submit="downloadImage(NewImageForm)" bs-server-validate novalidate bs-form-send-once>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 required centered" for="name" translate>Name</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="name" name="name" class="form-control" required ng-model="image.name"
+               bs-validate-hint placeholder="{{::'Enter an image name'|translate}}">
+      </div>
+    </div>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered required" for="url" translate>URL</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="url" name="url" class="form-control" ng-model="image.url" required
+               bs-validate-hint="{endWith: ('Image shoud have an extension `iso`'|translate)}" bs-end-with=".iso"
+               placeholder="{{::'Enter an image URL'|translate}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-4 col-xs-offset-3">
+        <button type="submit" class="btn btn-primary" ng-disabled="NewImageForm.$invalid" translate>Upload a new image</button>
+      </div>
+      <div class="col-xs-3">
+        <a ui-sref="openstack.images" class="btn btn-link" translate>Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

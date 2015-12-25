@@ -1,0 +1,89 @@
+.ps-container {
+  .ps-scrollbar-y-rail {
+    display: none;
+  }
+  @line-color: #d6e3ec;
+  @button-color: #8195a9;
+  &.ps-active-x > .ps-scrollbar-x-rail, &.ps-active-y > .ps-scrollbar-y-rail {
+    display: block;
+  }
+  > .ps-scrollbar-x-rail {
+    display: none;
+    position: absolute;
+    margin-bottom: 6px;
+    padding: 0 11px;
+    bottom: 3px;
+    height: 6px;
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: @line-color;
+      border-radius: 4px;
+    }
+    > .ps-scrollbar-x {
+      position: absolute;
+      padding: 0 11px;
+      bottom: -2px;
+      height: 8px;
+
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        background-color: #f7f8fc;
+        transition: background-color 0.2s linear;
+      }
+    }
+  }
+
+  > .ps-scrollbar-y-rail {
+    display: none;
+    position: absolute;
+    right: 10px;
+    padding: 11px 0;
+    width: 8px;
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #e8eaf0;
+      border-radius: 4px;
+    }
+    > .ps-scrollbar-y {
+      position: absolute;
+      right: -1px;
+      width: 10px;
+      padding: 11px 0;
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        border: 1px solid #FFFFFF;
+        border-top-width: 3px;
+        border-bottom-width: 3px;
+        background-color: #c4c7d2;
+        transition: background-color 0.2s linear;
+      }
+      &:hover:after {
+        background-color: #A7ACBC;
+      }
+    }
+  }
+
+  &.ps-in-scrolling {
+    pointer-events: none;
+    .ps-scrollbar-x:after {
+      background-color: #A6ACBC;
+    }
+    .ps-scrollbar-y:after {
+      background-color: #A6ACBC;
+    }
+  }
+}

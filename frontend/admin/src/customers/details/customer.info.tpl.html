@@ -1,0 +1,110 @@
+<form name="CustomerForm" class="form-horizontal mar-t-30" novalidate bs-server-validate="{}" bs-form-saver ng-submit="update(CustomerForm)">
+  <div class="hr"><span translate>Customer</span></div>
+
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="customer_type" translate>Type</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select name="type" class="form-control" id="customer_type" ng-model="customer.customer_type" >
+          <option ng-selected="customer.customer_type === 'private'" value="private" translate>Private person</option>
+          <option ng-selected="customer.customer_type === 'entity'" value="entity" translate>Legal entity</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="account" translate>Login</label>
+
+    <div class="col-xs-8">
+      <input type="text" id="account" name="account" class="form-control" ng-model="customer.email" disabled>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align" ng-if="customer.promo_code.length">
+    <label class="label-fw centered" translate>Promo code</label>
+
+    <div class="col-xs-8">
+      <div class="promocode-wrapper">
+        <span ng-repeat='code in customer.promo_code'>{{code.value}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="name">
+      <span ng-if="customer.customer_type === 'private'" translate>First and last name</span>
+      <span ng-if="customer.customer_type === 'entity'" translate>Name</span>
+    </label>
+
+    <div class="col-xs-8">
+      <input type="text" id="name" name="name" class="form-control" ng-model="customer.detailed_info.name">
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align" ng-show="customer.customer_type === 'entity'">
+    <label class="label-fw centered" for="individual_tax_number" translate>VAT</label>
+
+    <div class="col-xs-8">
+      <input type="text" id="individual_tax_number" name="individual_tax_number" class="form-control" ng-model="customer.detailed_info.individual_tax_number">
+    </div>
+  </div>
+
+
+  <div class="hr"><span translate>Account</span></div>
+
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="localization" translate>Locale</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select name="localization" class="form-control" ng-model="customer.locale" id="localization">
+          <option ng-repeat="locale in ::customerLocales" ng-selected="::selectLocale(locale.code)" value="{{::locale.code}}">
+            {{::locale|localizedName}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align" bs-has-error="CustomerForm.withdraw_period.$error.server" has-error-target="'#withdraw_period'">
+    <label class="label-fw centered" for="withdraw_period" translate>Charge period</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select name="withdraw_period" class="form-control" id="withdraw_period" ng-model="customer.withdraw_period" bs-validate-hint>
+          <option ng-repeat="option in ::periodOption" ng-selected="::customer.withdraw_period == option.period_id" value="{{::option.period_id}}">
+            {{::option|localizedName}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="customer.customer_type === 'private'" ng-include="::editPrivateTplPath">
+  </div>
+
+  <div ng-if="customer.customer_type === 'entity'" ng-include="::editEntityTplPath">
+  </div>
+
+  <div class="form-group has-error" ng-if="CustomerForm.$error.unclassified">
+    <div class="fixed-offset col-sm-9">
+      <span class="help-block">{{CustomerForm.$server_unclassified}}</span>
+    </div>
+  </div>
+
+  <div class="hr"><span translate>Cloud</span></div>
+
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="os_dashboard" translate>Cloud console</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select name="os_dashboard" class="form-control" id="os_dashboard" ng-model="customer.os_dashboard" bs-validate-hint
+                ng-options="o.value as o.title for o in osDashboards">
+        </select>
+      </div>
+    </div>
+  </div>
+</form>

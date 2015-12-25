@@ -1,0 +1,33 @@
+hr {
+  border-color: #d6e3ec;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-wrapper {
+  position: absolute;
+  z-index: 999;
+  right: 0;
+  top: 41px;
+  background-color: @white-color;
+  padding: 50px 30px;
+  width: @comment-wrapper-width;
+  border: 1px solid @component-border-l-color;
+  border-radius: 4px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+  .comment-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: @link-color;
+  }
+}
+
+a.comment-toggle{
+  border-bottom: 1px dashed;
+  text-decoration: none;
+  &:hover,
+  &:active {
+    border-bottom: none;
+  }
+}

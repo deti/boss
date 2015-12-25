@@ -1,0 +1,10 @@
+<td>
+  <span>{{::item.name}}</span>
+</td>
+<td colspan="2">
+  <span>
+    <a ui-sref="openstack.dns.records({domainId: item.id})" translate>Sub-domains list</a>
+    <a ui-sref="openstack.dns.records.new({domainId: item.id})" translate>Create sub-domain</a>
+    <a ng-click="deleteDomain(item)" translate>Delete</a>
+  </span>
+</td>

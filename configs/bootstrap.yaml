@@ -1,0 +1,114 @@
+flavor:
+  - localized_name:
+      ru: Виртуальный сервер Nano
+      en: Virtual server Nano
+    flavor_id: Nano
+    vcpus: 1
+    ram: 512
+    disk: 0
+    network: 5
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер Micro
+      en: Virtual server Micro
+    flavor_id: Micro
+    vcpus: 1
+    ram: 1024
+    disk: 0
+    network: 5
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер Small
+      en: Virtual server Small
+    flavor_id: Small
+    vcpus: 1
+    ram: 4096
+    disk: 0
+    network: 10
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер Medium
+      en: Virtual server Medium
+    flavor_id: Medium
+    vcpus: 2
+    ram: 8192
+    disk: 0
+    network: 20
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер Large
+      en: Virtual server Large
+    flavor_id: Large
+    vcpus: 4
+    ram: 16384
+    disk: 0
+    network: 50
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер ExtraLarge
+      en: Virtual server ExtraLarge
+    flavor_id: ExtraLarge
+    vcpus: 6
+    ram: 24576
+    disk: 0
+    network: 50
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер M.Small
+      en: Virtual server M.Small
+    flavor_id: M.Small
+    vcpus: 1
+    ram: 8192
+    disk: 0
+    network: 150
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер M.Medium
+      en: Virtual server M.Medium
+    flavor_id: M.Medium
+    vcpus: 2
+    ram: 16384
+    disk: 0
+    network: 20
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер M.Large
+      en: Virtual server M.Large
+    flavor_id: M.Large
+    vcpus: 4
+    ram: 24576
+    disk: 0
+    network: 50
+    immutable: True
+  - localized_name:
+      ru: Виртуальный сервер M.ExtraLarge
+      en: Virtual server M.ExtraLarge
+    flavor_id: M.ExtraLarge
+    vcpus: 6
+    ram: 32768
+    disk: 0
+    network: 50
+    immutable: True
+tariff:
+  - localized_name:
+      en: Standard-2015-09
+      ru: Стандарт-2015-09
+    description: Тариф по умолчанию
+    currency: RUB
+    services:
+      Nano: 0.44
+      Micro: 0.65
+      Small: 1.18
+      Medium: 3.58
+      Large: 7.11
+      ExtraLarge: 10.39
+      M.Small: 1.59
+      M.Medium: 4.40
+      M.Large: 7.93
+      M.ExtraLarge: 11.62
+      net.allocated_ip: 0.03
+      storage.disk: 0.01
+      storage.image: 0.01
+      storage.volume: 0.01
+    immutable: True
+    default: True

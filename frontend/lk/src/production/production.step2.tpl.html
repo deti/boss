@@ -1,0 +1,79 @@
+<div class="production-container header-padding sides-padding">
+  <h3 translate>Become a customer</h3>
+
+  <p class="hint" translate>
+    We use an advanced form of payment, so before you start, you'll need to add funds in any amount
+  </p>
+
+  <form ng-if="::userInfo.customer_type === 'private'" name="PayPrivateForm" ng-submit="payPrivate()">
+    <div class="form-group row row-vertical-align" bs-has-error>
+      <label for="amount" class="col-xs-3 centered" translate>
+        Amount
+      </label>
+
+      <div class="col-xs-9">
+        <div class="input-grp">
+          <input id="amount" type="number" name="amount" class="form-control" ng-model="$parent.amount"
+                 required min="1" bs-validate-hint="{min: 'Minimum amount - 1'}">
+          <span class="input-group-addon unit-addon">{{::userInfo.currency}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-offset-3 col-sm-9">
+        <div class="checkbox">
+          <label class="custom-checkbox">
+            <input type="checkbox" name="saveAsDefault" id="saveAsDefault" ng-model="saveAsDefault"/>
+            <span class="checkbox-elem"></span>
+            <span translate>Save as a primary payment method</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-5 col-sm-offset-3">
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="PayPrivateForm.$invalid" translate>
+          Make payment
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div ng-if="::userInfo.customer_type === 'entity'">
+    <form name="PayEntityForm" ng-submit="downloadInvoice(PayEntityForm)" bs-server-validate bs-form-send-once>
+      <div class="form-group row row-vertical-align" bs-has-error>
+        <label for="amount2" class="col-xs-3 centered" translate>
+          Amount
+        </label>
+
+        <div class="col-xs-9">
+          <div class="input-grp">
+            <input id="amount2" type="number" name="amount" class="form-control" ng-model="amount"
+                   required min="1" bs-validate-hint="{min: 'Minimum amount - 1'}">
+            <span class="input-group-addon unit-addon">{{::userInfo.currency}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group has-error" ng-if="PayEntityForm.$error.unclassified">
+        <div class="col-xs-offset-3 col-xs-9">
+          <span class="help-block">{{PayEntityForm.$server_unclassified}}</span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <button class="btn btn-block btn-primary" type="submit" translate>Create an account</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="hr"></div>
+    <div class="form-group row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <button class="btn btn-primary btn-block" ng-click="finish()" translate>Finish the registration</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div ng-if="customer.customer_type === 'entity'">
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered required" for="name" translate>Name</label>
+
+    <div class="col-sm-7">
+      <input type="text" id="name" name="name" class="form-control" ng-model="customer.detailed_info.name" required
+              placeholder="ASD Technologies"/>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="label-fw centered" for="individual_tax_number" translate>VAT</label>
+
+    <div class="col-sm-7">
+      <input type="text" id="individual_tax_number" name="individual_tax_number"
+             class="form-control" ng-model="customer.detailed_info.individual_tax_number"/>
+    </div>
+  </div>
+</div>

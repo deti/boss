@@ -1,0 +1,11 @@
+extend:
+  - dev_local.yaml
+
+openstack:
+  auth:
+    auth_url: http://localhost:1212/v2.0
+  loglevel: DEBUG
+
+fake_openstack:
+  host: localhost
+  port: 1212

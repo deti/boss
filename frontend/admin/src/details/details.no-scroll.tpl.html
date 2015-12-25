@@ -1,0 +1,7 @@
+<div class="g-details-tabs-wrapper">
+  <div class="tabs no-shadow" ng-class="{'pad-b-20': !manyTabs || globalState.detailsWide}">
+    <a ng-if="::tab.link" ng-repeat="tab in ::tabs" ui-sref-active="active-details-tab" ui-sref="{{::tab.link}}">{{::tab.title}}</a>
+    <a ng-if="::!tab.link" ng-repeat="tab in ::tabs" ng-class="{'active-details-tab': stateIs(tab.state)}" ng-click="tab.go()">{{::tab.title}}</a>
+  </div>
+  <div ui-view="detail" class="g-details-view g-details-view-no-scroll"></div>
+</div>

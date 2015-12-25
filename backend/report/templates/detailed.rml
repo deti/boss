@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml.dtd">
+
+
+{% set translation = [
+["en", "ru"],
+["Project", "Проект"],
+["Tariff", "Тариф"],
+["Tariff Units", "Единица"],
+["Project total", "Всего для проекта"],
+["Service name", "Наименование услуги"],
+["Object", "Объект"],
+["Service", "Услуга"],
+["Start time", "Время старта"],
+["Stop time", "Время остановки"],
+["Used value", "Размер\n ресурса"],
+["Used time", "Время"],
+["Used", "Объем использования\nуслуги, шт."],
+["Count", "Количество"],
+["Cost", "Стоимость"],
+["Category", "Категория"],
+["Tariff total", "Всего для тарифа"],
+["Report from {} to {}", "Отчет с {} по {}"],
+["Customer", "Заказчик"],
+["From", "От"],
+["Till", "До"],
+["Price", "Цена"],
+]
+%}
+
+<document filename="report.pdf">
+    <docinit>
+       <registerTTFont faceName="TimesU" fileName="{{font_dir}}/timesu.ttf"/>
+       <registerTTFont faceName="TimesU-bd" fileName="{{font_dir}}/timesbd.ttf"/>
+    </docinit>
+    <template
+        leftMargin="30mm"
+        rightMargin="30mm"
+        topMargin="30mm"
+        bottomMargin="30mm"
+        title="{{tr("Usage report")}} {{aggregated["report_range"]["start"] | datetime(locale=locale)}},
+               {{aggregated["report_range"]["finish"] | datetime(locale=locale) }}">
+
+        <pageTemplate id="main" pagesize="a4 landscape">
+            <pageGraphics>
+                <drawCenteredString x="100mm" y="10mm">- <pageNumber/> -</drawCenteredString>
+            </pageGraphics>
+            <frame id="content" x1="15mm" y1="20mm" height="180mm" width="257mm" />
+        </pageTemplate>
+    </template>
+
+    <stylesheet>
+        <initialize>
+            <alias id="style.normal" value="style.Normal" />
+        </initialize>
+        <paraStyle name="h1" fontName="TimesU-bd" fontSize="14" />
+        <paraStyle name="h2" fontName="TimesU-bd" fontSize="12" spaceBefore="8mm" spaceAfter="4mm" />
+        <paraStyle name="h3" fontName="TimesU-bd" fontSize="10" spaceBefore="4mm" spaceAfter="4mm" />
+        <paraStyle name="total" fontName="TimesU-bd" fontSize="10" spaceBefore="2mm" />
+        <paraStyle name="project_total" fontName="TimesU-bd" spaceBefore="2mm" />
+        <paraStyle name="row" fontName="TimesU" fontSize="8" />
+        <blockTableStyle id="report" >
+            <blockFont name="TimesU-bd" start="0,0" stop="-1,0" size="9"/>
+            <lineStyle kind="GRID" colorName="black" />
+        </blockTableStyle>
+        <paraStyle name="rutext"
+            fontName="TimesU"
+            fontSize="12"
+        />
+
+        <paraStyle name="rubold"
+            fontName="TimesU-bd"
+            fontSize="12"
+        />
+
+        <blockTableStyle id="report">
+            <blockFont name="TimesU-bd" start="0,0" stop="-1,0" />
+            <lineStyle kind="GRID" colorName="black" />
+        </blockTableStyle>
+
+        <blockTableStyle id="rublock">
+            <blockFont name="TimesU"/>
+        </blockTableStyle>
+    </stylesheet>
+
+    <story>
+        <para style="h1">{{tr("Usage report")}} </para>
+        {% set customer = aggregated["customer"] %}
+        {% set locale = customer.locale %}
+
+        <blockTable style="rublock" colWidths="3cm,10cm">
+          <tr>
+            <td><para style="rubold">{{tr("Customer")}}:</para></td>
+            <td>{{aggregated.customer.name}}</td>
+          </tr>
+          <tr>
+            <td><para style="rubold">{{tr("From")}}:</para></td>
+            <td>{{aggregated["report_range"]["start"] | datetime(locale=locale)}}</td>
+          </tr>
+          <tr>
+            <td><para style="rubold">{{tr("Till")}}:</para></td>
+            <td>{{aggregated["report_range"]["finish"] | datetime(locale=locale)}}</td>
+          </tr>
+        </blockTable>
+
+
+        {%if aggregated["tariffs"]%}
+
+            {% for tariff in aggregated["tariffs"] | sort_multi("name") %}
+                <para style="h2">{{tr('Tariff')}}: {{ tariff.name }}</para>
+                    <blockTable style="report" >
+                        <tr>
+                            <td>{{tr("Category")}}</td>
+                            <td>{{tr("Service")}}</td>
+                            <td>{{tr("Object")}}</td>
+
+                            <td>{{tr("Start time")}}</td>
+                            <td>{{tr("Stop time")}}</td>
+                            <td>{{tr("Used time")}}</td>
+
+                            <td>{{tr("Count")}}</td>
+                            <td>{{tr("Tariff Units")}}</td>
+                            <td>{{tr("Price")}}</td>
+                            <td>{{tr("Cost")}}</td>
+                        </tr>
+
+                        {% for service in tariff.usage | sort_multi("category", "name") %}
+                            {% for resource_id, resource_data in service.resources.items()  %}
+                                {% for interval in resource_data.intervals  %}
+                                    <tr>
+
+                                        <td><para style="row">{{ service.category }}</para></td>
+                                        <td><para style="row">{{ service.name }}</para></td>
+                                        <td><para style="row">{{ resource_data.resource_name or resource_id }}</para></td>
+
+                                        <td><para style="row">{{ interval.start | datetime(locale=locale) }}</para></td>
+                                        <td><para style="row">{{ interval.finish | datetime(locale=locale) }}</para></td>
+                                        <td><para style="row">
+                                            {% if interval.time_usage == '-' %}
+                                               --
+                                            {% else %}
+                                              {{ interval.time_usage | timedelta(locale=locale) }}
+                                            {% endif %}
+                                        </para></td>
+
+                                        <td><para style="row">{{ interval.volume | pretty_float  }}</para></td>
+
+                                        <td><para style="row">{{ service.measure }}</para></td>
+                                        <td><para style="row">{{ money(service.price or "0", tariff.currency) }}</para></td>
+                                        <td><para style="row">{{ money(interval.total_cost, tariff.currency) }}</para></td>
+
+                                    </tr>
+                                {% endfor %}
+                             {% endfor %}
+                        {% endfor %}
+                    </blockTable>
+                    <para style="total">{{tr("Tariff total")}}: {{ money(tariff.total_cost, tariff.currency) }}</para>
+            {% endfor %}
+
+
+        {% endif %}
+    </story>
+</document>

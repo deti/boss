@@ -1,0 +1,130 @@
+report:
+  font_dir: ${ROOT}/backend/report/templates
+  template_dir: ${ROOT}/backend/report/templates
+  configuration:
+    simple:
+      pdf:
+        template: simple.rml
+      json:
+      csv:
+        render: simple
+        headers_localized:
+          ru:
+            category: Категория
+            name: Название услуги
+            price: Цена за единицу услуги
+            measure: Единица
+            total_usage_volume: Использовано
+            total_cost: Стоимость
+        headers:
+          category: Category
+          name: Service Name
+          price: Price
+          measure: Unit
+          total_usage_volume: Used
+          total_cost: Cost
+    detailed:
+      pdf:
+        template: detailed.rml
+      json:
+      csv:
+        render: detailed
+        headers_localized:
+          ru:
+            service_category: Категория
+            service_name: Название услуги
+            resource_name: Объект
+            interval_start: Начало периода
+            interval_finish: Окончание периода
+            interval_time_usage: Время использования
+            interval_volume: Использовано
+            service_measure: Единица
+            service_price: Цена
+            interval_total_cost: Стоимость
+        headers:
+            service_category: Category
+            service_name: Service
+            resource_name: Object
+            interval_start: Start time
+            interval_finish: Stop time
+            interval_time_usage: Used time
+            interval_volume: Count
+            service_measure: Units
+            service_price: Price
+            interval_total_cost: Cost
+    receipts:
+      json:
+      csv:
+        render: receipts
+        headers_localized:
+          ru:
+            email: Email
+            date: Дата
+            amount: Сумма
+            currency: Валюта
+            user: Кто
+        headers:
+            email: Email
+            date: Date
+            amount: Amount
+            currency: Currency
+            user: Who
+    invoice:
+       pdf:
+        template: invoice.rml
+       json:
+       csv:
+    acceptance_act:
+       pdf:
+        template: acceptance_act.rml
+       json:
+       csv:
+    usage:
+      csv:
+        render: usage
+        headers:
+          email: Email
+          withdraw: Withdraw
+          currency: Currency
+
+    openstack_usage:
+      csv:
+        render: openstack_usage
+        headers:
+      json:
+
+  max_retries: 3
+  retry_delay: 10
+  cache_time:
+    short: ${MINUTE}
+    current_stat: ${HOUR}
+    report: ${DAY}
+  report_store_time: ${DAY} # 1 day
+  report_task_store_time: ${HOUR} # 1 hour
+
+  auto_reports:
+    send_hour: 2  # hour when report is sent to customer automatically if scheduled
+    check_interval: ${5 * MINUTE}
+    from_email: $(provider.noreply)
+    task_hang_seconds: 240 # If report generation takes longer than this time, create task again
+    number_of_customers_for_interval: 100
+
+  remove_zero_services: true
+  deleted_gap: ${MONTH}  # time interval when usage is possible for customer which were removed
+  invoice:
+    bank: Банк Папы Карло
+    bik: 044332288
+    account: 8888888888888888888
+    account2: 407999999999999999
+    inn: 1234567890
+    kpp: 9876543210
+    receiver: ООО Получатель
+    address: 111024, Москва г., Строителей ул, дом №69
+    phone: +7 495 020202
+    director: Микки Маус
+    accountant: Скрудж Макдак
+
+statistics:
+  carbon_host: $(__FIX_ME__())
+  base_prefix: stats
+  graphite: "http://$(statistics.carbon_host):8080/"

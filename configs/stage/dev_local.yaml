@@ -1,0 +1,73 @@
+region: dev
+availability_zone: local
+
+devel:
+  debug: true
+  local: true
+  force_update_allowed: true
+#  sql_log: true
+
+database:
+  uri: mysql+pymysql://boss:boss@localhost/boss?charset=utf8&use_unicode=1
+
+memdb:
+  hosts:
+    - [localhost, 6379]
+  sentinel: false
+
+logging:
+  log_dir: ${join(ROOT, "log")}
+
+api:
+  secure_cookie: false
+  internal_methods_enabled: true
+  secure:
+  secure:
+    secret_key: development_secure_key
+    recaptcha:
+       validate: false
+       secret:
+       site_key:
+
+sentry:
+  backend:
+  js:
+
+backend:
+  entry_point:
+
+statistics:
+    carbon_host: carbon.should.not.be.used.in.tests.ru
+
+openstack:
+  horizon_url: https://localhost/horizon
+  customer_keystone_url: http://localhost:5000/v2.0
+  auth:
+    username: admin
+    password: adminpass
+    tenant_name: admin
+    auth_url: http://localhost:35357/v2.0/
+  external_net: 14d12e05-6e0f-4b1c-b8cd-43747eb5b8c5
+
+
+payments:
+  cloudpayments:
+    allow_test_mode: true
+    public_id: pk_531bc895cea1850cb139b982f0215
+    api_secret: a39009f2364502f482b712aeee91c94d
+    origin_address: 8.8.8.8
+
+
+provider:
+  cloud_name: BOSS $(region)
+  support_phone: +1 123 456-55-55
+  support_email:
+     - support@boss.ru
+  noreply: noreply@youcloud.ru
+
+
+ui:
+  show_region: true
+  google_analytics:
+    admin: UA-xxxxxxxx-1
+    lk: UA-xxxxxxxx-3

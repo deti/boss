@@ -1,0 +1,28 @@
+root = true
+
+# Default settings
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+
+# JavaScript
+[*.js]
+indent_style = space
+indent_size = 2
+
+# JSON
+[*.json]
+indent_style = space
+indent_size = 4
+
+# HTML
+[*.html]
+indent_style = space
+indent_size = 2
+
+# LESS
+[*.less]
+indent_style = space
+indent_size = 2

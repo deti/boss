@@ -1,0 +1,40 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>Editing PTR record</h4>
+  <form name="EditPTRFrom" class="form-horizontal" ng-submit="editCtrl.updateZone(EditPTRFrom)" bs-server-validate novalidate bs-form-send-once>
+    <div class="form-group" bs-has-error>
+      <label class="col-xs-3 required" for="domain" translate>Domain</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="domain" name="email" class="form-control" required ng-model="editCtrl.record.records[0]"
+               bs-domain-name bs-validate-hint="{'domain': ('Is not correct domain name'|translate)}">
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 required centered" for="email" translate>E-mail</label>
+
+      <div class="col-xs-9">
+        <input type="email" id="email" name="email" class="form-control" required ng-model="editCtrl.zone.email"
+               bs-validate-hint placeholder="{{::'Enter an email'|translate}}">
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 centered" for="ip" translate>IP</label>
+
+      <div class="col-xs-9">
+        <input type="text" id="ip" name="email" class="form-control" disabled required ng-model="editCtrl.ip"
+               bs-validate-hint>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-4 col-xs-offset-3">
+        <button type="submit" class="btn btn-primary" ng-disabled="EditPTRFrom.$invalid" translate>Save</button>
+      </div>
+      <div class="col-xs-3">
+        <a ui-sref="openstack.ptr" class="btn btn-link" translate>Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,107 @@
+.body-auth {
+  background-color: #EFF0F5;
+}
+
+.auth {
+  margin-top: 120px;
+  width: @auth-width;
+  margin-right: auto;
+  margin-left: auto;
+  float: none;
+  .nav {
+    li {
+      background: #FFFFFF;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      float: left;
+      width: 50%;
+      a {
+        text-align: center;
+        padding: 21px 15px;
+        background-color: #FAF9FE;
+        color: #737373;
+        font-weight: 300;
+        font-size: 16px;
+        border: 0;
+        border-top: 1px solid @auth-border-color;
+        border-left: 1px solid @auth-border-color;
+        border-bottom: 1px solid @auth-border-color;
+        &:hover {
+          border-right: 0;
+        }
+      }
+      &:not(.active) a {
+        border-bottom: 1px solid @auth-border-color;
+      }
+
+      &.active a {
+        background-color: #FFFFFF;
+        color: #6095CB;
+        border: 0;
+        border-top: 1px solid @auth-border-color;
+        border-left: 1px solid @auth-border-color;
+        padding-bottom: 22px;
+        &:hover {
+          color: #6095CB;
+        }
+      }
+      &:first-child {
+        a {
+          border-top-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-right: 1px solid @auth-border-color;
+        }
+        &.active a {
+          border-bottom-right-radius: 0;
+          border-right: 0;
+        }
+      }
+      &:last-child a {
+        border-top-right-radius: 5px;
+        border-right: 1px solid @auth-border-color;
+      }
+      &:last-child {
+        a {
+          border-bottom-left-radius: 5px;
+        }
+        &.active a {
+          border-bottom-left-radius: 0;
+          border-left: 0;
+        }
+      }
+    }
+  }
+
+  .auth-form {
+    padding: 60px 50px 30px 60px;
+    border: 1px solid @auth-border-color;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+
+    a.gray-middle-light-text:hover {
+      text-decoration: none;
+    }
+    .captcha-width {
+      width: 334px;
+    }
+    .label-width {
+      width: 90px;
+    }
+    .offset-fixed {
+      margin-left: 90px;
+    }
+  }
+}
+
+.auth-wrapper {
+  width: @auth-width + 440px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 1500px) {
+  .auth-wrapper {
+    width: 100%;
+  }
+}

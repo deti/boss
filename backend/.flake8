@@ -1,0 +1,4 @@
+# move this to tox.ini or setup.cfg
+[flake8]
+max-line-length = 120
+exclude = model/migrate/versions/*

@@ -1,0 +1,3 @@
+<td ng-if="activeItem != item" ng-repeat="column in ::columns track by column.id" bs-table-cell
+    ng-class="::[column.cellClass, column.cellClassFn ? column.cellClassFn(item) : '']">
+</td>

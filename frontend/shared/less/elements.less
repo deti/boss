@@ -1,0 +1,225 @@
+.date-filter {
+  padding: 0 0 30px 0;
+  position: relative;
+  .btn {
+    height: 43px;
+    padding: 9px!important;
+    margin-right: 10px;
+  }
+  .btn.btn-clear {
+    background-color: #2c67cf;
+  }
+  .icon {
+    padding: 5px;
+  }
+  a {
+    margin: 0 7px;
+    border-bottom: 1px dashed;
+    text-decoration: none;
+    &:hover {
+      border-bottom: none;
+    }
+  }
+}
+
+.datepicker.dropdown-menu {
+  width: 250px;
+  height: 270px;
+  button {
+    outline: 0;
+    border: 0;
+    height: inherit;
+  }
+  tbody {
+    height: 180px;
+  }
+  tbody button {
+    padding: 6px;
+  }
+  &.datepicker-mode-1, &.datepicker-mode-2 {
+    tbody button {
+      height: 65px;
+    }
+  }
+}
+
+bs-date-range-picker {
+  button {
+    outline: 0;
+    box-shadow: 0!important;
+  }
+  .pickers {
+    position: absolute;
+    top: 52px;
+    width: 502px;
+    height: 295px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    background: #ffffff;
+    z-index: 999;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+  }
+  .datepicker {
+    top: 0 !important;
+    left: 0 !important;
+    position: inherit;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    background: none;
+  }
+  .picker-container {
+    position: relative;
+    float: left;
+    width: 250px;
+    height: 295px;
+  }
+  .selected-range() {
+    background: #e1f3f8;
+    width: 98% !important;
+  }
+  .from-container {
+    border-right: 1px solid rgba(0,0,0,.15);
+    .greater:not(:disabled) {
+      .selected-range();
+    }
+  }
+  .to-container {
+    .less:not(:disabled) {
+      .selected-range();
+    }
+  }
+  .btn-today {
+    background-color: #5bc0de !important;
+    color: #f4f4f4;
+  }
+}
+
+hr {
+  border-color: #d6e3ec;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.switch-custom-text {
+  display: block;
+  background: #ffffff;
+  border-radius: 50px;
+  border: 1px solid #8195a9;
+  height: 45px;
+  box-sizing: border-box;
+  input {
+    display: none;
+  }
+  label {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 45px;
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+  }
+  .options {
+    height: 100%;
+    display: block;
+  }
+  .enabled, .disabled {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    padding-top: 10px;
+    text-align: center;
+    height: 45px;
+    color: #AAACB9;
+    border-radius: 50px;
+  }
+  .disabled {
+    background: #2e66ce;
+    color: #FFFFFF;
+  }
+  input:checked + span {
+    .enabled {
+      background: #2e66ce;
+      color: #FFFFFF;
+    }
+    .disabled {
+      color: #AAACB9;
+      background: transparent;
+    }
+  }
+}
+
+.hr {
+  position: relative;
+  text-align: left;
+  color: @text-color;
+  margin-bottom: 26px;
+  margin-top: 32px;
+  min-height: 1px;
+  &:first-child {
+    margin-top: 0;
+  }
+  span {
+    position: relative;
+    z-index: 99;
+    background-color: @detail-bg-color;
+    padding-right: 10px;
+  }
+  span.white-bg {
+    background-color: @white-color;
+  }
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    background-color: #d6e3ec;
+    z-index: 90;
+  }
+}
+
+.hr-open-close {
+  i {
+    position: relative;
+    top: 7px;
+    float: right;
+    background-color: @detail-bg-color;
+    z-index: 99;
+    padding-left: 5px;
+    color: @gray-middle-lighter;
+    .fa;
+  }
+  &.hr-open {
+    i {
+      &:before {
+        content: "\f147";
+      }
+    }
+  }
+  &.hr-close {
+    i {
+      &:before {
+        content: "\f196";
+      }
+    }
+  }
+}
+.checkbox.disabled label{
+  color: @disabled-input-color;
+}
+
+.checkbox {
+  input[type=checkbox] {
+    margin-top: 6px;
+  }
+}
+a.zeroclipboard-is-hover {
+  text-decoration: underline;
+}
+a {
+  cursor: pointer;
+}

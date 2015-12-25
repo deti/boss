@@ -1,0 +1,36 @@
+- hosts: databases
+  sudo: yes
+  tasks:
+  - name: update apt cache
+    apt: update_cache=yes
+  - name: install redis-server and related packages
+    apt: 
+      name: '{{ item }}'
+      state: 'present'
+      install_recommends: False
+      force: yes
+    with_items:
+    - redis-server
+    - redis-tools
+    - python-redis
+  - name: "Bind Redis server to all interfaces"
+    action: lineinfile dest=/etc/redis/redis.conf state=present regexp="^#?bind" line="#bind 127.0.0.1"
+    notify:
+    - "Restart Redis"
+  - name: "Ensure Redis server is running"
+    action: service name=redis-server state=started
+  - name: Copy Sentinel config
+    copy: src=files/redis-sentinel.conf dest=/etc/redis/redis-sentinel.conf owner=redis group=redis mode=0644
+    notify:
+    - "Restart Redis Sentinel"
+  - name: Copy Sentinel config
+    copy: src=files/redis-sentinel dest=/etc/init.d/redis-sentinel owner=root group=root mode=0755
+    notify:
+    - "Restart Redis Sentinel"
+  - name: "Ensure Redis Sentinel is running"
+    action: service name=redis-sentinel state=started
+  handlers:
+  - name: Restart Redis
+    service: name=redis-server state=restarted  
+  - name: Restart Redis Sentinel
+    service: name=redis-sentinel state=restarted

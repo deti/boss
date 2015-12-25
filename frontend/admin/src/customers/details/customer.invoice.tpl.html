@@ -1,0 +1,58 @@
+<form class="form-horizontal mar-t-30" novalidate bs-server-validate name="InvoiceForm" ng-submit="downloadInvoice(InvoiceForm)">
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-xs-3 centered" for="amount" translate>Sum</label>
+    <div class="col-xs-9">
+      <input id="amount" type="number" name="amount" class="form-control" ng-model="amount" bs-validate-hint required>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <label class="col-xs-3 centered" for="currency" translate>Currency</label>
+
+    <div class="col-sm-9">
+      <div class="select">
+        <select name="currency" id="currency" class="form-control" ng-model="currency" ng-required="true"
+                ng-options="item.code as item.currency for item in activeCurrency">
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-sm-3 centered" for="date" translate>Date</label>
+
+    <div class="col-sm-9">
+      <div class="input-grp">
+        <input type="text" id="date" class="form-control" ng-model="date" name="date"
+               bs-datepicker data-autoclose="true" bs-validate-hint="{parse: ('Incorrect date format' | translate)}"/>
+        <span class="input-group-addon icon-addon"><i class="icon icon-transactions-v2 icon-lg"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group has-error" ng-if="InvoiceForm.$error.unclassified">
+    <div class="col-xs-offset-3 col-xs-9">
+      <span class="help-block">{{InvoiceForm.$server_unclassified}}</span>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <div class="col-xs-5 col-xs-offset-3">
+      <button type="submit" class="btn btn-primary btn-block" translate>
+        Create invoice
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="hr"><span>Act</span></div>
+<form class="form-horizontal mar-t-30" novalidate bs-server-validate name="AcceptanceForm" ng-submit="downloadAcceptance()">
+  <bs-date-range start-date="startDate" end-date="endDate"></bs-date-range>
+  <div class="form-group row-vertical-align">
+    <div class="col-xs-5">
+      <button type="submit" class="btn btn-primary btn-block" translate>
+        Create bill
+      </button>
+    </div>
+  </div>
+</form>

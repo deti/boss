@@ -1,0 +1,105 @@
+<div class="hr mar-t-30"><span translate>Change plan</span></div>
+<form name="ChangeTariffForm" class="form-horizontal" novalidate ng-submit="updateTariff(ChangeTariffForm)"
+      bs-server-validate="{}">
+  <div class="form-group row-vertical-align">
+    <label class="col-sm-4 centered" for="tariff" translate>Choose plan</label>
+
+    <div class="col-sm-7">
+      <div class="select">
+        <select id="tariff" name="tariff" class="form-control" ng-model="tariff"
+                ng-options="tariff.tariff_id as tariff|localizedName for tariff in tariffs">
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="col-sm-4 centered" translate>When to change?</label>
+
+    <div class="col-sm-7">
+      <div class="switch-custom-text">
+        <label>
+          <input type="checkbox" value="" ng-model="changeLater">
+          <span class="options">
+            <span class="disabled" translate>Change now</span>
+            <span class="enabled" translate>Change later</span>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="changeLater">
+    <div class="text-muted mar-b-20" translate>Timezone for plan changing is indicated as UTC+03</div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-sm-4 centered" for="date" translate>Date of plan change</label>
+
+      <div class="col-sm-7">
+        <div class="input-grp">
+          <input type="text" id="date" class="form-control" ng-model="changeDate.date" name="date"
+                 bs-datepicker data-min-date="{{currentDate}}" data-autoclose="true"
+                 bs-validate-hint="{parse: ('Incorrect date format' | translate)}"/>
+          <span class="input-group-addon icon-addon"><i class="icon icon-transactions-v2 icon-lg"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-sm-4 centered" for="date" translate>Plan change time</label>
+
+      <div class="col-sm-7">
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="select select-with-addon">
+              <select id="hours" name="hours" class="form-control" ng-model="changeDate.hour">
+                <option ng-repeat="hour in hours" ng-selected="changeDate.hour == hour" value="{{::hour}}">
+                  {{::hour|leadingZeros}}
+                </option>
+              </select>
+              <span translate>hours</span>
+            </label>
+          </div>
+          <div class="col-sm-6">
+            <div class="select select-with-addon">
+              <select name="minutes" id="minutes" class="form-control" ng-model="changeDate.minute">
+                <option ng-repeat="minute in minutes" value="{{::minute}}">{{::minute|leadingZeros}}</option>
+              </select>
+              <span translate>minutes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-group has-error" ng-if="ChangeTariffForm.$error.unclassified">
+    <div class="col-sm-offset-4 col-sm-7">
+      <span class="help-block">{{ChangeTariffForm.$server_unclassified}}</span>
+    </div>
+  </div>
+
+  <div class="form-group row-vertical-align">
+    <label class="col-sm-4 centered" translate>Change plan</label>
+
+    <div class="col-sm-7">
+      <button class="btn btn-primary btn-block" type="submit" ng-disabled="ChangeTariffForm.$invalid">
+        <span ng-if="!changeLater" translate>Change plan now</span>
+        <span ng-if="changeLater" translate>Schedule plan change</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group gray-middle-light-text mar-t-50" ng-if="deferred">
+    <div class="col-sm-12">
+      <div>
+        <span translate>Plan change is scheduled for </span>
+        <span>{{deferred.tariff | localizedName}}</span>
+      </div>
+      <div>
+        <span translate>Change date </span>
+        <span>{{deferred.date | date:'short'}}</span>
+      </div>
+    </div>
+  </div>
+</form>

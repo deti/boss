@@ -1,0 +1,72 @@
+<div class="g-details-tabs-wrapper">
+  <div class="tabs"></div>
+  <perfect-scrollbar class="g-details-view-wrapper" refresh-on-change="[$state.current.name, windowHeight]"
+                     suppress-scroll-x="true">
+    <div class="hr"><span translate>New service</span></div>
+    <form name="ServiceForm" novalidate bs-server-validate class="form-horizontal"
+          bs-form-send-once ng-submit="create(ServiceForm)">
+
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="label-fw required" for="localized_name_rus" translate>Name (RUS)</label>
+
+        <div class="col-sm-7">
+          <input type="text" id="localized_name_rus" name="localized_name_rus" class="form-control" required
+                 bs-validate-hint ng-model="service.localized_name.ru">
+        </div>
+      </div>
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="label-fw required" for="localized_name_eng" translate>Name (ENG)</label>
+
+        <div class="col-sm-7">
+          <input type="text" id="localized_name_eng" name="localized_name_eng" class="form-control" required
+                 bs-validate-hint ng-model="service.localized_name.en">
+        </div>
+      </div>
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="label-fw required" for="measure" translate>Unit of measurement</label>
+
+        <div class="col-sm-7">
+          <div class="select">
+            <select name="measure" id="measure" class="form-control" ng-model="service.measure" required
+                    bs-validate-hint ng-options="item.measure_id as item|localizedName for item in measures">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="label-fw centered" for="description_rus" translate>Description (RUS)</label>
+
+        <div class="col-sm-7">
+          <input type="text" id="description_rus" name="description_rus" class="form-control"
+                 bs-validate-hint ng-model="service.description.ru">
+        </div>
+      </div>
+      <div class="form-group row-vertical-align" bs-has-error>
+        <label class="label-fw centered" for="description_en" translate>Description (ENG)</label>
+
+        <div class="col-sm-7">
+          <input type="text" id="description_en" name="description_en" class="form-control"
+                 bs-validate-hint ng-model="service.description.en">
+        </div>
+      </div>
+
+      <div class="form-group has-error" ng-if="ServiceForm.$error.unclassified">
+        <div class="fixed-offset col-sm-9">
+          <span class="help-block">{{ServiceForm.$server_unclassified}}</span>
+        </div>
+      </div>
+
+      <div class="form-group mar-t-30">
+        <div class="col-xs-9 offset-buttons btn-row">
+          <div class="col-xs-6">
+            <button type="submit" class="btn btn-primary btn-block" ng-disabled="ServiceForm.$invalid" translate>Create</button>
+          </div>
+          <div class="col-xs-6">
+            <button type="button" class="btn btn-default btn-block" ng-click="cancel()" translate>Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </perfect-scrollbar>
+  <div class="details-shadow"></div>
+</div>

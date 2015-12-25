@@ -1,0 +1,13 @@
+{
+  "name": "boss-skyline",
+  "version": "1.0.0",
+  "author": "ASD Tech",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "vendor"
+  ],
+  "dependencies": {
+    "angular-ui-bootstrap": "~0.13.0"
+  }
+}

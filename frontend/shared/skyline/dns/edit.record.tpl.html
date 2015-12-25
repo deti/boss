@@ -1,0 +1,53 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>Create sub-domain</h4>
+  <form name="EditRecordForm" class="form-horizontal" ng-submit="updateRecord(EditRecordForm)" bs-server-validate novalidate bs-form-send-once>
+    <div class="form-group row-vertical-align">
+      <label class="col-sm-3 centered" for="domainName" translate>Domain name</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="domainName" name="domainName" class="form-control" disabled ng-model="domain.name">
+      </div>
+    </div>
+    <div class="form-group" bs-has-error>
+      <label class="col-sm-3 required" for="name" translate>Name</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="name" name="name" class="form-control" required ng-model="record.name"
+               bs-validate-hint placeholder="{{::'Enter name'|translate}}">
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align">
+      <label class="col-sm-3 centered" for="type" translate>Type</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="type" name="type" class="form-control" disabled ng-model="record.type">
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-sm-3 required centered" for="data" translate>Record</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="data" name="data" class="form-control" required bs-validate-hint ng-model="record.data">
+      </div>
+    </div>
+    <div class="form-group row-vertical-align" bs-has-error ng-if="record.type === 'MX'">
+      <label class="col-sm-3 required centered" for="priority" translate>Priority</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="priority" name="priority" class="form-control" required bs-validate-hint
+               ng-model="record.priority">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-2 col-xs-offset-3">
+        <button type="submit" class="btn btn-primary" ng-disabled="EditRecordForm.$invalid || !EditRecordForm.$dirty" translate>Edit</button>
+      </div>
+      <div class="col-xs-3">
+        <a ui-sref="openstack.dns.records({domainId: domain.id})" class="btn btn-link" translate>Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

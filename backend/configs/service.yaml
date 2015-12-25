@@ -1,0 +1,140 @@
+service:
+  measure:
+    time:
+      hour:
+        localized_name:
+          ru: час
+          en: hour
+      month:
+        localized_name:
+          ru: месяц
+          en: month
+        hour_rate: 720
+
+    quant:
+      byte:
+        localized_name:
+          ru: байт
+          en: byte
+      kilobyte:
+        localized_name:
+          ru: килобайт
+          en: kilobyte
+        rate: ${KILO}
+      megabyte:
+        localized_name:
+          ru: мегабайт
+          en: megabyte
+        rate: ${MEGA}
+      gigabyte:
+        localized_name:
+          ru: гигабайт
+          en: gigabyte
+        rate: ${GIGA}
+
+    time_quant:
+      gigabyte*month:
+        time: month
+        quantitative: gigabyte
+        localized_name:
+          ru: Гб*месяц
+          en: Gb*month
+
+      gigabyte*hour:
+        time: hour
+        quantitative: gigabyte
+        localized_name:
+          ru: Гб*час
+          en: Gb*hour
+
+  service:
+    vm:
+      measure: hour
+      localized_name:
+        ru: Виртуальные машины
+        en: Virtual server
+
+
+    storage:
+      localized_name:
+        ru: Хранение данных
+        en: Storage
+      storage.volume:
+        measure: gigabyte*hour
+        localized_name:
+          ru: Дополнительные Диски и Снапшоты
+          en: Additional Disks and Snapshots
+        description:
+          ru: Тарифицирует дополнительно созданные диски, а также снапшоты любых дисков
+          en: Charged additionally created volumes as well as snapshots of any volumes.
+      storage.disk:
+        measure: gigabyte*hour
+        localized_name:
+          ru: Диск ВМ
+          en: VM Disk
+        description:
+          ru: Тарифицирует root диски серверов. Взимается в том случае, когда размер root диска превышает размер установленный типом сервера
+          en: Bill the root disks of intances. Charged in cases when the size of root disk than disk size specified in server type (flavor).
+      storage.image:
+        measure: gigabyte*hour
+        localized_name:
+          ru: Образ
+          en: Image
+        description:
+          ru: Тарифицирует добавленные пользователем Образы
+          en: Bill the images uploaded by customer.
+
+    net:
+      measure: gigabyte
+      localized_name:
+        ru: Сеть
+        en: Network
+      net.allocated_ip:
+        localized_name:
+          ru: Интернет IP-адрес
+          en: Internet IP address
+        description:
+          ru: Тарифицирует подключенные Интернет IP-адреса (Floating IP)
+          en: Bill the allocated Internet IP-addresses (Floating IPs).
+        measure: hour
+      net.fixed_ip:
+        localized_name:
+          ru: Фиксированный IP-адрес
+          en: Fixed IP address
+        description:
+          ru: Тарифицирует подключенные фиксированные IP-адреса (Fixed IP)
+          en: Bill the allocated Fixed IP-addresses (Fixed IPs).
+        measure: hour
+      net.traffic_in:
+        localized_name:
+          ru: Входящий внешний трафик
+          en: Incommint external tarffic
+      net.traffic_out:
+        localized_name:
+          en: Outgoing external tarffic
+          ru: Исходящий внешний трафик
+      net.bandwidth:
+        localized_name:
+          ru: Ширина канала
+          en: Bandwidth
+        measure: hour
+      net.vpn:
+        localized_name:
+          ru: Виртуальный VPN сервер
+          en: Virtual VPN server
+        measure: hour
+      network:
+        localized_name:
+          ru: Виртуальная Сеть
+          en: Virtual Network
+        measure: hour
+      router:
+        localized_name:
+          ru: Виртуальный Роутер
+          en: Virtual Router
+        measure: hour
+
+    custom:
+      localized_name:
+        ru: Дополнительные
+        en: Custom

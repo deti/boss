@@ -1,0 +1,14 @@
+<a href="#" ng-click="togglePopup()" translate>Details</a>
+<div class="card-details account" ng-show="showPopup">
+  <p class="text-center">{{::structure.title}}</p>
+  <p class="gray-text mar-b-30">{{::structure.description}}</p>
+  <hr />
+  <div ng-repeat="item in structure.details">
+    <div class="account-item clearfix">
+      <div class="item-name">{{::item.name}}</div>
+      <div class="item-value" ng-bind-html="item.templateValue | pickFilter:item.filter | trust"></div>
+    </div>
+    <div class="item-note" ng-if="item.note">{{::item.note}}</div>
+    <hr ng-if="!$last"/>
+  </div>
+</div>

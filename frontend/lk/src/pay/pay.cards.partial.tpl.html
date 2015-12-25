@@ -1,0 +1,57 @@
+<form name="PayForm" class="form-horizontal" ng-submit="pay(PayForm)">
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label for="amount" class="col-xs-3 centered" translate>
+      Amount
+    </label>
+    <div class="col-xs-9">
+      <div class="input-grp">
+        <input id="amount" type="number" name="amount" class="form-control" ng-model="cardFormData.amount"
+               required min="1" bs-validate-hint="{min: 'Minimum amount - 1'}">
+        <span class="input-group-addon unit-addon">{{userInfo.currency}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group" ng-show="cards.length === 0">
+    <div class="col-sm-offset-3 col-sm-9">
+      <div class="checkbox">
+        <label class="custom-checkbox">
+          <input type="checkbox" name="saveAsDefault" id="saveAsDefault" ng-model="cardFormData.saveAsDefault"/>
+          <span class="checkbox-elem"></span>
+          <span translate>Save as a primary payment method</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group" ng-show="cards.length !== 0">
+    <div class="col-sm-offset-3 col-sm-9">
+      <div class="radio" ng-repeat="card in cards">
+        <label>
+          <input type="radio" name="selectedCard" ng-model="cardFormData.selectedCard" value="{{card.card_id}}" required/>
+          <span translate>Pay with card</span> {{::card.card_type}} ****** {{::card.last_four}}
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="selectedCard" ng-model="cardFormData.selectedCard" value="null"/>
+          <span translate>Pay with another card</span>
+        </label>
+      </div>
+      <div class="pad-l-20 checkbox" ng-class="{'disabled' : cardFormData.selectedCard !== 'null'}">
+        <label class="custom-checkbox">
+          <input ng-disabled="cardFormData.selectedCard !== 'null'" type="checkbox" name="saveAsDefault" id="saveAsDefault2"
+                 ng-model="cardFormData.saveAsDefault"/>
+          <span class="checkbox-elem"></span>
+          <span translate>Save as a primary payment method</span>
+        </label>
+      </div>
+      <a ui-sref="cards" translate>My cards</a>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-5 col-sm-offset-3">
+      <button type="submit" class="btn btn-primary btn-block" ng-disabled="PayForm.$invalid" translate>
+        Make payment
+      </button>
+    </div>
+  </div>
+</form>

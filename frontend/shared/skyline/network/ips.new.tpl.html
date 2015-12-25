@@ -1,0 +1,35 @@
+<div class="openstack-container header-padding-small sides-padding">
+  <h4 translate>Request floating IP-address</h4>
+  <form name="NewIPForm" class="form-horizontal pull-left" ng-submit="allocateFloatingIP(NewIPForm)" bs-server-validate
+        novalidate bs-form-send-once>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-xs-3 required centered" for="pool" translate>Pool</label>
+
+      <div class="col-xs-9">
+        <div class="select">
+          <select name="pool" class="form-control" id="pool" required ng-model="ip.pool" bs-validate-hint
+                  ng-options="item.name as item.name for item in floatingIPPools">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-4 col-xs-offset-3">
+        <button type="submit" class="btn btn-primary" ng-disabled="NewIPForm.$invalid || overLimits" translate>Request IP-address
+        </button>
+      </div>
+      <div class="col-xs-3">
+        <a ui-sref="openstack.ips" class="btn btn-link" translate>Cancel</a>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="openstack-limits pull-left mar-t-40">
+    <div class="form-group">
+      <bs-progressbar title="IP" value="limits.absolute.totalFloatingIpsUsed" max="limits.absolute.maxTotalFloatingIps"></bs-progressbar>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+</div>

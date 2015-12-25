@@ -1,0 +1,10 @@
+subscription:
+  news:
+    en: "Subscribe to announcements of special offers, new tariffs and services."
+    ru: "Рассылка анонсов о спецакциях, новых тарифах и услугах компании."
+  billing:
+    en: "Notifications on cash flow on your account (debiting and replenishment)."
+    ru: "Рассылка уведомлений о движении денег по вашему счету (списания и пополнения)."
+  status:
+    en: "Notifications about an account blocking threat, blocking and unlocking"
+    ru: "Рассылка уведомлений об угрозе блокирования аккаунта, о блокировке и разблокировке."

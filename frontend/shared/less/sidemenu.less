@@ -1,0 +1,209 @@
+@import './hoverEffects';
+
+.g-sidebarview {
+  background-color: @sidemenu-bg-color;
+  height: 100%;
+  transition: width ease 100ms;
+  position: relative;
+}
+.menu {
+  border-radius: 0;
+  position: relative;
+  z-index: 2;
+
+  .logo {
+    position: relative;
+    top: 56px;
+    margin-bottom: 112px;
+    height: 38px;
+    width: 38px;
+    margin-left: 6px;
+    border-radius: 50px;
+    background: url(@sidemenu-logo-url) no-repeat center;
+    background-size: 24px 28px;
+    transition: all 100ms ease;
+  }
+
+  .beta {
+    position: relative;
+    height: 20px;
+    width: 31px;
+    margin-left: 6px;
+    background: url(@sidemenu-beta-logo-url) no-repeat center;
+    background-size: 31px 15px;
+  }
+  .submenu-list {
+    display: none;
+  }
+  ul.nav-pills {
+    > li > a:not(.sidemenu-active) {
+      .sweep-to-right(@sidemenu-hover-bg-color, 100ms);
+      display: block;
+    }
+    li {
+      margin: 0;
+      a {
+        color: @sidemenu-text-color;
+        padding: 17px 16px 14px;
+        line-height: 1;
+        border-radius: 0;
+        transition: all 150ms ease 150ms;
+        white-space: nowrap;
+        &:hover,
+        &:focus {
+          color: @sidemenu-active-text-color;
+          box-shadow: -1px 0 1px 0 rgba(34, 81, 167, 0.5) inset;
+          .icon {
+            color: @sidemenu-active-text-color;
+          }
+        }
+        &:focus {
+          background-color: @sidemenu-active-bg-color;
+        }
+        &:hover {
+          background-color: transparent;
+        }
+        span {
+          margin-left: 12px;
+        }
+      }
+      .icon {
+        color: @sidemenu-text-color;
+        transition: color 150ms ease 150ms;
+      }
+      a.sidemenu-active {
+        box-shadow: -1px 0 1px 0 rgba(34, 81, 167, 0.5) inset;
+        background-color: @sidemenu-active-bg-color;
+        color: @sidemenu-active-text-color;
+        .icon {
+          color: @sidemenu-active-text-color;
+        }
+      }
+    }
+  }
+}
+.logoNarrowStyles() {
+  .logo {
+    top: 56px;
+    margin-bottom: 112px;
+    margin-left: 6px;
+    background-size: 24px 28px;
+    height: 38px;
+    width: 38px;
+  }
+  .beta {
+    left: 0;
+    top: 32px;
+  }
+}
+.logoWideStyles() {
+  .logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 0 90px 63px;
+    background-size: 36px 42px;
+    top: 45px;
+  }
+  .beta {
+    left: 35px;
+  }
+}
+
+.narrowStyles() {
+  width: @sidemenu-narrow-width !important;
+  .expanded-element {
+    display: none;
+  }
+  .expand i {
+    transform: rotate(180deg);
+  }
+  .logoNarrowStyles();
+}
+.wideStyles() {
+  width: @sidemenu-wide-width !important;
+  .logoWideStyles();
+}
+.g-sidebarview {
+  &.narrow {
+    .narrowStyles();
+  }
+  &.wide {
+    .wideStyles();
+  }
+}
+.details-visible .g-sidebarview {
+  @media (max-width: 1050px) {
+    .narrowStyles();
+  }
+}
+.expand-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  box-shadow: -1px 0 1px 0 rgba(34, 81, 167, 0.5) inset;
+  &:hover {
+    .expand {
+      .sweep-to-right-active();
+      color: @sidemenu-active-text-color;
+    }
+  }
+  .expand {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 48px;
+    color: @sidemenu-text-color;
+    line-height: 50px;
+    font-size: 10px;
+    transition: all 150ms ease 150ms;
+    text-align: right;
+    padding: 0 20px;
+
+    .sweep-to-right-inactive(@sidemenu-active-bg-color, 100ms);
+  }
+}
+
+.g-sidebarview.g-sidebarview_with-submenu {
+  width: 190px !important;
+  background: @sidemenu-active-bg-color;
+  .logoWideStyles();
+  .menu {
+    width: 50px;
+    height: 100%;
+    background-color: @sidemenu-bg-color;
+
+    ul.nav-pills li {
+      a.sidemenu-active {
+        box-shadow: none;
+      }
+      .submenu-list {
+        display: block;
+        position: absolute;
+        left: 50px;
+        top: 0;
+
+        list-style: none;
+        padding: 0;
+        a:hover, a:focus {
+          box-shadow: none;
+          background-color: @sidemenu-active-bg-color;
+        }
+        a.submenu-active {
+          color: @sidemenu-active-text-color;
+        }
+      }
+    }
+  }
+
+  .expanded-element {
+    display: none;
+  }
+  .expand-container {
+    display: none;
+  }
+}

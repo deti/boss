@@ -1,0 +1,30 @@
+openstack:
+  horizon_url: $(__FIX_ME__())
+  customer_keystone_url: $(__FIX_ME__())
+  auth:
+    # Keystone auth user details
+    username: $(__FIX_ME__())
+    password: $(__FIX_ME__())
+    tenant_name: $(__FIX_ME__())
+    auth_url: $(__FIX_ME__())
+  connect_retries: 2
+  max_retries: 5
+  retry_delay: 30
+  rate_limit: 10
+  request_timeout: 10
+  ceilometer_timeout: 40
+  request_page_size: 100
+  region: RegionOne
+  default_user_role: _member_
+
+  external_net: $(__FIX_ME__())
+
+  dns_nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
+
+  loglevel: INFO
+
+  server_state:
+    check: 3
+    limit: ${10*MINUTE}

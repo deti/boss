@@ -1,0 +1,195 @@
+<div class="settings-container header-padding sides-padding">
+
+  <div ng-if="::!user.email_confirmed">
+    <div class="hr"><span class="gray-middle-light-text white-bg" translate>The email to continue the registration</span></div>
+    <div class="row mar-b-30">
+      <div class="col-sm-5">
+        <a class="btn btn-primary btn-block" href="#" ng-click="resendConfirmationEmail()" translate>Send again</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr"><span class="gray-middle-light-text white-bg" translate>Change password</span></div>
+
+
+  <form class="form-horizontal" name="PasswordForm" novalidate ng-submit="changePass(PasswordForm)">
+    <div class="form-group" bs-has-error>
+      <div class="row-vertical-align">
+        <label class="col-sm-3 centered" for="newPassword" translate>New password</label>
+
+        <div class="col-sm-9">
+          <input type="password" id="newPassword" name="newPassword" class="form-control"
+                 ng-model="pass.newPassword" ng-required="true" bs-strong-password-validator="score"
+                 bs-validate-hint
+                 placeholder="{{::'Enter a new password' |  translate}}" autocomplete="new-password" >
+        </div>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3">
+        <div class="password-strength" ng-class="'password-strength-' + score">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row-vertical-align" bs-has-error>
+      <label class="col-sm-3 centered" for="newPasswordConfirm" translate>Confirm</label>
+
+      <div class="col-sm-9">
+        <input type="password" id="newPasswordConfirm" name="newPasswordConfirm" class="form-control"
+               ng-model="pass.newPasswordConfirm" bs-match="pass.newPassword" ng-required="true"
+               bs-validate-hint="{match: ('Passwords must match' | translate)}"
+               placeholder="{{::'Enter your new password again' |  translate}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-5 col-sm-offset-3">
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="PasswordForm.$invalid" translate>
+          Change password
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <form class="form-horizontal" name="AccountForm" bs-server-validate novalidate ng-submit="updateLocale(AccountForm)" bs-form-send-once>
+
+    <div class="hr"><span class="white-bg gray-middle-light-text" translate>Account</span></div>
+
+    <div class="form-group row-vertical-align">
+      <label class="col-sm-3 centered" for="withdraw_period_name" translate>Charge period</label>
+
+      <div class="col-sm-9">
+        <input type="text" name="withdraw_period_name" id="withdraw_period_name" ng-model="user.withdraw_period_name" disabled class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group row-vertical-align">
+      <label class="col-sm-3 centered" for="locale" translate>Locale</label>
+
+      <div class="col-sm-9">
+        <div class="select">
+          <select name="locale" class="form-control" id="locale" ng-model="user.locale" bs-validate-hint>
+            <option ng-repeat="locale in ::locales" ng-selected="::selectLocale(locale.code)" value="{{::locale.code}}">
+              {{::locale|localizedName}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-5 col-sm-offset-3">
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="AccountForm.$invalid || !AccountForm.$dirty" translate>
+          Change locale
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div ng-if="::user.customer_type === 'private'" ng-include="::withdrawTplPath"></div>
+
+  <form class="form-horizontal mar-t-30" name="ContactsForm" bs-server-validate novalidate ng-submit="updateInfo(ContactsForm)" bs-form-send-once>
+
+    <div ng-if="::user.customer_type === 'private'" ng-include="::privateTplPath"></div>
+
+    <div ng-if="::user.customer_type === 'entity'" ng-include="::entityTplPath"></div>
+
+    <div class="form-group has-error" ng-if="ContactsForm.$error.unclassified">
+      <div class="col-sm-offset-3 col-sm-9">
+        <span class="help-block">{{ContactsForm.$server_unclassified}}</span>
+      </div>
+    </div>
+
+    <div class="form-group" ng-if="::user.customer_mode == 'test'">
+      <div class="col-sm-5 col-sm-offset-3">
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="ContactsForm.$invalid || !ContactsForm.$dirty" translate>
+          Change data
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="hr"><span class="white-bg gray-middle-light-text" translate>Notification settings</span></div>
+
+  <form class="form-horizontal mar-b-40" name="SubscriptionsForm" novalidate bs-server-validate bs-form-send-once
+        ng-submit="updateSubscriptions(SubscriptionsForm)">
+    <div class="subscription-title">
+      <span translate>Company news</span>
+      <div class="form-helper" ng-repeat="subscription in ::subscriptionsInfo | filter: { name: 'news' }">
+        {{::subscription | localizedName: 'localized_description'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label class="switch">
+          <input type="checkbox" ng-model="subscriptions.news.enable"><span><i class="icon-on icon icon-xs icon-check"></i><i class="icon-off icon icon-xs icon-cross"></i></span>
+        </label>
+      </div>
+      <div class="col-sm-9">
+        <tags-input ng-model="subscriptions.news.email" type="email" allowed-tags-pattern=".+@.+"
+                    on-tag-removed="SubscriptionsForm.$dirty=true"
+                    placeholder="{{::'Enter an email' | translate}}" class="ti-input-lg ti-input-simple"></tags-input>
+      </div>
+    </div>
+
+    <div class="subscription-title">
+      <span translate>Billing notifications</span>
+      <div class="form-helper" ng-repeat="subscription in ::subscriptionsInfo | filter: { name: 'billing' }">
+        {{::subscription | localizedName: 'localized_description'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label class="switch">
+          <input type="checkbox" ng-model="subscriptions.billing.enable"><span><i class="icon-on icon icon-xs icon-check"></i><i class="icon-off icon icon-xs icon-cross"></i></span>
+        </label>
+      </div>
+      <div class="col-sm-9">
+        <tags-input ng-model="subscriptions.billing.email" type="email" allowed-tags-pattern=".+@.+"
+                    on-tag-removed="SubscriptionsForm.$dirty=true"
+                    placeholder="{{::'Enter an email' | translate}}" class="ti-input-lg ti-input-simple"></tags-input>
+      </div>
+    </div>
+
+    <div class="subscription-title">
+      <span translate>Account status notifications</span>
+      <div class="form-helper" ng-repeat="subscription in ::subscriptionsInfo | filter: { name: 'status' }">
+        {{::subscription | localizedName: 'localized_description'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label class="switch">
+          <input type="checkbox" ng-model="subscriptions.status.enable"><span><i class="icon-on icon icon-xs icon-check"></i><i class="icon-off icon icon-xs icon-cross"></i></span>
+        </label>
+      </div>
+      <div class="col-sm-9">
+        <tags-input ng-model="subscriptions.status.email" type="email" allowed-tags-pattern=".+@.+"
+                    on-tag-removed="SubscriptionsForm.$dirty=true"
+                    placeholder="{{::'Enter an email' | translate}}" class="ti-input-lg ti-input-simple"></tags-input>
+      </div>
+    </div>
+
+    <div class="form-group has-error" ng-if="SubscriptionsForm.$error.unclassified">
+      <div class="col-sm-offset-2 col-sm-9">
+        <span class="help-block">{{SubscriptionsForm.$server_unclassified}}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-5 col-sm-offset-2">
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="SubscriptionsForm.$invalid || !SubscriptionsForm.$dirty" translate>
+          Save changes
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="mar-b-40 mar-t-50" ng-if="user.email_confirmed">
+    <div class="hr"><span class="white-bg gray-middle-light-text" translate>OpenStack access</span></div>
+    <p translate>Forgot OpenStack password?</p>
+    <div class="row pad-t-10">
+      <div class="col-sm-8">
+        <button type="button" class="btn btn-primary btn-block" ng-click="restoreOSPassword()" translate>Recover password</button>
+      </div>
+    </div>
+  </div>
+</div>

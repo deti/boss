@@ -1,0 +1,23 @@
+<div class="g-sidebarview wide">
+  <div class="menu">
+    <div class="logo">
+      <div class="beta" ng-if="beta"></div>
+    </div>
+
+    <ul class="nav nav-pills nav-stacked full-height text-left">
+      <li ng-repeat="menuItem in ::menu">
+        <a ui-sref-active="sidemenu-active" ui-sref-opts="{reload: true}" ui-sref="{{::menuItem.sref}}"
+           ng-click="$event.stopPropagation();">
+          <span class="expanded-element">{{::menuItem.title}}</span>
+        </a>
+        <ul class="submenu-list nav" ng-if="::menuItem.submenu">
+          <li ng-repeat="subMenuItem in ::menuItem.submenu">
+            <a ui-sref-active="submenu-active" ui-sref="{{::subMenuItem.sref}}" ng-click="$event.stopPropagation();">
+              {{::subMenuItem.title}}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

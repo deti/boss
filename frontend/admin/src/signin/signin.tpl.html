@@ -1,0 +1,40 @@
+<div class="row auth">
+<form class="form-horizontal" name="LoginForm" ng-submit="submit(LoginForm)" novalidate bs-server-validate="{401: 'auth'}" bs-form-send-once>
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-sm-2 col-sm-offset-1 centered">Email</label>
+    <div class="col-sm-6">
+      <input type="email" name="login" class="form-control input-lg" ng-model="login" ng-required="true"
+             bs-validate-hint placeholder="{{::'Enter login' | translate}}">
+    </div>
+  </div>
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-sm-2 col-sm-offset-1 centered" translate>Password</label>
+    <div class="col-sm-6">
+      <!-- Password field is not required because of chrome security policy. See BOSS-940 and https://code.google.com/p/chromium/issues/detail?id=398805 -->
+      <input type="password" name="password" class="form-control input-lg" ng-model="password"
+             placeholder="{{::'Enter password' | translate}}" bs-validate-hint>
+    </div>
+    <div class="col-sm-3 centered">
+      <a class="gray-middle-light-text neg-margin-l-20" ui-sref="restorePassword" translate>Forgot?</a>
+    </div>
+  </div>
+
+  <div class="form-group has-error" ng-if="LoginForm.$error.unclassified">
+    <div class="col-sm-offset-3 col-sm-6">
+      <span class="help-block">{{LoginForm.$server_unclassified}}</span>
+    </div>
+  </div>
+
+  <div class="form-group has-error" ng-if="LoginForm.$error.auth">
+    <div class="col-sm-8 col-sm-offset-2">
+      <span class="help-block">{{LoginForm.$server_error_auth}}</span>
+    </div>
+  </div>
+
+  <div class="form-group pad-t-10">
+    <div class="col-sm-offset-3 col-sm-6">
+      <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="LoginForm.$invalid" translate>Sign in</button>
+    </div>
+  </div>
+</form>
+</div>

@@ -1,0 +1,11 @@
+<td>
+  <span>{{::item.name}}</span>
+</td>
+<td>
+  <span>
+    <a ng-click="removeImage(item)" ng-if="item.own" translate>Remove</a>
+  </span>
+</td>
+<td>
+  <span>{{::item.size|bytes}}</span>
+</td>

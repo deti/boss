@@ -1,0 +1,5 @@
+node_modules
+vendor
+bin
+docs
+backend.config.local.js

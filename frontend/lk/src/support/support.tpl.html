@@ -1,0 +1,70 @@
+<div class="info-cards header-padding sides-padding">
+  <div class="row card-wrapper">
+    <div class="card-item" ng-show="::CONST.local.provider_info.support_phone">
+      <div class="card" ng-class="::{'card-max-width' : headingItemsCount < 2 }">
+        <div class="title" translate>Technical support</div>
+        <div class="value">{{::CONST.local.provider_info.support_phone}}</div>
+      </div>
+    </div>
+    <div class="card-item" ng-show="::CONST.local.provider_info.support_email">
+      <div class="card" ng-class="::{'card-max-width' : headingItemsCount < 2 }">
+        <div class="title">E-mail</div>
+        <div class="value">{{::CONST.local.provider_info.support_email}}</div>
+      </div>
+    </div>
+    <div class="card-item" ng-show="::CONST.local.provider_info.site_url_ui">
+      <div class="card" ng-class="::{'card-max-width' : headingItemsCount < 2 }">
+        <div class="title" translate>Our website</div>
+        <div class="value">{{::CONST.local.provider_info.site_url_ui}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form class="form-horizontal sides-padding mar-t-50 center-block support-form" name="MessageForm" ng-submit="send()"
+      novalidate>
+  <div class="form-group row-vertical-align" bs-has-error>
+    <label class="col-sm-3 centered required" for="subject" translate>Subject</label>
+
+    <div class="col-sm-9 fixed-support-field">
+      <div class="select">
+	      <select id="subject" name="subject" class="form-control" ng-model="message.subject" bs-validate-hint
+	               required>
+	        <option value="" translate>Select question category</option>
+	        <option ng-repeat="subject in ::subjects" value="{{::subject}}">{{::subject}}</option>
+	      </select>
+	    </div>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="col-sm-3 centered" for="copies" translate>Copy</label>
+
+    <div class="col-sm-9 fixed-support-field">
+      <tags-input id="copies" name="copies" ng-model="message.copies" type="email" allowed-tags-pattern=".+@.+"
+                  placeholder="{{::'Send copy to' |  translate}}" class="ti-input-lg ti-input-simple" bs-validate-hint></tags-input>
+    </div>
+  </div>
+  <div class="form-group row-vertical-align">
+    <label class="col-sm-3 centered" for="userEmail" translate>Your email</label>
+
+    <div class="col-sm-9 fixed-support-field">
+      <input type="email" id="userEmail" name="userEmail" class="form-control disabled-no-borders" ng-model="user.email"
+             disabled placeholder="{{::'ivanivanovich@gmail.com' |  translate}}">
+    </div>
+  </div>
+  <div class="form-group pad-t-20" bs-has-error>
+    <label class="col-sm-3 required" for="messageText" translate>Message</label>
+
+    <div class="col-sm-9 fixed-support-field">
+      <textarea id="messageText" name="messageText" rows="8" cols="50" class="form-control" ng-model="message.body"
+                required placeholder="{{::'Enter message' | translate}}" bs-validate-hint></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-5">
+      <button type="submit" class="btn btn-primary btn-block" ng-disabled="MessageForm.$invalid" translate>Send message
+      </button>
+    </div>
+  </div>
+</form>
+

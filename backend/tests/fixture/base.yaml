@@ -1,0 +1,97 @@
+user:
+  - email: boss@yourstack.com
+    password: qscft
+    name: Super Admin
+    role: admin
+
+flavor:
+  - localized_name:
+      ru: Виртуальный сервер Nano
+      en: Virtual server Nano
+    flavor_info:
+      flavor_id: Nano
+      vcpus: 1
+      ram: 512
+      disk: 0
+      network: 5
+  - localized_name:
+      ru: Виртуальный сервер Micro
+      en: Virtual server Micro
+    flavor_info:
+      flavor_id: Micro
+      vcpus: 1
+      ram: 1024
+      disk: 0
+      network: 5
+  - localized_name:
+      ru: Виртуальный сервер Small
+      en: Virtual server Small
+    flavor_info:
+      flavor_id: Small
+      vcpus: 1
+      ram: 4096
+      disk: 0
+      network: 10
+  - localized_name:
+      ru: Виртуальный сервер Medium
+      en: Virtual server Medium
+    flavor_info:
+      flavor_id: Medium
+      vcpus: 2
+      ram: 8192
+      disk: 0
+      network: 20
+  - localized_name:
+      ru: Виртуальный сервер Large
+      en: Virtual server Large
+    flavor_info:
+      flavor_id: Large
+      vcpus: 4
+      ram: 16384
+      disk: 0
+      network: 50
+  - localized_name:
+      ru: Виртуальный сервер ExtraLarge
+      en: Virtual server ExtraLarge
+    flavor_info:
+      flavor_id: ExtraLarge
+      vcpus: 6
+      ram: 24576
+      disk: 0
+      network: 50
+  - localized_name:
+      ru: Виртуальный сервер M.Small
+      en: Virtual server M.Small
+    flavor_info:
+      flavor_id: M.Small
+      vcpus: 1
+      ram: 8192
+      disk: 0
+      network: 150
+  - localized_name:
+      ru: Виртуальный сервер M.Medium
+      en: Virtual server M.Medium
+    flavor_info:
+      flavor_id: M.Medium
+      vcpus: 2
+      ram: 16384
+      disk: 0
+      network: 20
+  - localized_name:
+      ru: Виртуальный сервер M.Large
+      en: Virtual server M.Large
+    flavor_info:
+      flavor_id: M.Large
+      vcpus: 4
+      ram: 24576
+      disk: 0
+      network: 50
+  - localized_name:
+      ru: Виртуальный сервер M.ExtraLarge
+      en: Virtual server M.ExtraLarge
+    flavor_info:
+      flavor_id: M.ExtraLarge
+      vcpus: 6
+      ram: 32768
+      disk: 0
+      network: 50

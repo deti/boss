@@ -1,0 +1,12 @@
+<td>
+  <span>{{::item.name}}</span>
+</td>
+<td>
+  <span>{{::item.type}}</span>
+</td>
+<td>
+  <span>
+    <a ui-sref="openstack.dns.records.edit({recordId: item.id})" translate>Edit</a>
+    <a ng-click="deleteRecord(item)" translate>Delete</a>
+  </span>
+</td>

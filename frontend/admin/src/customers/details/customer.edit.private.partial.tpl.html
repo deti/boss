@@ -1,0 +1,87 @@
+<div class="hr"><span translate>Application form</span></div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="name2" translate>First and last name</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="name2" name="name2" class="form-control" ng-model="customer.detailed_info.name"
+           placeholder="{{::'Enter your full name' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="label-fw centered" for="birthday" translate>Date of birth</label>
+
+  <div class="col-sm-7">
+    <div class="input-grp">
+      <input type="text" id="birthday" name="birthday" class="form-control" ng-model="customer.detailed_info.birthday"
+             bs-datepicker data-autoclose="true" data-model-date-format="yyyy-MM-dd" data-date-type="string"
+             bs-validate-hint placeholder="{{::'01.12.1982' |  translate}}">
+      <span class="input-group-addon icon-addon"><i class="icon icon-transactions-v2 icon-lg"></i></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row-vertical-align" bs-has-error>
+  <label class="label-fw centered" for="telephone" translate>Phone</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="telephone" name="telephone" class="form-control" ng-model="customer.detailed_info.telephone"
+           bs-phone-input bs-validate-hint placeholder="{{::'Enter a phone number' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw text-left centered" for="country" translate>Country</label>
+
+  <div class="col-sm-7">
+    <div class="select">
+      <select id="country" name="country" class="form-control" ng-model="customer.detailed_info.country">
+        <option ng-repeat="country in ::countries" value="{{::country.code}}" ng-selected="::customer.detailed_info.country === country.code">
+          {{::country|localizedName}}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="address" translate>Address</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="address" name="address" class="form-control" ng-model="customer.detailed_info.address"
+           placeholder="{{::'Enter your address' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="passport_series_number" translate>Number and series</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="passport_series_number" name="passport_series_number" class="form-control"
+           ng-model="customer.detailed_info.passport_series_number" placeholder="{{::'Enter number and series of the document' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="passport_issued_by" translate>Issued by</label>
+
+  <div class="col-sm-7">
+    <input type="text" id="passport_issued_by" name="passport_issued_by" class="form-control"
+           ng-model="customer.detailed_info.passport_issued_by" placeholder="{{::'Enter the name of the issuing authority' |  translate}}">
+  </div>
+</div>
+
+<div class="form-group row-vertical-align">
+  <label class="label-fw centered" for="passport_issued_date" translate>Date of issue</label>
+
+  <div class="col-sm-7">
+    <div class="input-grp">
+      <input type="text" id="passport_issued_date" name="passport_issued_date" class="form-control" ng-model="customer.detailed_info.passport_issued_date"
+           bs-datepicker data-autoclose="true" data-model-date-format="yyyy-MM-dd" data-date-type="string"
+           bs-validate-hint placeholder="{{::'01.09.1987' |  translate}}">
+      <span class="input-group-addon icon-addon"><i class="icon icon-transactions-v2 icon-lg"></i></span>
+    </div>
+  </div>
+</div>

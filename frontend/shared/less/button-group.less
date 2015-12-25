@@ -1,0 +1,54 @@
+.btn-group.report-btn-group {
+  .btn {
+    &:first-child {
+      width: @btn-group-first-btn-width;
+    }
+    &.btn-toggle {
+
+    }
+    &.dropdown-toggle {
+      padding-left: 12px;
+      padding-right: 12px;
+      width: @btn-group-toggle-btn-width;
+      border-left-color: @white-color;
+      .caret {
+        position: relative;
+        left: 22px;
+      }
+      .btn-toggle-name {
+        position: absolute;
+        left: 12px;
+      }
+    }
+  }
+  &.open {
+    .dropdown-toggle {
+      &.btn-primary {
+        background-color: @btn-primary-hover-bg-color;
+        border-color: @btn-primary-hover-bg-color;
+        border-left-color: #ffffff;
+      }
+    }
+  }
+  .dropdown-menu {
+    margin-top: 4px;
+    padding: 0;
+    min-width: @btn-group-toggle-btn-width;
+    width: @btn-group-toggle-btn-width;
+    left: auto;
+    right: 0;
+    border: @btn-group-border;
+    border-radius: @btn-group-radius;
+    box-shadow: @btn-group-shadow;
+    > li {
+      border-bottom: @btn-group-border;
+      > a {
+        padding: 21px 12px 24px;
+        &:hover {
+          background-color: @btn-group-hover-item-bg-color;
+          color: @btn-group-hover-item-text-color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<form class="search-grp outside-ignore clearfix" ng-submit="search()"
+      ng-class="{'active': searchActive, 'active-input': !searchActive&&searchTags.length}">
+  <button class="btn btn-primary" type="button" ng-click="toggleSearch();$event.stopPropagation();">
+    <i class="icon icon-search icon-lg"></i>
+  </button>
+  <div class="search-options" click-outside="hideSearch()" outside-if-not="outside-ignore">
+    <tags-input ng-model="searchTags" on-tag-added="tagAdded()" on-tag-removed="tagRemoved($tag)" add-on-comma="false"
+                placeholder="{{::'Search'|translate}}"></tags-input>
+    <div class="columns" ng-hide="!filters.length">
+      <div ng-repeat="filter in ::filters">
+        <div class="group-header">{{::filter.title}}</div>
+        <a ng-repeat="option in ::filter.options" title="{{::option.text}}"
+           ng-click="addSearchTag(option, filter.property)">
+          {{::option.text}}
+        </a>
+      </div>
+    </div>
+  </div>
+</form>

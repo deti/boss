@@ -1,0 +1,14 @@
+<div class="header-padding-small sides-padding">
+  <a ui-sref="openstack.dns.records.new" class="btn btn-primary" translate>Create sub-domain</a>
+
+  <div class="pad-t-20">
+    <span translate>Sub-domains list</span><span> {{::domain.name}}</span>
+    <a ui-sref="openstack.dns.domains" class="pad-l-20" translate>Back</a>
+  </div>
+  <hr>
+
+  <div class="table-info pad-t-10" st-table="records">
+
+    <bs-table data="records" columns="columns" simple="true" action="actionsTplPath"></bs-table>
+  </div>
+</div>

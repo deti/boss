@@ -1,0 +1,99 @@
+.b-app-version {
+  display: none;
+  position: fixed;
+  width: 200px;
+  background: #FFEAAB;
+  text-align: center;
+  line-height: 30px;
+  letter-spacing: 1px;
+  color: #6A6340;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
+
+  top: auto;
+  bottom: 15px;
+  left: -70px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  z-index: 100500;
+  opacity: 0.5;
+}
+
+// generate css rules like .pad-t-50 { padding-top: 50px !important; }
+.create-positioning(@size, @step, @min, @prefix, @property) when (@size >= @min) {
+  .@{prefix}-@{size} {
+    @{property}: @size*1px !important;
+  }
+  .create-positioning(@size - @step, @step, @min, @prefix, @property);
+}
+
+.create-positioning(50, 5, 0, ~'pad-t', ~'padding-top');
+.create-positioning(50, 5, 0, ~'pad-l', ~'padding-left');
+.create-positioning(50, 5, 0, ~'pad-r', ~'padding-right');
+.create-positioning(50, 5, 0, ~'pad-b', ~'padding-bottom');
+.create-positioning(50, 5, 0, ~'mar-t', ~'margin-top');
+.create-positioning(50, 5, 0, ~'mar-l', ~'margin-left');
+.create-positioning(50, 5, 0, ~'mar-r', ~'margin-right');
+.create-positioning(50, 5, 0, ~'mar-b', ~'margin-bottom');
+
+
+.create-positioning(100, 10, 50, ~'pad-t', ~'padding-top');
+.create-positioning(100, 10, 50, ~'pad-l', ~'padding-left');
+.create-positioning(100, 10, 50, ~'pad-r', ~'padding-right');
+.create-positioning(100, 10, 50, ~'pad-b', ~'padding-bottom');
+.create-positioning(100, 10, 50, ~'mar-t', ~'margin-top');
+.create-positioning(100, 10, 50, ~'mar-l', ~'margin-left');
+.create-positioning(100, 10, 50, ~'mar-r', ~'margin-right');
+.create-positioning(100, 10, 50, ~'mar-b', ~'margin-bottom');
+
+
+.full-height {
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+}
+.full-width {
+  width: 100%;
+}
+
+.pad-lr-90 {
+  width: @auth-width/1.7;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.gray-middle-light-text {
+  color: @gray-middle-light;
+}
+.gray-text {
+  color: @gray-text;
+}
+
+.white {
+  background-color: #FFFFFF;
+}
+
+.gray-middle-light-text {
+  color: @gray-middle-light;
+}
+
+.link-color-text {
+  color: @white-color;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.row-vertical-align {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+}
+
+.row-vertical-align > .centered {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+}

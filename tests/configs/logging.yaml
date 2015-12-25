@@ -1,0 +1,48 @@
+logging:
+  log_dir: ${join(ROOT, "log")}
+  syslog: false
+  initialized: false
+
+  default:
+    level: DEBUG
+    format_string: "[{record.time:%Y-%m-%d %H:%M:%S}]{record.level_name:>7}: {record.message}"
+    handler_list:
+      - FailureFile
+      - AppFile
+
+  handlers:
+    stderr:
+      type: StderrHandler
+      level: "DEBUG"
+
+    FailureFile:
+      type: FileHandler
+      filename: $(join(logging.log_dir, "failures.log"))
+      delay: true
+      level: "WARNING"
+      encoding: utf-8
+
+    AppFile:
+      type: FileHandler
+      filename: $(join(logging.log_dir, "__APP__.log"))
+      delay: true
+      bubble: true
+      finger_cross: false
+      filter: without_api_filter
+      encoding: utf-8
+
+    Null:
+      type: NullHandler
+
+  finger_cross:
+    buffer_size: 0
+    reset: false
+    action_level: WARNING
+    bubble: true
+
+  applications:
+    stderr:
+      handlers:
+        - stderr
+
+    system_tests:

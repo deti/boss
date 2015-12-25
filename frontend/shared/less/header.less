@@ -1,0 +1,104 @@
+.g-header {
+  padding-right: 30px;
+  margin-top: 30px;
+  .navbar-nav > li {
+    > a {
+      color: @header-item-text-color;
+      padding: 11px 15px;
+      border-radius: 5px;
+      &:hover, &:focus {
+        background: @header-item-hover-bg-color;
+        color: @header-item-hover-text-color;
+      }
+    }
+    &.dropdown-events {
+      margin-right: 15px;
+      > a {
+        position: relative;
+        padding-top: 11px;
+        padding-bottom: 11px;
+        width: 52px;
+        text-align: center;
+        .icon {
+          font-size: 16px;
+          position: relative;
+          top: 2px;
+        }
+        .badge {
+          position: absolute;
+          top: 13px;
+          right: -5px;
+          transition: top ease 70ms;
+        }
+
+      }
+      &.open > a .badge {
+        top: -8px;
+      }
+    }
+  }
+  .navbar-nav li.open > a {
+    background: @header-item-active-bg-color;
+    color: @header-item-active-color;
+  }
+  .navbar-nav > li > .dropdown-menu {
+    width: 100%;
+    padding: 0;
+    min-width: 180px;
+    border: @header-menu-border;
+    border-radius: @header-item-border-radius;
+    margin-top: 4px;
+    box-shadow: @header-menu-shadow;
+    &.narrow {
+      min-width: inherit;
+    }
+    > li {
+      border-bottom: @header-menu-border;
+
+      > a {
+        white-space: normal;
+        padding: 27px 15px 24px;
+        background-color: @header-menu-bg-color;
+        .text-muted {
+          color: @header-menu-border;
+          font-size: 12px;
+          margin-bottom: 18px;
+        }
+        &:hover {
+          background-color: @header-menu-hover-bg-color;
+          color: @header-item-hover-text-color;
+          .text-muted {
+            color: @header-item-hover-text-color;
+          }
+        }
+      }
+
+      &:first-child > a {
+        .border-top-radius(@header-item-border-radius);
+      }
+      &:last-child {
+        border-bottom: none;
+        > a {
+          .border-bottom-radius(@header-item-border-radius);
+        }
+      }
+    }
+  }
+  .dropdown {
+    ul.dropdown-menu.dd-right {
+      right: 0;
+      left: auto;
+    }
+    ul.dropdown-menu.dd-left {
+      left: 0;
+      right: auto;
+    }
+
+    ul.dropdown-menu.wide {
+      min-width: @header-menu-wide-width;
+    }
+    ul.dropdown-menu.wider {
+      min-width: @header-menu-wider-width;
+    }
+  }
+}

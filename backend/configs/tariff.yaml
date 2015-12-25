@@ -1,0 +1,22 @@
+tariff:
+  events:
+    create:
+      en: "Tariff was created."
+      ru: "Тариф создан."
+    update:
+      en: "Tariff was updated."
+      ru: "Тариф отредактирован."
+    delete:
+      en: "Tariff was sent to the archive."
+      ru: "Тариф отправлен в архив."
+    assign:
+      en: "Tariff was assigned."
+      ru: "Тариф назначен заказчику."
+    unassign:
+      en: "Tariff was unassigned."
+      ru: "Тариф отвязан."
+    immutable:
+      en: "Tariff was setup as active."
+      ru: "Тариф назначен действующим."
+  measure:
+  service:

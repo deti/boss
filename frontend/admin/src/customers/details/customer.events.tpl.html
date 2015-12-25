@@ -1,0 +1,89 @@
+<form class="form-horizontal" name="CustomerSubscriptionsForm" novalidate bs-server-validate bs-form-saver ng-submit="updateSubscriptions(CustomerSubscriptionsForm)">
+  <div class="hr mar-t-30"><span translate>Auto lock</span></div>
+  <div class="form-group row-vertical-align">
+    <label class="col-xs-8 centered" translate>Lock account if balance lower than</label>
+    <div class="col-xs-4">
+      <div class="input-grp">
+        <input id="balance_limit" type="text" name="balance_limit" class="form-control input-with-unit"
+               ng-model="customer.balance_limit" bs-validate-hint>
+        <span class="input-group-addon unit-addon">{{customer.currency}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group has-error" ng-if="CreditLimitForm.$error.unclassified">
+    <div class="col-xs-offset-3 col-xs-9">
+      <span class="help-block">{{CreditLimitForm.$server_unclassified}}</span>
+    </div>
+  </div>
+
+  <div class="hr"><span translate>Customer subscriptions</span></div>
+  <div class="form-group">
+    <div class="subscription-title" translate>
+      Company news
+    </div>
+
+    <div class="col-sm-2">
+      <label class="switch">
+        <input type="checkbox" name="subscription_news_enable" ng-model="subscriptions.news.enable">
+        <span>
+          <i class="icon-on icon icon-xs icon-check"></i>
+          <i class="icon-off icon icon-xs icon-cross"></i>
+        </span>
+      </label>
+    </div>
+    <div class="col-sm-10">
+      <tags-input ng-model="subscriptions.news.email" type="email" allowed-tags-pattern=".+@.+" name="subscriptions_news"
+                  on-tag-removed="CustomerSubscriptionsForm.subscriptions_news.$dirty = true"
+                  on-tag-added="CustomerSubscriptionsForm.subscriptions_news.$dirty = true"
+                  placeholder="{{::'Enter email address' | translate}}" class="ti-input-lg ti-input-simple"></tags-input>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="subscription-title" translate>
+      Billing notifications
+    </div>
+
+    <div class="col-sm-2">
+      <label class="switch">
+        <input type="checkbox" name="subscription_billing_enable" ng-model="subscriptions.billing.enable">
+        <span>
+          <i class="icon-on icon icon-xs icon-check"></i>
+          <i class="icon-off icon icon-xs icon-cross"></i>
+        </span>
+      </label>
+    </div>
+    <div class="col-sm-10">
+      <tags-input ng-model="subscriptions.billing.email" type="email" allowed-tags-pattern=".+@.+" name="subscriptions_billing"
+                  on-tag-removed="CustomerSubscriptionsForm.subscriptions_billing.$dirty = true"
+                  on-tag-added="CustomerSubscriptionsForm.subscriptions_billing.$dirty = true"
+                  placeholder="{{::'Enter email address' | translate}}" class="ti-input-lg ti-input-simple"></tags-input>
+    </div>
+  </div>
+  <div class="form-group" bs-has-error has-error-target="'#subscribe-status'">
+    <div class="subscription-title" translate>
+      Account status notifications
+    </div>
+
+    <div class="col-sm-2">
+      <label class="switch">
+        <input type="checkbox" name="subscription_status_enable" ng-model="subscriptions.status.enable">
+        <span>
+          <i class="icon-on icon icon-xs icon-check"></i>
+          <i class="icon-off icon icon-xs icon-cross"></i>
+        </span>
+      </label>
+    </div>
+    <div class="col-sm-10">
+      <tags-input ng-model="subscriptions.status.email" type="email" allowed-tags-pattern=".+@.+" name="subscribe"
+                  on-tag-removed="CustomerSubscriptionsForm.subscribe.$dirty = true" bs-validate-hint
+                  on-tag-added="CustomerSubscriptionsForm.subscribe.$dirty = true" id="subscribe-status"
+                  placeholder="{{::'Enter email address' | translate}}" class="ti-input-lg ti-input-simple"></tags-input>
+    </div>
+  </div>
+
+  <div class="form-group has-error" ng-if="CustomerSubscriptionsForm.$error.unclassified">
+    <div class="col-sm-offset-2 col-sm-10">
+      <span class="help-block">{{CustomerSubscriptionsForm.$server_unclassified}}</span>
+    </div>
+  </div>
+</form>

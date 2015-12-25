@@ -1,0 +1,17 @@
+<div class="pagination-wrapper">
+  <ul class="pagination">
+    <li ng-class="{disabled: currentPage == 1}">
+      <a href ng-click="setPage(1)">&#171;<span class="direction" translate>Start</span></a>
+    </li>
+
+    <li ng-repeat="p in pageRange(pages, startPage, startPage + gap)"
+        ng-class="{active: p == currentPage}"
+        ng-click="setPage(p)">
+      <a href>{{p}}</a>
+    </li>
+
+    <li ng-class="{disabled: (currentPage) == pages}">
+      <a href ng-click="setPage(pages)"><span class="direction" translate>End</span>&#187;</a>
+    </li>
+  </ul>
+</div>
