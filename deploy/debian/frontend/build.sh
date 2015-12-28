@@ -28,7 +28,7 @@ sed -e "s/version:\ 0\.0\.1/version:\ 0\.0\.$BUILD_NUMBER/" < $BUILD_DIR/control
 
 
 mkdir -p $ROOT/usr/share/boss_admin/
-cp $FRONTEND/bin/admin $ROOT/usr/share/boss_admin/
+cp $FRONTEND/bin/admin/* $ROOT/usr/share/boss_admin/
 
 
 cd $BUILD_DIR
