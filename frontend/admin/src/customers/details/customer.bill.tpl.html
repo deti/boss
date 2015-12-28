@@ -9,7 +9,10 @@
 </div>
 <hr ng-show="accrued !== null"/>
 <div class="row row-vertical-align mar-b-0" ng-if="accrued !== null">
-  <label class="col-xs-3 centered" translate>Funds available</label>
+  <label class="col-xs-3 centered" translate>
+    <span ng-if="accrued > 0" translate>Credited</span>
+    <span ng-if="accrued < 0" translate>Withdraw</span>
+  </label>
   <div class="col-xs-9 centered">
     <h4 class="mar-t-0 mar-b-0" ng-bind-html="accrued | money: customer.currency | trust"></h4>
   </div>
