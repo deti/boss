@@ -7,7 +7,7 @@ NUMBER=${BUILD_NUMBER-0}
 BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT="$BUILD_DIR/root"
 BOSS_ROOT="$ROOT/opt/boss"
-PROJECT_ROOT="$( cd "$BUILD_DIR/../../" && pwd )"
+PROJECT_ROOT="$( cd "$BUILD_DIR/../../../" && pwd )"
 BUILDOUT="$PROJECT_ROOT/.buildout"
 
 mkdir -p $ROOT/DEBIAN
