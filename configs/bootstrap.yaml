@@ -1,111 +1,61 @@
 flavor:
   - localized_name:
-      ru: Виртуальный сервер Nano
-      en: Virtual server Nano
-    flavor_id: Nano
+      ru: Виртуальный сервер Tiny
+      en: Virtual server Tiny
+    flavor_id: m1.tiny
     vcpus: 1
     ram: 512
-    disk: 0
-    network: 5
-    immutable: True
-  - localized_name:
-      ru: Виртуальный сервер Micro
-      en: Virtual server Micro
-    flavor_id: Micro
-    vcpus: 1
-    ram: 1024
-    disk: 0
+    disk: 1
     network: 5
     immutable: True
   - localized_name:
       ru: Виртуальный сервер Small
       en: Virtual server Small
-    flavor_id: Small
+    flavor_id: m1.small
     vcpus: 1
-    ram: 4096
-    disk: 0
+    ram: 2048
+    disk: 20
     network: 10
     immutable: True
   - localized_name:
       ru: Виртуальный сервер Medium
       en: Virtual server Medium
-    flavor_id: Medium
+    flavor_id: m1.medium
     vcpus: 2
-    ram: 8192
-    disk: 0
+    ram: 4096
+    disk: 40
     network: 20
     immutable: True
   - localized_name:
       ru: Виртуальный сервер Large
       en: Virtual server Large
-    flavor_id: Large
+    flavor_id: m1.large
     vcpus: 4
-    ram: 16384
-    disk: 0
-    network: 50
-    immutable: True
-  - localized_name:
-      ru: Виртуальный сервер ExtraLarge
-      en: Virtual server ExtraLarge
-    flavor_id: ExtraLarge
-    vcpus: 6
-    ram: 24576
-    disk: 0
-    network: 50
-    immutable: True
-  - localized_name:
-      ru: Виртуальный сервер M.Small
-      en: Virtual server M.Small
-    flavor_id: M.Small
-    vcpus: 1
     ram: 8192
-    disk: 0
-    network: 150
-    immutable: True
-  - localized_name:
-      ru: Виртуальный сервер M.Medium
-      en: Virtual server M.Medium
-    flavor_id: M.Medium
-    vcpus: 2
-    ram: 16384
-    disk: 0
-    network: 20
-    immutable: True
-  - localized_name:
-      ru: Виртуальный сервер M.Large
-      en: Virtual server M.Large
-    flavor_id: M.Large
-    vcpus: 4
-    ram: 24576
-    disk: 0
+    disk: 80
     network: 50
     immutable: True
   - localized_name:
-      ru: Виртуальный сервер M.ExtraLarge
-      en: Virtual server M.ExtraLarge
-    flavor_id: M.ExtraLarge
-    vcpus: 6
-    ram: 32768
-    disk: 0
+      ru: Виртуальный сервер XLarge
+      en: Virtual server XLarge
+    flavor_id: m1.xlarge
+    vcpus: 8
+    ram: 16384
+    disk: 160
     network: 50
     immutable: True
 tariff:
   - localized_name:
-      en: Standard-2015-09
-      ru: Стандарт-2015-09
+      en: Standard-2015-12
+      ru: Стандарт-2015-12
     description: Тариф по умолчанию
     currency: RUB
     services:
-      Nano: 0.44
-      Micro: 0.65
-      Small: 1.18
-      Medium: 3.58
-      Large: 7.11
-      ExtraLarge: 10.39
-      M.Small: 1.59
-      M.Medium: 4.40
-      M.Large: 7.93
-      M.ExtraLarge: 11.62
+      m1.tiny: 0.44
+      m1.small: 1.18
+      m1.medium: 3.58
+      m1.large: 7.11
+      m1.xlarge: 10.39
       net.allocated_ip: 0.03
       storage.disk: 0.01
       storage.image: 0.01
