@@ -16,6 +16,10 @@ bower --config.interactive=false install --allow-root
 npm install
 npm run compile
 
+
+mkdir -p $ROOT
+rm -rf $ROOT/*
+
 mkdir -p $ROOT/DEBIAN
 cp $BUILD_DIR/DEBIAN/* $ROOT/DEBIAN
 sed -e "s/bossfrontendadmin\ (0\.0\.1)/bossfrontend\ (0\.0\.$BUILD_NUMBER)/" < "$BUILD_DIR/changelog" > "$ROOT/DEBIAN/changelog"
