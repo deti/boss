@@ -4,7 +4,8 @@ NUMBER=${BUILD_NUMBER-0}
 
 # full path to deploy dir
 BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOT="$BUILD_DIR/root"
+VERSION="0.0.$NUMBER"
+ROOT="$BUILD_DIR/boss_frontend_admin.$VERSION"
 PROJECT_ROOT="$( cd "$BUILD_DIR/../../../" && pwd )"
 FRONTEND="$PROJECT_ROOT/frontend/admin"
 
