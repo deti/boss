@@ -1,1 +1,2 @@
 /etc/boss.yaml
+etc/cron.daily/logrotate

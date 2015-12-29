@@ -27,11 +27,11 @@ cp $PROJECT_ROOT/build $PROJECT_ROOT/version $BOSS_ROOT
 mkdir -p $ROOT/etc
 cp $PROJECT_ROOT/configs/stage/boss.sample.yaml $ROOT/etc/boss.yaml
 
-# mkdir -p $ROOT/etc/logrotate.d
-# cp $PROJECT_ROOT/configs/logrotate.conf $ROOT/etc/logrotate.d/boss.conf
+mkdir -p $ROOT/etc/logrotate.d
+cp $PROJECT_ROOT/configs/logrotate.conf $ROOT/etc/logrotate.d/boss.conf
 
 mkdir -p $ROOT/etc/cron.daily/
-echo "#!/bin/sh\n\nlogrotate $PROJECT_ROOT/configs/logrotate.conf" > $ROOT/etc/cron.daily/boss
+cp $BUILD_DIR/logrotate $ROOT/etc/cron.daily/logrotate
 
 cd $BUILD_DIR
 dpkg -b $ROOT
