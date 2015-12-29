@@ -27,6 +27,8 @@ cp $PROJECT_ROOT/build $PROJECT_ROOT/version $BOSS_ROOT
 mkdir -p $ROOT/etc
 cp $PROJECT_ROOT/configs/stage/boss.sample.yaml $ROOT/etc/boss.yaml
 
+mkdir -p $ROOT/etc/logrotate.d
+cp $PROJECT_ROOT/configs/logrotate.conf $ROOT/etc/logrotate.d/boss.conf
 
 cd $BUILD_DIR
 dpkg -b $ROOT
