@@ -1,6 +1,22 @@
 #!/bin/bash -ex
 
 
+declare -A PIP_REQUIREMENTS=(
+    ["Jinja2"]="pip install jinja2"
+    ["j2cli"]="pip install j2cli[yaml]"
+)
+
+
+for req in "${!PIP_REQUIREMENTS[@]}"
+do
+    pip list | grep $req > /dev/null
+    if [ $? -ne 0 ]; then
+        echo "$req is required for build"
+        echo "Install: ${PIP_REQUIREMENTS["$req"]}"
+        exit 1
+    fi
+done
+
 NUMBER=${BUILD_NUMBER-0}
 
 # full path to deploy dir
@@ -12,8 +28,12 @@ BUILDOUT="$PROJECT_ROOT/.buildout"
 
 mkdir -p $ROOT/DEBIAN
 cp $BUILD_DIR/DEBIAN/* $ROOT/DEBIAN
-sed -e "s/bossbackend\ (0\.0\.1)/bossbackend\ (0\.0\.$BUILD_NUMBER)/" < "$BUILD_DIR/changelog" > "$ROOT/DEBIAN/changelog"
-sed -e "s/version:\ 0\.0\.1/version:\ 0\.0\.$BUILD_NUMBER/" < $BUILD_DIR/control > "$ROOT/DEBIAN/control"
+
+VERSION="0.0.$NUMBER"
+VERSION_YAML="version: $VERSION"
+
+echo $VERSION_YAML | j2 --format=yaml $BUILD_DIR/changelog > "$ROOT/DEBIAN/changelog"
+echo $VERSION_YAML | j2 --format=yaml $BUILD_DIR/control > "$ROOT/DEBIAN/control"
 
 rm -rf $BOSS_ROOT/*
 mkdir -p $BOSS_ROOT
