@@ -8,5 +8,5 @@ Package: boss-frontend-admin
 Architecture: all
 Section: python
 Depends: uwsgi-core
-Description: Backend server for the BOSS project (Billing for Openstack Solution)
+Description: Admin Frontend for the BOSS project (Billing for Openstack Solution)
 version: 0.0.1

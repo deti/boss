@@ -1,0 +1,12 @@
+Source: bossfrontendcabinet
+Priority: optional
+Maintainer: ASD Technologies <boss@asdco.ru>
+Build-Depends: python3
+Standards-Version: 3.9.2
+X-Python-Version: >= 3.0
+Package: boss-frontend-cabinet
+Architecture: all
+Section: python
+Depends: uwsgi-core
+Description: Cabinet Frontend for the BOSS project (Billing for Openstack Solution)
+version: 0.0.1
