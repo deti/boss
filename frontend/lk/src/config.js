@@ -12,7 +12,7 @@ export default angular.module('boss.lk.config', dependencies)
   .config(function (tmhDynamicLocaleProvider, $provide, ngClipProvider, $translateProvider, CONST, RestangularProvider, $locationProvider, $datepickerProvider, $httpProvider) {
     ngClipProvider.setPath(zeroClipboardPath);
 
-    if (typeof ga !== 'undefined') {
+    if (typeof ga !== 'undefined' && CONST.local.google_analytics && CONST.local.google_analytics.lk) {
       ga('create', CONST.local.google_analytics.lk, 'auto');
     }
 

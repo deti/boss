@@ -11,7 +11,7 @@ export default angular.module('boss.admin.config', dependencies)
   .value('REPORT_API_URL', CONST.api)
   .config(function (RestangularProvider, $locationProvider, $translateProvider, CONST, $datepickerProvider, cfpLoadingBarProvider, $httpProvider, tmhDynamicLocaleProvider, $provide, ngClipProvider) {
     ngClipProvider.setPath(zeroClipboardPath);
-    if (typeof ga !== 'undefined') {
+    if (typeof ga !== 'undefined' && CONST.local.google_analytics && CONST.local.google_analytics.admin) {
       ga('create', CONST.local.google_analytics.admin, 'auto');
     }
 

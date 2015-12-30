@@ -57,7 +57,7 @@ const dependencies = [
 angular.module('boss.lk', vendorDependencies.concat(dependencies))
   .factory('RavenConfig', function (CONST) {
     return {
-      dsn: 'http://fabb17faa23840a78f84b1a6800678ec@sentry.boss.asdco.ru/2', //CONST.lo.sentry,
+      dsn: CONST.local.sentry,
       config: {
         tags: {
           app: 'lk-app',

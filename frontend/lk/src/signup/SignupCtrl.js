@@ -22,12 +22,14 @@ export default angular.module('boss.lk.SignupCtrl', dependencies)
     $scope.register = function (form) {
       var user = _.clone($scope.user);
       var recaptchaRsp;
-      try {
-        recaptchaRsp = vcRecaptchaService.getResponse();
-      } catch (ex) {
-        vcRecaptchaService.reload();
-        toaster.pop('error', $filter('translate')('Could not verify that you are not a robot. Try again.'));
-        return;
+      if (CONST.local.recaptcha_site_key) {
+        try {
+          recaptchaRsp = vcRecaptchaService.getResponse();
+        } catch (ex) {
+          vcRecaptchaService.reload();
+          toaster.pop('error', $filter('translate')('Could not verify that you are not a robot. Try again.'));
+          return;
+        }
       }
 
       userService.signup(user, recaptchaRsp)
