@@ -4,7 +4,8 @@ NUMBER=${BUILD_NUMBER-0}
 
 # full path to deploy dir
 BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOT="$BUILD_DIR/root"
+VERSION="0.0.$NUMBER"
+ROOT="$BUILD_DIR/boss_frontend_cabinet.$VERSION"
 PROJECT_ROOT="$( cd "$BUILD_DIR/../../../" && pwd )"
 FRONTEND="$PROJECT_ROOT/frontend/lk"
 
@@ -22,8 +23,8 @@ rm -rf $ROOT/*
 
 mkdir -p $ROOT/DEBIAN
 cp $BUILD_DIR/DEBIAN/* $ROOT/DEBIAN
-sed -e "s/bossfrontendcabinet\ (0\.0\.1)/bossfrontendcabinet\ (0\.0\.$BUILD_NUMBER)/" < "$BUILD_DIR/changelog" > "$ROOT/DEBIAN/changelog"
-sed -e "s/version:\ 0\.0\.1/version:\ 0\.0\.$BUILD_NUMBER/" < $BUILD_DIR/control > "$ROOT/DEBIAN/control"
+sed -e "s/bossfrontendcabinet\ (0\.0\.1)/bossfrontendcabinet\ (0\.0\.$NUMBER)/" < "$BUILD_DIR/changelog" > "$ROOT/DEBIAN/changelog"
+sed -e "s/version:\ 0\.0\.1/version:\ 0\.0\.$NUMBER/" < $BUILD_DIR/control > "$ROOT/DEBIAN/control"
 
 
 mkdir -p $ROOT/usr/share/boss/cabinet/

@@ -21,7 +21,8 @@ NUMBER=${BUILD_NUMBER-0}
 
 # full path to deploy dir
 BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOT="$BUILD_DIR/root"
+VERSION="0.0.$NUMBER"
+ROOT="$BUILD_DIR/boss_backend.$VERSION"
 BOSS_ROOT="$ROOT/opt/boss"
 PROJECT_ROOT="$( cd "$BUILD_DIR/../../../" && pwd )"
 BUILDOUT="$PROJECT_ROOT/.buildout"
@@ -29,7 +30,6 @@ BUILDOUT="$PROJECT_ROOT/.buildout"
 mkdir -p $ROOT/DEBIAN
 cp $BUILD_DIR/DEBIAN/* $ROOT/DEBIAN
 
-VERSION="0.0.$NUMBER"
 VERSION_YAML="version: $VERSION"
 
 echo $VERSION_YAML | j2 --format=yaml $BUILD_DIR/changelog > "$ROOT/DEBIAN/changelog"
@@ -47,6 +47,11 @@ cp $PROJECT_ROOT/build $PROJECT_ROOT/version $BOSS_ROOT
 mkdir -p $ROOT/etc
 cp $PROJECT_ROOT/configs/stage/boss.sample.yaml $ROOT/etc/boss.yaml
 
+mkdir -p $ROOT/etc/logrotate.d
+cp $PROJECT_ROOT/configs/logrotate.conf $ROOT/etc/logrotate.d/boss.conf
+
+mkdir -p $ROOT/etc/cron.daily/
+cp $BUILD_DIR/logrotate $ROOT/etc/cron.daily/logrotate
 
 cd $BUILD_DIR
 dpkg -b $ROOT
