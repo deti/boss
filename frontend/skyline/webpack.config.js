@@ -126,6 +126,7 @@ var config = {
 };
 
 config.addVendor('moment', node_modules + '/moment/min/moment.min.js');
+config.addVendor('cron-to-text', node_modules + '/cron-to-text/dist/cron-to-text.min.js');
 
 if (process.env.DEV) {
   var backendUrl = require('./backend.config'),

@@ -80,8 +80,6 @@ export default angular.module('skyline.backup.listCtrl', dependencies)
 
     $scope.backups = backups;
     backups.forEach(backup => {
-      backup.execTimeString = `${backup.repeatTime}, ${backup.execTimeString}`;
-
       backup.displayName = backup.getDisplayName();
     });
     $scope.backupsColumns = [
@@ -91,7 +89,8 @@ export default angular.module('skyline.backup.listCtrl', dependencies)
       },
       {
         title: $filter('translate')('Execution time'),
-        field: 'execTimeString'
+        field: 'pattern',
+        filter: 'cronToText'
       },
       {
         title: $filter('translate')('Next schedule'),

@@ -68,6 +68,7 @@
     "angularjs-toaster": "^0.4.15",
     "angulartics": "~0.17.2",
     "bootstrap": "^3.3.5",
+    "cron-to-text": "0.0.1",
     "font-awesome": "^4.4.0",
     "moment": "~2.10.6",
     "jquery": "^2.1.4",

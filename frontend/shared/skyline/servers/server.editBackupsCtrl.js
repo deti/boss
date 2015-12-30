@@ -40,8 +40,9 @@ export default angular.module('skyline.servers.editBackupsCtrl', dependencies)
 
     $scope.backupsColumns = [
       {
-        field: 'repeatTime',
-        title: $filter('translate')('Repeating')
+        title: $filter('translate')('Repeating'),
+        field: 'pattern',
+        filter: 'cronToText'
       },
       {
         field: 'execTimeString',
