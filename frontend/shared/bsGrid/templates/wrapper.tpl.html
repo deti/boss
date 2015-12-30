@@ -1,0 +1,14 @@
+<bs-grid-styles></bs-grid-styles>
+<div ng-hide="grid.data.length == 0">
+  <bs-grid-header></bs-grid-header>
+  <perfect-scrollbar refresh-on-change="grid.scrollBarRefresh" refresh-on-resize="true"
+                     suppress-scroll-x="true"
+                     ng-show="grid.data.length > 0" class="ps-active-y">
+    <div bs-compile-template="grid.innerTpl"></div>
+  </perfect-scrollbar>
+  <div class="grid-shadow"></div>
+</div>
+<div ng-show="grid.data.length == 0" class="text-center gray-middle-light-text mar-t-20">
+  <div class="table-empty"></div>
+  <span translate>No data</span>
+</div>

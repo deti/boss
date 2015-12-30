@@ -1,0 +1,4 @@
+<span ng-if="::column.type === 'value'" ng-bind-html="::(column.value(item, column.field) | pickFilter:column.filter | trust) || ''"></span>
+<span ng-if="::column.type === 'template'" bs-compile-template="column.template"></span>
+<span ng-if="::column.type === 'field'" ng-bind-html="::($eval(column.field, item) | pickFilter:column.filter | trust) || ''"></span>
+<span ng-if="::column.type === 'noField'" ng-bind-html="::(item | pickFilter:column.filter | trust) || ''"></span>

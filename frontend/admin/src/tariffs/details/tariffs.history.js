@@ -28,16 +28,19 @@ export default angular.module('boss.admin.tariffs.history', dependencies)
   })
   .controller('TariffsDetailsHistoryCtrl', function ($scope, history, $filter) {
     $scope.customDetailsHeader.tpl = null;
-    $scope.history = history;
-    $scope.columns = [
-      {
-        field: 'date',
-        sortDefault: 'reverse',
-        title: $filter('translate')('Date'),
-        filter: 'date',
-        reverse: true
-      },
-      {field: 'user.name', title: $filter('translate')('Name')},
-      {filter: 'localizedName', cellClass: 'long-text', title: $filter('translate')('Action')}
-    ];
+    $scope.gridConfig = {
+      data: history,
+      uniqueField: 'history_id',
+      columns: [
+        {
+          field: 'date',
+          sortDefault: 'reverse',
+          title: $filter('translate')('Date'),
+          filter: 'date',
+          reverse: true
+        },
+        {field: 'user.name', title: $filter('translate')('Name')},
+        {filter: 'localizedName', cellClass: 'long-text', title: $filter('translate')('Action')}
+      ]
+    };
   });

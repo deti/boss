@@ -1,0 +1,8 @@
+<div class="grid-header">
+  <div ng-repeat="column in ::grid.columns track by column.id" class="grid-cell grid-cell-header {{::column.id}}"
+       ng-click="grid.applySorting(column)" ng-class="[column.titleClass, column.sortClass]">
+    <span ng-if="::column.titleTemplate" bs-compile-template="column.titleTemplate"></span>
+    <span ng-if="::!column.titleTemplate">{{::column.title}}</span>
+    <bs-grid-column-resize column="column"></bs-grid-column-resize>
+  </div>
+</div>

@@ -3,13 +3,20 @@ const dependencies = ['ui.router'];
 export default angular.module('boss.admin.UsersCtrl', dependencies)
   .controller('UsersCtrl', function UsersCtrl($scope, $filter, usersData, $state, userRoles) {
     $scope.pages = Math.ceil(parseInt(usersData.total) / parseInt(usersData.perPage));
-    $scope.users = usersData;
     $scope.roles = userRoles;
-    $scope.columns = [
-      {field: 'name', title: $filter('translate')('Name')},
-      {field: 'roleInfo', title: $filter('translate')('Role'), filter: 'localizedName'},
-      {field: 'email', title: 'E-mail'}
-    ];
+    $scope.gridConfig = {
+      data: usersData,
+      uniqueField: 'user_id',
+      link: {
+        sref: 'users.details',
+        idField: 'user_id'
+      },
+      columns: [
+        {field: 'name', title: $filter('translate')('Name')},
+        {field: 'roleInfo', title: $filter('translate')('Role'), filter: 'localizedName'},
+        {field: 'email', title: 'E-mail'}
+      ]
+    };
     $scope.searchTags = [];
     var roleFilter = {
       property: 'role', title: $filter('translate')('Role'), options: []

@@ -56,10 +56,13 @@
   .set-hidden-columns(@x) {
     @x1: @x + 1;
     .table-info {
-      td, th {
+      td, th, .grid-cell {
         &:nth-child(n + @{x}) {
           .border-right-radius(4px);
           .bs-table-resize {
+            display: none;
+          }
+          bs-grid-column-resize {
             display: none;
           }
         }

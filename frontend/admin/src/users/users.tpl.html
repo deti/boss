@@ -1,4 +1,4 @@
-<div class="full-height" st-table="users">
+<div class="full-height" bs-grid-expose>
   <div class="btn-scroll-container">
     <div class="pull-left">
       <button class="btn btn-primary mar-r-15" ui-sref="users.new">
@@ -13,6 +13,6 @@
   <bs-table-pagination pages="pages" state-name="users" ng-if="pages > 1"></bs-table-pagination>
 
   <div class="table-info mar-t-10">
-    <bs-table data="users" columns="columns" id-field="user_id" sref="users.details"></bs-table>
+    <bs-grid type="link" config="gridConfig"></bs-grid>
   </div>
 </div>

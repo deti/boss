@@ -22,6 +22,7 @@ const dependencies = [
   require('../lib/bsTablePagination/bsTablePagination').default.name,
   require('../lib/bsFormSaver/bsFormSaver').default.name,
   require('../lib/bsInfiniteScroll/bsInfiniteScroll').default.name,
+  require('../../shared/bsGrid/index').default.name,
   // --- filters ---
   require('../../shared/localizedNameFilter/localizedNameFilter').default.name,
   require('../../shared/leadingZerosFilter/leadingZerosFilter').default.name,

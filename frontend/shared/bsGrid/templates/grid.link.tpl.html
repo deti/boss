@@ -1,0 +1,9 @@
+<div class="grid-row grid-row-selectable"
+     ng-repeat="item in grid.data | orderBy:grid.sortPredicate:grid.sortReverse | filter: grid.filter track by item[grid.uniqueField]"
+     ui-sref="{{::grid.link.sref}}({id: item['{{::grid.link.idField}}']})"
+     ui-sref-opts="{location: grid.link.srefPushToLocation}"
+     ui-sref-active="selected">
+  <div ng-repeat="column in ::grid.columns track by column.id" class="grid-cell {{::column.id}}"
+       ng-class="::column.cellClass" bs-grid-cell>
+  </div>
+</div>

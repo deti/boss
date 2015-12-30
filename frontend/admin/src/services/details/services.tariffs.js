@@ -21,18 +21,21 @@ export default angular.module('boss.admin.services.tariffs', dependencies)
       });
   })
   .controller('ServicesDetailsTariffsCtrl', function ($scope, tariffs, $filter) {
-    $scope.tariffs = tariffs;
-    $scope.columns = [
-      {
-        field: 'title',
-        title: $filter('translate')('Plan name'),
-        sortDefault: true,
-        template: '<a class="dashed" ui-sref="tariffs.details({id: item.tariff_id})">{{::item|localizedName}}</a>'
-      },
-      {
-        field: 'users',
-        title: $filter('translate')('Plan customers'),
-        template: '<a class="dashed" ui-sref="main({tariff_ids: item.tariff_id})" ng-click="; $event.stopPropagation();">{{item.users}}</a>'
-      }
-    ];
+    $scope.gridConfig = {
+      uniqueField: 'tariff_id',
+      data: tariffs,
+      columns: [
+        {
+          field: 'title',
+          title: $filter('translate')('Plan name'),
+          sortDefault: true,
+          template: '<a class="dashed" ui-sref="tariffs.details({id: item.tariff_id})">{{::item|localizedName}}</a>'
+        },
+        {
+          field: 'users',
+          title: $filter('translate')('Plan customers'),
+          template: '<a class="dashed" ui-sref="main({tariff_ids: item.tariff_id})" ng-click="; $event.stopPropagation();">{{item.users}}</a>'
+        }
+      ]
+    };
   });

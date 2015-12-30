@@ -65,23 +65,29 @@ export default angular.module('boss.tableFilter', dependencies)
     return {
       restrict: 'E',
       template: require('./bsTableFilter.tpl.html'),
-      require: '^stTable',
+      require: ['?^stTable', '?^bsGridExpose'],
       scope: {
         searchTags: '=',
         filters: '='
       },
-      link: function (scope, element, attrs, tableCtrl) {
+      link: function (scope, element, attrs, [stTableCtrl, gridCtrl]) {
         scope.searchActive = ($stateParams.page === undefined) ? !!$stateParams.filterActive : false;
         scope.stateName = attrs.stateName;
         scope.searchTags = getSearchTags($stateParams, scope.filters);
         addClearAllTag(scope.searchTags);
         if ($stateParams.text) {
+          var searchExpression;
           if (_.isArray($stateParams.text)) {
-            tableCtrl.tableState().search.predicateObject = getSearchExpression($stateParams.text);
+            searchExpression = getSearchExpression($stateParams.text);
           } else {
-            tableCtrl.tableState().search.predicateObject = getSearchExpression([$stateParams.text]);
+            searchExpression = getSearchExpression([$stateParams.text]);
           }
-          tableCtrl.pipe();
+          if (stTableCtrl) {
+            stTableCtrl.tableState().search.predicateObject = searchExpression;
+            stTableCtrl.pipe();
+          } else if (gridCtrl) {
+            gridCtrl.filters = searchExpression;
+          }
         }
 
         if (scope.searchActive) {

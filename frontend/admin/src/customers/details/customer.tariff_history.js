@@ -42,18 +42,7 @@ export default angular.module('boss.admin.customer.tariff_history', dependencies
   .controller('MainDetailsTariffHistoryCtrl', function ($scope, history, tariffs, $filter) {
     $scope.history = history.map(item => {
       item.localized_name = _.findWhere(tariffs, {tariff_id: item.snapshot.tariff_id}).localized_name;
+      item.id = _.uniqueId();
       return item;
     });
-    $scope.columns = [
-      {
-        field: 'date',
-        title: $filter('translate')('Date'),
-        sortDefault: 'reverse',
-        reverse: true,
-        cellClass: 'long-text',
-        template: "{{::item.date | date:'dd.MM.yy' }}<br>{{::item.date | date:'HH:mm' }}"
-      },
-      {field: 'user.name', title: $filter('translate')('Who changed')},
-      {title: $filter('translate')('Plan'), filter: 'localizedName'}
-    ];
   });

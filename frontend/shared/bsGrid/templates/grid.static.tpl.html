@@ -1,0 +1,6 @@
+<div class="grid-row"
+     ng-repeat="item in ::grid.data | orderBy:grid.sortPredicate:grid.sortReverse track by item[grid.uniqueField]">
+  <div ng-repeat="column in ::grid.columns track by column.id" class="grid-cell {{::column.id}}"
+       ng-class="::column.cellClass" bs-grid-cell="static">
+  </div>
+</div>

@@ -1,5 +1,19 @@
 <bs-date-range class="mar-t-30" default-range="true"></bs-date-range>
 
-<div st-table="history">
-  <bs-table data="history" columns="columns" simple="true"></bs-table>
+<div>
+  <bs-grid type="static" config="{
+  data: history,
+  columns: [
+    {
+      field: 'date',
+      title: ('Date' | translate),
+      filter: {name: 'date', args: ['dd.MM.yy HH:mm']},
+      sortDefault: true,
+      reverse: true
+    },
+    {field: 'user.name', title: ('Who changed' | translate)},
+    {title: ('Plan' | translate), filter: 'localizedName'}
+  ],
+  uniqueField: 'id'
+}"></bs-grid>
 </div>
