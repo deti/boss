@@ -16,6 +16,12 @@ memdb:
   hosts:
     - [localhost, 26379]
 
+user:
+  default_users:
+    - email: boss_admin@example.com
+      password: boss_admin_password
+      name: Default Admin
+      role: admin
 
 openstack:
   horizon_url: http://localhost/horizon

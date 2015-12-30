@@ -15,8 +15,8 @@ user:
   max_password_length: 256
 
   default_users:
-    - email: ${__FIX_ME__()}
-      password: {$__FIX_ME__()}
+    - email: $(__FIX_ME__())
+      password: $(__FIX_ME__())
       name: Default Admin
       role: admin
 

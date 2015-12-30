@@ -15,6 +15,13 @@ memdb:
     - [localhost, 6379]
   sentinel: false
 
+user:
+  default_users:
+    - email: boss_admin@example.com
+      password: boss_admin_password
+      name: Default Admin
+      role: admin
+
 logging:
   log_dir: ${join(ROOT, "log")}
 
