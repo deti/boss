@@ -19,8 +19,6 @@ export default angular.module('boss.openstackService.CronTriggerModel', dependen
       }
       if (model.pattern) {
         model.execTime = parseCronPattern(model.pattern);
-
-        model.repeatTime = model.execTime.dayOfWeek === '*' ? $filter('translate')('Daily') : $filter('translate')('Weekly');
         model.execTimeString = $filter('leadingZeros')(model.execTime.hours) + ':' + $filter('leadingZeros')(model.execTime.minutes);
       }
       if (_.startsWith(model.name, 'backup.')) {

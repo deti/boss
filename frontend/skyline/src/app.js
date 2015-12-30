@@ -18,6 +18,7 @@ const dependencies = [
   require('../../shared/localizedNameFilter/localizedNameFilter').default.name,
   require('../../shared/moneyFilter/moneyFilter').default.name,
   require('../../shared/bytesFilter/bytesFilter').default.name,
+  require('../../shared/cronToTextFilter/cronToTextFilter').default.name,
   // --- controllers ---
   require('./openstack/openstack').default.name,
   require('./logout/logout').default.name,

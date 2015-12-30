@@ -28,6 +28,7 @@ import 'angular-strap/dist/modules/date-formatter';
 import 'angular-strap/dist/modules/date-parser';
 import 'angular-strap/dist/modules/datepicker';
 import 'angular-click-outside/clickoutside.directive';
+import 'cron-to-text';
 
 import '../vendor/angular-ui-bootstrap/src/position/position';
 import '../vendor/angular-ui-bootstrap/src/dropdown/dropdown';

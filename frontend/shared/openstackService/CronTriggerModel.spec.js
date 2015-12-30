@@ -44,14 +44,4 @@ describe('CronTriggerModel', function () {
     };
     expect(model.getDisplayName()).toEqual('Backup server-name');
   });
-
-  it('should parse cron pattern', function () {
-    model.pattern = '0 12 * * *';
-    model = CronTriggerModel(model);
-    var date = new Date();
-
-    expect(model.execTime).toEqual({minutes: '0', hours: '12', day: '*', month: '*', dayOfWeek: '*'});
-    expect(model.repeatTime).toEqual('Weekly');
-    expect(model.execTimeString).toEqual('12:00');
-  });
 });
