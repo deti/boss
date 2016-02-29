@@ -1,5 +1,6 @@
 var webpackConfig = require('./webpack.config');
 delete webpackConfig.entry;
+delete webpackConfig.module.preLoaders;
 webpackConfig.devtool = 'inline-source-map';
 
 module.exports = function (karma) {

@@ -20,7 +20,7 @@ export default angular.module('skyline.ips.listCtrl', dependencies)
       });
     }
 
-    function addFreedServer (serverId) {
+    function addFreedServer(serverId) {
       var server = _.find(servers, 'id', serverId);
       $scope.servers.push(server);
     }
@@ -38,7 +38,7 @@ export default angular.module('skyline.ips.listCtrl', dependencies)
           var index = _.findIndex($scope.floatingIPs, ip);
           floatingIPs.splice(index, 1);
         })
-        .catch(function (err) {
+        .catch(e => {
           toaster.pop('error', $filter('translate')('Error in the removal process'));
         });
     };
@@ -54,7 +54,7 @@ export default angular.module('skyline.ips.listCtrl', dependencies)
           ip.server = null;
           ip.instance_id = null;
         })
-        .catch(function (err) {
+        .catch(e => {
           toaster.pop('error', $filter('translate')('Error'));
         });
     };

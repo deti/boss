@@ -6,9 +6,9 @@ export default angular.module('boss.addressService', dependencies)
       var rtn = (user.detailed_info.legal_address_country &&
       user.detailed_info.legal_address_city &&
       user.detailed_info.legal_address_address &&
-      user.detailed_info.legal_address_country == user.detailed_info.location_country &&
-      user.detailed_info.legal_address_city == user.detailed_info.location_city &&
-      user.detailed_info.legal_address_address == user.detailed_info.location_address);
+      user.detailed_info.legal_address_country === user.detailed_info.location_country &&
+      user.detailed_info.legal_address_city === user.detailed_info.location_city &&
+      user.detailed_info.legal_address_address === user.detailed_info.location_address);
 
       return !!rtn;
     };

@@ -5,7 +5,7 @@ describe('LocalizedNameFilter', function () {
   beforeEach(function () {
     angular.mock.module('boss.localizedNameFilter');
   });
-  beforeEach(inject(function ($filter, _CONST_, _appLocale_) {
+  beforeEach(inject(function ($filter, _appLocale_) {
     localizedNameFilter = $filter('localizedName');
     appLocale = _appLocale_;
   }));

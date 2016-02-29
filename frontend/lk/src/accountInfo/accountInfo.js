@@ -1,4 +1,4 @@
-import 'angular-duration-format/dist/angular-duration-format'
+import 'angular-duration-format/dist/angular-duration-format';
 const dependencies = [
   'angular-duration-format.filter',
   require('../../lib/bsPopupDetails/bsPopupDetails').default.name
@@ -49,7 +49,7 @@ export default angular.module('boss.accountInfo', dependencies)
       }
     }
 
-    if (!$scope.user.blocked && $scope.user.customer_mode == 'test') {
+    if (!$scope.user.blocked && $scope.user.customer_mode === 'test') {
       $scope.testTime = CONST.local.test_period * 1000 - (new Date() - new Date($scope.user.created));
       $interval(function () {
         $scope.testTime = CONST.local.test_period * 1000 - (new Date() - new Date($scope.user.created));

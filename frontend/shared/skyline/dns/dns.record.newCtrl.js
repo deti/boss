@@ -13,12 +13,12 @@ export default angular.module('skyline.dns.record.newCtrl', dependencies)
       }
 
       Designate.createRecord($scope.domain.id, $scope.record)
-        .then((rsp) => {
+        .then(rsp => {
           form.$resetSubmittingState();
           toaster.pop('success', $filter('translate')('Subdomain was successfully created'));
           $state.go('openstack.dns.records', {domainId: $scope.domain.id}, {reload: true});
         })
-        .catch((err) => {
+        .catch(err => {
           toaster.pop('error', $filter('translate')('Error on subdomain creation'));
           form.$resetSubmittingState();
           console.log('error', err);

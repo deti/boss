@@ -12,12 +12,12 @@ export default angular.module('skyline.dns.record.editCtrl', dependencies)
       }
 
       Designate.updateRecord($scope.domain.id, $scope.record)
-        .then((rsp) => {
+        .then(rsp => {
           form.$resetSubmittingState();
           toaster.pop('success', $filter('translate')('Subdomain was successfully updated'));
           $state.go('openstack.dns.records', {domainId: $scope.domain.id}, {reload: true});
         })
-        .catch((err) => {
+        .catch(err => {
           toaster.pop('error', $filter('translate')('Error on applying changes'));
           form.$resetSubmittingState();
           console.log('error', err);

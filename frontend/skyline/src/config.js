@@ -34,7 +34,6 @@ export default angular.module('skyline.config', dependencies)
     $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
     $httpProvider.defaults.headers.get.Pragma = 'no-cache';
 
-
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false

@@ -144,7 +144,11 @@ export default angular.module('boss.openstackService.Nova', dependencies)
 
       processLinksUrl(url) {
         var parser = new URLParser(url);
-        var pathname = parser.pathname
+        var pathname = parser.pathname;
+        if (pathname[0] !== '/') { // ie return pathname without slash
+          pathname = '/' + pathname;
+        }
+        pathname = pathname
           .substring(1)
           .replace(OSCredentials.tenantId, '')
           .substring(1);

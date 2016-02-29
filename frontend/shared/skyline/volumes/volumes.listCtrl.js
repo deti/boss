@@ -36,13 +36,13 @@ export default angular.module('skyline.volumes.listCtrl', dependencies)
       var promise = pollService
         .asyncTask(() => {
           return Cinder.volume(volume.id);
-        }, (serverRsp => {
+        }, serverRsp => {
           if (serverRsp.status.value !== volume.status) {
             Restangular.sync(serverRsp, volume);
             volume.status = serverRsp.status;
           }
           return !serverRsp.status.progress;
-        }));
+        });
       promise
         .then(serverRsp => {
           return Cinder.volumeLinkedServer(serverRsp);
@@ -71,7 +71,7 @@ export default angular.module('skyline.volumes.listCtrl', dependencies)
           $rootScope.$emit(SKYLINE_EVENTS.VOLUME_EXTENDED);
           volume.size = volume.newSize;
         })
-        .catch(function (err) {
+        .catch(e => {
           toaster.pop('error', $filter('translate')('Error on disk extension'));
         });
     };

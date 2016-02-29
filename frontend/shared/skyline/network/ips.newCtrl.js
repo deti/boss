@@ -23,7 +23,7 @@ export default angular.module('skyline.ips.newCtrl', dependencies)
             $state.go('openstack.ips', {}, {reload: true});
           }
         })
-        .catch(function (err) {
+        .catch(e => {
           form.$resetSubmittingState();
           toaster.pop('error', $filter('translate')('Floating IP request error'));
         });

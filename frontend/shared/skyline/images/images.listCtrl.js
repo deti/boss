@@ -61,13 +61,13 @@ export default angular.module('skyline.images.listCtrl', dependencies)
       var promise = pollService
         .asyncTask(() => {
           return Glance.image(image.id);
-        }, (serverRsp => {
+        }, serverRsp => {
           if (serverRsp.status.value !== image.status) {
             Restangular.sync(serverRsp, image);
             image.status = serverRsp.status;
           }
           return !serverRsp.status.progress;
-        }));
+        });
       promise
         .then(serverRsp => {
           Restangular.sync(serverRsp, image);

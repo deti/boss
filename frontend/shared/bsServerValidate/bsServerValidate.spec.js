@@ -131,19 +131,6 @@ describe('bsServerValidate', function () {
     expect(popupErrorService.show).toHaveBeenCalled();
   });
 
-  it('should clear server errors after input changes', function () {
-    var rsp = {
-      data: {
-        localized_message: 'ошибка',
-        message: 'error',
-        field: 'foo'
-      }
-    };
-    form.$parseErrors(rsp);
-    form.foo.$setViewValue('test');
-    expect(form.foo.$error.server).toBeUndefined();
-  });
-
   it('should clear server error with http-code on input change', function () {
     var rsp = {
       data: {

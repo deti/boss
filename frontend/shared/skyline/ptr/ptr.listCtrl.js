@@ -4,7 +4,7 @@ const dependencies = [
 
 export default angular.module('skyline.ptr.listCtrl', dependencies)
   .value('ptrActionsTpl', require('./cell.actions.partial.tpl.html'))
-  .controller('PTRListCtrl', function PTRListCtrl($scope, zones, ips, $filter, DesignateV2, ptrActionsTpl) {
+  .controller('PTRListCtrl', function PTRListCtrl($scope, zones, ips, $filter, DesignateV2, ptrActionsTpl, toaster) {
     $scope.actionsTplPath = ptrActionsTpl;
     ips = _.clone(ips, true);
     zones = _.clone(zones, true);
@@ -52,7 +52,6 @@ export default angular.module('skyline.ptr.listCtrl', dependencies)
           toaster.pop('error', $filter('translate')('Error in the removal process'));
         });
     };
-
 
     $scope.columns = [
       {

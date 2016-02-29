@@ -11,7 +11,7 @@ export default angular.module('skyline.images.newCtrl', dependencies)
           toaster.pop('success', $filter('translate')('The image was successfully uploaded'));
           $state.go('openstack.images', {}, {reload: true});
         })
-        .catch(function (err) {
+        .catch(e => {
           form.$resetSubmittingState();
           toaster.pop('error', $filter('translate')('Failed to upload the image'));
         });

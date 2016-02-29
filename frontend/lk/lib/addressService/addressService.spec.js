@@ -1,7 +1,9 @@
+import './addressService';
+
 describe('addressService', function () {
   var addressService;
 
-  beforeEach(module('boss.addressService'));
+  beforeEach(angular.mock.module('boss.addressService'));
 
   beforeEach(inject(function (_addressService_) {
     addressService = _addressService_;

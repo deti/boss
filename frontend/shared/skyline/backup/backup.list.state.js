@@ -1,6 +1,6 @@
 const dependencies = [
   require('./backup.listCtrl').default.name
-  ];
+];
 
 export default angular.module('skyline.backup.list.state', dependencies)
   .config(function ($stateProvider) {

@@ -1,7 +1,7 @@
 import './appLocale';
 
 describe('appLocale', function () {
-  var appLocale, $translate, tmhDynamicLocale, ipCookie, $rootScope, CONST, $window, $timeout;
+  var appLocale, $translate, tmhDynamicLocale, ipCookie, $rootScope, $timeout;
 
   ipCookie = function () {
   };
@@ -30,14 +30,12 @@ describe('appLocale', function () {
     })
   });
 
-  beforeEach(inject(function (_appLocale_, _$translate_, _tmhDynamicLocale_, _ipCookie_, _$rootScope_, _CONST_, _$window_, _$timeout_) {
+  beforeEach(inject(function (_appLocale_, _$translate_, _tmhDynamicLocale_, _ipCookie_, _$rootScope_, _$timeout_) {
     appLocale = _appLocale_;
     $translate = _$translate_;
     tmhDynamicLocale = _tmhDynamicLocale_;
     ipCookie = _ipCookie_;
     $rootScope = _$rootScope_;
-    CONST = _CONST_;
-    $window = _$window_;
     $timeout = _$timeout_;
   }));
 
@@ -47,8 +45,7 @@ describe('appLocale', function () {
 
   describe('locale not loaded', function () {
     it('should return default locale when locale not loaded', function () {
-      CONST.fe.defaultLocale = 'test';
-      expect(appLocale.getLocale(true)).toBe('test');
+      expect(appLocale.getLocale(true)).toBe('en-US');
     });
     it('should load locale', function (done) {
       appLocale.getLocale()
@@ -103,24 +100,6 @@ describe('appLocale', function () {
           expect(locale).toBe('en_us');
           done();
         });
-    });
-
-    it('should set locale and reload page', function () {
-      spyOn($window.location, 'reload');
-      spyOn($translate, 'use');
-      appLocale.setLocale('ru-RU');
-      expect(ipCookie('horizon_language')).toBe('ru');
-      expect($translate.use).toHaveBeenCalledWith('ru-RU');
-      //$timeout.flush(); // TODO: flush causes $digest already in progress error
-      //expect($window.location.reload).toHaveBeenCalled();
-    });
-
-    it('should set locale based on language', function () {
-      spyOn($window.location, 'reload');
-      spyOn($translate, 'use');
-      appLocale.setLang('ru');
-      expect(ipCookie('horizon_language')).toBe('ru');
-      expect($translate.use).toHaveBeenCalledWith('ru-RU');
     });
   });
 });

@@ -1,7 +1,9 @@
+import './supportService';
+
 describe('supportService', function () {
   var supportService, $httpBackend;
 
-  beforeEach(module('boss.supportService'));
+  beforeEach(angular.mock.module('boss.supportService'));
 
   beforeEach(inject(function (_supportService_, _$httpBackend_) {
     supportService = _supportService_;

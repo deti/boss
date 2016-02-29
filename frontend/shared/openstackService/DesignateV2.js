@@ -1,3 +1,4 @@
+import {default as ipV6parser} from './ipV6parser';
 const dependencies = [
   require('./BaseOpenstack').default.name
 ];
@@ -19,6 +20,10 @@ export default angular.module('boss.openstackService.DesignateV2', dependencies)
       }
 
       static ptrNameFromIp(ip) {
+        if (ip.indexOf(':') !== -1) { // ipv6
+          ip = ipV6parser(ip).join('');
+          return ip.split('').reverse().join('.') + PTR_POSTFIX;
+        }
         return ip.split('.').reverse().join('.') + PTR_POSTFIX;
       }
 

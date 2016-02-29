@@ -5,7 +5,7 @@ const dependencies = [
 
 export default angular.module('skyline.simple.RecreateCtrl', dependencies)
   .controller('RecreateCtrl', function RecreateCtrl($scope, $filter, $state, toaster, osServices, server, images, dialog) {
-    $scope.images = _.filter(images, item => item.disk_format != 'iso');
+    $scope.images = _.filter(images, item => item.disk_format !== 'iso');
     $scope.serverParams = {
       name: server.name,
       imageRef: server.image.id || $scope.images[0].id

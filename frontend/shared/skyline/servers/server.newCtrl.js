@@ -91,7 +91,7 @@ export default angular.module('skyline.servers.newCtrl', dependencies)
     });
 
     $scope.$watch('authBy', function (authBy) {
-      if (authBy == 'key') {
+      if (authBy === 'key') {
         delete $scope.server.adminPass;
         $scope.server.key_name = keypairs.length > 0 ? keypairs[0].keypair.name : null;
       } else {

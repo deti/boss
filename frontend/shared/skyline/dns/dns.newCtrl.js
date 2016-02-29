@@ -10,12 +10,12 @@ export default angular.module('skyline.dns.newCtrl', dependencies)
         $scope.domain.name = $scope.domain.name + '.';
       }
       Designate.createDomain($scope.domain)
-        .then((rsp) => {
+        .then(rsp => {
           form.$resetSubmittingState();
           toaster.pop('success', $filter('translate')('Domain was successfully created'));
           $state.go('openstack.dns.domains', {}, {reload: true});
         })
-        .catch((err) => {
+        .catch(err => {
           form.$resetSubmittingState();
           toaster.pop('error', $filter('translate')('Error on domain creation'));
           console.log('error', err);

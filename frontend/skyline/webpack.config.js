@@ -21,6 +21,13 @@ var config = {
     filename: 'app.js'
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'eslint',
+        exclude: /node_modules|vendor/
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
@@ -122,6 +129,9 @@ var config = {
       target: 'http://localhost:' + backendProxyPort,
       secure: false
     };
+  },
+  eslint: {
+    configFile: path.join(__dirname, '.eslintrc')
   }
 };
 

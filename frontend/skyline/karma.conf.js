@@ -9,8 +9,7 @@ module.exports = function (karma) {
     files: [
       './src/vendor.js',
       './node_modules/angular-mocks/angular-mocks.js',
-      '../shared/**/*.spec.js',
-      './lib/**/*.spec.js'
+      '../shared/**/*.spec.js'
     ],
     frameworks: ['jasmine'],
     plugins: [require('karma-webpack'), 'karma-jasmine', 'karma-phantomjs-launcher', 'karma-sourcemap-loader'],

@@ -8,7 +8,7 @@ export default angular.module('boss.payService', dependencies)
       var deferred = $q.defer();
       var options = {
         publicId: CONST.local.payments.cloudpayments.public_id,
-        description: 'Replenishment of the account', //purpose
+        description: 'Replenishment of the account', // purpose
         amount: amount,
         currency: customer.currency,
         accountId: `${customer.customer_id}`,

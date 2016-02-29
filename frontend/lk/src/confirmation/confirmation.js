@@ -6,7 +6,8 @@ const dependencies = [
 
 export default angular.module('boss.lk.confirmation', dependencies)
   .config(function ($stateProvider) {
-    $stateProvider.state('confirmation', {
+    $stateProvider
+      .state('confirmation', {
         parent: 'boss-clean',
         url: '/confirmation/:token',
         views: {

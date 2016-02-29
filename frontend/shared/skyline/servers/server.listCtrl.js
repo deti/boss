@@ -59,11 +59,8 @@ export default angular.module('skyline.servers.listCtrl', dependencies)
         });
     };
 
-    _.filter(servers, item => {
-        return item.status.progress || !!item['OS-EXT-STS:task_state'];
-      })
+    _.filter(servers, item => item.status.progress || !!item['OS-EXT-STS:task_state'])
       .forEach(pollServer);
-
 
     $scope.columns = [
       {
@@ -108,13 +105,13 @@ export default angular.module('skyline.servers.listCtrl', dependencies)
       var promise = pollService
         .asyncTask(() => {
           return Nova.server(server.id);
-        }, (serverRsp => {
+        }, serverRsp => {
           if (serverRsp.status.value !== server.status) {
             Restangular.sync(serverRsp, server);
             server.status = serverRsp.status;
           }
           return !serverRsp['OS-EXT-STS:task_state'] && !serverRsp.status.progress;
-        }));
+        });
       promise
         .then(serverRsp => {
           return Nova.serverLinkedData(serverRsp);

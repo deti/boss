@@ -65,7 +65,7 @@ export default angular.module('skyline.servers.editCtrl', dependencies)
         .then(() => {
           return pollService.asyncTask(function () {
             return Cinder.volume(volume.id);
-          }, (volumeData) => {
+          }, volumeData => {
             return volumeData.status.value === 'in-use';
           });
         })

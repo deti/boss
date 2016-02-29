@@ -35,7 +35,8 @@ export default angular.module('skyline.volumes.newCtrl', dependencies)
                   $rootScope.$emit(SKYLINE_EVENTS.VOLUME_CREATED);
                   toaster.pop('success', $filter('translate')('Disk created with Server'));
                   $state.go('openstack.volumes', {}, {reload: true});
-                }, function (err) {
+                })
+                .catch(e => {
                   toaster.pop('error', $filter('translate')('Error in the servers disk creation'));
                   $state.go('openstack.volumes', {}, {reload: true});
                 });
@@ -45,7 +46,8 @@ export default angular.module('skyline.volumes.newCtrl', dependencies)
           function getVolumeInfo() {
             return Cinder.volume(rsp.volume.id);
           }
-        }, function (err) {
+        })
+        .catch(e => {
           form.$resetSubmittingState();
           toaster.pop('error', $filter('translate')('Error in the disk creation'));
         });

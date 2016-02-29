@@ -6,7 +6,6 @@ export default angular.module('skyline.servers.new.state', dependencies)
   .config(function ($stateProvider) {
     $stateProvider
       .state('openstack.servers.new', {
-        //parent: 'openstack',
         url: '/new',
         views: {
           'main@boss': {

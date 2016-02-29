@@ -8,14 +8,16 @@ export default angular.module('boss.copyToClipboard', dependencies)
       priority: 1000,
       link: function (scope, element) {
         element.attr('clip-copy', element.attr('bs-copy-to-clipboard'));
-        element.attr('ng-click', 'showCopySuccess($event)');
+        element.attr('clip-click-fallback', `noFlashFallback(${element.attr('bs-copy-to-clipboard')})`);
+        element.attr('clip-click', 'showCopySuccess()');
+
         element.removeAttr('bs-copy-to-clipboard');
         element.removeAttr('copy-message');
 
         var tooltip;
-        scope.showCopySuccess = function ($event) {
+        scope.showCopySuccess = function () {
           if (!tooltip) {
-            tooltip = $tooltip(angular.element($event.target), {
+            tooltip = $tooltip(element, {
               title: $filter('translate')('Copied'),
               trigger: 'manual',
               placement: 'bottom'
@@ -28,6 +30,9 @@ export default angular.module('boss.copyToClipboard', dependencies)
             tooltip.show();
             $timeout(tooltip.hide, 3000);
           }
+        };
+        scope.noFlashFallback = function (copy) {
+          window.prompt($filter('translate')('Press ctrl+c to copy the text below.'), copy);
         };
         $compile(element)(scope);
       }

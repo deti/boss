@@ -58,13 +58,13 @@ export default angular.module('skyline.backup.listCtrl', dependencies)
       var promise = pollService
         .asyncTask(() => {
           return Cinder.snapshot(snapshot.id);
-        }, (serverRsp => {
+        }, serverRsp => {
           if (serverRsp.status.value !== snapshot.status) {
             Restangular.sync(serverRsp, snapshot);
             snapshot.status = serverRsp.status;
           }
           return !serverRsp.status.progress;
-        }));
+        });
       promise
         .then(serverRsp => {
           Restangular.sync(serverRsp, snapshot);

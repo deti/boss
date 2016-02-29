@@ -6,7 +6,7 @@ export default angular.module('boss.asynchronousLoader', dependencies)
       load: function (src) {
         var script,
           tags = document.getElementsByTagName('script'),
-          alreadyAdded = !!_.find(tags, tag => tag.attributes.src && tag.attributes.src.value == src),
+          alreadyAdded = !!_.find(tags, tag => tag.attributes.src && tag.attributes.src.value === src),
           deferred = $q.defer();
 
         if (alreadyAdded) {

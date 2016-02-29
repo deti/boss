@@ -59,7 +59,7 @@ angular.module('skyline', vendorDependencies.concat(dependencies))
     $rootScope.$on('$stateChangeError', cfpLoadingBar.complete);
     var lastError = 0;
     $rootScope.$on('$stateChangeError', function (event, toState, fromState, a, b, error) {
-      if (error == 'should log in') {
+      if (error === 'should log in') {
         $state.go('auth');
         return;
       }

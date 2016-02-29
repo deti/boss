@@ -10,7 +10,7 @@ describe('dialog', function () {
     $modal = _$modal_;
     spyOn($modal, 'open').and.callFake(function (conf) {
       scope = {};
-      conf.controller(scope);
+      conf.controller[1](scope);
       return conf.controller;
     });
   }));
@@ -18,7 +18,7 @@ describe('dialog', function () {
   it('should show confirm dialog', function () {
     dialog.confirm('hello');
     expect($modal.open)
-      .toHaveBeenCalledWith({templateUrl: 'dialog/dialog.confirm.tpl.html', controller: jasmine.any(Function)});
+      .toHaveBeenCalledWith({template: jasmine.any(String), controller: jasmine.any(Array)});
     expect(scope.header).toBe('hello');
     expect(scope.buttonYesText).toBe('Yes');
     expect(scope.buttonNoText).toBe('Cancel');
@@ -27,7 +27,7 @@ describe('dialog', function () {
   it('should show alert dialog', function () {
     dialog.alert('hello');
     expect($modal.open)
-      .toHaveBeenCalledWith({templateUrl: 'dialog/dialog.confirm.tpl.html', controller: jasmine.any(Function)});
+      .toHaveBeenCalledWith({template: jasmine.any(String), controller: jasmine.any(Array)});
     expect(scope.header).toBe('hello');
     expect(scope.buttonText).toBe('Ok');
   });
