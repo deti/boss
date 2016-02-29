@@ -40,7 +40,7 @@ export default angular.module('boss.grid.Column', dependencies)
         return 'value';
       }
       if (c.template && !c.value) {
-        return 'template'
+        return 'template';
       }
       if (c.field && !c.value && !c.template) {
         return 'field';
@@ -52,7 +52,7 @@ export default angular.module('boss.grid.Column', dependencies)
 
     function getLocalizedField(filter) {
       if (_.isArray(filter)) {
-        filter = _.find(filter, (item) => {
+        filter = _.find(filter, item => {
           return item === 'localizedName' || _.isObject(item) && item.name === 'localizedName';
         });
         if (filter === undefined) {

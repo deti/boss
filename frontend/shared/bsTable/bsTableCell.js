@@ -1,7 +1,6 @@
 const dependencies = [];
 
 const cellTpl = require('./cell.tpl.html');
-//const cellStaticTpl = require('./cell.static.tpl.html');
 
 export default angular.module('boss.table.cell', dependencies)
   .directive('bsTableCell', function () {

@@ -57,7 +57,7 @@ export default angular.module('boss.admin.services', dependencies)
         resolve: {
           service: function ($stateParams, services) {
             const service = _.find(services, function (obj) {
-              if (obj.service_id.toString() == $stateParams.id) {
+              if (obj.service_id.toString() === $stateParams.id.toString()) {
                 return obj;
               }
             });
@@ -91,10 +91,11 @@ export default angular.module('boss.admin.services', dependencies)
     $scope.searchTags = [];
     $scope.filters = [
       {
-        property: 'visibility', title: $filter('translate')('Status'), options: [
-        {text: $filter('translate')('Active'), val: 'visible'},
-        {text: $filter('translate')('In archive'), val: 'deleted'}
-      ]
+        property: 'visibility', title: $filter('translate')('Status'),
+        options: [
+          {text: $filter('translate')('Active'), val: 'visible'},
+          {text: $filter('translate')('In archive'), val: 'deleted'}
+        ]
       }
     ];
     var categoryFilter = {

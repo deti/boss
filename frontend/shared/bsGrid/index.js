@@ -37,6 +37,3 @@ export default angular.module('boss.grid', dependencies)
       }
     };
   });
-
-
-

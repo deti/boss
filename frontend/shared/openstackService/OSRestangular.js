@@ -22,7 +22,7 @@ export default angular.module('boss.openstackService.OSRestangular', dependencie
         toaster.pop('error', response.data.message);
       } else if (response.status >= 400 && response.status < 500) {
         return true;
-        //toaster.pop('error', $filter('translate')('Error in the request processing'));
+        // toaster.pop('error', $filter('translate')('Error in the request processing'));
       }
       if (response.status >= 500) {
         console.log('Openstack error', response);
@@ -70,7 +70,7 @@ export default angular.module('boss.openstackService.OSRestangular', dependencie
         Rest.setBaseUrl(Rest.baseUrl);
       });
       Rest.addResponseInterceptor((data, operation, what) => {
-        if (operation == 'getList' || operation === 'get') {
+        if (operation === 'getList' || operation === 'get') {
           if (_.startsWith(what, 'os-')) { // handle os-keychain
             what = what.replace('os-', '');
             what = what.replace(/-/g, '_');

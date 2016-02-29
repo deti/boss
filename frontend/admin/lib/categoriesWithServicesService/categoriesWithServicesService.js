@@ -16,7 +16,7 @@ export default angular.module('boss.categoriesWithServicesService', dependencies
     }
 
     function mergeTariffServices(tariffServices, categories) {
-      //warn if we have tariff services that are absent in categories list
+      // warn if we have tariff services that are absent in categories list
       var services = [];
       categories.forEach(cat => {
         services = services.concat(cat.services);

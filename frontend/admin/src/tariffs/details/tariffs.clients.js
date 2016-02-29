@@ -66,9 +66,9 @@ export default angular.module('boss.admin.tariffs.clients', dependencies)
       $filter('translate')('All filtered customers will be marked.');
 
     $scope.show = {};
-    $scope.show.tariffFilter = $stateParams.tariff_ids ? true : false;
-    $scope.show.typeFilter = $stateParams.customer_type ? true : false;
-    $scope.show.creationFilter = ($stateParams.created_after || $stateParams.created_before) ? true : false;
+    $scope.show.tariffFilter = !!$stateParams.tariff_ids;
+    $scope.show.typeFilter = !!$stateParams.customer_type;
+    $scope.show.creationFilter = !!($stateParams.created_after || $stateParams.created_before);
 
     $scope.customerOnElement = function (item) {
       item.selected = true;
@@ -114,7 +114,7 @@ export default angular.module('boss.admin.tariffs.clients', dependencies)
 
     $scope.getCustomersData = function () {
       var queue = {}, tariffIds = [];
-      if ($scope.filters.customerType == 'any') {
+      if ($scope.filters.customerType === 'any') {
         $scope.filters.customerType = undefined;
       }
       queue.customer_type = $scope.filters.customerType;

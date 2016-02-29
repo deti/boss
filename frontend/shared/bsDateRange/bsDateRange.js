@@ -94,12 +94,12 @@ export default angular.module('boss.dateRange', dependencies)
 
         scope.changeRange = function () {
           var params = {};
-          params[scope.afterParam] = scope.resetTime ?
-                                     resetDateTime(scope.startDate, 0, 1) :
-                                     Math.round(scope.startDate.getTime() / 1000);
-          params[scope.beforeParam] = scope.resetTime ?
-                                      resetDateTime(scope.endDate, 23, 59) :
-                                      Math.round(scope.endDate.getTime() / 1000);
+          params[scope.afterParam] = scope.resetTime
+            ? resetDateTime(scope.startDate, 0, 1)
+            : Math.round(scope.startDate.getTime() / 1000);
+          params[scope.beforeParam] = scope.resetTime
+            ? resetDateTime(scope.endDate, 23, 59)
+            : Math.round(scope.endDate.getTime() / 1000);
 
           $state.go($state.current.name, params);
           scope.startDateApplied = scope.startDate;

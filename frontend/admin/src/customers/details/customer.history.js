@@ -27,32 +27,18 @@ export default angular.module('boss.admin.customer.history', dependencies)
       });
   })
   .controller('MainDetailsHistoryCtrl', function ($scope, history, $filter) {
-    $scope.gridConfig = {
-      data: history,
-      columns: [
-        {
-          title: $filter('translate')('Date'),
-          field: 'date',
-          filter: {name: 'date', args: ['dd.MM.yy HH:mm']},
-          reverse: true,
-          sortDefault: true
-        },
-        {
-          title: $filter('translate')('Name'),
-          field: 'user.name'
-        },
-        {
-          title: $filter('translate')('Sum'),
-          field: 'delta',
-          template: '<span ng-bind-html="item.delta| money:item.currency | trust"></span>'},
-        {
-          title: $filter('translate')('Comment'),
-          field: 'comment',
-          cellClass: 'long-text'
-        }
-      ]
-    }
+    $scope.data = history;
+    $scope.columns = [
+      {
+        field: 'date',
+        title: $filter('translate')('Date'),
+        reverse: true,
+        cellClass: 'long-text',
+        sortDefault: 'reverse',
+        template: "{{::item.date | date:'dd.MM.yy' }}<br>{{::item.date | date:'HH:mm' }}"
+      },
+      {field: 'user.name', title: $filter('translate')('Name')},
+      {field: 'delta', title: $filter('translate')('Sum'), template: '<span ng-bind-html="item.delta| money:item.currency | trust"></span>'},
+      {field: 'comment', title: $filter('translate')('Comment'), cellClass: 'long-text'}
+    ];
   });
-
-
-

@@ -37,7 +37,7 @@ export default angular.module('boss.hasError', dependencies)
         var $inputEl = scope.target ? el.find(scope.target) : el.find('.form-control[name]'),
           modelCtrl = $inputEl.data('$ngModelController');
         if (!modelCtrl) {
-          throw 'bs-has-error element has no child input elements that have model controller!';
+          throw new Error('bs-has-error element has no child input elements that have model controller!');
         }
 
         var toggleClasses = function (invalid) {

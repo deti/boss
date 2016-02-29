@@ -17,7 +17,7 @@ export default angular.module('boss.admin.NewsDetailsCtrl', ['restangular', 'toa
     };
 
     $scope.publish = function (published) {
-      newsService.publishNews(parseInt($scope.newsItem.news_id), published ? false : true)
+      newsService.publishNews(parseInt($scope.newsItem.news_id), !published)
         .then(function () {
           toaster.pop('success', $filter('translate')('Publication parameter is changed'));
           $state.go('news', {}, {reload: true});

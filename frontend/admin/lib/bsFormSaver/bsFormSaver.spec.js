@@ -56,8 +56,6 @@ describe('bsFormSaver', function () {
     element.find('#submit').click();
     scope.$digest();
     expect($body.find('.popup').hasClass('ng-hide')).toBe(true);
-    //$body.find('.popup').find('button')[0].click();
-    //element.submit();
   });
 
   it('should show saver when previous change set input to dirty but not changed value', function () {

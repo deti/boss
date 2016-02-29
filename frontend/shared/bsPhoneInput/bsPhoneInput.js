@@ -16,7 +16,7 @@ export default angular.module('boss.phoneInput', dependencies)
               modelCtrl.$setValidity('minPhoneLength', newViewValue.length > 4);
             }
 
-            if (newViewValue != viewValue) {
+            if (newViewValue !== viewValue) {
               modelCtrl.$setViewValue(newViewValue);
               modelCtrl.$render();
             }

@@ -8,7 +8,7 @@ export default angular.module('boss.admin.details', dependencies)
 
     var cancelListener = $rootScope.$on('$stateChangeSuccess', function (e, toState) {
       var toStatesLength = (toState.name.match(/\./g) || []).length + 1,
-          thisStatesLength = ($scope.thisState.match(/\./g) || []).length + 1;
+        thisStatesLength = ($scope.thisState.match(/\./g) || []).length + 1;
       if (toState.name === $scope.thisState) {
         $state.go(appGlobalState.lastVisitDetails[$scope.thisState] || $scope.defaultState);
       } else if (toState.name !== $scope.thisState && _.startsWith(toState.name, $scope.thisState)) {

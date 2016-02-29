@@ -59,7 +59,7 @@ export default angular.module('boss.customerService', dependencies)
       setDeferredTariff: function (customer, tariff, date) {
         date = $filter('date')(date, 'yyyy-MM-ddTHH:mm:00');
         return Restangular.one('customer', customer.customer_id).one('deferred').customPUT({
-          //customer_id: customer.customer_id,
+          // customer_id: customer.customer_id,
           tariff: tariff,
           date: date
         });

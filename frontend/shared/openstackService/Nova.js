@@ -113,7 +113,7 @@ export default angular.module('boss.openstackService.Nova', dependencies)
         return this.loadFullList(this.Restangular.all('flavors/detail'), 'flavors')
           .then(flavors => {
             return _.sortByAll(flavors.map(item => {
-              item.about = `CPU ${item.vcpus} | ` + $filter('bytes')(item.ram, 'MB') + ` RAM`;
+              item.about = `CPU ${item.vcpus} | ${$filter('bytes')(item.ram, 'MB')} RAM`;
               if (SHOW_DISK_SIZE_IN_FLAVOR) {
                 item.about += ' | ' + $filter('bytes')(item.disk, 'GB');
               }
@@ -132,7 +132,7 @@ export default angular.module('boss.openstackService.Nova', dependencies)
 
       loadLinkedData(obj, property) {
         return this.load(this.processLinksUrl(obj[property].links[0].href))
-          .then((data) => {
+          .then(data => {
             obj[property] = data[property];
           })
           .catch(e => {
@@ -176,7 +176,7 @@ export default angular.module('boss.openstackService.Nova', dependencies)
 
       floatingIPs() {
         return this.Restangular.all('os-floating-ips').getList()
-          .then((ips) => {
+          .then(ips => {
             var promises = [];
             ips.forEach(ip => {
               if (ip.instance_id) {

@@ -9,6 +9,7 @@ const dependencies = [
 export default angular.module('boss.tableFilter', dependencies)
   .directive('bsTableFilter', function ($state, $stateParams, $filter, $timeout) {
     var filter = $filter('filter');
+
     function getSearchExpression(props) {
       return function (item) {
         var res;
@@ -22,7 +23,7 @@ export default angular.module('boss.tableFilter', dependencies)
       };
     }
 
-    function addClearAllTag (searchTags) {
+    function addClearAllTag(searchTags) {
       if (searchTags.length >= 3) {
         searchTags.push({
           text: $filter('translate')('Clear All'),
@@ -38,7 +39,7 @@ export default angular.module('boss.tableFilter', dependencies)
         if (filter === undefined) {
           return;
         }
-        var option = _.find(filter.options, opt => opt.val == params[paramName]);
+        var option = _.find(filter.options, opt => opt.val === params[paramName]);
         if (option === undefined) {
           return;
         }
@@ -51,6 +52,7 @@ export default angular.module('boss.tableFilter', dependencies)
       function addTextSearch(item) {
         searchTags.push({text: item.replace(/-/g, ' ')});
       }
+
       if (params.text) {
         if (_.isArray(params.text)) {
           params.text.forEach(addTextSearch);
@@ -65,29 +67,23 @@ export default angular.module('boss.tableFilter', dependencies)
     return {
       restrict: 'E',
       template: require('./bsTableFilter.tpl.html'),
-      require: ['?^stTable', '?^bsGridExpose'],
+      require: '^stTable',
       scope: {
         searchTags: '=',
         filters: '='
       },
-      link: function (scope, element, attrs, [stTableCtrl, gridCtrl]) {
+      link: function (scope, element, attrs, tableCtrl) {
         scope.searchActive = ($stateParams.page === undefined) ? !!$stateParams.filterActive : false;
         scope.stateName = attrs.stateName;
         scope.searchTags = getSearchTags($stateParams, scope.filters);
         addClearAllTag(scope.searchTags);
         if ($stateParams.text) {
-          var searchExpression;
           if (_.isArray($stateParams.text)) {
-            searchExpression = getSearchExpression($stateParams.text);
+            tableCtrl.tableState().search.predicateObject = getSearchExpression($stateParams.text);
           } else {
-            searchExpression = getSearchExpression([$stateParams.text]);
+            tableCtrl.tableState().search.predicateObject = getSearchExpression([$stateParams.text]);
           }
-          if (stTableCtrl) {
-            stTableCtrl.tableState().search.predicateObject = searchExpression;
-            stTableCtrl.pipe();
-          } else if (gridCtrl) {
-            gridCtrl.filters = searchExpression;
-          }
+          tableCtrl.pipe();
         }
 
         if (scope.searchActive) {
@@ -101,7 +97,7 @@ export default angular.module('boss.tableFilter', dependencies)
           $scope.searchActive = false;
         };
 
-        function keydownListener (e) {
+        function keydownListener(e) {
           if (!$scope.searchActive) {
             return;
           }
@@ -142,7 +138,7 @@ export default angular.module('boss.tableFilter', dependencies)
         };
 
         $scope.tagRemoved = function ($tag) {
-          if ($tag.property == 'ClearAll') {
+          if ($tag.property === 'ClearAll') {
             $scope.searchTags = [];
           }
           $scope.search();

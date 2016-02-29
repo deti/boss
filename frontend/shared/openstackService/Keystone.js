@@ -30,7 +30,7 @@ export default angular.module('boss.openstackService.Keystone', dependencies)
           }
         })
         .then(r => {
-          if (!r.data.token || !r.data.token.project || ! r.data.token.project.id) {
+          if (!r.data.token || !r.data.token.project || !r.data.token.project.id) {
             return $q.reject('No project.id in keystone response');
           }
           this.authPair = {

@@ -6,9 +6,19 @@ describe('customerService', function () {
 
   beforeEach(angular.mock.module('boss.customerService'));
 
-  beforeEach(inject(function (_customerService_, _$httpBackend_) {
+  beforeEach(inject(function (_customerService_, _$httpBackend_, Restangular, $timeout) {
     $httpBackend = _$httpBackend_;
     customerService = _customerService_;
+    Restangular.setOneBaseUrl = function (newBaseUrl) { // TODO: we should import it from run.js
+      if (newBaseUrl) {
+        var oldBaseUrl = Restangular.configuration.baseUrl;
+        Restangular.setBaseUrl(newBaseUrl);
+        $timeout(function () {
+          Restangular.setBaseUrl(oldBaseUrl);
+        });
+      }
+      return Restangular;
+    };
   }));
 
   it('getSubscriptions should return subscriptions in format compatible with tags-input', function (done) {
@@ -43,7 +53,7 @@ describe('customerService', function () {
       subscribe: {
         news: {
           enable: true,
-          email: ["KMalysheva22@mfsa.ru", "test@test.com"]
+          email: ['KMalysheva22@mfsa.ru', 'test@test.com']
         }
       }
     };
@@ -66,11 +76,11 @@ describe('customerService', function () {
 
   it('should return correct customer list', function (done) {
     var res = {
-      "customer_list": {
-        "items": [{}],
-        "total": 1,
-        "per_page": 50,
-        "page": 1
+      'customer_list': {
+        'items': [{}],
+        'total': 1,
+        'per_page': 50,
+        'page': 1
       }
     };
 

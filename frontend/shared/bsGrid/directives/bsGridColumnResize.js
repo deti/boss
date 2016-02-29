@@ -17,7 +17,7 @@ export default angular.module('boss.grid.columnResize', dependencies)
           e.preventDefault();
           e.stopPropagation();
         });
-        function onColumnResize (e) {
+        function onColumnResize(e) {
           e.stopPropagation();
           e.preventDefault();
           element.addClass('active');

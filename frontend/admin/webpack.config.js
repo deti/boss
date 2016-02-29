@@ -21,6 +21,13 @@ var config = {
     filename: 'app.js'
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'eslint',
+        exclude: /node_modules|vendor/
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
@@ -122,6 +129,9 @@ var config = {
       target: 'http://localhost:' + backendProxyPort,
       secure: false
     };
+  },
+  eslint: {
+    configFile: path.join(__dirname, '.eslintrc')
   }
 };
 
@@ -137,7 +147,7 @@ if (process.env.DEV) {
     }
     if (!backendUrl[process.env.BACKEND]) {
       console.error('There is no "%s" backend defined in backend.config.js or backend.config.local', process.env.DEV);
-      return;
+      process.exit();
     }
     selectedBackend = backendUrl[process.env.BACKEND];
   }
@@ -148,6 +158,5 @@ if (process.env.DEV) {
   });
   backendProxy(selectedBackend, proxyPath, backendProxyPort);
 }
-
 
 module.exports = config;

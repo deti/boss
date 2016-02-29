@@ -16,13 +16,14 @@ export default angular.module('boss.admin.UsersDetailsCtrl', dependencies)
 
     $scope.update = function (form) {
       $scope.user.save()
-        .then(function (updatedUser) {
+        .then(updatedUser => {
           Restangular.sync(updatedUser, $scope.user);
           Restangular.sync(updatedUser, user);
           toaster.pop('success', $filter('translate')('User account is successfully changed'));
-        }).catch(function (rsp) {
-        form.$parseErrors(rsp);
-      });
+        })
+        .catch(rsp => {
+          form.$parseErrors(rsp);
+        });
     };
 
     $scope.archiveUser = function () {

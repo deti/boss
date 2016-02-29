@@ -6,9 +6,9 @@ export default angular.module('boss.grid.styles', dependencies)
       return columns
         .map(c => {
           if (c.width) {
-            return `.${c.id} {min-width: ${c.width}px;max-width: ${c.width}px;}`
+            return `.${c.id} {min-width: ${c.width}px;max-width: ${c.width}px;}`;
           }
-          return `.${c.id} {flex: 1 0;}`
+          return `.${c.id} {flex: 1 0;}`;
         })
         .join('');
     }
@@ -16,8 +16,7 @@ export default angular.module('boss.grid.styles', dependencies)
     return {
       restrict: 'E',
       require: '^bsGrid',
-      //template: '<style>{{styles}}</style>',
-      link(scope, el, attrs, /*BsGridCtrl*/gridCtrl) {
+      link(scope, el, attrs, /* BsGridCtrl */gridCtrl) {
         var styleElement = false;
         function applyStyles() {
           const styles = generateStyles(gridCtrl.columns);

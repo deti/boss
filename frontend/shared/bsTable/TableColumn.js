@@ -6,7 +6,7 @@ export default angular.module('boss.table.TableColumn', dependencies)
   .factory('TableColumn', function (appLocale) {
     function getLocalizedField(filter) {
       if (_.isArray(filter)) {
-        filter = _.find(filter, (item) => {
+        filter = _.find(filter, item => {
           return item === 'localizedName' || _.isObject(item) && item.name === 'localizedName';
         });
         if (filter === undefined) {

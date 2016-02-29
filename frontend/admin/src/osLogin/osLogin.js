@@ -25,7 +25,7 @@ export default angular.module('boss.admin.osLogin', dependencies)
     }
     this.login = '';
     this.password = '';
-    this.submit = (form) => {
+    this.submit = form => {
       Keystone.authenticate(this.login, this.password)
         .then(t => {
           form.$resetSubmittingState();

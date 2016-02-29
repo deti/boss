@@ -13,7 +13,6 @@ const cellPartialPath = require('./cell.partial.tpl.html');
 const staticCellPartialPath = require('./cell.static.partial.tpl.html');
 const cellWrapperPartialPath = require('./cellWrapper.partial.tpl.html');
 
-
 /**
  * @ngdoc directive
  * @name boss.table.directive:bsTable
@@ -87,7 +86,7 @@ export default angular.module('boss.table', dependencies)
         scope.onColumnResize = onColumnResize;
 
         scope.columnsCount = 0;
-        function updateColumnWidth () {
+        function updateColumnWidth() {
           $timeout(() => {
             scope.afterRedraw = _.random(0, 100);
           });
@@ -121,7 +120,7 @@ export default angular.module('boss.table', dependencies)
           scope.columnsCount = columnsCount;
         }
 
-        function onColumnResize (e) {
+        function onColumnResize(e) {
           e.stopPropagation();
           e.preventDefault();
           e.originalEvent.preventDefault();

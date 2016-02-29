@@ -9,7 +9,6 @@ const cellCheckbox = require('./cell.checkbox.tpl.html');
 const cellTitle = require('./cell.title.tpl.html');
 const confirmTemplate = require('./confirm-alert.tpl.html');
 
-
 export default angular.module('boss.admin.projects', dependencies)
   .config(function ($stateProvider) {
     $stateProvider
@@ -29,14 +28,14 @@ export default angular.module('boss.admin.projects', dependencies)
           pageTitle: 'Projects'
         },
         resolve: {
-          keystoneAuth(/*Keystone*/Keystone, $q, $state, $timeout) {
+          keystoneAuth(Keystone, $q, $state, $timeout) {
             if (!Keystone.authPair) {
-              $timeout(function() {
+              $timeout(function () {
                 $state.go('osLogin');
-              },0);
+              }, 0);
               return $q.reject('you need to auth first');
             }
-            return Keystone.authPair
+            return Keystone.authPair;
           },
           servers: function (keystoneAuth, Nova, OSCredentials) {
             OSCredentials.tenantId = keystoneAuth.tenantId;
@@ -46,7 +45,7 @@ export default angular.module('boss.admin.projects', dependencies)
           users: function (keystoneAuth, Keystone) {
             return Keystone.users(keystoneAuth.token);
           },
-          projects: function (keystoneAuth, /*Keystone*/Keystone) {
+          projects: function (keystoneAuth, Keystone) {
             return Keystone.projects(keystoneAuth.token);
           }
         }
@@ -58,16 +57,12 @@ export default angular.module('boss.admin.projects', dependencies)
     servers.forEach(server => {
       server.project = _.find(projects.projects, {id: server.tenant_id});
       server.user = _.find(users.users, {id: server.user_id});
-      server.owner = '';
+      server.owner = server.metadata.provider || 'MANUAL';
+      owners.push(server.owner);
       server.projectName = '-';
       if (server.project) {
-        var splitted = server.project.name.split('-');
-        if (splitted.length > 1) {
-          server.owner = splitted[0];
-          owners.push(server.owner);
-        }
         server.projectName = server.project.name;
-        projectsNames.push(server.projectName)
+        projectsNames.push(server.projectName);
       }
     });
     var serversCopy = filterServers();
@@ -96,7 +91,7 @@ export default angular.module('boss.admin.projects', dependencies)
       },
       {
         field: 'user.name',
-        title: $filter('translate')('User')
+        title: $filter('translate')('Username')
       },
       {
         field: 'name',
@@ -142,7 +137,7 @@ export default angular.module('boss.admin.projects', dependencies)
       return servers.filter(s => {
         for (let i = 0; i < paramsKeys.length; i++) {
           let key = paramsKeys[i];
-          if ($stateParams[key] && s.hasOwnProperty(key) && s[key] != $stateParams[key]) {
+          if ($stateParams[key] && s.hasOwnProperty(key) && s[key] !== $stateParams[key]) {
             return false;
           }
         }

@@ -51,7 +51,7 @@ export default angular.module('boss.serverValidate', dependencies)
             for (var key in formController) {
               if (formController.hasOwnProperty(key) && String(key).charAt(0) !== '$' && angular.isObject(formController[key]) && formController[key].$$parentForm === undefined) {
                 formController[key].$viewChangeListeners.unshift(clearServerErrors);
-                formController[key].$parsers.unshift((value) => { // use $parsers for 'hard' cases like ngTagsInput
+                formController[key].$parsers.unshift(value => { // use $parsers for 'hard' cases like ngTagsInput
                   clearServerErrors();
                   return value;
                 });

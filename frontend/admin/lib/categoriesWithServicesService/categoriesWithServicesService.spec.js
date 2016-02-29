@@ -162,10 +162,8 @@ describe('categoriesWithServicesService', function () {
     });
   });
 
-
   describe('mergeTariffServices', function () {
     var tariffServices,
-      categories,
       categoriesResult;
 
     tariffServices = [
@@ -202,7 +200,6 @@ describe('categoriesWithServicesService', function () {
         ]
       }
     ];
-
 
     it('should mark tariff services in categories with services list', inject(function (categoriesWithServicesService) {
       var res = categoriesWithServicesService.mergeTariffServices(tariffServices, categoriesWithServices);

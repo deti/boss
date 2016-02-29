@@ -9,7 +9,6 @@ export default angular.module('boss.tablePagination', dependencies)
         pages: '='
       },
       link: function (scope, elem, attr) {
-        console.log(scope.pages);
         scope.currentPage = parseInt($stateParams.page) || 1;
         scope.gap = 5;
         scope.ppages = Math.ceil(parseInt(scope.pages) / scope.gap);

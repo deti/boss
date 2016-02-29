@@ -42,7 +42,7 @@ export default angular.module('boss.admin.customer', dependencies)
           customersData: function (customerService, tariffs, $stateParams) {
             return customerService.getCustomers(angular.extend({}, {limit: 50}, $stateParams))
               .then(function (items) {
-                items.map((item) => {
+                items.map(item => {
                   item.tariffInfo = _.findWhere(tariffs, {tariff_id: item.tariff_id});
                   item.balance = 0;
                   return item;
@@ -114,18 +114,20 @@ export default angular.module('boss.admin.customer', dependencies)
       {field: 'email', title: $filter('translate')('User account')},
       {field: 'detailed_info.name', title: $filter('translate')('Name')},
       {
-        field: 'tariff_id', title: $filter('translate')('Plan'), filter: 'localizedName', value: function (item) {
-        return _.findWhere(tariffs, {tariff_id: item.tariff_id});
-      }
+        field: 'tariff_id', title: $filter('translate')('Plan'), filter: 'localizedName',
+        value: function (item) {
+          return _.findWhere(tariffs, {tariff_id: item.tariff_id});
+        }
       },
       {
-        field: 'account.RUB.current', title: $filter('translate')('Balance'), value: function (item) {
-        if (item.account[item.currency]) {
-          return $filter('money')(item.account[item.currency].current, item.currency);
-        } else {
-          return $filter('translate')('No account');
+        field: 'account.RUB.current', title: $filter('translate')('Balance'),
+        value: function (item) {
+          if (item.account[item.currency]) {
+            return $filter('money')(item.account[item.currency].current, item.currency);
+          } else {
+            return $filter('translate')('No account');
+          }
         }
-      }
       },
       {
         field: 'created',
@@ -134,42 +136,47 @@ export default angular.module('boss.admin.customer', dependencies)
         reverse: true
       },
       {
-        field: 'customer_mode', title: $filter('translate')('Mode'), value: function (item) {
-        var modes = {
-          test: 'Trial mode',
-          pending_prod: 'Transient mode',
-          production: 'Working mode'
-        };
-        return (modes[item.customer_mode] ? $filter('translate')(modes[item.customer_mode]) : '');
-      }
+        field: 'customer_mode', title: $filter('translate')('Mode'),
+        value: function (item) {
+          var modes = {
+            test: 'Trial mode',
+            pending_prod: 'Transient mode',
+            production: 'Working mode'
+          };
+          return (modes[item.customer_mode] ? $filter('translate')(modes[item.customer_mode]) : '');
+        }
       }
     ];
 
     $scope.filters = [
       {
-        property: 'visibility', title: $filter('translate')('Status'), options: [
-        {text: $filter('translate')('Active'), val: 'visible'},
-        {text: $filter('translate')('In archive'), val: 'deleted'}
-      ]
+        property: 'visibility', title: $filter('translate')('Status'),
+        options: [
+          {text: $filter('translate')('Active'), val: 'visible'},
+          {text: $filter('translate')('In archive'), val: 'deleted'}
+        ]
       },
       {
-        property: 'blocked', title: $filter('translate')('Lock'), options: [
-        {text: $filter('translate')('Not locked'), val: 'false'},
-        {text: $filter('translate')('Locked'), val: 'true'}
-      ]
+        property: 'blocked', title: $filter('translate')('Lock'),
+        options: [
+          {text: $filter('translate')('Not locked'), val: 'false'},
+          {text: $filter('translate')('Locked'), val: 'true'}
+        ]
       },
       {
-        property: 'customer_mode', title: $filter('translate')('Type'), options: [
-        {text: $filter('translate')('Trial mode'), val: 'test'},
-        {text: $filter('translate')('Working mode'), val: 'production'},
-        {text: $filter('translate')('Transient mode'), val: 'pending_prod'}
-      ]
+        property: 'customer_mode', title: $filter('translate')('Type'),
+        options: [
+          {text: $filter('translate')('Trial mode'), val: 'test'},
+          {text: $filter('translate')('Working mode'), val: 'production'},
+          {text: $filter('translate')('Transient mode'), val: 'pending_prod'}
+        ]
       },
       {
-        property: 'customer_type', title: $filter('translate')('Customer type'), options: [
-        {text: $filter('translate')('Private person'), val: 'private'},
-        {text: $filter('translate')('Legal entity'), val: 'entity'}
-      ]
+        property: 'customer_type', title: $filter('translate')('Customer type'),
+        options: [
+          {text: $filter('translate')('Private person'), val: 'private'},
+          {text: $filter('translate')('Legal entity'), val: 'entity'}
+        ]
       }
     ];
     var tariffFilter = {

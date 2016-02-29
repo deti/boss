@@ -1,6 +1,6 @@
 export default angular.module('boss.dateRangePicker.datepickerViews', []) // not really elegant way to solve problem... See BOSS-979. Replace angular-strap datepicker providers, add greater/less date detector
   .provider('datepickerViews', function () {
-    var defaults = this.defaults = {
+    this.defaults = {
       dayFormat: 'dd',
       daySplit: 7
     };
@@ -154,7 +154,6 @@ export default angular.module('boss.dateRangePicker.datepickerViews', []) // not
             }
           },
           build: function () {
-            var firstMonth = new Date(viewDate.year, 0, 1);
             var months = [], month;
             for (var i = 0; i < 12; i++) {
               month = new Date(viewDate.year, i, 1);
@@ -302,7 +301,6 @@ export default angular.module('boss.dateRangePicker.datepickerViews', []) // not
       iconRight: 'glyphicon glyphicon-chevron-right'
     };
     this.$get = ['$window', '$document', '$rootScope', '$sce', '$dateFormatter', 'datepickerViews', '$tooltip', '$timeout', function ($window, $document, $rootScope, $sce, $dateFormatter, datepickerViews, $tooltip, $timeout) {
-      var bodyEl = angular.element($window.document.body);
       var isNative = /(ip(a|o)d|iphone|android)/gi.test($window.navigator.userAgent);
       var isTouch = 'createTouch' in $window.document && isNative;
       if (!defaults.lang) {
@@ -335,7 +333,7 @@ export default angular.module('boss.dateRangePicker.datepickerViews', []) // not
         $datepicker.update = function (date) {
           if (angular.isDate(date) && !isNaN(date.getTime())) {
             $datepicker.$date = date;
-            $picker.update.call($picker, date);
+            $picker.update(date);
           }
           $datepicker.$build(true);
         };
@@ -379,7 +377,7 @@ export default angular.module('boss.dateRangePicker.datepickerViews', []) // not
           if (pristine === false && !$picker.built) {
             return;
           }
-          $picker.build.call($picker);
+          $picker.build();
         };
         $datepicker.$updateSelected = function () {
           for (var i = 0, l = scope.rows.length; i < l; i++) {

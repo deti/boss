@@ -22,9 +22,9 @@ export default angular.module('boss.validateHint', dependencies)
             number: $filter('translate')('Must be a number'),
             strongPassword: $filter('translate')('Enter a stronger password')
           }, scope.$eval(attrs.bsValidateHint) || {}),
-            errCount = 1,
-            errContainer,
-            afterEl;
+          errCount = 1,
+          errContainer,
+          afterEl;
 
         if (el.is('select') && el.parent().hasClass('select')) {
           afterEl = el.parent();

@@ -26,7 +26,7 @@ export default angular.module('boss.appLocale', dependencies)
         if (!localeLoaded) {
           $log.warn('Trying to get locale before loaded');
         }
-        return localeLoaded ? localeLoaded : defaultLocale();
+        return localeLoaded || defaultLocale();
       }
       if (localeLoaded) {
         return $q.when(localeLoaded);

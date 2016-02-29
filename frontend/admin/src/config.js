@@ -28,7 +28,6 @@ export default angular.module('boss.admin.config', dependencies)
       return $delegate;
     });
 
-
     angular.extend($datepickerProvider.defaults, {
       dateFormat: 'dd.MM.yyyy'
     });

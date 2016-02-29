@@ -27,10 +27,11 @@ export default angular.module('boss.admin.UsersCtrl', dependencies)
     $scope.filters = [
       roleFilter,
       {
-        property: 'visibility', title: $filter('translate')('Status'), options: [
-        {text: $filter('translate')('Active'), val: 'visible'},
-        {text: $filter('translate')('In archive'), val: 'deleted'}
-      ]
+        property: 'visibility', title: $filter('translate')('Status'),
+        options: [
+          {text: $filter('translate')('Active'), val: 'visible'},
+          {text: $filter('translate')('In archive'), val: 'deleted'}
+        ]
       }
     ];
   });

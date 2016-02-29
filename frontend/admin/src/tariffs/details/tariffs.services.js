@@ -42,7 +42,7 @@ export default angular.module('boss.admin.tariffs.services', dependencies)
         }
       });
   })
- .controller('TariffsDetailsServicesEditCtrl', function ($scope, $state, $filter, $controller, Restangular, tariff, categoriesData, categoriesWithServicesService, tariffService, toaster, TARIFF_STATE, popupErrorService) {
+  .controller('TariffsDetailsServicesEditCtrl', function ($scope, $state, $filter, $controller, Restangular, tariff, categoriesData, categoriesWithServicesService, tariffService, toaster, TARIFF_STATE, popupErrorService) {
     $scope.customDetailsHeader.tpl = headerTplPath;
 
     $scope.tariff = Restangular.copy(tariff);
@@ -65,7 +65,8 @@ export default angular.module('boss.admin.tariffs.services', dependencies)
         .then(function (rsp) {
           toaster.pop('success', $filter('translate')('Plan is successfully changed'));
           $state.go('tariffs', {}, {reload: true});
-        }, function (err) {
+        })
+        .catch(function (err) {
           popupErrorService.show(err);
         });
     };

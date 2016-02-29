@@ -97,10 +97,11 @@ export default angular.module('boss.admin.tariffs', dependencies)
     $scope.filters = [
       currencyFilter,
       {
-        property: 'visibility', title: $filter('translate')('Status'), options: [
-        {text: $filter('translate')('Active'), val: 'visible'},
-        {text: $filter('translate')('In archive'), val: 'deleted'}
-      ]
+        property: 'visibility', title: $filter('translate')('Status'),
+        options: [
+          {text: $filter('translate')('Active'), val: 'visible'},
+          {text: $filter('translate')('In archive'), val: 'deleted'}
+        ]
       }
     ];
     var allTariffFilter = {

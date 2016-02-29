@@ -41,10 +41,11 @@ export default angular.module('boss.admin.FlavorsCtrl', dependencies)
     $scope.searchTags = [];
     $scope.filters = [
       {
-        property: 'visibility', title: $filter('translate')('Status'), options: [
-        {text: $filter('translate')('Active'), val: 'visible'},
-        {text: $filter('translate')('In archive'), val: 'deleted'}
-      ]
+        property: 'visibility', title: $filter('translate')('Status'),
+        options: [
+          {text: $filter('translate')('Active'), val: 'visible'},
+          {text: $filter('translate')('In archive'), val: 'deleted'}
+        ]
       }
     ];
   });

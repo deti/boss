@@ -47,14 +47,16 @@ export default angular.module('boss.admin.tariffs.new', dependencies)
     angular.extend(this, $controller('DetailsBaseCtrl', {$scope: $scope}));
     $scope.tabs = [
       {
-        title: $filter('translate')('Step 1 - Information'), state: 'tariffs.new.1', go: function () {
-        $state.go('tariffs.new.1', {newTariff: newTariff});
-      }
+        title: $filter('translate')('Step 1 - Information'), state: 'tariffs.new.1',
+        go() {
+          $state.go('tariffs.new.1', {newTariff: newTariff});
+        }
       },
       {
-        title: $filter('translate')('Step 2 - Services'), state: 'tariffs.new.services', go: function () {
-        $state.go('tariffs.new.services', {newTariff: newTariff});
-      }
+        title: $filter('translate')('Step 2 - Services'), state: 'tariffs.new.services',
+        go() {
+          $state.go('tariffs.new.services', {newTariff: newTariff});
+        }
       }
     ];
   });

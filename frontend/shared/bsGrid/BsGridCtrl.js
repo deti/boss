@@ -28,7 +28,7 @@ export default angular.module('boss.grid.BsGridCtrl', dependencies)
     // sorting
     this.sortPredicate = false;
     this.sortReverse = false;
-    this.applySorting = (column) => {
+    this.applySorting = column => {
       if (this.sortPredicate !== column.sortField) { // column have not sorted yet
         this.sortPredicate = column.sortField;
         this.sortReverse = !!column.reverse;
