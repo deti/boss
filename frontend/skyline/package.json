@@ -76,7 +76,7 @@
     "cron-to-text": "0.0.1",
     "font-awesome": "^4.4.0",
     "moment": "~2.10.6",
-    "jquery": "^2.1.4",
+    "jquery": "^3.5.0",
     "lodash": "^3.10.1",
     "ng-clip": "^0.2.6",
     "perfect-scrollbar": "git+https://github.com/Heymdall/perfect-scrollbar.git#2303d257edd28dda79addef93af11795caa3c72c",
