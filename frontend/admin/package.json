@@ -76,7 +76,7 @@
     "bootstrap": "^3.3.5",
     "font-awesome": "^4.4.0",
     "jquery": "^2.1.4",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.19",
     "moment": "^2.10.6",
     "ng-clip": "^0.2.6",
     "ng-infinite-scroll": "~1.2.0",
