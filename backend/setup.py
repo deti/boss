@@ -29,7 +29,7 @@ install_requires = [
     "py3z3c.rml",
     "kids.cache",
     "graphiti",
-    "pillow==2.4.0"
+    "pillow==9.3.0"
 ]
 
 fitter_dependencies = [
